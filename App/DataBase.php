@@ -1,0 +1,42 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Ihor
+ * Date: 14.10.2017
+ * Time: 20:06
+ */
+
+namespace App;
+
+
+class DataBase
+{
+    const HOST         = 'localhost';
+    const DB_NAME      = 'joke_db';
+    const DB_USER      = 'joke_user';
+    const PASS_DB_USER = '78932145';
+
+    private $pdo;
+
+    public function __construct()
+    {
+        $this->pdo = new \PDO(
+            'mysql:host=' . self::HOST . ';dbname=' . self::DB_NAME,
+            self::DB_USER,
+            self::PASS_DB_USER
+        );
+    }
+
+    public function execute(string $sql, array $args = []) : bool
+    {
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute($args);
+    }
+
+    public function query(string $sql, string $className, array $args = []) : array
+    {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($args);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
+    }
+}
