@@ -6,10 +6,10 @@
  * Time: 20:23
  */
 
-/*
- * Функция автозагрузки классов
+/**
+ * @param string $className
  */
-function __autoload($className)
+function __autoload(string $className)
 {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/' . $className . '.php';
 }

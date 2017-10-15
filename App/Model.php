@@ -10,10 +10,21 @@ namespace App;
 
 abstract class Model
 {
+    /**
+     * @var string Хранит название таблицы в бд
+     */
     const TABLE = '';
 
-    public $id;
+    /**
+     * @var integer
+     */
+    protected $id;
 
+    /**
+     * Метод достает все записи из таблицы бд и
+     * возвращает их в виде объектов помещенных в массив
+     * @return array Возращает массив с объектами
+     */
     public static function findAll(): array
     {
         $dbConnect = DataBase::getInstance();
@@ -21,6 +32,12 @@ abstract class Model
         return $dbConnect->query($sql, static::class);
     }
 
+    /**
+     * Метод достает запись из бд по запрашиваемому id
+     * и возвращает ее в виде объекта
+     * @param int $id
+     * @return object Возвращает запись в виде объекта из бд
+     */
     public static function findById(int $id)
     {
         $dbConnect = DataBase::getInstance();
@@ -29,11 +46,20 @@ abstract class Model
         return $result[0];
     }
 
-    protected function isNew()
+    /**
+     * Метод определяет сохранялся ли ранее объект в бд,
+     * если да - возращает false
+     * @return bool Возвращает false если объект уже существует в бд
+     */
+    protected function isNew(): bool
     {
         return empty($this->id);
     }
 
+    /**
+     * Метод в зависимости от того, сохранялся ли объект в бд
+     * записывает его в бд либо обновляет запись
+     */
     public function save()
     {
         if ($this->isNew()) {
@@ -43,6 +69,12 @@ abstract class Model
         }
     }
 
+    /**
+     * Метод записывает объект в базу данных
+     * Получает массив свойст объекта (id не нужен, его генерирует бд)
+     * затем отправляет запрос на добавление в бд
+     * и записывает в свойство полученный из бд id
+     */
     protected function insert()
     {
         $arrayProp = get_object_vars($this);
@@ -58,6 +90,10 @@ abstract class Model
         $this->id = $dbConnect->lastInsertId();
     }
 
+    /**
+     * Метод обновляет запись в бд
+     * Сперва получая все свойства объекта кроме id (его не трогаем)
+     */
     protected function update()
     {
         $arrayProp = get_object_vars($this);
@@ -70,6 +106,9 @@ abstract class Model
         $dbConnect->execute($sql, $arrayProp);
     }
 
+    /**
+     * Метод удаляет запись объекта из бд
+     */
     public function delete()
     {
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';

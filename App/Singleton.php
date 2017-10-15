@@ -8,8 +8,17 @@
 
 namespace App;
 
+/**
+ * Trait Singleton
+ * @package App
+ * Шаблон синглтон предназначен для запрета создания
+ * более одного объекта класса (private __construct() && private __clone())
+ */
 trait Singleton
 {
+    /**
+     * @var object Хранит объект класса
+     */
     private static $instance;
 
     private function __construct()
@@ -20,6 +29,10 @@ trait Singleton
     {
     }
 
+    /**
+     * Если объект класса еще не создан - создает его иначе возвращает объект
+     * @return object
+     */
     public static function getInstance()
     {
         if (empty(static::$instance)) {

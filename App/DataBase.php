@@ -19,6 +19,10 @@ class DataBase
 
     private $pdo;
 
+    /**
+     * DataBase constructor.
+     * Инициализируеться подключение PDO
+     */
     private function __construct()
     {
         $this->pdo = new \PDO
@@ -29,12 +33,23 @@ class DataBase
         );
     }
 
+    /**
+     * @param string $sql Строка запроса к бд
+     * @param array $args Массив подстановок
+     * @return bool true в случае успешного запроса, иначе false
+     */
     public function execute(string $sql, array $args = []): bool
     {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute($args);
     }
 
+    /**
+     * @param string $sql Строка запроса
+     * @param string $className Класс для которого будут извлекаться объекты из бд
+     * @param array $args Массив подстановок
+     * @return array Возращает массив с объектрами
+     */
     public function query(string $sql, string $className, array $args = []): array
     {
         $stmt = $this->pdo->prepare($sql);
@@ -42,6 +57,9 @@ class DataBase
         return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
     }
 
+    /**
+     * @return string Возращает последний добавленный id из базы данных
+     */
     public function lastInsertId()
     {
         return $this->pdo->lastInsertId();

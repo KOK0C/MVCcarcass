@@ -10,11 +10,20 @@ namespace App\Models;
 
 use App\Model;
 
+/**
+ * Class User
+ * @package App\Models
+ * Реализует модель таблицы users
+ */
 class User extends Model
 {
     const TABLE = 'users';
 
-    public $email;
-    public $password;
-    public $name;
+    /**
+     * Поля таблицы в бд
+     * @var
+     */
+    protected $email;
+    protected $password;
+    protected $name;
 }
