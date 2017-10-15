@@ -8,7 +8,6 @@
 
 namespace App;
 
-
 trait Singleton
 {
     private static $instance;

@@ -8,9 +8,6 @@
 
 namespace App;
 
-
-use App\Models\User;
-
 abstract class Model
 {
     const TABLE = '';
@@ -20,17 +17,20 @@ abstract class Model
     public static function findAll(): array
     {
         $dbConnect = DataBase::getInstance();
-        return $dbConnect->query('SELECT * FROM ' . static::TABLE, static::class);
+        $sql = 'SELECT * FROM ' . static::TABLE;
+        return $dbConnect->query($sql, static::class);
     }
 
     public static function findById(int $id): self
     {
         $dbConnect = DataBase::getInstance();
-        $result = $dbConnect->query(
-            'SELECT * FROM ' . static::TABLE . ' WHERE id = :id',
-            static::class,
-            ['id' => $id]
-        );
+        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
+        $result = $dbConnect->query($sql, static::class, ['id' => $id]);
         return $result[0];
+    }
+
+    public static function insert()
+    {
+
     }
 }

@@ -8,7 +8,6 @@
 
 namespace App;
 
-
 class DataBase
 {
     use Singleton;
@@ -22,7 +21,8 @@ class DataBase
 
     private function __construct()
     {
-        $this->pdo = new \PDO(
+        $this->pdo = new \PDO
+        (
             'mysql:host=' . self::HOST . ';dbname=' . self::DB_NAME,
             self::DB_USER,
             self::PASS_DB_USER
