@@ -8,11 +8,8 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
-$user = \App\Models\User::findById(1);
-print_r($user);
-$user->name = 'Vera';
-print_r($user);
-$user->update();
+$user = \App\Models\User::findById(2);
+$user->delete();
 //print '<pre>';
 //var_dump(get_class_vars(\App\Models\User::class));
 //print '</pre>';

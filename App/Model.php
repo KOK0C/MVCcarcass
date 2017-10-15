@@ -29,7 +29,21 @@ abstract class Model
         return $result[0];
     }
 
-    public function insert()
+    protected function isNew()
+    {
+        return empty($this->id);
+    }
+
+    public function save()
+    {
+        if ($this->isNew()) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+    }
+
+    protected function insert()
     {
         $arrayProp = get_object_vars($this);
         array_pop($arrayProp);
@@ -44,7 +58,7 @@ abstract class Model
         $this->id = $dbConnect->lastInsertId();
     }
 
-    public function update()
+    protected function update()
     {
         $arrayProp = get_object_vars($this);
         array_pop($arrayProp);
@@ -54,5 +68,12 @@ abstract class Model
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(', ', $arraySQL) . ' WHERE id = ' . $this->id;
         $dbConnect = DataBase::getInstance();
         $dbConnect->execute($sql, $arrayProp);
+    }
+
+    public function delete()
+    {
+        $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
+        $dbConnect = DataBase::getInstance();
+        $dbConnect->execute($sql, ['id' => $this->id]);
     }
 }
