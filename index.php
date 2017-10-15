@@ -8,12 +8,11 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
-$user = new \App\Models\User();
-$user->email = 'test@test.com';
-$user->password = '6842';
-$user->name = 'Mikola';
-$user->insert();
-
+$user = \App\Models\User::findById(1);
+print_r($user);
+$user->name = 'Vera';
+print_r($user);
+$user->update();
 //print '<pre>';
 //var_dump(get_class_vars(\App\Models\User::class));
 //print '</pre>';

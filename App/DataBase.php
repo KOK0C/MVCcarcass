@@ -41,4 +41,9 @@ class DataBase
         $stmt->execute($args);
         return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
     }
+
+    public function lastInsertId()
+    {
+        return $this->pdo->lastInsertId();
+    }
 }
