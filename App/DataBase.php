@@ -11,6 +11,8 @@ namespace App;
 
 class DataBase
 {
+    use Singleton;
+
     const HOST         = 'localhost';
     const DB_NAME      = 'joke_db';
     const DB_USER      = 'joke_user';
@@ -18,7 +20,7 @@ class DataBase
 
     private $pdo;
 
-    public function __construct()
+    private function __construct()
     {
         $this->pdo = new \PDO(
             'mysql:host=' . self::HOST . ';dbname=' . self::DB_NAME,
@@ -27,13 +29,13 @@ class DataBase
         );
     }
 
-    public function execute(string $sql, array $args = []) : bool
+    public function execute(string $sql, array $args = []): bool
     {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute($args);
     }
 
-    public function query(string $sql, string $className, array $args = []) : array
+    public function query(string $sql, string $className, array $args = []): array
     {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($args);

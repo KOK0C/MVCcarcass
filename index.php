@@ -10,5 +10,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
 
 print '<pre>';
-var_dump(\App\Models\User::findById(1));
+var_dump(\App\Models\User::findAll());
 print '</pre>';
