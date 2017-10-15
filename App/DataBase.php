@@ -13,9 +13,9 @@ class DataBase
     use Singleton;
 
     const HOST         = 'localhost';
-    const DB_NAME      = 'joke_db';
-    const DB_USER      = 'joke_user';
-    const PASS_DB_USER = '78932145';
+    const DB_NAME      = 'car_blog';
+    const DB_USER      = 'car_blog_user';
+    const PASS_DB_USER = '12345';
 
     private $pdo;
 

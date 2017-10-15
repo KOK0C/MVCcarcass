@@ -29,8 +29,18 @@ abstract class Model
         return $result[0];
     }
 
-    public static function insert()
+    public function insert()
     {
+        $arrayProp = get_object_vars($this);
+        array_pop($arrayProp);
+        foreach ($arrayProp as $k => $v) {
+            $arrayPropMod[':' . $k] = $v;
+        }
 
+        $sql = 'INSERT INTO ' . static::TABLE . ' (' .
+            implode(', ', array_keys($arrayProp)) .
+            ') VALUES ('.  implode(', ', array_keys($arrayPropMod)) .')';
+        $dbConnect = DataBase::getInstance();
+        $dbConnect->execute($sql, $arrayProp);
     }
 }
