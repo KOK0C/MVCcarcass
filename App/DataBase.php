@@ -27,9 +27,9 @@ class DataBase
         $config = Config::getInstance();
         $this->pdo = new \PDO
         (
-            'mysql:host=' . $config->get('db')['host'] . ';dbname=' . $config->get('db')['db_name'],
-            $config->get('db')['db_user'],
-            $config->get('db')['db_pass']
+            'mysql:host=' . $config->db['host'] . ';dbname=' . $config->db['db_name'],
+            $config->db['db_user'],
+            $config->db['db_pass']
         );
     }
 

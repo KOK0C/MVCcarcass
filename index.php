@@ -12,5 +12,5 @@ $users = \App\Models\User::findAll();
 $config = \App\Config::getInstance();
 
 print '<pre>';
-print $config->get('domen');
+var_dump($users);
 print '</pre>';

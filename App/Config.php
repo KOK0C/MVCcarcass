@@ -15,23 +15,17 @@ namespace App;
 class Config
 {
     use Singleton;
-
-    private $data = [];
+    use Magic;
 
     private function __construct()
     {
         $configFilePath = $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-        if(file_exists($configFilePath)) {
-            $this->data = include_once $configFilePath;
+        if (file_exists($configFilePath)) {
+            $this->_data = include_once $configFilePath;
         }
     }
 
-    /**
-     * @param $key string
-     * @return mixed|null
-     */
-    public function get(string $key)
+    public function __set($name, $value)
     {
-        return $this->data[$key] ?? null;
     }
 }
