@@ -21,7 +21,7 @@ class User extends Model
 {
     const TABLE = 'users';
 
-    protected $email;
-    protected $password;
-    protected $name;
+    public $email;
+    public $password;
+    public $name;
 }

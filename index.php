@@ -8,9 +8,14 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
-$users = \App\Models\User::findAll();
-$config = \App\Config::getInstance();
+$categories = \App\Models\Category::findAll();
+
+$view = new \App\View();
+$view->categories = \App\Models\Category::findAll();
+$view->display($_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/header.phtml');
+
+
 
 print '<pre>';
-var_dump($users);
+var_dump($view->categories);
 print '</pre>';
