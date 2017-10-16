@@ -8,14 +8,13 @@
 
 namespace App;
 
+/**
+ * Class DataBase
+ * @package App
+ */
 class DataBase
 {
     use Singleton;
-
-    const HOST         = 'localhost';
-    const DB_NAME      = 'car_blog';
-    const DB_USER      = 'car_blog_user';
-    const PASS_DB_USER = '12345';
 
     private $pdo;
 
@@ -25,11 +24,12 @@ class DataBase
      */
     private function __construct()
     {
+        $config = Config::getInstance();
         $this->pdo = new \PDO
         (
-            'mysql:host=' . self::HOST . ';dbname=' . self::DB_NAME,
-            self::DB_USER,
-            self::PASS_DB_USER
+            'mysql:host=' . $config->get('db')['host'] . ';dbname=' . $config->get('db')['db_name'],
+            $config->get('db')['db_user'],
+            $config->get('db')['db_pass']
         );
     }
 

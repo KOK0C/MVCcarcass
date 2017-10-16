@@ -8,8 +8,9 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
-$user = \App\Models\User::findById(2);
-$user->delete();
-//print '<pre>';
-//var_dump(get_class_vars(\App\Models\User::class));
-//print '</pre>';
+$users = \App\Models\User::findAll();
+$config = \App\Config::getInstance();
+
+print '<pre>';
+print $config->get('domen');
+print '</pre>';

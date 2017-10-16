@@ -8,6 +8,10 @@
 
 namespace App;
 
+/**
+ * Class Model
+ * @package App
+ */
 abstract class Model
 {
     /**
