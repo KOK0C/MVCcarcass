@@ -27,7 +27,7 @@ abstract class Model
     /**
      * Метод достает все записи из таблицы бд и
      * возвращает их в виде объектов помещенных в массив
-     * @return array Возращает массив с объектами
+     * @return array Возвращает массив с объектами
      */
     public static function findAll(): array
     {

@@ -14,8 +14,9 @@ class View
     use Magic;
 
     /**
+     * В цикле создаються переменные вида $array['key']=$value => $key=$value
      * @param string $template
-     * @return string Возращает строку с шаблоном
+     * @return string Возвращает строку с шаблоном
      */
     private function render(string $template)
     {
@@ -23,7 +24,7 @@ class View
         foreach ($this->_data as $name => $value) {
             $$name = $value;
         }
-        include $template;
+        include $_SERVER['DOCUMENT_ROOT'] . $template;
         $content = ob_get_contents();
         ob_end_clean();
         return $content;

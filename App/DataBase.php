@@ -48,7 +48,7 @@ class DataBase
      * @param string $sql Строка запроса
      * @param string $className Класс для которого будут извлекаться объекты из бд
      * @param array $args Массив подстановок
-     * @return array Возращает массив с объектрами
+     * @return array Возвращает массив с объектрами
      */
     public function query(string $sql, string $className, array $args = []): array
     {
@@ -58,7 +58,7 @@ class DataBase
     }
 
     /**
-     * @return string Возращает последний добавленный id из базы данных
+     * @return string Возвращает последний добавленный id из базы данных
      */
     public function lastInsertId()
     {
