@@ -11,6 +11,8 @@ namespace App;
 /**
  * Class Config
  * @package App
+ * @property string $domen
+ * @property array $db
  */
 class Config
 {

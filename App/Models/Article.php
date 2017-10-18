@@ -10,6 +10,11 @@ namespace App\Models;
 
 use App\Model;
 
+/**
+ * Class Article
+ * @package App\Models
+ * @property User $author
+ */
 class Article extends Model
 {
     const TABLE = 'news';

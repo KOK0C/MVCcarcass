@@ -22,4 +22,5 @@ class Category extends Model
     const TABLE = 'categories';
 
     public $title;
+    public $link;
 }

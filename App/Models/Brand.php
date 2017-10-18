@@ -11,7 +11,7 @@ namespace App\Models;
 
 use App\Model;
 
-class Brands extends Model
+class Brand extends Model
 {
     const TABLE = 'brands';
 

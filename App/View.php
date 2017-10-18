@@ -8,33 +8,53 @@
 
 namespace App;
 
+use App\Models\Article;
+use App\Models\Brand;
+use App\Models\Category;
 
+/**
+ * Class View
+ * @package App
+ * @property Category $categories
+ * @property Article $news
+ * @property Brand $brands
+ */
 class View
 {
     use Magic;
 
+    public $template;
+
+    /**
+     * View constructor.
+     * @param string $link устанавливает путь к шаблону
+     */
+    public function __construct(string $link)
+    {
+        $this->template = $link;
+    }
+
     /**
      * В цикле создаються переменные вида $array['key']=$value => $key=$value
-     * @param string $template
      * @return string Возвращает строку с шаблоном
      */
-    private function render(string $template)
+    private function render()
     {
         ob_start();
         foreach ($this->_data as $name => $value) {
             $$name = $value;
         }
-        include $_SERVER['DOCUMENT_ROOT'] . $template;
+        include $_SERVER['DOCUMENT_ROOT'] . $this->template;
         $content = ob_get_contents();
         ob_end_clean();
         return $content;
     }
 
-    /**
-     * @param string $template Путь к шаблону
-     */
-    public function display(string $template)
+    public static function display(View $header, View $main, View $sidebar, View $footer)
     {
-        print $this->render($template);
+        print $header->render();
+        print $main->render();
+        print $sidebar->render();
+        print $footer->render();
     }
 }
