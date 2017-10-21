@@ -8,6 +8,7 @@
 
 namespace App\Models;
 
+use App\DataBase;
 use App\Model;
 
 /**
@@ -57,5 +58,17 @@ class Article extends Model
             default:
                 return false;
         }
+    }
+
+    /**
+     * @param string $category
+     * @return array Возвращает массив с объектами Article
+     */
+    public static function findByCategory(): array
+    {
+        $dbConnect = DataBase::getInstance();
+        $category = ltrim($_SERVER['REQUEST_URI'], '/');
+        $sql = 'SELECT * FROM news WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
+        return $dbConnect->query($sql, self::class, ['link' => $category]);
     }
 }

@@ -8,11 +8,8 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
-$controller = new \App\Controllers\Main();
-$action = 'index';
-$controller->action($action);
-
-print $_SERVER['REQUEST_URI'];
+$route = new \App\Components\Router();
+$route->run();
 
 //print '<pre>';
 //var_dump($view->categories);

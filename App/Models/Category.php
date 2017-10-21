@@ -21,6 +21,6 @@ class Category extends Model
 {
     const TABLE = 'categories';
 
-    public $title;
+    public $name;
     public $link;
 }

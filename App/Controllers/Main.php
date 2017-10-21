@@ -8,6 +8,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Article;
 use App\View;
 
 class Main extends \App\Controller
@@ -20,9 +21,15 @@ class Main extends \App\Controller
         $this->mainPage = new View('/App/templates/main_page.phtml');
     }
 
-    public function actionIndex()
+    protected function actionIndex()
     {
         $this->mainPage->news = \App\Models\Article::findAll();
+        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
+    }
+
+    protected function actionCategory()
+    {
+        $this->mainPage->news = Article::findByCategory();
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 }
