@@ -7,10 +7,16 @@
  */
 
 return [
-    'news'         => 'Main/news',
-    'overviews'    => 'Main/overviews',
-    'technologies' => 'Main/technologies',
-    'tuning'       => 'Main/tuning',
-    'useful'       => 'Main/useful',
-    ''             => 'Main/index',
+    '^news/([0-9]+)$'         => 'Main/onePage/$1',
+    '^overviews/([0-9]+)$'    => 'Main/onePage/$1',
+    '^technologies/([0-9]+)$' => 'Main/onePage/$1',
+    '^tuning/([0-9]+)$'       => 'Main/onePage/$1',
+    '^useful/([0-9]+)$'       => 'Main/onePage/$1',
+
+    '^news$'         => 'Main/news',
+    '^overviews$'    => 'Main/overviews',
+    '^technologies$' => 'Main/technologies',
+    '^tuning$'       => 'Main/tuning',
+    '^useful$'       => 'Main/useful',
+    ''               => 'Main/index',
 ];

@@ -32,9 +32,15 @@ class Router
             if (preg_match("~$uriPattern~", $uri)) {
                 $segments = explode('/', $path);
                 $controllerName = 'App\Controllers\\' . array_shift($segments);
-                $actionName = array_shift($segments);
+                $actionName = 'action' . ucfirst(array_shift($segments));
+
                 $controller = new $controllerName;
-                $controller->action($actionName);
+                $arg = explode('/', $uri)[1] ?? null;
+                if (! is_null($arg)) {
+                    $controller->$actionName($arg);
+                } else {
+                    $controller->$actionName();
+                }
                 break;
             }
         }

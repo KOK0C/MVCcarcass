@@ -16,7 +16,8 @@ use App\Models\Category;
  * Class View
  * @package App
  * @property Category $categories
- * @property Article $news
+ * @property Article $news Массив объектов
+ * @property Article $article Объект
  * @property Brand $brands
  */
 class View
