@@ -8,7 +8,6 @@
 
 namespace App;
 
-
 abstract class Controller
 {
     protected $header;
@@ -24,9 +23,9 @@ abstract class Controller
         $this->footer = new \App\View('/App/templates/layouts/footer.phtml');
     }
 
-    public function action($action)
+    public function action(string $action)
     {
-        $methodName = 'action' . ucfirst(strtolower($action));
-        return $this->methodName();
+        $methodName = 'action' . ucfirst($action);
+        $this->$methodName();
     }
 }

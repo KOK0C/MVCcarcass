@@ -50,11 +50,13 @@ class View
         return $content;
     }
 
-    public static function display(View $header, View $main, View $sidebar, View $footer)
+    /**
+     * @param array $views Массив объектоа View
+     */
+    public static function display(array $views)
     {
-        print $header->render();
-        print $main->render();
-        print $sidebar->render();
-        print $footer->render();
+        foreach ($views as $view) {
+            print $view->render();
+        }
     }
 }

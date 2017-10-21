@@ -2,15 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Ihor
- * Date: 18.10.2017
- * Time: 18:50
+ * Date: 19.10.2017
+ * Time: 17:46
  */
 
 namespace App\Controllers;
 
 use App\View;
 
-class Article extends \App\Controller
+class Main extends \App\Controller
 {
     protected $mainPage;
 
@@ -23,6 +23,6 @@ class Article extends \App\Controller
     public function actionIndex()
     {
         $this->mainPage->news = \App\Models\Article::findAll();
-        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
+        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 }

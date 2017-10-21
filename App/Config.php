@@ -21,7 +21,7 @@ class Config
 
     private function __construct()
     {
-        $configFilePath = $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+        $configFilePath = $_SERVER['DOCUMENT_ROOT'] . '/App/config/config.php';
         if (file_exists($configFilePath)) {
             $this->_data = include_once $configFilePath;
         }

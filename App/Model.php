@@ -22,7 +22,7 @@ abstract class Model
     /**
      * @var integer
      */
-    protected $id;
+    public $id;
 
     /**
      * Метод достает все записи из таблицы бд и

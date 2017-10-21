@@ -11,5 +11,5 @@ return [
            'db_name' => 'car_blog',
            'db_user' => 'car_blog_user',
            'db_pass' => '12345'],
-  'domen' => 'http://localhost:63342/MVCcarcass'
+  'domen' => 'http://MVCcarcass'
 ];
