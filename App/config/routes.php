@@ -7,9 +7,10 @@
  */
 
 return [
-    'news'         => 'Main/category',
-    'overviews'    => 'Main/category',
-    'technologies' => 'Main/category',
-    'tuning'       => 'Main/category',
-    'useful'       => 'Main/category',
+    'news'         => 'Main/news',
+    'overviews'    => 'Main/overviews',
+    'technologies' => 'Main/technologies',
+    'tuning'       => 'Main/tuning',
+    'useful'       => 'Main/useful',
+    ''             => 'Main/index',
 ];

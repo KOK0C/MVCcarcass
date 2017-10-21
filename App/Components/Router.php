@@ -28,17 +28,15 @@ class Router
     public function run()
     {
         $uri = $this->getUri();
-        if (array_key_exists($uri, $this->routes)) {
-            $controllerAction = $this->routes[$uri];
-            $controllerAction = explode('/', $controllerAction);
-            $controllerName = $controllerAction[0];
-            $actionName = $controllerAction[1];
-        } else {
-            $controllerName = 'Main';
-            $actionName = 'index';
+        foreach ($this->routes as $uriPattern => $path) {
+            if (preg_match("~$uriPattern~", $uri)) {
+                $segments = explode('/', $path);
+                $controllerName = 'App\Controllers\\' . array_shift($segments);
+                $actionName = array_shift($segments);
+                $controller = new $controllerName;
+                $controller->action($actionName);
+                break;
+            }
         }
-        $controllerName = 'App\Controllers\\' . $controllerName;
-        $controller = new $controllerName;
-        $controller->action($actionName);
     }
 }

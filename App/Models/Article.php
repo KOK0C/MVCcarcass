@@ -64,11 +64,10 @@ class Article extends Model
      * @param string $category
      * @return array Возвращает массив с объектами Article
      */
-    public static function findByCategory(): array
+    public static function findByCategory($link): array
     {
         $dbConnect = DataBase::getInstance();
-        $category = ltrim($_SERVER['REQUEST_URI'], '/');
         $sql = 'SELECT * FROM news WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
-        return $dbConnect->query($sql, self::class, ['link' => $category]);
+        return $dbConnect->query($sql, self::class, ['link' => $link]);
     }
 }
