@@ -7,6 +7,8 @@
  */
 
 namespace App;
+use App\Components\Singleton;
+use App\Components\Config;
 
 /**
  * Class DataBase

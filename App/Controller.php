@@ -22,4 +22,10 @@ abstract class Controller
         $this->sideBar->brands = \App\Models\Brand::findAll();
         $this->footer = new \App\View('/App/templates/layouts/footer.phtml');
     }
+
+    public function action($action, $arg = null)
+    {
+        $methodName = 'action' . ucfirst($action);
+        $this->$methodName($arg);
+    }
 }

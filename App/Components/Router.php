@@ -54,12 +54,10 @@ class Router
     {
         if ($this->matchRoutes()) {
             $controllerName = 'App\Controllers\\' . $this->route['controller'];
-            $actionName = 'action' . ucfirst($this->route['action']);
             $controller = new $controllerName;
-            $controller->$actionName($this->route['argument'] ?? null);
+            $controller->action($this->route['action'], $this->route['argument'] ?? null);
         } else {
             $controller = new \App\Controllers\Error;
-            $controller->actionIndex();
         }
     }
 }

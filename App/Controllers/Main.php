@@ -21,44 +21,44 @@ class Main extends \App\Controller
         $this->mainPage = new View('/App/templates/main_page.phtml');
     }
 
-    public function actionIndex()
+    protected function actionIndex()
     {
         $this->mainPage->news = \App\Models\Article::findAll();
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 
-    public function actionOnePage(int $id)
+    protected function actionOnePage(int $id)
     {
         $this->mainPage = new View('/App/templates/one_article.phtml');
         $this->mainPage->article = \App\Models\Article::findById($id);
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 
-    public function actionNews()
+    protected function actionNews()
     {
         $this->mainPage->news = Article::findByCategory('news');
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 
-    public function actionOverviews()
+    protected function actionOverviews()
     {
         $this->mainPage->news = Article::findByCategory('overviews');
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 
-    public function actionTechnologies()
+    protected function actionTechnologies()
     {
         $this->mainPage->news = Article::findByCategory('technologies');
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 
-    public function actionTuning()
+    protected function actionTuning()
     {
         $this->mainPage->news = Article::findByCategory('tuning');
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 
-    public function actionUseful()
+    protected function actionUseful()
     {
         $this->mainPage->news = Article::findByCategory('useful');
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);

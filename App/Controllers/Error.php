@@ -19,11 +19,7 @@ class Error extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->errorPage = new View('/App/templates/error.phtml');
-    }
-
-    public function actionIndex()
-    {
+        $this->errorPage = new View('/App/templates/error404.phtml');
         View::display([$this->header, $this->errorPage, $this->sideBar, $this->footer]);
     }
 }

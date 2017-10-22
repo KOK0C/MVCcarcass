@@ -8,6 +8,7 @@
 
 namespace App;
 
+use App\Components\Magic;
 use App\Models\Article;
 use App\Models\Brand;
 use App\Models\Category;
@@ -16,7 +17,7 @@ use App\Models\Category;
  * Class View
  * @package App
  * @property Category $categories
- * @property Article $news Массив объектов
+ * @property array $news Массив объектов Article
  * @property Article $article Объект
  * @property Brand $brands
  */

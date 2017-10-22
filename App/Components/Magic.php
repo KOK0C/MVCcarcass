@@ -6,7 +6,7 @@
  * Time: 16:19
  */
 
-namespace App;
+namespace App\Components;
 
 
 trait Magic
