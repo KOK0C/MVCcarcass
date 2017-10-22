@@ -31,7 +31,7 @@ abstract class Model
      */
     public static function findAll(): array
     {
-        $dbConnect = DataBase::getInstance();
+        $dbConnect = new DataBase();
         $sql = 'SELECT * FROM ' . static::TABLE;
         return $dbConnect->query($sql, static::class);
     }
@@ -44,7 +44,7 @@ abstract class Model
      */
     public static function findById(int $id)
     {
-        $dbConnect = DataBase::getInstance();
+        $dbConnect = new DataBase();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
         $result = $dbConnect->query($sql, static::class, ['id' => $id]);
         return $result[0];
@@ -89,7 +89,7 @@ abstract class Model
         $sql = 'INSERT INTO ' . static::TABLE . ' (' .
             implode(', ', array_keys($arrayProp)) .
             ') VALUES ('.  implode(', ', array_keys($arrayPropMod)) .')';
-        $dbConnect = DataBase::getInstance();
+        $dbConnect = new DataBase();
         $dbConnect->execute($sql, $arrayProp);
         $this->id = $dbConnect->lastInsertId();
     }
@@ -106,7 +106,7 @@ abstract class Model
             $arraySQL[] = "$k = :$k";
         }
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(', ', $arraySQL) . ' WHERE id = ' . $this->id;
-        $dbConnect = DataBase::getInstance();
+        $dbConnect = new DataBase();
         $dbConnect->execute($sql, $arrayProp);
     }
 
@@ -116,7 +116,7 @@ abstract class Model
     public function delete()
     {
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
-        $dbConnect = DataBase::getInstance();
+        $dbConnect = new DataBase();
         $dbConnect->execute($sql, ['id' => $this->id]);
     }
 }

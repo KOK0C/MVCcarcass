@@ -66,7 +66,7 @@ class Article extends Model
      */
     public static function findByCategory($link): array
     {
-        $dbConnect = DataBase::getInstance();
+        $dbConnect = new DataBase();
         $sql = 'SELECT * FROM news WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
         return $dbConnect->query($sql, self::class, ['link' => $link]);
     }

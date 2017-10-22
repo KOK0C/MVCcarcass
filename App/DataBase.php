@@ -7,8 +7,9 @@
  */
 
 namespace App;
-use App\Components\Singleton;
 use App\Components\Config;
+use App\Exceptions\Db;
+use App\Exceptions\Error404;
 
 /**
  * Class DataBase
@@ -16,34 +17,43 @@ use App\Components\Config;
  */
 class DataBase
 {
-    use Singleton;
-
     private $pdo;
 
     /**
      * DataBase constructor.
      * Инициализируеться подключение PDO
+     * @throws Db
      */
-    private function __construct()
+    public function __construct()
     {
         $config = Config::getInstance();
-        $this->pdo = new \PDO
-        (
-            'mysql:host=' . $config->db['host'] . ';dbname=' . $config->db['db_name'],
-            $config->db['db_user'],
-            $config->db['db_pass']
-        );
+        try {
+            $this->pdo = new \PDO
+            (
+                'mysql:host=' . $config->db['host'] . ';dbname=' . $config->db['db_name'],
+                $config->db['db_user'],
+                $config->db['db_pass']
+            );
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e) {
+            throw new \App\Exceptions\Db();
+        }
     }
 
     /**
      * @param string $sql Строка запроса к бд
      * @param array $args Массив подстановок
      * @return bool true в случае успешного запроса, иначе false
+     * @throws Db
      */
     public function execute(string $sql, array $args = []): bool
     {
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute($args);
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute($args);
+        } catch (\PDOException $e) {
+            throw new \App\Exceptions\Db();
+        }
     }
 
     /**
@@ -51,12 +61,22 @@ class DataBase
      * @param string $className Класс для которого будут извлекаться объекты из бд
      * @param array $args Массив подстановок
      * @return array Возвращает массив с объектрами
+     * @throws Error404
+     * @throws Db
      */
     public function query(string $sql, string $className, array $args = []): array
     {
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($args);
-        return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($args);
+        } catch (\PDOException $e) {
+            throw new \App\Exceptions\Db();
+        }
+        $result = $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
+        if (empty($result)) {
+            throw new Error404();
+        }
+        return $result;
     }
 
     /**

@@ -8,6 +8,10 @@
 
 namespace App\Components;
 
+use App\Controllers\Error;
+use App\Exceptions\Db;
+use App\Exceptions\Error404;
+
 class Router
 {
     /**
@@ -55,9 +59,15 @@ class Router
         if ($this->matchRoutes()) {
             $controllerName = 'App\Controllers\\' . $this->route['controller'];
             $controller = new $controllerName;
-            $controller->action($this->route['action'], $this->route['argument'] ?? null);
+            try {
+                $controller->action($this->route['action'], $this->route['argument'] ?? null);
+            } catch (Error404 $e) {
+                $controller = new \App\Controllers\Error;
+                $controller->action('page404');
+            }
         } else {
             $controller = new \App\Controllers\Error;
+            $controller->action('page404');
         }
     }
 }

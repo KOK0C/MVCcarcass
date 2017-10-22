@@ -8,18 +8,26 @@
 
 namespace App\Controllers;
 
-
-use App\Controller;
 use App\View;
 
-class Error extends Controller
+class Error extends \App\Controller
 {
     protected $errorPage;
 
     public function __construct()
     {
+    }
+
+    protected function actionPage404()
+    {
         parent::__construct();
-        $this->errorPage = new View('/App/templates/error404.phtml');
+        $this->errorPage = new View('/App/templates/layouts/errors/error404.phtml');
         View::display([$this->header, $this->errorPage, $this->sideBar, $this->footer]);
+    }
+
+    protected function actionTroubleDb()
+    {
+        $this->errorPage = new View('/App/templates/layouts/errors/error.phtml');
+        View::display([$this->errorPage]);
     }
 }
