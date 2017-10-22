@@ -10,7 +10,17 @@ namespace App\Components;
 
 class Router
 {
+    /**
+     * Массив с маршрутами
+     * @var array
+     */
     private $routes;
+
+    /**
+     * Массив с контроллером и экшеном
+     * @var array
+     */
+    private $route;
 
     public function __construct()
     {
@@ -25,24 +35,31 @@ class Router
         return ltrim($_SERVER['REQUEST_URI'], '/');
     }
 
-    public function run()
+    private function matchRoutes()
     {
         $uri = $this->getUri();
-        foreach ($this->routes as $uriPattern => $path) {
-            if (preg_match("~$uriPattern~", $uri)) {
-                $segments = explode('/', $path);
-                $controllerName = 'App\Controllers\\' . array_shift($segments);
-                $actionName = 'action' . ucfirst(array_shift($segments));
-
-                $controller = new $controllerName;
-                $arg = explode('/', $uri)[1] ?? null;
-                if (! is_null($arg)) {
-                    $controller->$actionName($arg);
-                } else {
-                    $controller->$actionName();
+        foreach ($this->routes as $uriPattern => $route) {
+            if (preg_match("~$uriPattern~", $uri, $matches)) {
+                $this->route = $route;
+                if (isset($matches[1])) {
+                    $this->route['argument'] = $matches[1];
                 }
-                break;
+                return true;
             }
+        }
+        return false;
+    }
+
+    public function run()
+    {
+        if ($this->matchRoutes()) {
+            $controllerName = 'App\Controllers\\' . $this->route['controller'];
+            $actionName = 'action' . ucfirst($this->route['action']);
+            $controller = new $controllerName;
+            $controller->$actionName($this->route['argument'] ?? null);
+        } else {
+            $controller = new \App\Controllers\Error;
+            $controller->actionIndex();
         }
     }
 }

@@ -7,16 +7,16 @@
  */
 
 return [
-    '^news/([0-9]+)$'         => 'Main/onePage/$1',
-    '^overviews/([0-9]+)$'    => 'Main/onePage/$1',
-    '^technologies/([0-9]+)$' => 'Main/onePage/$1',
-    '^tuning/([0-9]+)$'       => 'Main/onePage/$1',
-    '^useful/([0-9]+)$'       => 'Main/onePage/$1',
+    '^news/([0-9]+)$'         => ['controller' => 'Main', 'action' => 'onePage'],
+    '^overviews/([0-9]+)$'    => ['controller' => 'Main', 'action' => 'onePage'],
+    '^technologies/([0-9]+)$' => ['controller' => 'Main', 'action' => 'onePage'],
+    '^tuning/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'onePage'],
+    '^useful/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'onePage'],
 
-    '^news$'         => 'Main/news',
-    '^overviews$'    => 'Main/overviews',
-    '^technologies$' => 'Main/technologies',
-    '^tuning$'       => 'Main/tuning',
-    '^useful$'       => 'Main/useful',
-    ''               => 'Main/index',
+    '^news$'         => ['controller' => 'Main', 'action' => 'news'],
+    '^overviews$'    => ['controller' => 'Main', 'action' => 'overviews'],
+    '^technologies$' => ['controller' => 'Main', 'action' => 'technologies'],
+    '^tuning$'       => ['controller' => 'Main', 'action' => 'tuning'],
+    '^useful$'       => ['controller' => 'Main', 'action' => 'useful'],
+    '^$'             => ['controller' => 'Main', 'action' => 'index']
 ];

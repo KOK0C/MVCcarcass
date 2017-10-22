@@ -11,6 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 $route = new \App\Components\Router();
 $route->run();
 
+
 //print '<pre>';
 //var_dump($view->categories);
 //print '</pre>';
