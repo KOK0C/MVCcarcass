@@ -61,7 +61,6 @@ class DataBase
      * @param string $className Класс для которого будут извлекаться объекты из бд
      * @param array $args Массив подстановок
      * @return array Возвращает массив с объектрами
-     * @throws Error404
      * @throws Db
      */
     public function query(string $sql, string $className, array $args = []): array
@@ -72,11 +71,7 @@ class DataBase
         } catch (\PDOException $e) {
             throw new \App\Exceptions\Db();
         }
-        $result = $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
-        if (empty($result)) {
-            throw new Error404();
-        }
-        return $result;
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
     }
 
     /**

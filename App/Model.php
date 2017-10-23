@@ -47,7 +47,7 @@ abstract class Model
         $dbConnect = new DataBase();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
         $result = $dbConnect->query($sql, static::class, ['id' => $id]);
-        return $result[0];
+        return @$result[0];
     }
 
     /**

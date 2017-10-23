@@ -8,6 +8,7 @@
 
 namespace App\Controllers;
 
+use App\Exceptions\Error404;
 use App\Models\Article;
 use App\View;
 
@@ -27,10 +28,17 @@ class Main extends \App\Controller
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 
+    /**
+     * @param int $id
+     * @throws Error404
+     */
     protected function actionOnePage(int $id)
     {
         $this->mainPage = new View('/App/templates/one_article.phtml');
         $this->mainPage->article = \App\Models\Article::findById($id);
+        if (empty($this->mainPage->article)) {
+            throw new Error404();
+        }
         View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
     }
 

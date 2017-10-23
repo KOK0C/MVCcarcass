@@ -9,7 +9,25 @@
 /**
  * @param string $className
  */
-function __autoload(string $className)
+function myAutoload(string $className)
 {
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/' . $className . '.php';
+    $fileName = $_SERVER['DOCUMENT_ROOT'] . '/' . $className . '.php';
+    if (file_exists($fileName)) {
+        require $fileName;
+    }
 }
+
+spl_autoload_register('myAutoload');
+
+/**
+ * Автозагрузка трейтов
+ * @param string $className
+ */
+spl_autoload_register(function (string $className)
+{
+    $class = explode('\\', $className);
+    $fileName = $_SERVER['DOCUMENT_ROOT'] . '/App/Components/traits/' . $class[count($class) - 1] . '.php';
+    if (file_exists($fileName)) {
+        require $fileName;
+    }
+});

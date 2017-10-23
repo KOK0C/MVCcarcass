@@ -8,7 +8,6 @@
 
 namespace App\Components;
 
-use App\Controllers\Error;
 use App\Exceptions\Db;
 use App\Exceptions\Error404;
 
@@ -34,12 +33,12 @@ class Router
         }
     }
 
-    private function getUri()
+    private function getUri(): string
     {
         return ltrim($_SERVER['REQUEST_URI'], '/');
     }
 
-    private function matchRoutes()
+    private function matchRoutes(): bool
     {
         $uri = $this->getUri();
         foreach ($this->routes as $uriPattern => $route) {
@@ -58,12 +57,15 @@ class Router
     {
         if ($this->matchRoutes()) {
             $controllerName = 'App\Controllers\\' . $this->route['controller'];
-            $controller = new $controllerName;
             try {
+                $controller = new $controllerName;
                 $controller->action($this->route['action'], $this->route['argument'] ?? null);
             } catch (Error404 $e) {
                 $controller = new \App\Controllers\Error;
                 $controller->action('page404');
+            } catch (Db $e) {
+                $controller = new \App\Controllers\Error;
+                $controller->action('troubleDb');
             }
         } else {
             $controller = new \App\Controllers\Error;

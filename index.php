@@ -9,12 +9,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
 $route = new \App\Components\Router();
-try {
-    $route->run();
-} catch (Exception $e) {
-    $controller = new \App\Controllers\Error;
-    $controller->action('troubleDb');
-}
+$route->run();
+
 
 
 //$pdo = new \App\DataBase();
