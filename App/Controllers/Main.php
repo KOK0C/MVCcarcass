@@ -25,7 +25,7 @@ class Main extends \App\Controller
     protected function actionIndex()
     {
         $this->mainPage->news = \App\Models\Article::findAll();
-        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
+        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
     /**
@@ -39,36 +39,36 @@ class Main extends \App\Controller
         if (empty($this->mainPage->article)) {
             throw new Error404();
         }
-        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
+        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
     protected function actionNews()
     {
         $this->mainPage->news = Article::findByCategory('news');
-        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
+        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
     protected function actionOverviews()
     {
         $this->mainPage->news = Article::findByCategory('overviews');
-        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
+        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
     protected function actionTechnologies()
     {
         $this->mainPage->news = Article::findByCategory('technologies');
-        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
+        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
     protected function actionTuning()
     {
         $this->mainPage->news = Article::findByCategory('tuning');
-        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
+        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
     protected function actionUseful()
     {
         $this->mainPage->news = Article::findByCategory('useful');
-        View::display([$this->header, $this->mainPage, $this->sideBar, $this->footer]);
+        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 }

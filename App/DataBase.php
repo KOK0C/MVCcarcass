@@ -8,7 +8,7 @@
 
 namespace App;
 use App\Components\Config;
-use App\Exceptions\Db;
+use App\Exceptions\DbException;
 use App\Exceptions\Error404;
 
 /**
@@ -22,7 +22,7 @@ class DataBase
     /**
      * DataBase constructor.
      * Инициализируеться подключение PDO
-     * @throws Db
+     * @throws DbException
      */
     public function __construct()
     {
@@ -36,7 +36,7 @@ class DataBase
             );
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
-            throw new \App\Exceptions\Db();
+            throw new \App\Exceptions\DbException();
         }
     }
 
@@ -44,7 +44,7 @@ class DataBase
      * @param string $sql Строка запроса к бд
      * @param array $args Массив подстановок
      * @return bool true в случае успешного запроса, иначе false
-     * @throws Db
+     * @throws DbException
      */
     public function execute(string $sql, array $args = []): bool
     {
@@ -52,7 +52,7 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($args);
         } catch (\PDOException $e) {
-            throw new \App\Exceptions\Db();
+            throw new \App\Exceptions\DbException();
         }
     }
 
@@ -61,7 +61,7 @@ class DataBase
      * @param string $className Класс для которого будут извлекаться объекты из бд
      * @param array $args Массив подстановок
      * @return array Возвращает массив с объектрами
-     * @throws Db
+     * @throws DbException
      */
     public function query(string $sql, string $className, array $args = []): array
     {
@@ -69,7 +69,7 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($args);
         } catch (\PDOException $e) {
-            throw new \App\Exceptions\Db();
+            throw new \App\Exceptions\DbException();
         }
         return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
     }
@@ -77,7 +77,7 @@ class DataBase
     /**
      * @return string Возвращает последний добавленный id из базы данных
      */
-    public function lastInsertId()
+    public function lastInsertId(): string
     {
         return $this->pdo->lastInsertId();
     }

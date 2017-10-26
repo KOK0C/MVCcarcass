@@ -22,7 +22,15 @@ abstract class Model
     /**
      * @var integer
      */
-    public $id;
+    protected $id;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     /**
      * Метод достает все записи из таблицы бд и

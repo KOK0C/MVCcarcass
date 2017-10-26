@@ -22,12 +22,12 @@ class Error extends \App\Controller
     {
         parent::__construct();
         $this->errorPage = new View('/App/templates/layouts/errors/error404.phtml');
-        View::display([$this->header, $this->errorPage, $this->sideBar, $this->footer]);
+        View::display($this->header, $this->errorPage, $this->sideBar, $this->footer);
     }
 
     protected function actionTroubleDb()
     {
         $this->errorPage = new View('/App/templates/layouts/errors/error.phtml');
-        View::display([$this->errorPage]);
+        View::display($this->errorPage);
     }
 }

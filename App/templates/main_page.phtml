@@ -3,7 +3,7 @@
     <?php foreach ($news as $article): ?>
         <div class="blog-post">
             <h2 class="blog-post-title">
-                <a href="<?= $article->category->link . '/' . $article->id; ?>"><?= $article->title; ?></a>
+                <a href="<?= $article->category->link . '/' . $article->getId(); ?>"><?= $article->title; ?></a>
             </h2>
             <p class="blog-post-meta"><?= $article->date; ?> by <a href="#"><?= $article->author->name; ?></a></p>
             <p><?= $article->text; ?></p>

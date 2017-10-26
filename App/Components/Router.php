@@ -8,7 +8,7 @@
 
 namespace App\Components;
 
-use App\Exceptions\Db;
+use App\Exceptions\DbException;
 use App\Exceptions\Error404;
 
 class Router
@@ -57,19 +57,10 @@ class Router
     {
         if ($this->matchRoutes()) {
             $controllerName = 'App\Controllers\\' . $this->route['controller'];
-            try {
-                $controller = new $controllerName;
-                $controller->action($this->route['action'], $this->route['argument'] ?? null);
-            } catch (Error404 $e) {
-                $controller = new \App\Controllers\Error;
-                $controller->action('page404');
-            } catch (Db $e) {
-                $controller = new \App\Controllers\Error;
-                $controller->action('troubleDb');
-            }
+            $controller = new $controllerName;
+            $controller->action($this->route['action'], $this->route['argument'] ?? null);
         } else {
-            $controller = new \App\Controllers\Error;
-            $controller->action('page404');
+            throw new Error404();
         }
     }
 }

@@ -9,14 +9,12 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
 $route = new \App\Components\Router();
-$route->run();
-
-
-
-//$pdo = new \App\DataBase();
-//$news =  $pdo->query('SELECT * FROM news WHERE id=11', \App\Models\Article::class);
-//var_dump($news);
-
-//print '<pre>';
-//var_dump($view->categories);
-//print '</pre>';
+try {
+    $route->run();
+} catch (\App\Exceptions\Error404 $e) {
+    $controller = new \App\Controllers\Error;
+    $controller->action('page404');
+} catch (\App\Exceptions\DbException $e) {
+    $controller = new \App\Controllers\Error;
+    $controller->action('troubleDb');
+}

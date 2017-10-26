@@ -53,9 +53,9 @@ class View
     }
 
     /**
-     * @param array $views Массив объектоа View
+     * @param View[] ...$views
      */
-    public static function display(array $views)
+    public static function display(View ...$views)
     {
         foreach ($views as $view) {
             print $view->render();
