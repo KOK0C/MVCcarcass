@@ -8,7 +8,6 @@
 
 namespace App\Components;
 
-use App\Exceptions\DbException;
 use App\Exceptions\Error404;
 
 class Router

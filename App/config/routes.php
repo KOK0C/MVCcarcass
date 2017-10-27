@@ -13,10 +13,10 @@ return [
     '^tuning/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'onePage'],
     '^useful/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'onePage'],
 
-    '^news$'         => ['controller' => 'Main', 'action' => 'news'],
-    '^overviews$'    => ['controller' => 'Main', 'action' => 'overviews'],
-    '^technologies$' => ['controller' => 'Main', 'action' => 'technologies'],
-    '^tuning$'       => ['controller' => 'Main', 'action' => 'tuning'],
-    '^useful$'       => ['controller' => 'Main', 'action' => 'useful'],
-    '^$'             => ['controller' => 'Main', 'action' => 'index']
+    '^(news)$'         => ['controller' => 'Main', 'action' => 'oneCategory'],
+    '^(overviews)$'    => ['controller' => 'Main', 'action' => 'oneCategory'],
+    '^(technologies)$' => ['controller' => 'Main', 'action' => 'oneCategory'],
+    '^(tuning)$'       => ['controller' => 'Main', 'action' => 'oneCategory'],
+    '^(useful)$'       => ['controller' => 'Main', 'action' => 'oneCategory'],
+    '^$'               => ['controller' => 'Main', 'action' => 'index']
 ];

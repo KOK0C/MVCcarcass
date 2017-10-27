@@ -42,33 +42,9 @@ class Main extends \App\Controller
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
-    protected function actionNews()
+    protected function actionOneCategory(string $link)
     {
-        $this->mainPage->news = Article::findByCategory('news');
-        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
-    }
-
-    protected function actionOverviews()
-    {
-        $this->mainPage->news = Article::findByCategory('overviews');
-        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
-    }
-
-    protected function actionTechnologies()
-    {
-        $this->mainPage->news = Article::findByCategory('technologies');
-        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
-    }
-
-    protected function actionTuning()
-    {
-        $this->mainPage->news = Article::findByCategory('tuning');
-        View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
-    }
-
-    protected function actionUseful()
-    {
-        $this->mainPage->news = Article::findByCategory('useful');
+        $this->mainPage->news = Article::findByCategory($link);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 }
