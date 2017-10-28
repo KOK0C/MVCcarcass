@@ -26,6 +26,7 @@ class Article extends Model
     public $date;
     private $author_id;
     private $category_id;
+    private $image;
 
     public function __isset($name)
     {
@@ -61,13 +62,21 @@ class Article extends Model
     }
 
     /**
-     * @param string $category
+     * @param string $link
      * @return array Возвращает массив с объектами Article
      */
-    public static function findByCategory($link): array
+    public static function findByCategory(string $link): array
     {
         $dbConnect = new DataBase();
         $sql = 'SELECT * FROM news WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
         return $dbConnect->query($sql, self::class, ['link' => $link]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return '/public/img/articles/' . $this->image;
     }
 }

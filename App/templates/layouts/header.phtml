@@ -8,7 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://MVCcarcass/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
 
@@ -16,7 +17,10 @@
     <div class="container">
         <nav class="nav">
             <?php foreach ($categories as $category): ?>
-                <a class="nav-link" href="/<?= $category->link; ?>"><?= $category->name; ?></a>
+                <a class="nav-link <?php if (explode('/', $_SERVER['REQUEST_URI'])[1] === $category->link):
+                    print 'active';
+                endif; ?>"
+                   href="/<?= $category->link; ?>"><?= $category->name; ?></a>
             <?php endforeach; ?>
         </nav>
     </div>

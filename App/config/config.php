@@ -7,8 +7,9 @@
  */
 
 return [
-  'db' => ['host'    => 'localhost',
-           'db_name' => 'car_blog',
-           'db_user' => 'car_blog_user',
-           'db_pass' => '12345'],
+  'db'    => ['host'    => 'localhost',
+              'db_name' => 'car_blog',
+              'db_user' => 'car_blog_user',
+              'db_pass' => '12345'],
+  'domen' => 'MVCcarcass'
 ];

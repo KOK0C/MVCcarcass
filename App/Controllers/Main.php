@@ -24,7 +24,7 @@ class Main extends \App\Controller
 
     protected function actionIndex()
     {
-        $this->mainPage->news = \App\Models\Article::findAll();
+        $this->mainPage->news = Article::findAll();
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
@@ -32,10 +32,10 @@ class Main extends \App\Controller
      * @param int $id
      * @throws Error404
      */
-    protected function actionOnePage(int $id)
+    protected function actionOneArticle(int $id)
     {
         $this->mainPage = new View('/App/templates/one_article.phtml');
-        $this->mainPage->article = \App\Models\Article::findById($id);
+        $this->mainPage->article = Article::findById($id);
         if (empty($this->mainPage->article)) {
             throw new Error404();
         }
