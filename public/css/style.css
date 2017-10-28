@@ -41,6 +41,7 @@ h6, .h6 {
 
 .sidebar-module {
     background-color: #172c3e;
+    margin-bottom: 1.5rem;
 }
 
 .article {
@@ -69,6 +70,76 @@ h6, .h6 {
     transition: background .2s linear;
 }
 
-.article .article-description:hover {
+.article:hover .article-description {
     background-color: rgba(237, 25, 39, .7);
+}
+
+a .article-short-text , a .article-title, a .article-date {
+    color: #fff;
+    font-size: .85rem;
+    margin: 25px 15px 0 25px;
+}
+
+.article-title {
+    display: block;
+    text-transform: uppercase;
+    position: relative;
+    padding: 0 0 10px 0;
+    margin-bottom: 15px;
+}
+
+.article-title:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.article-short-text {
+    font-style: italic;
+    text-align: justify;
+}
+
+.article-short-text, .article-date {
+    display: block;
+    max-height: 84px;
+    overflow: hidden;
+}
+
+.centerPic {
+    width: 100%;
+}
+
+.post-header-title, .post-header-title a {
+    position: relative;
+    background-color: rgba(23, 44, 62, 1);
+    color: #999;
+    font-size: .8rem;
+}
+
+.post-header-title a:hover {
+    color: #ed1927;
+    text-decoration: none;
+}
+
+.title-article {
+    border-bottom: 1px solid #ed1927;
+}
+
+.blog-post-description, .blog-post-text {
+    text-align: justify;
+}
+
+.blog-post-description {
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.blog-post-description:first-letter, .blog-post-text:first-letter {
+    margin-left: 2rem;
 }

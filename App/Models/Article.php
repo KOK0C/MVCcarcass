@@ -22,8 +22,9 @@ class Article extends Model
     const TABLE = 'news';
 
     public $title;
+    public $description;
     public $text;
-    public $date;
+    private $date;
     private $author_id;
     private $category_id;
     private $image;
@@ -70,6 +71,18 @@ class Article extends Model
         $dbConnect = new DataBase();
         $sql = 'SELECT * FROM news WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
         return $dbConnect->query($sql, self::class, ['link' => $link]);
+    }
+
+    public function getDate(): string
+    {
+        $pattern = '~^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$~';
+        $replacement = "[$3/$2/$1]";
+        return preg_replace($pattern, $replacement, $this->date);
+    }
+
+    public function setDate()
+    {
+        $this->date = date('Y-m-d H:i:s');
     }
 
     /**

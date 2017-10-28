@@ -2,11 +2,22 @@
 <div class="col-sm-8 blog-main">
 
     <div class="blog-post">
+        <div class="post-head">
+            <div class="post-header-title">
+                <a href="/">Главная</a> |
+                <a href="/<?= $article->category->link; ?>"><?= $article->category->name; ?></a> |
+                <span><?= $article->title; ?></span>
+            </div>
+            <img src="<?= $article->getImage(); ?>" alt="" class="centerPic">
+        </div>
         <h2 class="blog-post-title">
-            <h1 class="blog-title"><?= $article->title; ?></h1>
+            <h1 class="blog-title title-article"><?= $article->title; ?></h1>
         </h2>
-        <p class="blog-post-meta"><?= $article->date; ?> by <a href="#"><?= $article->author->name; ?></a></p>
-        <p><?= $article->text; ?></p>
+        <p class="blog-post-description">
+            <?= $article->description; ?>
+        </p>
+        <p class="blog-post-meta"><?= $article->date; ?></p>
+        <p class="blog-post-text"><?= $article->text; ?></p>
     </div><!-- /.blog-post -->
     
 </div><!-- /.blog-main -->
