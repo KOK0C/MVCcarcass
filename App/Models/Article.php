@@ -69,8 +69,18 @@ class Article extends Model
     public static function findByCategory(string $link): array
     {
         $dbConnect = new DataBase();
-        $sql = 'SELECT * FROM news WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
+        $sql = 'SELECT * FROM ' . self::TABLE .
+               ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
         return $dbConnect->query($sql, self::class, ['link' => $link]);
+    }
+
+    public static function findOneArticle(string $link, int $id)
+    {
+        $dbConnect = new DataBase();
+        $sql = 'SELECT * FROM ' . self::TABLE .
+               ' WHERE category_id = (SELECT id FROM categories WHERE link = :link) AND id = :id LIMIT 1';
+        $result = $dbConnect->query($sql, self::class, ['link' => $link, 'id' => $id]);
+        return array_pop($result);
     }
 
     public function getDate(): string

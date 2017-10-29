@@ -7,11 +7,11 @@
  */
 
 return [
-    '^news/([0-9]+)$'         => ['controller' => 'Main', 'action' => 'oneArticle'],
-    '^overviews/([0-9]+)$'    => ['controller' => 'Main', 'action' => 'oneArticle'],
-    '^technologies/([0-9]+)$' => ['controller' => 'Main', 'action' => 'oneArticle'],
-    '^tuning/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'oneArticle'],
-    '^useful/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(news)/([0-9]+)$'         => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(overviews)/([0-9]+)$'    => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(technologies)/([0-9]+)$' => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(tuning)/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(useful)/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'oneArticle'],
 
     '^(news)$'         => ['controller' => 'Main', 'action' => 'oneCategory'],
     '^(overviews)$'    => ['controller' => 'Main', 'action' => 'oneCategory'],

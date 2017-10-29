@@ -53,7 +53,7 @@ abstract class Model
     public static function findById(int $id)
     {
         $dbConnect = new DataBase();
-        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
+        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id LIMIT 1';
         $result = $dbConnect->query($sql, static::class, ['id' => $id]);
         return @$result[0];
     }

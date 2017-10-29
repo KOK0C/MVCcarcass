@@ -23,9 +23,9 @@ abstract class Controller
         $this->footer = new \App\View('/App/templates/layouts/footer.phtml');
     }
 
-    public function action($action, $arg = null)
+    public function action($action, $arg1 = null, $arg2 = null)
     {
         $methodName = 'action' . ucfirst($action);
-        $this->$methodName($arg);
+        $this->$methodName($arg1, $arg2);
     }
 }

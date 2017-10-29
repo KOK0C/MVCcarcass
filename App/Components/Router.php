@@ -44,7 +44,10 @@ class Router
             if (preg_match("~$uriPattern~", $uri, $matches)) {
                 $this->route = $route;
                 if (isset($matches[1])) {
-                    $this->route['argument'] = $matches[1];
+                    $this->route['arguments'][1] = $matches[1];
+                }
+                if (isset($matches[2])) {
+                    $this->route['arguments'][2] = $matches[2];
                 }
                 return true;
             }
@@ -57,7 +60,11 @@ class Router
         if ($this->matchRoutes()) {
             $controllerName = 'App\Controllers\\' . $this->route['controller'];
             $controller = new $controllerName;
-            $controller->action($this->route['action'], $this->route['argument'] ?? null);
+            $controller->action(
+                $this->route['action'],
+                $this->route['arguments'][1] ?? null,
+                $this->route['arguments'][2] ?? null
+            );
         } else {
             throw new Error404();
         }

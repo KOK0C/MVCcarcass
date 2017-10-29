@@ -32,10 +32,10 @@ class Main extends \App\Controller
      * @param int $id
      * @throws Error404
      */
-    protected function actionOneArticle(int $id)
+    protected function actionOneArticle(string $link, int $id)
     {
         $this->mainPage = new View('/App/templates/one_article.phtml');
-        $this->mainPage->article = Article::findById($id);
+        $this->mainPage->article = Article::findOneArticle($link, $id);
         if (empty($this->mainPage->article)) {
             throw new Error404();
         }
