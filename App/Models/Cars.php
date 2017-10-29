@@ -12,6 +12,11 @@ namespace App\Models;
 use App\DataBase;
 use App\Model;
 
+/**
+ * Class Cars
+ * @package App\Models
+ * @property Brand $brand
+ */
 class Cars extends Model
 {
     const TABLE = 'cars';
@@ -29,7 +34,37 @@ class Cars extends Model
 
     public function getIcon(): string
     {
-        return '/public/img/icon/' . $this->icon;
+        return '/public/img/icon/' . str_replace(' ', '_', strtolower($this->brand->name)) . '/' . $this->icon;
+    }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        switch ($name) {
+            case 'brand':
+                return isset($this->brand_id);
+                break;
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * @param $name
+     * @return bool|object
+     */
+    public function __get($name)
+    {
+        switch ($name) {
+            case 'brand':
+                return Brand::findById($this->brand_id);
+                break;
+            default:
+                return false;
+        }
     }
 
 }

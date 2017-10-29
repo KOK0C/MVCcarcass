@@ -174,3 +174,24 @@ a .article-short-text , a .article-title, a .article-date {
     border-bottom: solid 1px #ed1927;
 }
 
+.carsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.carItem {
+    display: block;
+    width: 166px;
+    height: 166px;
+    box-sizing: border-box;
+    border: 1px solid #0b2233;
+    color: #ed1927;
+    padding-top: 20px;
+}
+
+.carsList a:hover {
+    color: #ed1927;
+    text-decoration: none;
+    border: 1px solid #ed1927;
+}
