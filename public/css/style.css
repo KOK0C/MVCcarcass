@@ -75,7 +75,7 @@ h6, .h6 {
 }
 
 a .article-short-text , a .article-title, a .article-date {
-    color: #fff;
+    color: #e9ebec;
     font-size: .85rem;
     margin: 25px 15px 0 25px;
 }
@@ -93,7 +93,7 @@ a .article-short-text , a .article-title, a .article-date {
     display: block;
     width: 50px;
     height: 1px;
-    background: #fff;
+    color: #e9ebec;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -142,5 +142,35 @@ a .article-short-text , a .article-title, a .article-date {
 
 .blog-post-description:first-letter, .blog-post-text:first-letter {
     margin-left: 2rem;
+}
+
+.sidebarItem {
+    text-align: center;
+    display: block;
+    margin: 10px 50px 10px 50px;
+    width: 100px;
+    border: solid 1px #172c3e;
+    box-sizing: border-box;
+}
+
+.sidebarLink {
+    display: block;
+}
+
+.sidebarPic {
+    display: block;
+}
+
+.sidebarText span {
+    color: #999;
+    font-size: .85rem;
+}
+
+.sidebarItem a:hover {
+    text-decoration: none;
+}
+
+.sidebarItem:hover {
+    border-bottom: solid 1px #ed1927;
 }
 

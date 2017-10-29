@@ -1,19 +1,19 @@
 
 <div class="col-sm-8 blog-main">
     <?php foreach ($news as $article): ?>
-        <a href="<?= $article->category->link . '/' . $article->getId(); ?>" class="article">
+        <a href="<?= htmlentities($article->category->link) . '/' . htmlentities($article->getId()); ?>" class="article">
             <span class="articleImg">
-                <img src="<?= $article->getImage(); ?>" alt="" class="articlePic">
+                <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="articlePic">
             </span>
             <span class="article-description">
                 <span class="article-title">
-                    <?= $article->title; ?>
+                    <?= htmlentities($article->title); ?>
                 </span>
                 <span class="article-short-text">
-                    <?= $article->description; ?>
+                    <?= htmlentities($article->description); ?>
                 </span>
                 <span class="article-date">
-                    <?= $article->getDate(); ?>
+                    <?= htmlentities($article->getDate()); ?>
                 </span>
             </span>
         </a>

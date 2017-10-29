@@ -16,5 +16,11 @@ class Brand extends Model
     const TABLE = 'brands';
 
     public $name;
+    private $logo;
+
+    public function getLogo(): string
+    {
+        return '/public/img/logo/' . $this->logo;
+    }
 
 }

@@ -5,19 +5,19 @@
         <div class="post-head">
             <div class="post-header-title">
                 <a href="/">Главная</a> |
-                <a href="/<?= $article->category->link; ?>"><?= $article->category->name; ?></a> |
-                <span><?= $article->title; ?></span>
+                <a href="/<?= htmlentities($article->category->link); ?>"><?= htmlentities($article->category->name); ?></a> |
+                <span><?= htmlentities($article->title); ?></span>
             </div>
-            <img src="<?= $article->getImage(); ?>" alt="" class="centerPic">
+            <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="centerPic">
         </div>
         <h2 class="blog-post-title">
-            <h1 class="blog-title title-article"><?= $article->title; ?></h1>
+            <h1 class="blog-title title-article"><?= htmlentities($article->title); ?></h1>
         </h2>
         <p class="blog-post-description">
-            <?= $article->description; ?>
+            <?= htmlentities($article->description); ?>
         </p>
-        <p class="blog-post-meta"><?= $article->date; ?></p>
-        <p class="blog-post-text"><?= $article->text; ?></p>
+        <p class="blog-post-meta"><?= htmlentities($article->date); ?></p>
+        <p class="blog-post-text"><?= htmlentities($article->text); ?></p>
     </div><!-- /.blog-post -->
     
 </div><!-- /.blog-main -->
