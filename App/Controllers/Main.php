@@ -14,6 +14,10 @@ use App\View;
 
 class Main extends \App\Controller
 {
+    /**
+     * Шаблон страницы
+     * @var View
+     */
     protected $mainPage;
 
     public function __construct()
@@ -24,11 +28,12 @@ class Main extends \App\Controller
 
     protected function actionIndex()
     {
-        $this->mainPage->news = Article::findAll();
+        $this->mainPage->news = Article::findAll(true);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
     /**
+     * @param string $link
      * @param int $id
      * @throws Error404
      */
@@ -44,7 +49,7 @@ class Main extends \App\Controller
 
     protected function actionOneCategory(string $link)
     {
-        $this->mainPage->news = Article::findByCategory($link);
+        $this->mainPage->news = Article::findByCategory($link, true);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 }

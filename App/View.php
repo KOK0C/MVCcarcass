@@ -20,6 +20,7 @@ use App\Models\Category;
  * @property array $news Массив объектов Article
  * @property Article $article Объект
  * @property Brand $brands
+ * @property array $cars Массив объектов Cars
  */
 class View
 {

@@ -10,8 +10,22 @@ namespace App;
 
 abstract class Controller
 {
+    /**
+     * Шаблон шапки
+     * @var View
+     */
     protected $header;
+
+    /**
+     * Шаблон сайдбара
+     * @var View
+     */
     protected $sideBar;
+
+    /**
+     * Шаблон футера
+     * @var View
+     */
     protected $footer;
 
     public function __construct()

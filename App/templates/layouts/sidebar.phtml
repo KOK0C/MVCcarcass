@@ -14,7 +14,7 @@
         <ol class="list-unstyled">
             <?php foreach ($brands as $brand): ?>
                 <li class="sidebarItem">
-                    <a href="mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($brand->name))); ?>" class="sidebarLink">
+                    <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($brand->name))); ?>" class="sidebarLink">
                         <div class="sidebarPic">
                             <img src="<?= htmlentities($brand->getLogo()); ?>" alt="">
                         </div>

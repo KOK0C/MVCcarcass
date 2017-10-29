@@ -35,12 +35,16 @@ abstract class Model
     /**
      * Метод достает все записи из таблицы бд и
      * возвращает их в виде объектов помещенных в массив
+     * @param bool
      * @return array Возвращает массив с объектами
      */
-    public static function findAll(): array
+    public static function findAll(bool $reversedSort = false): array
     {
         $dbConnect = new DataBase();
         $sql = 'SELECT * FROM ' . static::TABLE;
+        if ($reversedSort === true) {
+            $sql .= ' ORDER BY id DESC';
+        }
         return $dbConnect->query($sql, static::class);
     }
 

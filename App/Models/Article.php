@@ -64,16 +64,25 @@ class Article extends Model
 
     /**
      * @param string $link
+     * @param bool
      * @return array Возвращает массив с объектами Article
      */
-    public static function findByCategory(string $link): array
+    public static function findByCategory(string $link, bool $reversedSort = false): array
     {
         $dbConnect = new DataBase();
         $sql = 'SELECT * FROM ' . self::TABLE .
                ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
+        if ($reversedSort === true) {
+            $sql .= ' ORDER BY id DESC';
+        }
         return $dbConnect->query($sql, self::class, ['link' => $link]);
     }
 
+    /**
+     * @param string $link
+     * @param int $id
+     * @return Article
+     */
     public static function findOneArticle(string $link, int $id)
     {
         $dbConnect = new DataBase();
