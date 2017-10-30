@@ -20,15 +20,10 @@ class Main extends \App\Controller
      */
     protected $mainPage;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->mainPage = new View('/App/templates/main_page.phtml');
-    }
-
     protected function actionIndex()
     {
-        $this->mainPage->news = Article::findAll(true);
+        $this->mainPage = new View('/App/templates/main_page.phtml');
+        $this->mainPage->news = Article::findLastArticle();
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
@@ -49,6 +44,7 @@ class Main extends \App\Controller
 
     protected function actionOneCategory(string $link)
     {
+        $this->mainPage = new View('/App/templates/category_page.phtml');
         $this->mainPage->news = Article::findByCategory($link, true);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }

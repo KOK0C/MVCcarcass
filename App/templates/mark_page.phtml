@@ -3,7 +3,8 @@
 
 <div class="row carsList">
     <?php foreach ($cars as $car): ?>
-        <a href="/mark/<?= htmlentities(strtolower($car->brand->name)) . '/' . htmlentities(str_replace(' ', '-', strtolower($car->model))); ?>"
+        <a href="/mark/<?= htmlentities(str_replace(' ', '-', strtolower($car->brand->name))) .
+        '/' . htmlentities(str_replace(' ', '-', strtolower($car->model))); ?>"
         class="carItem">
                 <img src="<?= htmlentities($car->getIcon()); ?>" alt="">
                 <div class="text-center"><?= htmlentities($car->model); ?></div>

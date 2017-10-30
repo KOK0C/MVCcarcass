@@ -62,6 +62,17 @@ class Article extends Model
         }
     }
 
+    public static function findLastArticle():array
+    {
+        $array = [];
+        $dbConnect = DataBase::getInstance();
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE category_id = :cat_id ORDER BY id DESC LIMIT 1';
+        for ($i = 2; $i <= 6; $i++) {
+            $array[] = $dbConnect->query($sql, self::class, ['cat_id' => $i])[0];
+        }
+        return $array;
+    }
+
     /**
      * @param string $link
      * @param bool

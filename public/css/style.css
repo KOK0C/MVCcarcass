@@ -195,3 +195,27 @@ a .article-short-text , a .article-title, a .article-date {
     text-decoration: none;
     border: 1px solid #ed1927;
 }
+
+.new-article {
+    font-size: 1.1rem;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.new-article-link {
+    color: #ed1927;
+}
+
+.new-article-link:hover {
+    color: #999;
+    text-decoration: none;
+}
+
+.blog-footer a {
+    color: #ed1927;
+}
+
+.blog-footer a:hover {
+    color: #999;
+    text-decoration: none;
+}

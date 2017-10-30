@@ -1,12 +1,6 @@
 
 <div class="col-sm-8 blog-main">
     <?php foreach ($news as $article): ?>
-        <p class="new-article">
-            Последнее:
-            <a href="/<?= htmlentities($article->category->link); ?>" class="new-article new-article-link">
-                <?= htmlentities($article->category->name); ?>
-            </a>
-        </p>
         <a href="<?= htmlentities($article->category->link) . '/' . htmlentities($article->getId()); ?>" class="article">
             <span class="articleImg">
                 <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="articlePic">
