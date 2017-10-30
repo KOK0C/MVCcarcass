@@ -26,7 +26,7 @@ class Router
      */
     private $route;
 
-    public function __construct()
+    private function __construct()
     {
         $routesPath = $_SERVER['DOCUMENT_ROOT'] . '/App/config/routes.php';
         if (file_exists($routesPath)) {

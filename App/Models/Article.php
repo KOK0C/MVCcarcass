@@ -62,6 +62,11 @@ class Article extends Model
         }
     }
 
+    /**
+     * Метод собирает масив с последними записями в виде объектов
+     * к каждой категории для главной страницы
+     * @return array Массив объектов Category
+     */
     public static function findLastArticle():array
     {
         $array = [];

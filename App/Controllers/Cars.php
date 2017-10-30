@@ -20,14 +20,9 @@ class Cars extends Controller
      */
     protected $mainPage;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->mainPage = new View('/App/templates/mark_page.phtml');
-    }
-
     protected function actionOneMark(string $mark)
     {
+        $this->mainPage = new View('/App/templates/mark_page.phtml');
         $mark = ucwords(str_replace('-', ' ', $mark));
         $this->mainPage->cars = \App\Models\Cars::findCarsByBrand($mark);
         if (empty($this->mainPage->cars)) {

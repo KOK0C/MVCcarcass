@@ -7,6 +7,7 @@
  */
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/function.php';
 
 $route = \App\Components\Router::getInstance();
 try {
