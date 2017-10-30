@@ -8,6 +8,7 @@
 
 namespace App;
 use App\Components\Config;
+use App\Components\Singleton;
 use App\Exceptions\DbException;
 use App\Exceptions\Error404;
 
@@ -17,6 +18,8 @@ use App\Exceptions\Error404;
  */
 class DataBase
 {
+    use Singleton;
+
     private $pdo;
 
     /**
@@ -24,7 +27,7 @@ class DataBase
      * Инициализируеться подключение PDO
      * @throws DbException
      */
-    public function __construct()
+    private function __construct()
     {
         $config = Config::getInstance();
         try {

@@ -69,7 +69,7 @@ class Article extends Model
      */
     public static function findByCategory(string $link, bool $reversedSort = false): array
     {
-        $dbConnect = new DataBase();
+        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE .
                ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
         if ($reversedSort === true) {
@@ -85,7 +85,7 @@ class Article extends Model
      */
     public static function findOneArticle(string $link, int $id)
     {
-        $dbConnect = new DataBase();
+        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE .
                ' WHERE category_id = (SELECT id FROM categories WHERE link = :link) AND id = :id LIMIT 1';
         $result = $dbConnect->query($sql, self::class, ['link' => $link, 'id' => $id]);

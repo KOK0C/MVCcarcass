@@ -40,7 +40,7 @@ abstract class Model
      */
     public static function findAll(bool $reversedSort = false): array
     {
-        $dbConnect = new DataBase();
+        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . static::TABLE;
         if ($reversedSort === true) {
             $sql .= ' ORDER BY id DESC';
@@ -56,7 +56,7 @@ abstract class Model
      */
     public static function findById(int $id)
     {
-        $dbConnect = new DataBase();
+        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id LIMIT 1';
         $result = $dbConnect->query($sql, static::class, ['id' => $id]);
         return @$result[0];
@@ -101,7 +101,7 @@ abstract class Model
         $sql = 'INSERT INTO ' . static::TABLE . ' (' .
             implode(', ', array_keys($arrayProp)) .
             ') VALUES ('.  implode(', ', array_keys($arrayPropMod)) .')';
-        $dbConnect = new DataBase();
+        $dbConnect = DataBase::getInstance();
         $dbConnect->execute($sql, $arrayProp);
         $this->id = $dbConnect->lastInsertId();
     }
@@ -118,7 +118,7 @@ abstract class Model
             $arraySQL[] = "$k = :$k";
         }
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(', ', $arraySQL) . ' WHERE id = ' . $this->id;
-        $dbConnect = new DataBase();
+        $dbConnect = DataBase::getInstance();
         $dbConnect->execute($sql, $arrayProp);
     }
 
@@ -128,7 +128,7 @@ abstract class Model
     public function delete()
     {
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
-        $dbConnect = new DataBase();
+        $dbConnect = DataBase::getInstance();
         $dbConnect->execute($sql, ['id' => $this->id]);
     }
 }

@@ -17,7 +17,7 @@ namespace App\Components;
 trait Singleton
 {
     /**
-     * @var object Хранит объект класса
+     * @var static Хранит объект класса
      */
     private static $instance;
 
@@ -31,7 +31,7 @@ trait Singleton
 
     /**
      * Если объект класса еще не создан - создает его иначе возвращает объект
-     * @return object
+     * @return static
      */
     public static function getInstance()
     {

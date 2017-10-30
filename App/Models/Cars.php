@@ -8,7 +8,6 @@
 
 namespace App\Models;
 
-
 use App\DataBase;
 use App\Model;
 
@@ -27,7 +26,7 @@ class Cars extends Model
 
     public static function findCarsByBrand(string $brand): array
     {
-        $dbConnect = new DataBase();
+        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE brand_id = (SELECT id FROM brands WHERE name = :brandName)';
         return $dbConnect->query($sql, self::class, ['brandName' => $brand]);
     }

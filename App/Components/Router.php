@@ -12,6 +12,8 @@ use App\Exceptions\Error404;
 
 class Router
 {
+    use Singleton;
+
     /**
      * Массив с маршрутами
      * @var array

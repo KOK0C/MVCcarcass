@@ -8,7 +8,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
-$route = new \App\Components\Router();
+$route = \App\Components\Router::getInstance();
 try {
     $route->run();
 } catch (\App\Exceptions\Error404 $e) {
