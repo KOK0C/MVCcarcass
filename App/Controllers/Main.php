@@ -10,6 +10,7 @@ namespace App\Controllers;
 
 use App\Exceptions\Error404;
 use App\Models\Article;
+use App\Models\Pages;
 use App\View;
 
 class Main extends \App\Controller

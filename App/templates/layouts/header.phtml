@@ -30,7 +30,7 @@
 <div class="blog-header">
     <div class="container">
         <h1 class="blog-title"><?= htmlentities($page->title); ?></h1>
-        <p class="lead blog-description"><?= htmlentities(mb_ucfirst($page->description)); ?></p>
+        <p class="lead blog-description"><?= htmlentities(mb_ucfirst(mb_strtolower($page->description))); ?></p>
     </div>
 </div>
 

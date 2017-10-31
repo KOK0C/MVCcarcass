@@ -30,30 +30,19 @@ abstract class Controller
      */
     protected $footer;
 
-    public function action($action, $arg1 = null, $arg2 = null)
-    {
-        $methodName = 'action' . ucfirst($action);
-        $this->buildHeader((is_null($arg1)) ? '' : $arg1);
-        $this->buildSideBar();
-        $this->buildFooter();
-        $this->$methodName($arg1, $arg2);
-    }
-
-    protected function buildHeader(string $link)
+    public function __construct()
     {
         $this->header = new \App\View('/App/templates/layouts/header.phtml');
         $this->header->categories = \App\Models\Category::findAll();
-        $this->header->page = Pages::findByLink($link);
-    }
-
-    protected function buildSideBar()
-    {
         $this->sideBar = new \App\View('/App/templates/layouts/sidebar.phtml');
         $this->sideBar->brands = \App\Models\Brand::findAll();
+        $this->footer = new \App\View('/App/templates/layouts/footer.phtml');
     }
 
-    protected function buildFooter()
+    public function action($action, $arg1 = null, $arg2 = null)
     {
-        $this->footer = new \App\View('/App/templates/layouts/footer.phtml');
+        $methodName = 'action' . ucfirst($action);
+        $this->header->page = Pages::findByLink((is_null($arg1) ? '' : $arg1));
+        $this->$methodName($arg1, $arg2);
     }
 }
