@@ -11,7 +11,7 @@ namespace App\Models;
 use App\DataBase;
 use App\Model;
 
-class Pages extends Model
+class Page extends Model
 {
     const TABLE = 'pages';
 
@@ -29,7 +29,7 @@ class Pages extends Model
 
     /**
      * @param string $link
-     * @return Pages
+     * @return Page
      */
     public static function findByLink(string $link): self
     {

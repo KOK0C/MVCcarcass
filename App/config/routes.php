@@ -7,7 +7,7 @@
  */
 
 return [
-    '^mark/([a-z-]+)$' => ['controller' => 'Cars', 'action' => 'oneMark'],
+    '^mark/([a-z-]+)$' => ['controller' => 'Car', 'action' => 'oneMark'],
 
     '^(news)/([0-9]+)$'         => ['controller' => 'Main', 'action' => 'oneArticle'],
     '^(overviews)/([0-9]+)$'    => ['controller' => 'Main', 'action' => 'oneArticle'],

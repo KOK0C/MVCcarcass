@@ -148,7 +148,7 @@ a .article-short-text , a .article-title, a .article-date {
     text-align: center;
     display: block;
     margin: 10px 50px 10px 50px;
-    width: 100px;
+    width: 110px;
     border: solid 1px #172c3e;
     box-sizing: border-box;
 }
@@ -218,4 +218,24 @@ a .article-short-text , a .article-title, a .article-date {
 .blog-footer a:hover {
     color: #999;
     text-decoration: none;
+}
+
+.post-mainPage {
+    background-color: #172c3e;
+    width: 710px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.active-SideBar {
+    border: 1px solid #ed1927;
+    padding: 5px;
+}
+
+pre {
+    color: white;
+}
+
+.blog-post-text img {
+    width: 700px;
 }

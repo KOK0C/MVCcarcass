@@ -24,7 +24,7 @@ class Cars extends Controller
     {
         $this->mainPage = new View('/App/templates/mark_page.phtml');
         $mark = ucwords(str_replace('-', ' ', $mark));
-        $this->mainPage->cars = \App\Models\Cars::findCarsByBrand($mark);
+        $this->mainPage->cars = \App\Models\Car::findCarsByBrand($mark);
         if (empty($this->mainPage->cars)) {
             throw new Error404();
         }

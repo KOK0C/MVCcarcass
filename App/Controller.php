@@ -8,7 +8,7 @@
 
 namespace App;
 
-use App\Models\Pages;
+use App\Models\Page;
 
 abstract class Controller
 {
@@ -42,7 +42,7 @@ abstract class Controller
     public function action($action, $arg1 = null, $arg2 = null)
     {
         $methodName = 'action' . ucfirst($action);
-        $this->header->page = Pages::findByLink((is_null($arg1) ? '' : $arg1));
+        $this->header->page = Page::findByLink((is_null($arg1) ? 'main' : $arg1));
         $this->$methodName($arg1, $arg2);
     }
 }

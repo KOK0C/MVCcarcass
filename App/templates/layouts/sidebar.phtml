@@ -13,7 +13,9 @@
         <h4>Производители</h4>
         <ol class="list-unstyled">
             <?php foreach ($brands as $brand): ?>
-                <li class="sidebarItem">
+                <li class="sidebarItem <?php if (explode('/', $_SERVER['REQUEST_URI'])[2] === str_replace(' ', '-', mb_strtolower($brand->name))):
+                                                print 'active-SideBar';
+                                             endif;?>">
                     <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($brand->name))); ?>" class="sidebarLink">
                         <div class="sidebarPic">
                             <img src="<?= htmlentities($brand->getLogo()); ?>" alt="">

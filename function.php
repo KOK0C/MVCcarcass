@@ -17,3 +17,10 @@ function mb_ucfirst(string $string, string $encoding = 'UTF-8'): string
     return mb_strtoupper(mb_substr($string, 0, 1, $encoding)) .
         mb_substr($string, 1, mb_strlen($string, $encoding),$encoding);
 }
+
+function debug($var)
+{
+    print '<pre>';
+    print_r($var);
+    print '</pre>';
+}

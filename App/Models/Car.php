@@ -12,11 +12,11 @@ use App\DataBase;
 use App\Model;
 
 /**
- * Class Cars
+ * Class Car
  * @package App\Models
  * @property Brand $brand
  */
-class Cars extends Model
+class Car extends Model
 {
     const TABLE = 'cars';
 

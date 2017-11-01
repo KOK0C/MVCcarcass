@@ -17,7 +17,7 @@
             <?= htmlentities($article->description); ?>
         </p>
         <p class="blog-post-meta"><?= htmlentities($article->date); ?></p>
-        <div class="blog-post-text"><?= \App\Components\TextFormat::format(htmlentities($article->text)); ?></div>
+        <div class="blog-post-text"><?= \App\Components\TextFormat::format(htmlentities($article->text), $article->getId()); ?></div>
     </div><!-- /.blog-post -->
     
 </div><!-- /.blog-main -->

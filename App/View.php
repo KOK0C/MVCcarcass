@@ -12,7 +12,7 @@ use App\Components\Magic;
 use App\Models\Article;
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Pages;
+use App\Models\Page;
 
 /**
  * Class View
@@ -21,8 +21,8 @@ use App\Models\Pages;
  * @property array $news Массив объектов Article
  * @property Article $article Объект
  * @property Brand $brands
- * @property array $cars Массив объектов Cars
- * @property Pages $page Объект Pages
+ * @property array $cars Массив объектов Car
+ * @property Page $page Объект Page
  */
 class View
 {
