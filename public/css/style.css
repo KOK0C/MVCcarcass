@@ -14,6 +14,15 @@ h6, .h6 {
     color: #ed1927;
 }
 
+a {
+    color: #ed1927;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #999;
+}
+
 .blog-title {
     font-size: 2.5rem;
 }
@@ -140,10 +149,6 @@ a .article-short-text , a .article-title, a .article-date {
     margin-top: 15px;
 }
 
-.blog-post-description:first-letter, .blog-post-text:first-letter {
-    margin-left: 2rem;
-}
-
 .sidebarItem {
     text-align: center;
     display: block;
@@ -236,6 +241,18 @@ pre {
     color: white;
 }
 
-.blog-post-text img {
-    width: 700px;
+.blog-post-text {
+    margin-top: 10px;
+}
+
+.blog-post-text .fig {
+    text-align: center;
+}
+
+.blog-post-text .fig img {
+    width: 600px;
+}
+
+.blog-post-text .video {
+    margin-left: 70px;
 }

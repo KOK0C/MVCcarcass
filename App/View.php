@@ -20,9 +20,10 @@ use App\Models\Page;
  * @property Category $categories
  * @property array $news Массив объектов Article
  * @property Article $article Объект
- * @property Brand $brands
+ * @property array $brands
  * @property array $cars Массив объектов Car
  * @property Page $page Объект Page
+ * @property Brand $mark Объект Brand
  */
 class View
 {
