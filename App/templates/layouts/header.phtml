@@ -24,7 +24,7 @@
                 <a class="nav-link <?php if (explode('/', $_SERVER['REQUEST_URI'])[1] === $category->link):
                     print 'active';
                 endif; ?>"
-                   href="/<?= htmlentities($category->link) . '/page-1'; ?>"><?= htmlentities($category->name); ?></a>
+                   href="/<?= htmlentities($category->link); ?>"><?= htmlentities($category->name); ?></a>
             <?php endforeach; ?>
         </nav>
     </div>

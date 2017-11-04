@@ -8,7 +8,6 @@
 
 namespace App\Components;
 
-
 class Pagination
 {
     /**
@@ -31,6 +30,9 @@ class Pagination
      */
     private $limit;
 
+    /**
+     * @var int Количество страниц
+     */
     private $amount;
 
     /**
@@ -50,7 +52,6 @@ class Pagination
 
     /**
      *  Для вывода ссылок
-     *
      * @return string HTML-код со ссылками навигации
      */
     public function get(): string

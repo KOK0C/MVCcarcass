@@ -90,8 +90,9 @@ abstract class Model
      * Получает массив свойст объекта (id не нужен, его генерирует бд)
      * затем отправляет запрос на добавление в бд
      * и записывает в свойство полученный из бд id
+     * @return bool
      */
-    protected function insert()
+    protected function insert(): bool
     {
         $arrayProp = get_object_vars($this);
         array_pop($arrayProp);
@@ -102,15 +103,20 @@ abstract class Model
             implode(', ', array_keys($arrayProp)) .
             ') VALUES ('.  implode(', ', array_keys($arrayPropMod)) .')';
         $dbConnect = DataBase::getInstance();
-        $dbConnect->execute($sql, $arrayProp);
-        $this->id = $dbConnect->lastInsertId();
+        if ($dbConnect->execute($sql, $arrayProp)) {
+            $this->id = $dbConnect->lastInsertId();
+            return true;
+        }
+        return false;
+
     }
 
     /**
      * Метод обновляет запись в бд
      * Сперва получая все свойства объекта кроме id (его не трогаем)
+     * @return bool
      */
-    protected function update()
+    protected function update(): bool
     {
         $arrayProp = get_object_vars($this);
         array_pop($arrayProp);
@@ -119,16 +125,23 @@ abstract class Model
         }
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(', ', $arraySQL) . ' WHERE id = ' . $this->id;
         $dbConnect = DataBase::getInstance();
-        $dbConnect->execute($sql, $arrayProp);
+        if ($dbConnect->execute($sql, $arrayProp)) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Метод удаляет запись объекта из бд
+     * @return bool
      */
-    public function delete()
+    public function delete(): bool
     {
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
         $dbConnect = DataBase::getInstance();
-        $dbConnect->execute($sql, ['id' => $this->id]);
+        if ($dbConnect->execute($sql, ['id' => $this->id])) {
+            return true;
+        }
+        return false;
     }
 }

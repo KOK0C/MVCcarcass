@@ -4,7 +4,7 @@
         <div class="blog-post post-mainPage">
             <p class="new-article">
                 Последние
-                <a href="/<?= htmlentities($article->category->link) . '/page-1'; ?>" class="new-article new-article-link">
+                <a href="/<?= htmlentities($article->category->link); ?>" class="new-article new-article-link">
                     <?= htmlentities($article->category->name); ?>
                 </a>
             </p>

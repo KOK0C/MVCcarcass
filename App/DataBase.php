@@ -7,10 +7,10 @@
  */
 
 namespace App;
+
 use App\Components\Config;
 use App\Components\Singleton;
 use App\Exceptions\DbException;
-use App\Exceptions\Error404;
 
 /**
  * Class DataBase
@@ -45,7 +45,7 @@ class DataBase
 
     /**
      * @param string $sql Строка запроса к бд
-     * @param array $args Массив подстановок
+     * @param array $params Массив подстановок
      * @return bool true в случае успешного запроса, иначе false
      * @throws DbException
      */
@@ -62,7 +62,7 @@ class DataBase
     /**
      * @param string $sql Строка запроса
      * @param string $className Класс для которого будут извлекаться объекты из бд
-     * @param array $args Массив подстановок
+     * @param array $params Массив подстановок
      * @return array Возвращает массив с объектрами
      * @throws DbException
      */

@@ -69,13 +69,14 @@ class Article extends Model
      * к каждой категории для главной страницы
      * @return array Массив объектов Category
      */
-    public static function findLastArticle():array
+    public static function findLastArticle(): array
     {
         $array = [];
         $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE category_id = :cat_id ORDER BY id DESC LIMIT 1';
-        for ($i = 2; $i <= 6; $i++) {
-            $array[] = $dbConnect->query($sql, self::class, ['cat_id' => $i])[0];
+        $categories = Category::findAll();
+        foreach ($categories as $category) {
+            $array[] = $dbConnect->query($sql, self::class, ['cat_id' => $category->getId()])[0];
         }
         return $array;
     }
@@ -102,7 +103,7 @@ class Article extends Model
     public static function getCountArticleInCategory(string $link): int
     {
         $dbConnect = DataBase::getInstance();
-        $sql = 'SELECT COUNT(*) count FROM ' . self::TABLE . ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
+        $sql = 'SELECT COUNT(*) FROM ' . self::TABLE . ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
         return $dbConnect->countRow($sql, ['link' => $link]);
     }
 
@@ -111,7 +112,7 @@ class Article extends Model
      * @param int $id
      * @return Article
      */
-    public static function findOneArticle(string $link, int $id)
+    public static function findOneArticle(string $link, int $id): self
     {
         $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE .

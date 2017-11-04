@@ -8,7 +8,6 @@
 
 namespace App;
 
-use App\Exceptions\Error404;
 use App\Models\Page;
 
 abstract class Controller
@@ -33,11 +32,9 @@ abstract class Controller
 
     public function __construct()
     {
-        $this->header = new \App\View('/App/templates/layouts/header.phtml');
-        $this->header->categories = \App\Models\Category::findAll();
-        $this->sideBar = new \App\View('/App/templates/layouts/sidebar.phtml');
-        $this->sideBar->brands = \App\Models\Brand::findAll();
-        $this->footer = new \App\View('/App/templates/layouts/footer.phtml');
+        $this->buildHeader();
+        $this->buildSideBar();
+        $this->buildFooter();
     }
 
     public function action($action, $arg1 = null, $arg2 = null)
@@ -45,5 +42,22 @@ abstract class Controller
         $methodName = 'action' . ucfirst($action);
         @$this->header->page = Page::findByLink((is_null($arg1) ? 'main' : $arg1));
         $this->$methodName($arg1, $arg2);
+    }
+
+    protected function buildHeader()
+    {
+        $this->header = new \App\View('/App/templates/layouts/header.phtml');
+        $this->header->categories = \App\Models\Category::findAll();
+    }
+
+    protected function buildSideBar()
+    {
+        $this->sideBar = new \App\View('/App/templates/layouts/sidebar.phtml');
+        $this->sideBar->brands = \App\Models\Brand::findAll();
+    }
+
+    protected function buildFooter()
+    {
+        $this->footer = new \App\View('/App/templates/layouts/footer.phtml');
     }
 }
