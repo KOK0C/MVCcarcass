@@ -45,12 +45,17 @@ class Main extends \App\Controller
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
+    /**
+     * @param string $link
+     * @param int $page
+     * @throws Error404
+     */
     protected function actionOneCategory(string $link, $page)
     {
         $this->mainPage = new View('/App/templates/category_page.phtml');
         $countArticle = Article::getCountArticleInCategory($link);
         $this->mainPage->pagination = new Pagination($countArticle, $page, Article::PER_PAGE);
-        $this->mainPage->news = Article::findByCategory($link, $page, true);
+        $this->mainPage->news = Article::findByCategory($link, is_null($page) ? 1 : $page, true);
         if (empty($this->mainPage->news)) {
             throw new Error404();
         }
