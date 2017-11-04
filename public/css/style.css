@@ -256,3 +256,31 @@ pre {
 .blog-post-text .video {
     margin-left: 70px;
 }
+
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+
+}
+
+.blog-pagination .btn {
+    border: 1px solid #ed1927;
+    margin: 5px;
+    text-transform: uppercase;
+}
+
+.blog-pagination .btn:hover {
+    background-color: #ed1927;
+    color: #172c3e;
+}
+
+.blog-pagination .pag-active {
+    background-color: #ed1927;
+}
+
+.blog-pagination .pag-active span {
+    color: #172c3e;
+}

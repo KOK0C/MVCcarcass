@@ -9,6 +9,7 @@
 namespace App;
 
 use App\Components\Magic;
+use App\Components\Pagination;
 use App\Models\Article;
 use App\Models\Brand;
 use App\Models\Category;
@@ -24,6 +25,7 @@ use App\Models\Page;
  * @property array $cars Массив объектов Car
  * @property Page $page Объект Page
  * @property Brand $mark Объект Brand
+ * @property Pagination $pagination
  */
 class View
 {

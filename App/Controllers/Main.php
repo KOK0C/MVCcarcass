@@ -8,6 +8,7 @@
 
 namespace App\Controllers;
 
+use App\Components\Pagination;
 use App\Exceptions\Error404;
 use App\Models\Article;
 use App\Models\Page;
@@ -44,10 +45,15 @@ class Main extends \App\Controller
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
-    protected function actionOneCategory(string $link)
+    protected function actionOneCategory(string $link, $page)
     {
         $this->mainPage = new View('/App/templates/category_page.phtml');
-        $this->mainPage->news = Article::findByCategory($link, true);
+        $countArticle = Article::getCountArticleInCategory($link);
+        $this->mainPage->pagination = new Pagination($countArticle, $page, Article::PER_PAGE);
+        $this->mainPage->news = Article::findByCategory($link, $page, true);
+        if (empty($this->mainPage->news)) {
+            throw new Error404();
+        }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 }

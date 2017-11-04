@@ -17,11 +17,14 @@
 <div class="blog-masthead">
     <div class="container">
         <nav class="nav">
+            <a href="/" class="nav-link <?php if (explode('/', $_SERVER['REQUEST_URI'])[1] === ''):
+                print 'active';
+            endif; ?>">Главная</a>
             <?php foreach ($categories as $category): ?>
                 <a class="nav-link <?php if (explode('/', $_SERVER['REQUEST_URI'])[1] === $category->link):
                     print 'active';
                 endif; ?>"
-                   href="/<?= htmlentities($category->link); ?>"><?= htmlentities($category->name); ?></a>
+                   href="/<?= htmlentities($category->link) . '/page-1'; ?>"><?= htmlentities($category->name); ?></a>
             <?php endforeach; ?>
         </nav>
     </div>

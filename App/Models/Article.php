@@ -21,6 +21,8 @@ class Article extends Model
 {
     const TABLE = 'news';
 
+    const PER_PAGE = 6;
+
     public $title;
     public $description;
     public $text;
@@ -80,18 +82,28 @@ class Article extends Model
 
     /**
      * @param string $link
+     * @param int
      * @param bool
      * @return array Возвращает массив с объектами Article
      */
-    public static function findByCategory(string $link, bool $reversedSort = false): array
+    public static function findByCategory(string $link, int $page, bool $reversedSort = false): array
     {
         $dbConnect = DataBase::getInstance();
+        $offset = ($page - 1) * self::PER_PAGE;
         $sql = 'SELECT * FROM ' . self::TABLE .
                ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
         if ($reversedSort === true) {
             $sql .= ' ORDER BY id DESC';
         }
+        $sql .= ' LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
         return $dbConnect->query($sql, self::class, ['link' => $link]);
+    }
+
+    public static function getCountArticleInCategory(string $link): int
+    {
+        $dbConnect = DataBase::getInstance();
+        $sql = 'SELECT COUNT(*) count FROM ' . self::TABLE . ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
+        return $dbConnect->countRow($sql, ['link' => $link]);
     }
 
     /**

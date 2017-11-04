@@ -8,6 +8,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Page;
 use App\View;
 
 class Error extends \App\Controller
@@ -22,6 +23,7 @@ class Error extends \App\Controller
     {
         parent::__construct();
         $this->errorPage = new View('/App/templates/layouts/errors/error404.phtml');
+        $this->header->page = Page::findByLink('404');
         View::display($this->header, $this->errorPage, $this->sideBar, $this->footer);
     }
 

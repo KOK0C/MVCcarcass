@@ -1,7 +1,7 @@
 
 <div class="col-sm-8 blog-main">
     <?php foreach ($news as $article): ?>
-        <a href="<?= htmlentities($article->category->link) . '/' . htmlentities($article->getId()); ?>" class="article">
+        <a href="/<?= htmlentities($article->category->link) . '/' . htmlentities($article->getId()); ?>" class="article">
             <span class="articleImg">
                 <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="articlePic">
             </span>
@@ -18,5 +18,8 @@
             </span>
         </a>
     <?php endforeach; ?>
+    <nav class="blog-pagination">
+        <?= $pagination->get(); ?>
+    </nav>
 
 </div><!-- /.blog-main -->

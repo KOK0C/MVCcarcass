@@ -49,11 +49,11 @@ class DataBase
      * @return bool true в случае успешного запроса, иначе false
      * @throws DbException
      */
-    public function execute(string $sql, array $args = []): bool
+    public function execute(string $sql, array $params = []): bool
     {
         try {
             $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute($args);
+            return $stmt->execute($params);
         } catch (\PDOException $e) {
             throw new \App\Exceptions\DbException();
         }
@@ -66,11 +66,11 @@ class DataBase
      * @return array Возвращает массив с объектрами
      * @throws DbException
      */
-    public function query(string $sql, string $className, array $args = []): array
+    public function query(string $sql, string $className, array $params = []): array
     {
         try {
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute($args);
+            $stmt->execute($params);
         } catch (\PDOException $e) {
             throw new \App\Exceptions\DbException();
         }
@@ -83,5 +83,16 @@ class DataBase
     public function lastInsertId(): string
     {
         return $this->pdo->lastInsertId();
+    }
+
+    public function countRow(string $sql, array $params): int
+    {
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($params);
+        } catch (\PDOException $e) {
+            throw new DbException();
+        }
+        return $stmt->fetchColumn();
     }
 }
