@@ -10,6 +10,12 @@ namespace App\Components;
 
 class Cache
 {
+    /**
+     * @param string $name
+     * @param $data
+     * @param int $seconds
+     * @return bool
+     */
     public function set(string $name, $data, int $seconds): bool
     {
         $content['data'] = $data;
@@ -20,6 +26,10 @@ class Cache
         return false;
     }
 
+    /**
+     * @param string $name
+     * @return bool|object
+     */
     public function get(string $name)
     {
         $file = $_SERVER['DOCUMENT_ROOT'] . '/tmp/cache/' . md5($name) . '.txt';

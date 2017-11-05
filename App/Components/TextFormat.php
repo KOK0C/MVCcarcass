@@ -58,7 +58,7 @@ class TextFormat
         return $text;
     }
 
-    private static function insertVideo(string $text)
+    private static function insertVideo(string $text): string
     {
         if (preg_match("~\[video-https://youtu.be/.+\]~", $text)) {
             return preg_replace(
@@ -70,7 +70,7 @@ class TextFormat
         return $text;
     }
 
-    private static function createLink(string $text)
+    private static function createLink(string $text): string
     {
         if (preg_match("~\[a-.+\].+\[/a\]~", $text)) {
             return preg_replace(
