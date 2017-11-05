@@ -8,6 +8,7 @@
 
 namespace App;
 
+use App\Components\Cache;
 use App\Models\Page;
 
 abstract class Controller
@@ -47,13 +48,21 @@ abstract class Controller
     protected function buildHeader()
     {
         $this->header = new \App\View('/App/templates/layouts/header.phtml');
-        $this->header->categories = \App\Models\Category::findAll();
+        $cache = new Cache();
+        if (! $this->header->categories = $cache->get('categories')) {
+            $this->header->categories = \App\Models\Category::findAll();
+            $cache->set('categories', $this->header->categories, 3600);
+        }
     }
 
     protected function buildSideBar()
     {
         $this->sideBar = new \App\View('/App/templates/layouts/sidebar.phtml');
-        $this->sideBar->brands = \App\Models\Brand::findAll();
+        $cache = new Cache();
+        if (! $this->sideBar->brands = $cache->get('side_bar')) {
+            $this->sideBar->brands = \App\Models\Brand::findAll();
+            $cache->set('side_bar', $this->sideBar->brands, 3600);
+        }
     }
 
     protected function buildFooter()
