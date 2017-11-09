@@ -27,5 +27,5 @@ return [
     '^(tuning)$'       => ['controller' => 'Main', 'action' => 'oneCategory'],
     '^(useful)$'       => ['controller' => 'Main', 'action' => 'oneCategory'],
 
-    '^$'               => ['controller' => 'Main', 'action' => 'index']
+    '^.*$'               => ['controller' => 'Main', 'action' => 'index']
 ];

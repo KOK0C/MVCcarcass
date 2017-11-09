@@ -10,12 +10,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/function.php';
 
 $route = \App\Components\Router::getInstance();
+
 try {
     $route->run();
 } catch (\App\Exceptions\Error404 $e) {
+    $logger = new \App\Components\Logger();
+    $logger->notice($e->getMessage());
     $controller = new \App\Controllers\Error;
     $controller->action('page404');
 } catch (\App\Exceptions\DbException $e) {
+    $logger = new \App\Components\Logger();
     require_once $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/errors/errorDB.phtml';
+    $logger->emergency($e->getMessage());
     die();
 }
