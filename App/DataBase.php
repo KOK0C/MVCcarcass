@@ -39,7 +39,7 @@ class DataBase
             );
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
-            throw new \App\Exceptions\DbException();
+            throw new DbException('Подключение к базе данных не удалось');
         }
     }
 
@@ -55,7 +55,7 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($params);
         } catch (\PDOException $e) {
-            throw new \App\Exceptions\DbException();
+            throw new DbException('Ошибка при запросе к бд');
         }
     }
 
@@ -72,7 +72,7 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
         } catch (\PDOException $e) {
-            throw new \App\Exceptions\DbException();
+            throw new DbException('Ошибка при запросе к бд');
         }
         return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
     }
@@ -91,7 +91,7 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
         } catch (\PDOException $e) {
-            throw new DbException();
+            throw new DbException('Ошибка при подсчете кол-ва записей в бд');
         }
         return $stmt->fetchColumn();
     }

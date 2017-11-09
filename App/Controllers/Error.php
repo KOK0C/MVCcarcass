@@ -8,6 +8,7 @@
 
 namespace App\Controllers;
 
+use App\Components\Cache;
 use App\Models\Page;
 use App\View;
 
@@ -15,21 +16,14 @@ class Error extends \App\Controller
 {
     protected $errorPage;
 
-    public function __construct()
-    {
-    }
-
     protected function actionPage404()
     {
-        parent::__construct();
         $this->errorPage = new View('/App/templates/layouts/errors/error404.phtml');
-        $this->header->page = Page::findByLink('404');
+        $cache = new Cache();
+        if (! $this->header->page = $cache->get('page-404')) {
+            $this->header->page = Page::findByLink('404');
+            $cache->set('page-404', $this->header->page, 3600);
+        }
         View::display($this->header, $this->errorPage, $this->sideBar, $this->footer);
-    }
-
-    protected function actionTroubleDb()
-    {
-        $this->errorPage = new View('/App/templates/layouts/errors/error.phtml');
-        View::display($this->errorPage);
     }
 }

@@ -40,7 +40,7 @@ class Main extends \App\Controller
         $this->mainPage = new View('/App/templates/one_article.phtml');
         $this->mainPage->article = Article::findOneArticle($link, $id);
         if (empty($this->mainPage->article)) {
-            throw new Error404();
+            throw new Error404('Статья не найдена');
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
@@ -57,7 +57,7 @@ class Main extends \App\Controller
         $this->mainPage->pagination = new Pagination($countArticle, $page, Article::PER_PAGE);
         $this->mainPage->news = Article::findByCategory($link, is_null($page) ? 1 : $page, true);
         if (empty($this->mainPage->news)) {
-            throw new Error404();
+            throw new Error404('Несуществующая категория');
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }

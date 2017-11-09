@@ -14,8 +14,6 @@ use App\Model;
  * Class User
  * @package App\Models
  * Реализует модель таблицы users
- * @method save
- * @method delete
  */
 class User extends Model
 {

@@ -16,6 +16,6 @@ try {
     $controller = new \App\Controllers\Error;
     $controller->action('page404');
 } catch (\App\Exceptions\DbException $e) {
-    $controller = new \App\Controllers\Error;
-    $controller->action('troubleDb');
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/errors/errorDB.phtml';
+    die();
 }

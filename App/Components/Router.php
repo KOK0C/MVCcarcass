@@ -68,7 +68,7 @@ class Router
                 $this->route['arguments'][2] ?? null
             );
         } else {
-            throw new Error404();
+            throw new Error404('Страница не найдена');
         }
     }
 }

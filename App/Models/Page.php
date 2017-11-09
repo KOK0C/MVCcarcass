@@ -31,10 +31,10 @@ class Page extends Model
      * @param string $link
      * @return Page
      */
-    public static function findByLink(string $link): self
+    public static function findByLink(string $link)
     {
         $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE link = :link LIMIT 1';
-        return $dbConnect->query($sql, self::class, ['link' => $link])[0];
+        return array_shift($dbConnect->query($sql, self::class, ['link' => $link]));
     }
 }

@@ -112,7 +112,7 @@ class Article extends Model
      * @param int $id
      * @return Article
      */
-    public static function findOneArticle(string $link, int $id): self
+    public static function findOneArticle(string $link, int $id)
     {
         $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE .

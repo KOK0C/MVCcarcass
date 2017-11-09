@@ -14,8 +14,6 @@ use App\Model;
  * Class Category
  * @package App\Models
  * Реализует модель таблицы categories
- * @method save
- * @method delete
  */
 class Category extends Model
 {

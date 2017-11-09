@@ -28,7 +28,7 @@ class Cars extends Controller
         $this->mainPage->mark = Brand::findOneByMark($mark);
         $this->mainPage->cars = \App\Models\Car::findCarsByBrand($mark);
         if (empty($this->mainPage->cars)) {
-            throw new Error404();
+            throw new Error404('Страница не найдена');
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
