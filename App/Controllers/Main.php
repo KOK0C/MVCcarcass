@@ -57,7 +57,7 @@ class Main extends \App\Controller
         $this->mainPage->pagination = new Pagination($countArticle, $page, Article::PER_PAGE);
         $this->mainPage->news = Article::findByCategory($link, is_null($page) ? 1 : $page, true);
         if (empty($this->mainPage->news)) {
-            throw new Error404('Несуществующая категория');
+            throw new Error404('Несуществующая страница');
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }

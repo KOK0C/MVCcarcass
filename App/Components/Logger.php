@@ -16,16 +16,30 @@ class Logger extends AbstractLogger implements LoggerInterface
     private $dateFormat = '[d-m-Y H:i:s]';
     private $fileName = '/tmp/error.log';
 
-    public function log($level, $message, array $context = array())
+    public function log($level, $message, array $context = [])
     {
         $filePath = $_SERVER['DOCUMENT_ROOT'] . $this->fileName;
         $errorMessage = $this->getDate() . ' ' . strtoupper($level) . "\n";
-        $errorMessage .= $message . "\n=======================================================================\n";
+        $errorMessage .= $message;
+        if (! empty($context)) {
+            $errorMessage .= "\n" . $this->contextToStr($context);
+        }
+        $errorMessage .= "\n=======================================================================\n";
         error_log($errorMessage, 3, $filePath);
     }
 
     private function getDate()
     {
         return (new \DateTime())->format($this->dateFormat);
+    }
+
+    private function contextToStr(array $context): string
+    {
+        $str = json_encode($context);
+        $str = str_replace(',', "\n", $str);
+        $str = str_replace('\\\\', "\\", $str);
+        $str = str_replace('"', " ", $str);
+        $str = trim($str, '{}');
+        return $str;
     }
 }

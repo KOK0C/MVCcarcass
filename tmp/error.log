@@ -1,0 +1,18 @@
+[10-11-2017 18:47:14] NOTICE
+Статья не найдена
+ Exception : App\Exceptions\Error404 
+ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php 
+ Line :43
+=======================================================================
+[10-11-2017 18:47:29] NOTICE
+Несуществующая категория
+ Exception : App\Exceptions\Error404 
+ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php 
+ Line :60
+=======================================================================
+[10-11-2017 18:48:43] NOTICE
+Несуществующая страница
+ Exception : App\Exceptions\Error404 
+ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php 
+ Line :60
+=======================================================================
