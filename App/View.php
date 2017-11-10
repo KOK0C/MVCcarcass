@@ -53,8 +53,7 @@ class View
             $$name = $value;
         }
         include $_SERVER['DOCUMENT_ROOT'] . $this->template;
-        $content = ob_get_contents();
-        ob_end_clean();
+        $content = ob_get_clean();
         return $content;
     }
 

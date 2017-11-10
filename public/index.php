@@ -9,6 +9,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/function.php';
 
+$errorHandler = new \App\Components\ErrorHandler();
+
 $route = \App\Components\Router::getInstance();
 
 $logger = new \App\Components\Logger();

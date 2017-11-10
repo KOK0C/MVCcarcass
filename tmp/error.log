@@ -1,18 +1,17 @@
-[10-11-2017 18:47:14] NOTICE
-Статья не найдена
- Exception : App\Exceptions\Error404 
- File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php 
- Line :43
+
+[10-11-2017 19:49:09] ALERT
+Uncaught TypeError: Argument 1 passed to App\Components\ErrorHandler::exceptionHandler() must be an instance of Exception, instance of Error given in C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php:62
+Stack trace:
+#0 [internal function]: App\Components\ErrorHandler->exceptionHandler(Object(Error))
+#1 {main}
+  thrown
+ Fatal Error : ERROR [1] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php 
+ Line :62
 =======================================================================
-[10-11-2017 18:47:29] NOTICE
-Несуществующая категория
- Exception : App\Exceptions\Error404 
- File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php 
- Line :60
-=======================================================================
-[10-11-2017 18:48:43] NOTICE
-Несуществующая страница
- Exception : App\Exceptions\Error404 
- File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php 
- Line :60
+[10-11-2017 19:49:35] CRITICAL
+Call to undefined function re()
+ Exception : Error 
+ File : C:\OSPanel\domains\MVCcarcass\public\index.php 
+ Line :17
 =======================================================================
