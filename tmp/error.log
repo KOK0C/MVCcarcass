@@ -9,9 +9,337 @@ Stack trace:
  File : C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php 
  Line :62
 =======================================================================
-[10-11-2017 19:49:35] CRITICAL
-Call to undefined function re()
- Exception : Error 
- File : C:\OSPanel\domains\MVCcarcass\public\index.php 
- Line :17
+[11-11-2017 14:28:30] EMERGENCY
+Подключение к базе данных не удалось
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :42
+=======================================================================
+[11-11-2017 14:29:51] EMERGENCY
+Подключение к базе данных не удалось
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :42
+=======================================================================
+[11-11-2017 15:16:23] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:17:00] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:17:13] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:19:12] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:19:19] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:19:30] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:21:05] NOTICE
+Only variables should be passed by reference
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:21:13] NOTICE
+Only variables should be passed by reference
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:24:18] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Page.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:25:07] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Page.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:25:16] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Page.php 
+ Line :38
+=======================================================================
+[11-11-2017 15:25:35] NOTICE
+Undefined offset: 0
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Brand.php 
+ Line :32
+=======================================================================
+[11-11-2017 15:26:08] CRITICAL
+Return value of App\Models\Brand::findOneByMark() must be an instance of App\Models\Brand, null returned
+ Trowable : TypeError 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Brand.php 
+ Line :33
+=======================================================================
+[11-11-2017 16:22:45] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:24:39] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:24:39] CRITICAL
+Call to undefined method App\View::getErrorName()
+ Trowable : Error 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml 
+ Line :19
+=======================================================================
+[11-11-2017 16:24:39] ALERT
+Uncaught Error: Call to undefined method App\View::getErrorName() in C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml:19
+Stack trace:
+#0 C:\OSPanel\domains\MVCcarcass\App\View.php(57): include()
+#1 C:\OSPanel\domains\MVCcarcass\App\View.php(68): App\View->render()
+#2 C:\OSPanel\domains\MVCcarcass\App\Controllers\Error.php(33): App\View::display(Object(App\View))
+#3 C:\OSPanel\domains\MVCcarcass\App\Controller.php(49): App\Controllers\Error->actionError(NULL, NULL)
+#4 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(91): App\Controller->action('Error')
+#5 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(67): App\Components\ErrorHandler->showError('Error', 'Call to undefin...', 'C:\\OSPanel\\doma...', 19)
+#6 [internal function]: App\Components\ErrorHandler->exceptionHandler(Object(Error))
+#7 {main}
+  thrown
+ Fatal Error : ERROR [1] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml 
+ Line :19
+=======================================================================
+[11-11-2017 16:27:00] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:28:07] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:28:07] CRITICAL
+Call to undefined method App\View::getErrorName()
+ Trowable : Error 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml 
+ Line :19
+=======================================================================
+[11-11-2017 16:28:07] ALERT
+Uncaught Error: Call to undefined method App\View::getErrorName() in C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml:19
+Stack trace:
+#0 C:\OSPanel\domains\MVCcarcass\App\View.php(57): include()
+#1 C:\OSPanel\domains\MVCcarcass\App\View.php(68): App\View->render()
+#2 C:\OSPanel\domains\MVCcarcass\App\Controllers\Error.php(34): App\View::display(Object(App\View))
+#3 C:\OSPanel\domains\MVCcarcass\App\Controller.php(49): App\Controllers\Error->actionError(NULL, NULL)
+#4 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(91): App\Controller->action('Error')
+#5 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(67): App\Components\ErrorHandler->showError('Error', 'Call to undefin...', 'C:\\OSPanel\\doma...', 19)
+#6 [internal function]: App\Components\ErrorHandler->exceptionHandler(Object(Error))
+#7 {main}
+  thrown
+ Fatal Error : ERROR [1] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml 
+ Line :19
+=======================================================================
+[11-11-2017 16:28:28] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:28:48] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:28:54] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:29:31] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:29:32] WARNING
+Creating default object from empty value
+ Error : WARNING [2] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Controller.php 
+ Line :45
+=======================================================================
+[11-11-2017 16:29:45] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:31:53] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:32:21] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:32:21] CRITICAL
+Call to undefined method App\View::getErrorName()
+ Trowable : Error 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml 
+ Line :19
+=======================================================================
+[11-11-2017 16:32:21] ALERT
+Uncaught Error: Call to undefined method App\View::getErrorName() in C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml:19
+Stack trace:
+#0 C:\OSPanel\domains\MVCcarcass\App\View.php(57): include()
+#1 C:\OSPanel\domains\MVCcarcass\App\View.php(68): App\View->render()
+#2 C:\OSPanel\domains\MVCcarcass\App\Controllers\Error.php(34): App\View::display(Object(App\View))
+#3 C:\OSPanel\domains\MVCcarcass\App\Controller.php(49): App\Controllers\Error->actionError(NULL, NULL)
+#4 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(90): App\Controller->action('Error')
+#5 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(67): App\Components\ErrorHandler->showError('Error', 'Call to undefin...', 'C:\\OSPanel\\doma...', 19)
+#6 [internal function]: App\Components\ErrorHandler->exceptionHandler(Object(Error))
+#7 {main}
+  thrown
+ Fatal Error : ERROR [1] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml 
+ Line :19
+=======================================================================
+[11-11-2017 16:33:07] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:33:29] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:33:34] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:33:34] CRITICAL
+Call to undefined method App\View::getErrorName()
+ Trowable : Error 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml 
+ Line :19
+=======================================================================
+[11-11-2017 16:33:34] ALERT
+Uncaught Error: Call to undefined method App\View::getErrorName() in C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml:19
+Stack trace:
+#0 C:\OSPanel\domains\MVCcarcass\App\View.php(57): include()
+#1 C:\OSPanel\domains\MVCcarcass\App\View.php(68): App\View->render()
+#2 C:\OSPanel\domains\MVCcarcass\App\Controllers\Error.php(34): App\View::display(Object(App\View))
+#3 C:\OSPanel\domains\MVCcarcass\App\Controller.php(49): App\Controllers\Error->actionError(NULL, NULL)
+#4 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(90): App\Controller->action('Error')
+#5 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(67): App\Components\ErrorHandler->showError('Error', 'Call to undefin...', 'C:\\OSPanel\\doma...', 19)
+#6 [internal function]: App\Components\ErrorHandler->exceptionHandler(Object(Error))
+#7 {main}
+  thrown
+ Fatal Error : ERROR [1] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\errors\errors.phtml 
+ Line :19
+=======================================================================
+[11-11-2017 16:38:14] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:39:01] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:39:32] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:40:06] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:40:17] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:40:22] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:43:35] NOTICE
+Undefined variable: article
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :9
+=======================================================================
+[11-11-2017 16:58:41] NOTICE
+Trying to get property of non-object
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:58:53] NOTICE
+Trying to get property of non-object
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:58:57] NOTICE
+Trying to get property of non-object
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml 
+ Line :8
+=======================================================================
+[11-11-2017 16:59:02] NOTICE
+Trying to get property of non-object
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml 
+ Line :8
 =======================================================================

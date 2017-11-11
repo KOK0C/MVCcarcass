@@ -8,6 +8,8 @@
 
 namespace App\Components;
 
+use App\Controllers\Error;
+
 class ErrorHandler
 {
     /**
@@ -40,11 +42,11 @@ class ErrorHandler
             case 2048:
             case 8192:
             case 16384:
-                $this->logger->warning($errstr, ['Error' => self::getErrorName($errno), 'File' => $file, 'Line' => $line]);
+                $this->logger->notice($errstr, ['Error' => self::getErrorName($errno), 'File' => $file, 'Line' => $line]);
                 break;
             case 2:
             case 512:
-                $this->logger->error($errstr, ['Error' => self::getErrorName($errno), 'File' => $file, 'Line' => $line]);
+                $this->logger->warning($errstr, ['Error' => self::getErrorName($errno), 'File' => $file, 'Line' => $line]);
                 break;
         }
 
@@ -61,7 +63,7 @@ class ErrorHandler
      */
     public function exceptionHandler(\Throwable $e)
     {
-        $this->logger->critical($e->getMessage(), ['Exception' => get_class($e), 'File' => $e->getFile(), 'Line' => $e->getLine()]);
+        $this->logger->critical($e->getMessage(), ['Trowable' => get_class($e), 'File' => $e->getFile(), 'Line' => $e->getLine()]);
         $this->showError(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine());
     }
 
@@ -84,8 +86,10 @@ class ErrorHandler
      */
     private function showError($errno, $errstr, $file, $line, $response = 503)
     {
+        ob_end_clean();
         header("HTTP/1.1 $response");
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/errors/errors.phtml';
+        $message = '<b>' . self::getErrorName($errno) . "</b><br>$errstr<br>File : $file<br>Line : $line";
+        (new Error())->action('Error', $message);
         die();
     }
 

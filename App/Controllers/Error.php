@@ -14,7 +14,7 @@ use App\View;
 
 class Error extends \App\Controller
 {
-    protected $errorPage;
+    private $errorPage;
 
     protected function actionPage404()
     {
@@ -25,5 +25,13 @@ class Error extends \App\Controller
             $cache->set('page-404', $this->header->page, 3600);
         }
         View::display($this->header, $this->errorPage, $this->sideBar, $this->footer);
+    }
+
+    protected function actionError(string $message)
+    {
+        ob_end_clean();
+        $this->errorPage = new View('/App/templates/layouts/errors/errors.phtml');
+        $this->errorPage->error = $message;
+        View::display($this->errorPage);
     }
 }

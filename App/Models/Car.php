@@ -21,8 +21,10 @@ class Car extends Model
     const TABLE = 'cars';
 
     public $model;
+    public $text;
     private $icon;
     private $brand_id;
+    private $img;
 
     public static function findCarsByBrand(string $brand): array
     {
@@ -31,9 +33,22 @@ class Car extends Model
         return $dbConnect->query($sql, self::class, ['brandName' => $brand]);
     }
 
+    public static function findCarByBrandAndModel(string $brand, string $model)
+    {
+        $dbConnect = DataBase::getInstance();
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE brand_id = (SELECT id FROM brands WHERE name = :brandName) AND model = :model LIMIT 1';
+        $result = $dbConnect->query($sql, self::class, ['brandName' => $brand, 'model' => $model]);
+        return array_pop($result);
+    }
+
     public function getIcon(): string
     {
         return '/public/img/icon/' . str_replace(' ', '_', strtolower($this->brand->name)) . '/' . $this->icon;
+    }
+
+    public function getImage(): string
+    {
+        return '/public/img/car_pic/' . $this->img;
     }
 
     /**

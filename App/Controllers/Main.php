@@ -21,7 +21,7 @@ class Main extends \App\Controller
      * Шаблон страницы
      * @var View
      */
-    protected $mainPage;
+    private $mainPage;
 
     protected function actionIndex()
     {

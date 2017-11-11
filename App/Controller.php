@@ -41,10 +41,11 @@ abstract class Controller
     public function action($action, $arg1 = null, $arg2 = null)
     {
         $methodName = 'action' . ucfirst($action);
+        $arg1 = is_null($arg1) ? 'main' : $arg1;
         $cache = new Cache();
-        if (! $this->header->page = $cache->get('page-' . (is_null($arg1) ? 'main' : $arg1))) {
-            $this->header->page = Page::findByLink((is_null($arg1) ? 'main' : $arg1));
-            $cache->set('page-' . (is_null($arg1) ? 'main' : $arg1), $this->header->page, 3600);
+        if (! $this->header->page = $cache->get("page-$arg1")) {
+            $this->header->page = Page::findByLink($arg1);
+            $cache->set("page-$arg1", $this->header->page, 3600);
         }
         $this->$methodName($arg1, $arg2);
     }

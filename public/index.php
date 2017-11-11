@@ -13,16 +13,14 @@ $errorHandler = new \App\Components\ErrorHandler();
 
 $route = \App\Components\Router::getInstance();
 
-$logger = new \App\Components\Logger();
-
 try {
     $route->run();
 } catch (\App\Exceptions\DbException $e) {
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/errors/errorDB.phtml';
+    $logger = new \App\Components\Logger();
     $logger->emergency($e->getMessage(), ['Exception' => get_class($e), 'File' => $e->getFile(), 'Line' => $e->getLine()]);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/errors/errorDB.phtml';
     die();
 } catch (\App\Exceptions\Error404 $e) {
-    $logger->notice($e->getMessage(), ['Exception' => get_class($e), 'File' => $e->getFile(), 'Line' => $e->getLine()]);
     $controller = new \App\Controllers\Error;
     $controller->action('page404');
 }

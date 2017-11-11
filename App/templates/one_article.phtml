@@ -4,9 +4,9 @@
     <div class="blog-post">
         <div class="post-head">
             <div class="post-header-title">
-                <a href="/">Главная</a> |
-                <a href="/<?= htmlentities($article->category->link); ?>"><?= htmlentities($article->category->name); ?></a> |
-                <span><?= htmlentities($article->title); ?></span>
+                <a href="/">ГЛАВНАЯ</a> |
+                <a href="/<?= htmlentities($article->category->link); ?>"><?= htmlentities(mb_strtoupper($article->category->name)); ?></a> |
+                <span><?= htmlentities(mb_strtoupper($article->title)); ?></span>
             </div>
             <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="centerPic">
         </div>

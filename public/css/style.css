@@ -86,7 +86,7 @@ a:hover {
 a .article-short-text , a .article-title, a .article-date {
     color: #e9ebec;
     font-size: .85rem;
-    margin: 25px 15px 0 25px;
+    margin: 15px 15px 0 25px;
 }
 
 .article-title {

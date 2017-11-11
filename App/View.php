@@ -12,6 +12,7 @@ use App\Components\Magic;
 use App\Components\Pagination;
 use App\Models\Article;
 use App\Models\Brand;
+use App\Models\Car;
 use App\Models\Category;
 use App\Models\Page;
 
@@ -26,6 +27,7 @@ use App\Models\Page;
  * @property Page $page Объект Page
  * @property Brand $mark Объект Brand
  * @property Pagination $pagination
+ * @property Car $car
  */
 class View
 {

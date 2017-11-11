@@ -1,0 +1,19 @@
+
+<div class="col-sm-8 blog-main">
+
+    <div class="blog-post">
+        <div class="post-head">
+            <div class="post-header-title">
+                <a href="/">ГЛАВНАЯ</a> |
+                <a href="/mark/<?= htmlentities(mb_strtolower(str_replace(' ', '-', $car->brand->name))); ?>"><?= htmlentities(mb_strtoupper($car->brand->name)); ?></a> |
+                <span><?= htmlentities(mb_strtoupper($car->model)); ?></span>
+            </div>
+            <img src="<?= htmlentities($car->getImage()); ?>" alt="" class="centerPic">
+        </div>
+        <div class="blog-post-text">
+            <?= \App\Components\TextFormat::format(htmlentities($car->text), $car->getId()); ?>
+        </div>
+
+    </div><!-- /.blog-post -->
+
+</div>

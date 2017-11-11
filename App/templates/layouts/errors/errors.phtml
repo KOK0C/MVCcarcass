@@ -16,7 +16,7 @@
             Возникла ошибка!
         </h1>
         <div class="blog-post">
-            <?= '<b>' . self::getErrorName($errno) . "</b><br>" . $errstr . '<br> File: ' . $file . '<br> Line: ' . $line; ?>
+            <?= $error; ?>
         </div>
     </div>
 </body>

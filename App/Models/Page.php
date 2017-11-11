@@ -35,6 +35,7 @@ class Page extends Model
     {
         $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE link = :link LIMIT 1';
-        return $dbConnect->query($sql, self::class, ['link' => $link])[0];
+        $result = $dbConnect->query($sql, self::class, ['link' => $link]);
+        return array_pop($result);
     }
 }

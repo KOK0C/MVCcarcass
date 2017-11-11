@@ -25,11 +25,11 @@ class Brand extends Model
         return '/public/img/logo/' . $this->logo;
     }
 
-    public static function findOneByMark(string $mark): self
+    public static function findOneByMark(string $mark)
     {
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE `name` = :mark LIMIT 1';
         $dbConnect = DataBase::getInstance();
-        return $dbConnect->query($sql, self::class, ['mark' => $mark])[0];
+        $result = $dbConnect->query($sql, self::class, ['mark' => $mark]);
+        return array_pop($result);
     }
-
 }

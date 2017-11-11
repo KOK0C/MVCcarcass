@@ -7,6 +7,8 @@
  */
 
 return [
+    '^mark/([a-z-]+)/([a-z0-9-]+)$' => ['controller' => 'Cars', 'action' => 'oneModel'],
+
     '^mark/([a-z-]+)$' => ['controller' => 'Cars', 'action' => 'oneMark'],
 
     '^(news)/([0-9]+)$'         => ['controller' => 'Main', 'action' => 'oneArticle'],
@@ -27,5 +29,5 @@ return [
     '^(tuning)$'       => ['controller' => 'Main', 'action' => 'oneCategory'],
     '^(useful)$'       => ['controller' => 'Main', 'action' => 'oneCategory'],
 
-    '^.*$'               => ['controller' => 'Main', 'action' => 'index']
+    '^$'               => ['controller' => 'Main', 'action' => 'index']
 ];
