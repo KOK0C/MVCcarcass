@@ -41,7 +41,7 @@ abstract class Controller
     public function action($action, $arg1 = null, $arg2 = null)
     {
         $methodName = 'action' . ucfirst($action);
-        $arg1 = is_null($arg1) ? 'main' : $arg1;
+        $arg1 = is_null($arg1) ? '' : $arg1;
         $cache = new Cache();
         if (! $this->header->page = $cache->get("page-$arg1")) {
             $this->header->page = Page::findByLink($arg1);
@@ -65,7 +65,7 @@ abstract class Controller
         $this->sideBar = new \App\View('/App/templates/layouts/sidebar.phtml');
         $cache = new Cache();
         if (! $this->sideBar->brands = $cache->get('side_bar')) {
-            $this->sideBar->brands = \App\Models\Brand::findAll();
+            $this->sideBar->brands = \App\Models\Brand::findAll(false, 'name');
             $cache->set('side_bar', $this->sideBar->brands, 3600);
         }
     }

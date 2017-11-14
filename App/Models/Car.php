@@ -84,11 +84,11 @@ class Car extends Model
     public static function findNewsForCar(string $model): array
     {
         $dbConnect = DataBase::getInstance();
-        $sql = "SELECT * FROM news 
+        $sql = 'SELECT * FROM news 
                 INNER JOIN car_news ON news.id = car_news.news_id 
                 WHERE car_news.car_id = 
                 (SELECT id FROM cars WHERE cars.model = :model) 
-                ORDER BY id DESC LIMIT 3";
+                ORDER BY id DESC LIMIT 3';
         return $dbConnect->query($sql, Article::class, ['model' => $model]);
     }
 

@@ -29,7 +29,9 @@ class Error extends \App\Controller
 
     protected function actionError(string $message)
     {
-        ob_end_clean();
+        if (ob_get_status()) {
+            ob_end_clean();
+        }
         $this->errorPage = new View('/App/templates/layouts/errors/errors.phtml');
         $this->errorPage->error = $message;
         View::display($this->errorPage);

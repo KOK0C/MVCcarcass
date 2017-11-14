@@ -86,7 +86,9 @@ class ErrorHandler
      */
     private function showError($errno, $errstr, $file, $line, $response = 503)
     {
-        ob_end_clean();
+        if (ob_get_status()) {
+            ob_end_clean();
+        }
         header("HTTP/1.1 $response");
         $message = '<b>' . self::getErrorName($errno) . "</b><br>$errstr<br>File : $file<br>Line : $line";
         (new Error())->action('Error', $message);

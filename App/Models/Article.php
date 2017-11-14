@@ -20,7 +20,7 @@ class Article extends Model
 {
     const TABLE = 'news';
 
-    const PER_PAGE = 6;
+    const PER_PAGE = 5;
 
     public $title;
     public $description;
@@ -82,8 +82,9 @@ class Article extends Model
     {
         $dbConnect = DataBase::getInstance();
         $offset = ($page - 1) * self::PER_PAGE;
-        $sql = 'SELECT * FROM ' . self::TABLE .
-               ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE category_id =
+                (SELECT c.id FROM categories `c` INNER JOIN pages p ON c.page_id = p.id
+                WHERE p.link = :link)';
         if ($reversedSort === true) {
             $sql .= ' ORDER BY id DESC';
         }
@@ -94,7 +95,9 @@ class Article extends Model
     public static function getCountArticleInCategory(string $link): int
     {
         $dbConnect = DataBase::getInstance();
-        $sql = 'SELECT COUNT(*) FROM ' . self::TABLE . ' WHERE category_id = (SELECT id FROM categories WHERE link = :link)';
+        $sql = 'SELECT COUNT(*) FROM ' . self::TABLE . ' WHERE category_id = 
+                (SELECT c.id FROM categories `c` INNER JOIN pages p ON c.page_id = p.id
+                WHERE p.link = :link)';
         return $dbConnect->countRow($sql, ['link' => $link]);
     }
 
@@ -107,7 +110,10 @@ class Article extends Model
     {
         $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE .
-               ' WHERE category_id = (SELECT id FROM categories WHERE link = :link) AND id = :id LIMIT 1';
+               ' WHERE category_id = 
+               (SELECT c.id FROM categories `c` INNER JOIN pages p ON c.page_id = p.id
+                WHERE p.link = :link) 
+               AND id = :id LIMIT 1';
         $result = $dbConnect->query($sql, self::class, ['link' => $link, 'id' => $id]);
         return array_pop($result);
     }

@@ -383,3 +383,198 @@ preg_replace(): Compilation failed: missing terminating ] for character class at
  File : C:\OSPanel\domains\MVCcarcass\App\Components\TextFormat.php 
  Line :36
 =======================================================================
+[14-11-2017 17:47:13] WARNING
+htmlentities() expects parameter 1 to be string, object given
+ Error : WARNING [2] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\one_model.phtml 
+ Line :22
+=======================================================================
+[14-11-2017 17:47:28] WARNING
+htmlentities() expects parameter 1 to be string, object given
+ Error : WARNING [2] 
+ File : C:\OSPanel\domains\MVCcarcass\App\templates\main_page.phtml 
+ Line :7
+=======================================================================
+[14-11-2017 17:48:03] CRITICAL
+Cannot access private property App\Models\Page::$link
+ Trowable : Error 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php 
+ Line :44
+=======================================================================
+[14-11-2017 17:48:20] CRITICAL
+Cannot access private property App\Models\Page::$link
+ Trowable : Error 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php 
+ Line :44
+=======================================================================
+[14-11-2017 17:48:45] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:49:02] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:52:44] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:55:15] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:55:54] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:55:56] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:56:24] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:56:37] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:57:28] CRITICAL
+Ошибка при подсчете кол-ва записей в бд
+ Trowable : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 17:57:28] NOTICE
+ob_end_clean(): failed to delete buffer. No buffer to delete
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Error.php 
+ Line :32
+=======================================================================
+[14-11-2017 18:00:38] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 18:01:36] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 18:01:51] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :94
+=======================================================================
+[14-11-2017 18:08:46] CRITICAL
+Cannot access private property App\Models\Page::$link
+ Trowable : Error 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php 
+ Line :44
+=======================================================================
+[14-11-2017 18:09:05] EMERGENCY
+Ошибка при запросе к бд
+ Exception : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :75
+=======================================================================
+[14-11-2017 18:19:04] CRITICAL
+Подключение к базе данных не удалось
+ Trowable : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :42
+=======================================================================
+[14-11-2017 18:19:04] ALERT
+Uncaught App\Exceptions\DbException: Подключение к базе данных не удалось in C:\OSPanel\domains\MVCcarcass\App\DataBase.php:42
+Stack trace:
+#0 C:\OSPanel\domains\MVCcarcass\App\Components\traits\Singleton.php(39): App\DataBase->__construct()
+#1 C:\OSPanel\domains\MVCcarcass\App\Models\Page.php(36): App\DataBase::getInstance()
+#2 C:\OSPanel\domains\MVCcarcass\App\Controller.php(47): App\Models\Page::findByLink('<b>App\\Exceptio...')
+#3 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(93): App\Controller->action('Error', '<b>App\\Exceptio...')
+#4 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(67): App\Components\ErrorHandler->showError('App\\Exceptions\\...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD0\xBA\xD0\xBB\xD1\x8E\xD1\x87\xD0...', 'C:\\OSPanel\\doma...', 42)
+#5 [internal function]: App\Components\ErrorHandler->exceptionHandler(Object(App\Exceptions\DbException))
+#6 {main}
+  thrown
+ Fatal Error : ERROR [1] 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :42
+=======================================================================
+[14-11-2017 18:19:04] NOTICE
+ob_end_clean(): failed to delete buffer. No buffer to delete
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php 
+ Line :75
+=======================================================================
+[14-11-2017 18:19:59] CRITICAL
+Подключение к базе данных не удалось
+ Trowable : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :42
+=======================================================================
+[14-11-2017 18:19:59] ALERT
+Uncaught App\Exceptions\DbException: Подключение к базе данных не удалось in C:\OSPanel\domains\MVCcarcass\App\DataBase.php:42
+Stack trace:
+#0 C:\OSPanel\domains\MVCcarcass\App\Components\traits\Singleton.php(39): App\DataBase->__construct()
+#1 C:\OSPanel\domains\MVCcarcass\App\Models\Page.php(36): App\DataBase::getInstance()
+#2 C:\OSPanel\domains\MVCcarcass\App\Controller.php(47): App\Models\Page::findByLink('<b>App\\Exceptio...')
+#3 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(94): App\Controller->action('Error', '<b>App\\Exceptio...')
+#4 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(67): App\Components\ErrorHandler->showError('App\\Exceptions\\...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD0\xBA\xD0\xBB\xD1\x8E\xD1\x87\xD0...', 'C:\\OSPanel\\doma...', 42)
+#5 [internal function]: App\Components\ErrorHandler->exceptionHandler(Object(App\Exceptions\DbException))
+#6 {main}
+  thrown
+ Fatal Error : ERROR [1] 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :42
+=======================================================================
+[14-11-2017 18:19:59] NOTICE
+ob_end_clean(): failed to delete buffer. No buffer to delete
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php 
+ Line :75
+=======================================================================
+[14-11-2017 18:20:26] CRITICAL
+Подключение к базе данных не удалось
+ Trowable : App\Exceptions\DbException 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :42
+=======================================================================
+[14-11-2017 18:20:26] ALERT
+Uncaught App\Exceptions\DbException: Подключение к базе данных не удалось in C:\OSPanel\domains\MVCcarcass\App\DataBase.php:42
+Stack trace:
+#0 C:\OSPanel\domains\MVCcarcass\App\Components\traits\Singleton.php(39): App\DataBase->__construct()
+#1 C:\OSPanel\domains\MVCcarcass\App\Models\Page.php(36): App\DataBase::getInstance()
+#2 C:\OSPanel\domains\MVCcarcass\App\Controller.php(47): App\Models\Page::findByLink('<b>App\\Exceptio...')
+#3 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(94): App\Controller->action('Error', '<b>App\\Exceptio...')
+#4 C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php(67): App\Components\ErrorHandler->showError('App\\Exceptions\\...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD0\xBA\xD0\xBB\xD1\x8E\xD1\x87\xD0...', 'C:\\OSPanel\\doma...', 42)
+#5 [internal function]: App\Components\ErrorHandler->exceptionHandler(Object(App\Exceptions\DbException))
+#6 {main}
+  thrown
+ Fatal Error : ERROR [1] 
+ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php 
+ Line :42
+=======================================================================
+[14-11-2017 18:20:26] NOTICE
+ob_end_clean(): failed to delete buffer. No buffer to delete
+ Error : NOTICE [8] 
+ File : C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php 
+ Line :75
+=======================================================================

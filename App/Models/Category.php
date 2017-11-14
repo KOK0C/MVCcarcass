@@ -20,5 +20,31 @@ class Category extends Model
     const TABLE = 'categories';
 
     public $name;
-    public $link;
+    private $page_id;
+
+    public function __isset($name)
+    {
+        switch ($name) {
+            case 'link':
+                return isset($this->page_id);
+                break;
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * @param $name
+     * @return bool|object Page
+     */
+    public function __get($name)
+    {
+        switch ($name) {
+            case 'link':
+                return Page::findById($this->page_id)->getLink();
+                break;
+            default:
+                return false;
+        }
+    }
 }

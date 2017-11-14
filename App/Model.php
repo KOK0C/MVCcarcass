@@ -38,12 +38,12 @@ abstract class Model
      * @param bool
      * @return array Возвращает массив с объектами
      */
-    public static function findAll(bool $reversedSort = false): array
+    public static function findAll(bool $reversedSort = false, string $field = 'id'): array
     {
         $dbConnect = DataBase::getInstance();
-        $sql = 'SELECT * FROM ' . static::TABLE;
+        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY ' . $field;
         if ($reversedSort === true) {
-            $sql .= ' ORDER BY id DESC';
+            $sql .= " DESC";
         }
         return $dbConnect->query($sql, static::class);
     }

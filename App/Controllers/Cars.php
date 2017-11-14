@@ -39,6 +39,7 @@ class Cars extends Controller
         $this->mainPage = new View('/App/templates/one_model.phtml');
         $mark = ucwords(str_replace('-', ' ', $mark));
         $model = mb_strtoupper(str_replace('-', ' ', $model));
+        $this->header->page->title .= ": $model";
         $this->mainPage->news = Car::findNewsForCar($model);
         $this->mainPage->car = Car::findCarByBrandAndModel($mark, $model);
         if (empty($this->mainPage->car)) {
