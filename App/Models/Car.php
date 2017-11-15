@@ -29,7 +29,9 @@ class Car extends Model
     public static function findCarsByBrand(string $brand): array
     {
         $dbConnect = DataBase::getInstance();
-        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE brand_id = (SELECT id FROM brands WHERE name = :brandName)';
+        $sql = 'SELECT * FROM ' . self::TABLE .
+               ' WHERE brand_id = (SELECT id FROM brands WHERE name = :brandName) 
+               ORDER BY model';
         return $dbConnect->query($sql, self::class, ['brandName' => $brand]);
     }
 

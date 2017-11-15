@@ -2,18 +2,22 @@
 <div class="col-sm-8 blog-main">
 
     <div class="row carsList">
-        <?php foreach ($cars as $car): ?>
-            <a href="/mark/<?= htmlentities(str_replace(' ', '-', strtolower($car->brand->name))) .
-            '/' . htmlentities(str_replace(' ', '-', strtolower($car->model))); ?>"
-            class="carItem">
-                    <img src="<?= htmlentities($car->getIcon()); ?>" alt="">
-                    <div class="text-center"><?= htmlentities($car->model); ?></div>
-            </a>
-        <?php endforeach; ?>
+        <?php if (! empty($cars)): ?>
+            <?php foreach ($cars as $car): ?>
+                <a href="/mark/<?= htmlentities(str_replace(' ', '-', strtolower($car->brand->name))) .
+                '/' . htmlentities(str_replace(' ', '-', strtolower($car->model))); ?>"
+                class="carItem">
+                        <img src="<?= htmlentities($car->getIcon()); ?>" alt="">
+                        <div class="text-center"><?= htmlentities($car->model); ?></div>
+                </a>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 
     <div class="blog-post">
-        <div class="blog-post-text"><?= \App\Components\TextFormat::format(htmlentities($mark->description), $mark->getId()); ?></div>
+        <?php if (! empty($mark)): ?>
+            <div class="blog-post-text"><?= \App\Components\TextFormat::format(htmlentities($mark->description), $mark->getId()); ?></div>
+        <?php endif; ?>
     </div>
 
 

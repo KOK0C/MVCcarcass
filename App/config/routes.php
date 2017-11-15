@@ -11,11 +11,11 @@ return [
 
     '^mark/([a-z-]+)$' => ['controller' => 'Cars', 'action' => 'oneMark'],
 
-    '^(news)/([0-9]+)$'         => ['controller' => 'Main', 'action' => 'oneArticle'],
-    '^(overviews)/([0-9]+)$'    => ['controller' => 'Main', 'action' => 'oneArticle'],
-    '^(technologies)/([0-9]+)$' => ['controller' => 'Main', 'action' => 'oneArticle'],
-    '^(tuning)/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'oneArticle'],
-    '^(useful)/([0-9]+)$'       => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(news)/([a-z0-9-]+)$'         => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(overviews)/([a-z0-9-]+)$'    => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(technologies)/([a-z0-9-]+)$' => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(tuning)/([a-z0-9-]+)$'       => ['controller' => 'Main', 'action' => 'oneArticle'],
+    '^(useful)/([a-z0-9-]+)$'       => ['controller' => 'Main', 'action' => 'oneArticle'],
 
     '^(news)/page-([0-9]+)$'         => ['controller' => 'Main', 'action' => 'oneCategory'],
     '^(overviews)/page-([0-9]+)$'    => ['controller' => 'Main', 'action' => 'oneCategory'],

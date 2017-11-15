@@ -2,22 +2,24 @@
 <div class="col-sm-8 blog-main">
 
     <div class="blog-post">
-        <div class="post-head">
-            <div class="post-header-title">
-                <a href="/">ГЛАВНАЯ</a> |
-                <a href="/<?= htmlentities($article->category->link); ?>"><?= htmlentities(mb_strtoupper($article->category->name)); ?></a> |
-                <span><?= htmlentities(mb_strtoupper($article->title)); ?></span>
+        <?php if (! empty($article)): ?>
+            <div class="post-head">
+                <div class="post-header-title">
+                    <a href="/">ГЛАВНАЯ</a> |
+                    <a href="/<?= htmlentities($article->category->link); ?>"><?= htmlentities(mb_strtoupper($article->category->name)); ?></a> |
+                    <span><?= htmlentities(mb_strtoupper($article->title)); ?></span>
+                </div>
+                <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="centerPic">
             </div>
-            <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="centerPic">
-        </div>
-        <h2 class="blog-post-title">
-            <h1 class="blog-title title-article"><?= htmlentities($article->title); ?></h1>
-        </h2>
-        <p class="blog-post-description">
-            <?= htmlentities($article->description); ?>
-        </p>
-        <p class="blog-post-meta"><?= htmlentities($article->date); ?></p>
-        <div class="blog-post-text"><?= \App\Components\TextFormat::format(htmlentities($article->text), $article->getId()); ?></div>
+            <h2 class="blog-post-title">
+                <h1 class="blog-title title-article"><?= htmlentities($article->title); ?></h1>
+            </h2>
+            <p class="blog-post-description">
+                <?= htmlentities($article->description); ?>
+            </p>
+            <p class="blog-post-meta"><?= htmlentities($article->date); ?></p>
+            <div class="blog-post-text"><?= \App\Components\TextFormat::format(htmlentities($article->text), $article->getId()); ?></div>
+        <?php endif; ?>
     </div><!-- /.blog-post -->
     
 </div><!-- /.blog-main -->

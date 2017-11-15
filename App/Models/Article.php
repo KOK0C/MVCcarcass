@@ -28,6 +28,7 @@ class Article extends Model
     private $date;
     private $category_id;
     private $image;
+    public $alias;
 
     public function __isset($name)
     {
@@ -103,18 +104,18 @@ class Article extends Model
 
     /**
      * @param string $link
-     * @param int $id
+     * @param string $alias
      * @return Article
      */
-    public static function findOneArticle(string $link, int $id)
+    public static function findOneArticle(string $link, string $alias)
     {
         $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE .
                ' WHERE category_id = 
                (SELECT c.id FROM categories `c` INNER JOIN pages p ON c.page_id = p.id
                 WHERE p.link = :link) 
-               AND id = :id LIMIT 1';
-        $result = $dbConnect->query($sql, self::class, ['link' => $link, 'id' => $id]);
+               AND alias = :alias LIMIT 1';
+        $result = $dbConnect->query($sql, self::class, ['link' => $link, 'alias' => $alias]);
         return array_pop($result);
     }
 
