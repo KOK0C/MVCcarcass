@@ -6,15 +6,15 @@
  * Time: 16:52
  */
 
-namespace App;
+namespace IhorRadchenko\App;
 
-use App\Components\Magic;
-use App\Components\Pagination;
-use App\Models\Article;
-use App\Models\Brand;
-use App\Models\Car;
-use App\Models\Category;
-use App\Models\Page;
+use IhorRadchenko\App\Components\Traits\Magic;
+use IhorRadchenko\App\Components\Pagination;
+use IhorRadchenko\App\Models\Article;
+use IhorRadchenko\App\Models\Brand;
+use IhorRadchenko\App\Models\Car;
+use IhorRadchenko\App\Models\Category;
+use IhorRadchenko\App\Models\Page;
 
 /**
  * Class View

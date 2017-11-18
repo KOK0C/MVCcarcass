@@ -16,7 +16,9 @@
 
     <div class="blog-post">
         <?php if (! empty($mark)): ?>
-            <div class="blog-post-text"><?= \App\Components\TextFormat::format(htmlentities($mark->description), $mark->getId()); ?></div>
+            <div class="blog-post-text">
+                <?= IhorRadchenko\App\Components\TextFormat::format(htmlentities($mark->description), $mark->getId()); ?>
+            </div>
         <?php endif; ?>
     </div>
 

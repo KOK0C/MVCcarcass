@@ -6,10 +6,12 @@
  * Time: 18:24
  */
 
-namespace App;
+namespace IhorRadchenko\App;
 
-use App\Components\Cache;
-use App\Models\Page;
+use IhorRadchenko\App\Models\Brand;
+use IhorRadchenko\App\Models\Category;
+use IhorRadchenko\App\Components\Cache;
+use IhorRadchenko\App\Models\Page;
 
 abstract class Controller
 {
@@ -52,26 +54,26 @@ abstract class Controller
 
     protected function buildHeader()
     {
-        $this->header = new \App\View('/App/templates/layouts/header.phtml');
+        $this->header = new View('/App/templates/layouts/header.phtml');
         $cache = new Cache();
         if (! $this->header->categories = $cache->get('categories')) {
-            $this->header->categories = \App\Models\Category::findAll();
+            $this->header->categories = Category::findAll();
             $cache->set('categories', $this->header->categories, 3600);
         }
     }
 
     protected function buildSideBar()
     {
-        $this->sideBar = new \App\View('/App/templates/layouts/sidebar.phtml');
+        $this->sideBar = new View('/App/templates/layouts/sidebar.phtml');
         $cache = new Cache();
         if (! $this->sideBar->brands = $cache->get('side_bar')) {
-            $this->sideBar->brands = \App\Models\Brand::findAll(false, 'name');
+            $this->sideBar->brands = Brand::findAll(false, 'name');
             $cache->set('side_bar', $this->sideBar->brands, 3600);
         }
     }
 
     protected function buildFooter()
     {
-        $this->footer = new \App\View('/App/templates/layouts/footer.phtml');
+        $this->footer = new View('/App/templates/layouts/footer.phtml');
     }
 }

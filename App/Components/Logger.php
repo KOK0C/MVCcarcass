@@ -6,7 +6,7 @@
  * Time: 17:25
  */
 
-namespace App\Components;
+namespace IhorRadchenko\App\Components;
 
 use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
@@ -19,10 +19,10 @@ class Logger extends AbstractLogger implements LoggerInterface
     public function log($level, $message, array $context = [])
     {
         $filePath = $_SERVER['DOCUMENT_ROOT'] . $this->fileName;
-        $errorMessage = $this->getDate() . ' ' . strtoupper($level) . "\n";
+        $errorMessage = "\n" . $this->getDate() . ' ' . strtoupper($level) . "\n";
         $errorMessage .= $message;
         if (! empty($context)) {
-            $errorMessage .= "\n" . $this->contextToStr($context);
+            $errorMessage .= $this->contextToStr($context);
         }
         $errorMessage .= "\n=======================================================================\n";
         error_log($errorMessage, 3, $filePath);
@@ -35,11 +35,10 @@ class Logger extends AbstractLogger implements LoggerInterface
 
     private function contextToStr(array $context): string
     {
-        $str = json_encode($context);
-        $str = str_replace(',', "\n", $str);
-        $str = str_replace('\\\\', "\\", $str);
-        $str = str_replace('"', " ", $str);
-        $str = trim($str, '{}');
+        $str = "\n";
+        foreach ($context as $key => $value) {
+            $str .= "$key : $value;\n";
+        }
         return $str;
     }
 }

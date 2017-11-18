@@ -6,7 +6,7 @@
  * Time: 16:26
  */
 
-namespace App\Exceptions;
+namespace IhorRadchenko\App\Exceptions;
 
 class Error404 extends \Exception
 {

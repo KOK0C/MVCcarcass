@@ -6,9 +6,9 @@
  * Time: 18:13
  */
 
-namespace App\Components;
+namespace IhorRadchenko\App\Components;
 
-use App\Models\Photo;
+use IhorRadchenko\App\Models\Photo;
 
 /**
  * Производит окончательное форматирование текста статьи перед выводом

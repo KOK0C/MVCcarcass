@@ -6,11 +6,10 @@
  * Time: 16:56
  */
 
-namespace App\Models;
+namespace IhorRadchenko\App\Models;
 
-
-use App\DataBase;
-use App\Model;
+use IhorRadchenko\App\DataBase;
+use IhorRadchenko\App\Model;
 
 class Brand extends Model
 {

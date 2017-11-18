@@ -12,7 +12,7 @@
                 <img src="<?= htmlentities($car->getImage()); ?>" alt="" class="centerPic">
             </div>
             <div class="blog-post-text">
-                <?= \App\Components\TextFormat::format(htmlentities($car->text), $car->getId()); ?>
+                <?= IhorRadchenko\App\Components\TextFormat::format(htmlentities($car->text), $car->getId()); ?>
             </div>
         <?php endif; ?>
     </div><!-- /.blog-post -->

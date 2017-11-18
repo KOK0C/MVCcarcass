@@ -6,8 +6,7 @@
  * Time: 16:19
  */
 
-namespace App\Components;
-
+namespace IhorRadchenko\App\Components\Traits;
 
 trait Magic
 {

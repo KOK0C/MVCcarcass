@@ -6,7 +6,9 @@
  * Time: 10:23
  */
 
-namespace App\Components;
+namespace IhorRadchenko\App\Components;
+use IhorRadchenko\App\Components\Traits\Magic;
+use IhorRadchenko\App\Components\Traits\Singleton;
 
 /**
  * Class Config

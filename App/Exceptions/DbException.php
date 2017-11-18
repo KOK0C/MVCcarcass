@@ -6,8 +6,7 @@
  * Time: 16:15
  */
 
-namespace App\Exceptions;
-
+namespace IhorRadchenko\App\Exceptions;
 
 class DbException extends \Exception
 {

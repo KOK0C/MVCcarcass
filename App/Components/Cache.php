@@ -6,7 +6,7 @@
  * Time: 13:37
  */
 
-namespace App\Components;
+namespace IhorRadchenko\App\Components;
 
 class Cache
 {

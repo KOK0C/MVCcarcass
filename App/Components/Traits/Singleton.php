@@ -6,10 +6,10 @@
  * Time: 10:49
  */
 
-namespace App\Components;
+namespace IhorRadchenko\App\Components\Traits;
 
 /**
- * Trait Singleton
+ * Traits Singleton
  * @package App
  * Шаблон синглтон предназначен для запрета создания
  * более одного объекта класса (private __construct() && private __clone())

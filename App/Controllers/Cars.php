@@ -6,13 +6,13 @@
  * Time: 14:29
  */
 
-namespace App\Controllers;
+namespace IhorRadchenko\App\Controllers;
 
-use App\Controller;
-use App\Exceptions\Error404;
-use App\Models\Brand;
-use App\Models\Car;
-use App\View;
+use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\Exceptions\Error404;
+use IhorRadchenko\App\Models\Brand;
+use IhorRadchenko\App\Models\Car;
+use IhorRadchenko\App\View;
 
 class Cars extends Controller
 {
@@ -27,7 +27,7 @@ class Cars extends Controller
         $this->mainPage = new View('/App/templates/mark_page.phtml');
         $mark = ucwords(str_replace('-', ' ', $mark));
         $this->mainPage->mark = Brand::findOneByMark($mark);
-        $this->mainPage->cars = \App\Models\Car::findCarsByBrand($mark);
+        $this->mainPage->cars = Car::findCarsByBrand($mark);
         if (! $this->mainPage->cars) {
             throw new Error404('Страница не найдена');
         }

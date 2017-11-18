@@ -6,9 +6,9 @@
  * Time: 20:40
  */
 
-namespace App\Models;
+namespace IhorRadchenko\App\Models;
 
-use App\Model;
+use IhorRadchenko\App\Model;
 
 /**
  * Class User

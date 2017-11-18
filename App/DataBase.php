@@ -6,11 +6,11 @@
  * Time: 20:06
  */
 
-namespace App;
+namespace IhorRadchenko\App;
 
-use App\Components\Config;
-use App\Components\Singleton;
-use App\Exceptions\DbException;
+use IhorRadchenko\App\Components\Config;
+use IhorRadchenko\App\Components\Traits\Singleton;
+use IhorRadchenko\App\Exceptions\DbException;
 
 /**
  * Class DataBase

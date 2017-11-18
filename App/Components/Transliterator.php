@@ -6,7 +6,7 @@
  * Time: 17:19
  */
 
-namespace App\Components;
+namespace IhorRadchenko\App\Components;
 
 class Transliterator
 {

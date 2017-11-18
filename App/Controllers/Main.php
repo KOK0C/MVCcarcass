@@ -6,14 +6,15 @@
  * Time: 17:46
  */
 
-namespace App\Controllers;
+namespace IhorRadchenko\App\Controllers;
 
-use App\Components\Pagination;
-use App\Exceptions\Error404;
-use App\Models\Article;
-use App\View;
+use IhorRadchenko\App\Components\Pagination;
+use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\Exceptions\Error404;
+use IhorRadchenko\App\Models\Article;
+use IhorRadchenko\App\View;
 
-class Main extends \App\Controller
+class Main extends Controller
 {
     /**
      * Шаблон страницы

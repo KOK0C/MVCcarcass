@@ -6,9 +6,10 @@
  * Time: 15:54
  */
 
-namespace App\Components;
+namespace IhorRadchenko\App\Components;
 
-use App\Exceptions\Error404;
+use IhorRadchenko\App\Components\Traits\Singleton;
+use IhorRadchenko\App\Exceptions\Error404;
 
 class Router
 {
@@ -60,7 +61,7 @@ class Router
     public function run()
     {
         if ($this->matchRoutes()) {
-            $controllerName = 'App\Controllers\\' . $this->route['controller'];
+            $controllerName = 'IhorRadchenko\App\Controllers\\' . $this->route['controller'];
             $controller = new $controllerName;
             $controller->action(
                 $this->route['action'],

@@ -6,10 +6,10 @@
  * Time: 18:14
  */
 
-namespace App\Models;
+namespace IhorRadchenko\App\Models;
 
-use App\DataBase;
-use App\Model;
+use IhorRadchenko\App\DataBase;
+use IhorRadchenko\App\Model;
 
 class Photo extends Model
 {

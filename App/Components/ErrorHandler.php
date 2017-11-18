@@ -6,9 +6,9 @@
  * Time: 17:52
  */
 
-namespace App\Components;
+namespace IhorRadchenko\App\Components;
 
-use App\Controllers\Error;
+use IhorRadchenko\App\Controllers\Error;
 
 class ErrorHandler
 {

@@ -6,13 +6,14 @@
  * Time: 12:49
  */
 
-namespace App\Controllers;
+namespace IhorRadchenko\App\Controllers;
 
-use App\Components\Cache;
-use App\Models\Page;
-use App\View;
+use IhorRadchenko\App\Components\Cache;
+use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\Models\Page;
+use IhorRadchenko\App\View;
 
-class Error extends \App\Controller
+class Error extends Controller
 {
     private $errorPage;
 

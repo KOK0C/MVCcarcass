@@ -6,7 +6,7 @@
  * Time: 20:56
  */
 
-namespace App;
+namespace IhorRadchenko\App;
 
 /**
  * Class Model

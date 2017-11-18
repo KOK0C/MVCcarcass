@@ -26,7 +26,7 @@ spl_autoload_register('myAutoload');
 spl_autoload_register(function (string $className)
 {
     $class = explode('\\', $className);
-    $fileName = $_SERVER['DOCUMENT_ROOT'] . '/App/Components/traits/' . $class[count($class) - 1] . '.php';
+    $fileName = $_SERVER['DOCUMENT_ROOT'] . '/App/Components/Traits/' . $class[count($class) - 1] . '.php';
     if (file_exists($fileName)) {
         require_once $fileName;
     }

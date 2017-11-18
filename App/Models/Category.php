@@ -6,9 +6,9 @@
  * Time: 16:56
  */
 
-namespace App\Models;
+namespace IhorRadchenko\App\Models;
 
-use App\Model;
+use IhorRadchenko\App\Model;
 
 /**
  * Class Category
