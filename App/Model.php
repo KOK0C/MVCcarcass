@@ -36,16 +36,16 @@ abstract class Model
      * Метод достает все записи из таблицы бд и
      * возвращает их в виде объектов помещенных в массив
      * @param bool
+     * @param string
      * @return array Возвращает массив с объектами
      */
     public static function findAll(bool $reversedSort = false, string $field = 'id'): array
     {
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY ' . $field;
         if ($reversedSort === true) {
             $sql .= " DESC";
         }
-        return $dbConnect->query($sql, static::class);
+        return DataBase::getInstance()->query($sql, static::class);
     }
 
     /**
@@ -56,10 +56,9 @@ abstract class Model
      */
     public static function findById(int $id)
     {
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id LIMIT 1';
-        $result = $dbConnect->query($sql, static::class, ['id' => $id]);
-        return @$result[0];
+        $result = DataBase::getInstance()->query($sql, static::class, ['id' => $id]);
+        return (! empty($result)) ? $result[0] : null;
     }
 
     /**
@@ -124,8 +123,7 @@ abstract class Model
             $arraySQL[] = "$k = :$k";
         }
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(', ', $arraySQL) . ' WHERE id = ' . $this->id;
-        $dbConnect = DataBase::getInstance();
-        if ($dbConnect->execute($sql, $arrayProp)) {
+        if (DataBase::getInstance()->execute($sql, $arrayProp)) {
             return true;
         }
         return false;
@@ -138,8 +136,7 @@ abstract class Model
     public function delete(): bool
     {
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
-        $dbConnect = DataBase::getInstance();
-        if ($dbConnect->execute($sql, ['id' => $this->id])) {
+        if (DataBase::getInstance()->execute($sql, ['id' => $this->id])) {
             return true;
         }
         return false;

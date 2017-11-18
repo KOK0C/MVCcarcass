@@ -26,21 +26,20 @@ class Car extends Model
     private $brand_id;
     private $img;
 
-    public static function findCarsByBrand(string $brand): array
+    public static function findCarsByBrand(string $brand)
     {
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE .
                ' WHERE brand_id = (SELECT id FROM brands WHERE name = :brandName) 
                ORDER BY model';
-        return $dbConnect->query($sql, self::class, ['brandName' => $brand]);
+        $result = DataBase::getInstance()->query($sql, self::class, ['brandName' => $brand]);
+        return (! empty($result)) ? $result : null;
     }
 
     public static function findCarByBrandAndModel(string $brand, string $model)
     {
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE brand_id = (SELECT id FROM brands WHERE name = :brandName) AND model = :model LIMIT 1';
-        $result = $dbConnect->query($sql, self::class, ['brandName' => $brand, 'model' => $model]);
-        return array_pop($result);
+        $result = DataBase::getInstance()->query($sql, self::class, ['brandName' => $brand, 'model' => $model]);
+        return (! empty($result)) ? $result[0] : null;
     }
 
     public function getIcon(): string
@@ -85,13 +84,12 @@ class Car extends Model
 
     public static function findNewsForCar(string $model): array
     {
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM news 
                 INNER JOIN car_news ON news.id = car_news.news_id 
                 WHERE car_news.car_id = 
                 (SELECT id FROM cars WHERE cars.model = :model) 
                 ORDER BY id DESC LIMIT 3';
-        return $dbConnect->query($sql, Article::class, ['model' => $model]);
+        return DataBase::getInstance()->query($sql, Article::class, ['model' => $model]);
     }
 
 }

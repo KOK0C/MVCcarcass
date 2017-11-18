@@ -28,8 +28,7 @@ class Brand extends Model
     public static function findOneByMark(string $mark)
     {
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE `name` = :mark LIMIT 1';
-        $dbConnect = DataBase::getInstance();
-        $result = $dbConnect->query($sql, self::class, ['mark' => $mark]);
-        return array_pop($result);
+        $result = DataBase::getInstance()->query($sql, self::class, ['mark' => $mark]);
+        return (! empty($result)) ? $result[0] : null;
     }
 }

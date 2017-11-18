@@ -28,7 +28,7 @@ class Cars extends Controller
         $mark = ucwords(str_replace('-', ' ', $mark));
         $this->mainPage->mark = Brand::findOneByMark($mark);
         $this->mainPage->cars = \App\Models\Car::findCarsByBrand($mark);
-        if (empty($this->mainPage->cars)) {
+        if (! $this->mainPage->cars) {
             throw new Error404('Страница не найдена');
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
@@ -42,7 +42,7 @@ class Cars extends Controller
         $this->header->page->title .= " $model";
         $this->mainPage->news = Car::findNewsForCar($model);
         $this->mainPage->car = Car::findCarByBrandAndModel($mark, $model);
-        if (empty($this->mainPage->car)) {
+        if (! $this->mainPage->car) {
             throw new Error404('Модель авто не найдена');
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);

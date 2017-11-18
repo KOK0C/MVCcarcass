@@ -578,3 +578,15 @@ ob_end_clean(): failed to delete buffer. No buffer to delete
  File : C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php 
  Line :75
 =======================================================================
+[18-11-2017 13:34:42] CRITICAL
+Return value of App\Models\Article::findByCategory() must be of the type array, null returned
+ Trowable : TypeError 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Article.php 
+ Line :93
+=======================================================================
+[18-11-2017 13:37:36] CRITICAL
+Return value of App\Models\Car::findCarsByBrand() must be of the type array, null returned
+ Trowable : TypeError 
+ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php 
+ Line :35
+=======================================================================

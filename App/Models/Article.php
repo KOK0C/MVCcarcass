@@ -64,11 +64,10 @@ class Article extends Model
     public static function findLastArticle(): array
     {
         $array = [];
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE category_id = :cat_id ORDER BY id DESC LIMIT 1';
         $categories = Category::findAll();
         foreach ($categories as $category) {
-            $array[] = $dbConnect->query($sql, self::class, ['cat_id' => $category->getId()])[0];
+            $array[] = DataBase::getInstance()->query($sql, self::class, ['cat_id' => $category->getId()])[0];
         }
         return $array;
     }
@@ -79,9 +78,8 @@ class Article extends Model
      * @param bool
      * @return array Возвращает массив с объектами Article
      */
-    public static function findByCategory(string $link, int $page, bool $reversedSort = false): array
+    public static function findByCategory(string $link, int $page, bool $reversedSort = false)
     {
-        $dbConnect = DataBase::getInstance();
         $offset = ($page - 1) * self::PER_PAGE;
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE category_id =
                 (SELECT c.id FROM categories `c` INNER JOIN pages p ON c.page_id = p.id
@@ -90,16 +88,16 @@ class Article extends Model
             $sql .= ' ORDER BY id DESC';
         }
         $sql .= ' LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
-        return $dbConnect->query($sql, self::class, ['link' => $link]);
+        $result = DataBase::getInstance()->query($sql, self::class, ['link' => $link]);
+        return (! empty($result)) ? $result : null;
     }
 
     public static function getCountArticleInCategory(string $link): int
     {
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT COUNT(*) FROM ' . self::TABLE . ' WHERE category_id = 
                 (SELECT c.id FROM categories `c` INNER JOIN pages p ON c.page_id = p.id
                 WHERE p.link = :link)';
-        return $dbConnect->countRow($sql, ['link' => $link]);
+        return DataBase::getInstance()->countRow($sql, ['link' => $link]);
     }
 
     /**
@@ -109,14 +107,13 @@ class Article extends Model
      */
     public static function findOneArticle(string $link, string $alias)
     {
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE .
                ' WHERE category_id = 
                (SELECT c.id FROM categories `c` INNER JOIN pages p ON c.page_id = p.id
                 WHERE p.link = :link) 
                AND alias = :alias LIMIT 1';
-        $result = $dbConnect->query($sql, self::class, ['link' => $link, 'alias' => $alias]);
-        return array_pop($result);
+        $result = DataBase::getInstance()->query($sql, self::class, ['link' => $link, 'alias' => $alias]);
+        return (! empty($result)) ? $result[0] : null;
     }
 
     public function getDate(): string
@@ -124,11 +121,6 @@ class Article extends Model
         $pattern = '~^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$~';
         $replacement = "[$3/$2/$1]";
         return preg_replace($pattern, $replacement, $this->date);
-    }
-
-    public function setDate()
-    {
-        $this->date = date('Y-m-d H:i:s');
     }
 
     /**

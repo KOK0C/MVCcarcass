@@ -11,8 +11,6 @@ namespace App\Controllers;
 use App\Components\Pagination;
 use App\Exceptions\Error404;
 use App\Models\Article;
-use App\Models\Page;
-use App\Models\Photo;
 use App\View;
 
 class Main extends \App\Controller
@@ -32,14 +30,14 @@ class Main extends \App\Controller
 
     /**
      * @param string $link
-     * @param int $id
+     * @param string $alias
      * @throws Error404
      */
     protected function actionOneArticle(string $link, string $alias)
     {
         $this->mainPage = new View('/App/templates/one_article.phtml');
         $this->mainPage->article = Article::findOneArticle($link, $alias);
-        if (empty($this->mainPage->article)) {
+        if (! $this->mainPage->article) {
             throw new Error404('Статья не найдена');
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
@@ -56,7 +54,7 @@ class Main extends \App\Controller
         $countArticle = Article::getCountArticleInCategory($link);
         $this->mainPage->pagination = new Pagination($countArticle, $page, Article::PER_PAGE);
         $this->mainPage->news = Article::findByCategory($link, is_null($page) ? 1 : $page, true);
-        if (empty($this->mainPage->news)) {
+        if (! $this->mainPage->news) {
             throw new Error404('Несуществующая страница');
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);

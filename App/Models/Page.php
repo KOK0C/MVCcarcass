@@ -33,9 +33,8 @@ class Page extends Model
      */
     public static function findByLink(string $link)
     {
-        $dbConnect = DataBase::getInstance();
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE link = :link LIMIT 1';
-        $result = $dbConnect->query($sql, self::class, ['link' => $link]);
-        return array_pop($result);
+        $result = DataBase::getInstance()->query($sql, self::class, ['link' => $link]);
+        return (! empty($result)) ? $result[0] : null;
     }
 }

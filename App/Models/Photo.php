@@ -30,7 +30,6 @@ class Photo extends Model
     public static function findForArticle(int $id): array
     {
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE article_id = :id';
-        $dbConnect = DataBase::getInstance();
-        return $dbConnect->query($sql, self::class, ['id' => $id]);
+        return DataBase::getInstance()->query($sql, self::class, ['id' => $id]);
     }
 }
