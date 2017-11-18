@@ -283,3 +283,22 @@ pre {
 .blog-pagination .pag-active span {
     color: #172c3e;
 }
+
+.signup-login {
+    position: absolute;
+    top: 30px;
+}
+
+.user-action {
+    background-color: transparent;
+    border: none;
+    color: #ed1927;
+}
+
+.user-action:hover {
+    color: rgb(231, 140, 92);
+}
+
+.form-signup-heading, .form-signin-heading {
+    margin: 0;
+}
