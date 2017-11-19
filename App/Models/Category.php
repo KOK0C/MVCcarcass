@@ -35,7 +35,7 @@ class Category extends Model
 
     /**
      * @param $name
-     * @return bool|object Page
+     * @return bool|string
      */
     public function __get($name)
     {

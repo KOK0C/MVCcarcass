@@ -18,9 +18,9 @@ class ErrorHandler
     private $logger;
     private static $fatalErrors = [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR];
 
-    public function __construct()
+    public function __construct(Logger $logger)
     {
-        $this->logger = new Logger();
+        $this->logger = $logger;
         ob_start();
         register_shutdown_function([$this, 'fatalErrorHandler']);
         set_error_handler([$this, 'errorHandler']);

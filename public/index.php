@@ -10,14 +10,14 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/function.php';
 
-$errorHandler = new IhorRadchenko\App\Components\ErrorHandler();
+$logger = new IhorRadchenko\App\Components\Logger();
+$errorHandler = new IhorRadchenko\App\Components\ErrorHandler($logger);
 
 $route = IhorRadchenko\App\Components\Router::getInstance();
 
 try {
     $route->run();
 } catch (IhorRadchenko\App\Exceptions\DbException $e) {
-    $logger = new IhorRadchenko\App\Components\Logger();
     $logger->emergency($e->getMessage(), ['Exception' => get_class($e), 'File' => $e->getFile(), 'Line' => $e->getLine()]);
     require_once $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/errors/errorDB.phtml';
     die();

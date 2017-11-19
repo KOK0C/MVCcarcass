@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App\Models;
 
+use IhorRadchenko\App\Components\Traits\GetDate;
 use IhorRadchenko\App\DataBase;
 use IhorRadchenko\App\Model;
 
@@ -18,6 +19,8 @@ use IhorRadchenko\App\Model;
  */
 class Article extends Model
 {
+    use GetDate;
+
     const TABLE = 'news';
 
     const PER_PAGE = 5;
@@ -25,7 +28,6 @@ class Article extends Model
     public $title;
     public $description;
     public $text;
-    private $date;
     private $category_id;
     private $image;
     public $alias;
@@ -114,13 +116,6 @@ class Article extends Model
                AND alias = :alias LIMIT 1';
         $result = DataBase::getInstance()->query($sql, self::class, ['link' => $link, 'alias' => $alias]);
         return (! empty($result)) ? $result[0] : null;
-    }
-
-    public function getDate(): string
-    {
-        $pattern = '~^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$~';
-        $replacement = "[$3/$2/$1]";
-        return preg_replace($pattern, $replacement, $this->date);
     }
 
     /**

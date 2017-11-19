@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App\Models;
 
+use IhorRadchenko\App\Components\Traits\GetDate;
 use IhorRadchenko\App\Model;
 
 /**
@@ -17,9 +18,39 @@ use IhorRadchenko\App\Model;
  */
 class User extends Model
 {
+    use GetDate;
+
     const TABLE = 'users';
 
     public $email;
     public $hash_password;
-    public $name;
+    public $f_name;
+    public $l_name;
+    private $group_id;
+
+    public function __isset($name)
+    {
+        switch ($name) {
+            case 'group':
+                return isset($this->group_id);
+                break;
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * @param $name
+     * @return bool|string
+     */
+    public function __get($name)
+    {
+        switch ($name) {
+            case 'group':
+                return UserGroup::findById($this->group_id)->name;
+                break;
+            default:
+                return false;
+        }
+    }
 }
