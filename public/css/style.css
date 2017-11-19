@@ -289,6 +289,10 @@ pre {
     top: 30px;
 }
 
+.signup-login span {
+    color: #999;
+}
+
 .user-action {
     background-color: transparent;
     border: none;
@@ -301,4 +305,9 @@ pre {
 
 .form-signup-heading, .form-signin-heading {
     margin: 0;
+}
+
+.checkbox {
+    margin-top: 5px;
+    color: #999;
 }

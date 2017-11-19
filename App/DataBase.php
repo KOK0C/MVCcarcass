@@ -95,4 +95,16 @@ class DataBase
         }
         return $stmt->fetchColumn();
     }
+
+    public function get(string $field, string $table, $value)
+    {
+        $sql = "SELECT * FROM $table WHERE $field = :v LIMIT 1";
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(['v' => $value]);
+        } catch (\PDOException $e) {
+            throw new DbException('Ошибка при извлечении записи из бд');
+        }
+        return $stmt->fetch();
+    }
 }
