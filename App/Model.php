@@ -7,6 +7,9 @@
  */
 
 namespace IhorRadchenko\App;
+use IhorRadchenko\App\Components\Session;
+use IhorRadchenko\App\Components\Validation\ValidationErrorHandler;
+use IhorRadchenko\App\Components\Validation\Validator;
 
 /**
  * Class Model
@@ -18,11 +21,11 @@ abstract class Model
      * @var string Хранит название таблицы в бд
      */
     const TABLE = '';
-
     /**
      * @var integer
      */
     protected $id;
+    protected $fields = [];
 
     /**
      * @return int
@@ -30,6 +33,38 @@ abstract class Model
     public function getId(): int
     {
         return $this->id;
+    }
+
+    private function creat_json($data)
+    {
+        if (is_array($data)) {
+            $arr = [];
+            foreach ($data as $key => $value) {
+                $arr[$key] = json_encode($value, JSON_UNESCAPED_UNICODE);
+            }
+            return $arr;
+        }
+        return json_encode($data, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function load(array $data, array $rules): bool
+    {
+        $validator = new Validator((new ValidationErrorHandler()));
+        $validation = $validator->check($data, $rules);
+        if (! $validation->fails()) {
+            foreach ($this->fields as $key => $value) {
+                if ($key === 'hash_password' && isset($data['password'])) {
+                    $this->fields['hash_password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    continue;
+                }
+                if (array_key_exists($key, $data)) {
+                        $this->fields[$key] = $data[$key];
+                }
+            }
+            return true;
+        }
+        Session::set('errors', $this->creat_json($validation->errors()->get()));
+        return false;
     }
 
     /**
@@ -93,21 +128,18 @@ abstract class Model
      */
     protected function insert(): bool
     {
-        $arrayProp = get_object_vars($this);
-        array_pop($arrayProp);
-        foreach ($arrayProp as $k => $v) {
+        foreach ($this->fields as $k => $v) {
             $arrayPropMod[':' . $k] = $v;
         }
         $sql = 'INSERT INTO ' . static::TABLE . ' (' .
-            implode(', ', array_keys($arrayProp)) .
+            implode(', ', array_keys($this->fields)) .
             ') VALUES ('.  implode(', ', array_keys($arrayPropMod)) .')';
         $dbConnect = DataBase::getInstance();
-        if ($dbConnect->execute($sql, $arrayProp)) {
+        if ($dbConnect->execute($sql, $this->fields)) {
             $this->id = $dbConnect->lastInsertId();
             return true;
         }
         return false;
-
     }
 
     /**

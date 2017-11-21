@@ -41,9 +41,9 @@
             </div>
             <div class="col-sm-4">
                 <div class="signup-login">
-                    <button class="user-action" data-toggle="modal" data-target="#login">ВХОД</button>
+                    <button id="btn-login" class="user-action" data-toggle="modal" data-target="#login">ВХОД</button>
                     <span>|</span>
-                    <button class="user-action" data-toggle="modal" data-target="#signup">РЕГИСТРАЦИЯ</button>
+                    <button id="btn-signup" class="user-action" data-toggle="modal" data-target="#signup">РЕГИСТРАЦИЯ</button>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
 <div class="modal fade" id="login" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form-signin">
+            <form class="form-signin" method="post" action="/login">
                 <div class="modal-header">
                     <h2 class="form-signin-heading">Вход на сайт</h2>
                     <button class="close" type="button" data-dismiss="modal">&times;</button>
@@ -81,21 +81,42 @@
 <div class="modal fade" id="signup" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form-signup">
+            <form class="form-signup" method="post" action="/signup">
                 <div class="modal-header">
                     <h2 class="form-signup-heading">Регистрация</h2>
                     <button class="close" type="button" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
+
+                    <div class="alert alert-danger modal-error" id="errorEmail">
+                        <ul id="errorEmailList">
+
+                        </ul>
+                    </div>
+
                     <label for="inputEmail" class="sr-only">Емейл адресс</label>
                     <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
+
+                    <div class="alert alert-danger modal-error" id="errorPass">
+                        <ul id="errorPassList">
+
+                        </ul>
+                    </div>
+
                     <label for="inputPassword" class="sr-only">Пароль</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
+
+                    <div class="alert alert-danger modal-error" id="errorPassAgain">
+                        <ul id="errorPassAgainList">
+
+                        </ul>
+                    </div>
+
                     <label for="repeatPassword" class="sr-only">Повторите пароль</label>
                     <input type="password" name="password_again" id="repeatPassword" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
                 </div>
                 <div class="modal-footer">
-                    <input class="btn btn-primary btn-block" type="submit" value="Зарегистрироваться">
+                    <input class="btn btn-primary btn-block" type="submit" value="Зарегистрироваться" name="signup">
                     <button class="btn btn-danger" type="button" data-dismiss="modal">Отмена</button>
                 </div>
             </form>

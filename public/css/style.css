@@ -311,3 +311,13 @@ pre {
     margin-top: 5px;
     color: #999;
 }
+
+.modal-error {
+    display: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.modal-error ul {
+    margin: 8px 0 8px 0;
+}

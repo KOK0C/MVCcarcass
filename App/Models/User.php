@@ -28,6 +28,13 @@ class User extends Model
     public $l_name;
     private $group_id;
 
+    protected $fields = [
+        'email' => '',
+        'hash_password' => '',
+        'f_name' => '',
+        'l_name' => '',
+    ];
+
     public function __isset($name)
     {
         switch ($name) {

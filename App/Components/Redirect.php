@@ -16,7 +16,7 @@ class Redirect
             header('Location: ' . $location);
             exit();
         }
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: ' . ($_SERVER['HTTP_REFERER'] ?? '/'));
         exit();
     }
 }

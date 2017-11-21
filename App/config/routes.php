@@ -7,6 +7,10 @@
  */
 
 return [
+    '^signup$' => ['controller' => 'User', 'action' => 'signUp'],
+    '^login$'  => ['controller' => 'User', 'action' => 'logIn'],
+    '^logout$' => ['controller' => 'User', 'action' => 'logOut'],
+
     '^mark/([a-z-]+)/([a-z0-9-]+)$' => ['controller' => 'Cars', 'action' => 'oneModel'],
 
     '^mark/([a-z-]+)$' => ['controller' => 'Cars', 'action' => 'oneMark'],

@@ -14,3 +14,211 @@ File : C:\OSPanel\domains\MVCcarcass\public\index.php;
 Line : 16;
 
 =======================================================================
+
+[20-11-2017 20:27:37] CRITICAL
+syntax error, unexpected '}'
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 39;
+
+=======================================================================
+
+[20-11-2017 20:27:37] ALERT
+Exception thrown without a stack frame
+Fatal Error : CORE_ERROR [16];
+File : Unknown;
+Line : 0;
+
+=======================================================================
+
+[20-11-2017 20:27:37] NOTICE
+ob_end_clean(): failed to delete buffer. No buffer to delete
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php;
+Line : 75;
+
+=======================================================================
+
+[20-11-2017 20:27:37] CRITICAL
+syntax error, unexpected '}'
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 39;
+
+=======================================================================
+
+[20-11-2017 20:27:37] ALERT
+Exception thrown without a stack frame
+Fatal Error : CORE_ERROR [16];
+File : Unknown;
+Line : 0;
+
+=======================================================================
+
+[20-11-2017 20:27:37] NOTICE
+ob_end_clean(): failed to delete buffer. No buffer to delete
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\ErrorHandler.php;
+Line : 75;
+
+=======================================================================
+
+[21-11-2017 18:53:50] ALERT
+Access level to IhorRadchenko\App\Models\User::$fields must be protected (as in class IhorRadchenko\App\Model) or weaker
+Fatal Error : COMPILE_ERROR [64];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 19;
+
+=======================================================================
+
+[21-11-2017 19:55:08] WARNING
+implode(): Invalid arguments passed
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 101;
+
+=======================================================================
+
+[21-11-2017 19:55:09] WARNING
+implode(): Invalid arguments passed
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 101;
+
+=======================================================================
+
+[21-11-2017 19:55:27] WARNING
+implode(): Invalid arguments passed
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 101;
+
+=======================================================================
+
+[21-11-2017 19:55:27] WARNING
+implode(): Invalid arguments passed
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 101;
+
+=======================================================================
+
+[21-11-2017 19:55:28] WARNING
+implode(): Invalid arguments passed
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 101;
+
+=======================================================================
+
+[21-11-2017 19:55:28] WARNING
+implode(): Invalid arguments passed
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 101;
+
+=======================================================================
+
+[21-11-2017 19:55:30] WARNING
+implode(): Invalid arguments passed
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 101;
+
+=======================================================================
+
+[21-11-2017 19:55:31] WARNING
+implode(): Invalid arguments passed
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 101;
+
+=======================================================================
+
+[21-11-2017 20:04:39] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 23;
+
+=======================================================================
+
+[21-11-2017 20:05:23] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 23;
+
+=======================================================================
+
+[21-11-2017 20:06:21] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 24;
+
+=======================================================================
+
+[21-11-2017 20:09:30] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 12;
+
+=======================================================================
+
+[21-11-2017 20:09:31] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 12;
+
+=======================================================================
+
+[21-11-2017 20:09:37] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 12;
+
+=======================================================================
+
+[21-11-2017 20:09:37] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 12;
+
+=======================================================================
+
+[21-11-2017 20:09:58] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 12;
+
+=======================================================================
+
+[21-11-2017 20:09:59] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 12;
+
+=======================================================================
+
+[21-11-2017 20:29:54] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 25;
+
+=======================================================================
+
+[21-11-2017 20:54:48] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 24;
+
+=======================================================================
