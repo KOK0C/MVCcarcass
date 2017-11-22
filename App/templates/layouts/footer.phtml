@@ -27,15 +27,23 @@
         <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'password')): ?>
             var pass = <?= \IhorRadchenko\App\Components\Session::get('errors', 'password'); ?>;
         <?php endif; ?>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'password_again')): ?>
-            var pass_again = <?= \IhorRadchenko\App\Components\Session::get('errors', 'password_again'); ?>;
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'passwordAgain')): ?>
+            var pass_again = <?= \IhorRadchenko\App\Components\Session::get('errors', 'passwordAgain'); ?>;
         <?php endif; ?>
     </script>
     <script src="/public/js/signup.js"></script>
     <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
 <?php endif; ?>
-<?php if (\IhorRadchenko\App\Components\Session::get('login_fail')): ?>
-    <?php \IhorRadchenko\App\Components\Session::delete('login_fail'); ?>
+<?php if (\IhorRadchenko\App\Components\Session::get('login_msg')): ?>
+    <?php \IhorRadchenko\App\Components\Session::delete('login_msg'); ?>
+    <script>
+        <?php if (\IhorRadchenko\App\Components\Session::get('login_success')): ?>
+            var loginSuccess = true;
+        <?php else: ?>
+            var loginSuccess = false;
+        <?php endif; ?>
+        <?php \IhorRadchenko\App\Components\Session::delete('login_success'); ?>
+    </script>
     <script src="/public/js/login.js"></script>
 <?php endif; ?>
 </body>

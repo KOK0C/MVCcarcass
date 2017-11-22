@@ -34,10 +34,12 @@ class User extends Controller
             ];
             if ($user->load($_POST, $validRules)) {
                 $user->save();
-                Redirect::to();
+                Session::set('login_msg', true);
+                Session::set('login_success', true);
+                Redirect::to('/login');
             }
             Session::set('signup_error', true);
-            Redirect::to();
+            Redirect::to('');
         }
         Redirect::to();
     }
@@ -50,7 +52,8 @@ class User extends Controller
                 Session::set('user', $user);
                 Redirect::to();
             }
-            Session::set('login_fail', true);
+            Session::set('login_msg', true);
+            Session::set('login_success', false);
         }
         Redirect::to();
     }
