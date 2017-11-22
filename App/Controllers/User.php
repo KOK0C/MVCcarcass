@@ -28,7 +28,7 @@ class User extends Controller
                     'minLength' => 6,
                     'alnum' => true
                 ],
-                'password_again' => [
+                'passwordAgain' => [
                     'match' => 'password'
                 ]
             ];
@@ -44,7 +44,15 @@ class User extends Controller
 
     protected function actionLogIn()
     {
-
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+            $user = \IhorRadchenko\App\Models\User::findByEmail($_POST['email']);
+            if ($user && $user->passwordVerify($_POST['password'])) {
+                Session::set('user', $user);
+                Redirect::to();
+            }
+            Session::set('login_fail', true);
+        }
+        Redirect::to();
     }
 
     protected function actionLogOut()

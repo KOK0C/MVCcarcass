@@ -222,3 +222,67 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
 Line : 24;
 
 =======================================================================
+
+[22-11-2017 18:18:44] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 24;
+
+=======================================================================
+
+[22-11-2017 18:19:12] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 24;
+
+=======================================================================
+
+[22-11-2017 18:20:53] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 24;
+
+=======================================================================
+
+[22-11-2017 18:21:20] NOTICE
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\footer.phtml;
+Line : 24;
+
+=======================================================================
+
+[22-11-2017 18:50:50] CRITICAL
+Class 'IhorRadchenko\App\Components\Token' not found
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 118;
+
+=======================================================================
+
+[22-11-2017 18:50:50] CRITICAL
+Class 'IhorRadchenko\App\Components\Token' not found
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 118;
+
+=======================================================================
+
+[22-11-2017 18:50:54] CRITICAL
+Class 'IhorRadchenko\App\Components\Token' not found
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 118;
+
+=======================================================================
+
+[22-11-2017 18:50:55] CRITICAL
+Class 'IhorRadchenko\App\Components\Token' not found
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 118;
+
+=======================================================================

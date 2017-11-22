@@ -34,5 +34,9 @@
     <script src="/public/js/signup.js"></script>
     <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
 <?php endif; ?>
+<?php if (\IhorRadchenko\App\Components\Session::get('login_fail')): ?>
+    <?php \IhorRadchenko\App\Components\Session::delete('login_fail'); ?>
+    <script src="/public/js/login.js"></script>
+<?php endif; ?>
 </body>
 </html>

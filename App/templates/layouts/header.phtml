@@ -5,7 +5,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?= htmlentities($page->title); ?></title>
+    <title>
+        <?php if (! empty($page)): ?>
+            <?= htmlentities($page->title); ?>
+        <?php endif; ?>
+    </title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/css/main.css">
@@ -36,8 +40,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
-                <h1 class="blog-title"><?= htmlentities($page->title); ?></h1>
-                <p class="lead blog-description"><?= htmlentities(mb_ucfirst(mb_strtolower($page->description))); ?></p>
+                <h1 class="blog-title">
+                    <?php if (! empty($page)): ?>
+                        <?= htmlentities($page->title); ?>
+                    <?php endif; ?>
+                </h1>
+                <p class="lead blog-description">
+                    <?php if (! empty($page)): ?>
+                        <?= htmlentities(mb_ucfirst(mb_strtolower($page->description))); ?>
+                    <?php endif; ?>
+                </p>
             </div>
             <div class="col-sm-4">
                 <div class="signup-login">
@@ -59,6 +71,9 @@
                     <button class="close" type="button" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
+
+                    <div class="alert modal-error" id="loginMessage"></div>
+
                     <label for="inputEmail" class="sr-only">Емейл адресс</label>
                     <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
                     <label for="inputPassword" class="sr-only">Пароль</label>
@@ -70,7 +85,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input class="btn btn-primary btn-block" type="submit" value="Войти">
+                    <input class="btn btn-primary btn-block" type="submit" name="login" value="Войти">
                     <button class="btn btn-danger" type="button" data-dismiss="modal">Отмена</button>
                 </div>
             </form>
@@ -97,8 +112,8 @@
                     <label for="inputEmail" class="sr-only">Емейл адресс</label>
                     <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
 
-                    <div class="alert alert-danger modal-error" id="errorPass">
-                        <ul id="errorPassList">
+                    <div class="alert alert-danger modal-error" id="errorPassword">
+                        <ul id="errorPasswordList">
 
                         </ul>
                     </div>
@@ -106,14 +121,14 @@
                     <label for="inputPassword" class="sr-only">Пароль</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
 
-                    <div class="alert alert-danger modal-error" id="errorPassAgain">
-                        <ul id="errorPassAgainList">
+                    <div class="alert alert-danger modal-error" id="errorPasswordAgain">
+                        <ul id="errorPasswordAgainList">
 
                         </ul>
                     </div>
 
                     <label for="repeatPassword" class="sr-only">Повторите пароль</label>
-                    <input type="password" name="password_again" id="repeatPassword" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
+                    <input type="password" name="passwordAgain" id="inputPasswordAgain" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
                 </div>
                 <div class="modal-footer">
                     <input class="btn btn-primary btn-block" type="submit" value="Зарегистрироваться" name="signup">

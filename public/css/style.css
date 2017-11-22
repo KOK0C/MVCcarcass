@@ -318,6 +318,10 @@ pre {
     margin-top: 10px;
 }
 
-.modal-error ul {
-    margin: 8px 0 8px 0;
+.modal-error ul, .modal-error p {
+    margin: 8px 0;
+}
+
+.modal-error p {
+    text-align: center;
 }

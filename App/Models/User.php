@@ -9,6 +9,7 @@
 namespace IhorRadchenko\App\Models;
 
 use IhorRadchenko\App\Components\Traits\GetDate;
+use IhorRadchenko\App\DataBase;
 use IhorRadchenko\App\Model;
 
 /**
@@ -23,7 +24,7 @@ class User extends Model
     const TABLE = 'users';
 
     public $email;
-    public $hash_password;
+    private $hash_password;
     public $f_name;
     public $l_name;
     private $group_id;
@@ -59,5 +60,23 @@ class User extends Model
             default:
                 return false;
         }
+    }
+
+    /**
+     * @param string $email
+     * @return null|User
+     */
+    public static function findByEmail(string $email)
+    {
+        $sql = 'SELECT * FROM ' . User::TABLE . ' WHERE email = :email LIMIT 1';
+        $result = DataBase::getInstance()->query($sql, self::class, ['email' => $email]);
+        return (! empty($result)) ? $result[0] : null;
+    }
+
+    public function passwordVerify(string $password) {
+        if (password_verify($password, $this->hash_password)) {
+            return true;
+        }
+        return false;
     }
 }
