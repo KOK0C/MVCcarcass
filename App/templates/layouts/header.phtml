@@ -84,6 +84,7 @@
                     <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
                     <label for="inputPassword" class="sr-only">Пароль</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
+                    <input type="hidden" name="login_token" value="<?= \IhorRadchenko\App\Components\Token::generate('login_token'); ?>">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="remember-me"> <span>Запомнить меня</span>
@@ -135,6 +136,7 @@
 
                     <label for="inputPasswordAgain" class="sr-only">Повторите пароль</label>
                     <input type="password" name="passwordAgain" id="inputPasswordAgain" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
+                    <input type="hidden" name="signup_token" value="<?= \IhorRadchenko\App\Components\Token::generate('signup_token'); ?>">
                 </div>
                 <div class="modal-footer">
                     <input class="btn btn-primary btn-block" type="submit" value="Зарегистрироваться" name="signup">

@@ -10,6 +10,7 @@ namespace IhorRadchenko\App\Controllers;
 
 use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Components\Session;
+use IhorRadchenko\App\Components\Token;
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
 
@@ -17,7 +18,7 @@ class User extends Controller
 {
     protected function actionSignUp()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup']) && Token::check('signup_token', $_POST['signup_token'])) {
             $user = new \IhorRadchenko\App\Models\User();
             $validRules = [
                 'email' => [
@@ -46,7 +47,7 @@ class User extends Controller
 
     protected function actionLogIn()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login']) && Token::check('login_token', $_POST['login_token'])) {
             $user = \IhorRadchenko\App\Models\User::findByEmail($_POST['email']);
             if ($user && $user->passwordVerify($_POST['password'])) {
                 Session::set('user', $user);
