@@ -53,9 +53,15 @@
             </div>
             <div class="col-sm-4">
                 <div class="signup-login">
-                    <button id="btn-login" class="user-action" data-toggle="modal" data-target="#login">ВХОД</button>
-                    <span>|</span>
-                    <button id="btn-signup" class="user-action" data-toggle="modal" data-target="#signup">РЕГИСТРАЦИЯ</button>
+                    <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
+                        <a href="#" class="user-action">ЛИЧНЫЙ КАБИНЕТ</a>
+                        <span>|</span>
+                        <a href="/logout" class="user-action" >ВЫХОД</a>
+                    <?php else: ?>
+                        <button id="btn-login" class="user-action" data-toggle="modal" data-target="#login">ВХОД</button>
+                        <span>|</span>
+                        <button id="btn-signup" class="user-action" data-toggle="modal" data-target="#signup">РЕГИСТРАЦИЯ</button>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

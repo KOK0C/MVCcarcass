@@ -286,3 +286,11 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
 Line : 118;
 
 =======================================================================
+
+[23-11-2017 17:58:46] EMERGENCY
+Ошибка при запросе к бд
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 58;
+
+=======================================================================

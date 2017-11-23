@@ -11,6 +11,7 @@ namespace IhorRadchenko\App\Controllers;
 use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\Exceptions\Error404;
 
 class User extends Controller
 {
@@ -33,15 +34,14 @@ class User extends Controller
                 ]
             ];
             if ($user->load($_POST, $validRules)) {
+                $user->passwordHash();
                 $user->save();
-                Session::set('login_msg', true);
-                Session::set('login_success', true);
+                Session::set('login', 'success');
                 Redirect::to('/login');
             }
-            Session::set('signup_error', true);
-            Redirect::to('');
+            Redirect::to();
         }
-        Redirect::to();
+        throw new Error404();
     }
 
     protected function actionLogIn()
@@ -52,14 +52,16 @@ class User extends Controller
                 Session::set('user', $user);
                 Redirect::to();
             }
-            Session::set('login_msg', true);
-            Session::set('login_success', false);
+            Session::set('login', 'fail');
         }
         Redirect::to();
     }
 
     protected function actionLogOut()
     {
-
+        if (Session::has('user')) {
+            Session::delete('user');
+        }
+        Redirect::to();
     }
 }

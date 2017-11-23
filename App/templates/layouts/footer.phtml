@@ -18,8 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <script src="/public/js/calendar.js"></script>
 
-<?php if (\IhorRadchenko\App\Components\Session::get('signup_error')): ?>
-    <?php \IhorRadchenko\App\Components\Session::delete('signup_error'); ?>
+<?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
     <script>
         <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'email')): ?>
             var email = <?= \IhorRadchenko\App\Components\Session::get('errors', 'email'); ?>;
@@ -34,15 +33,14 @@
     <script src="/public/js/signup.js"></script>
     <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
 <?php endif; ?>
-<?php if (\IhorRadchenko\App\Components\Session::get('login_msg')): ?>
-    <?php \IhorRadchenko\App\Components\Session::delete('login_msg'); ?>
+<?php if (\IhorRadchenko\App\Components\Session::has('login')): ?>
     <script>
-        <?php if (\IhorRadchenko\App\Components\Session::get('login_success')): ?>
+        <?php if (\IhorRadchenko\App\Components\Session::get('login') === 'success'): ?>
             var loginSuccess = true;
         <?php else: ?>
             var loginSuccess = false;
         <?php endif; ?>
-        <?php \IhorRadchenko\App\Components\Session::delete('login_success'); ?>
+        <?php \IhorRadchenko\App\Components\Session::delete('login'); ?>
     </script>
     <script src="/public/js/login.js"></script>
 <?php endif; ?>

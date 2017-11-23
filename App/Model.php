@@ -53,12 +53,8 @@ abstract class Model
         $validation = $validator->check($data, $rules);
         if (! $validation->fails()) {
             foreach ($this->fields as $key => $value) {
-                if ($key === 'hash_password' && isset($data['password'])) {
-                    $this->fields['hash_password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                    continue;
-                }
                 if (array_key_exists($key, $data)) {
-                        $this->fields[$key] = $data[$key];
+                    $this->fields[$key] = $data[$key];
                 }
             }
             return true;

@@ -24,14 +24,14 @@ class User extends Model
     const TABLE = 'users';
 
     public $email;
-    private $hash_password;
+    private $password;
     public $f_name;
     public $l_name;
     private $group_id;
 
     protected $fields = [
         'email' => '',
-        'hash_password' => '',
+        'password' => '',
         'f_name' => '',
         'l_name' => '',
     ];
@@ -74,9 +74,14 @@ class User extends Model
     }
 
     public function passwordVerify(string $password) {
-        if (password_verify($password, $this->hash_password)) {
+        if (password_verify($password, $this->password)) {
             return true;
         }
         return false;
+    }
+
+    public function passwordHash()
+    {
+        $this->fields['password'] = password_hash($this->fields['password'], PASSWORD_DEFAULT);
     }
 }
