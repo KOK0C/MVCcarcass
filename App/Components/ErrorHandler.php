@@ -42,11 +42,11 @@ class ErrorHandler
             case 2048:
             case 8192:
             case 16384:
-                $this->logger->notice($errstr, ['Error' => self::getErrorName($errno), 'File' => $file, 'Line' => $line]);
+                $this->logger->warning($errstr, ['Error' => self::getErrorName($errno), 'File' => $file, 'Line' => $line]);
                 break;
             case 2:
             case 512:
-                $this->logger->warning($errstr, ['Error' => self::getErrorName($errno), 'File' => $file, 'Line' => $line]);
+                $this->logger->error($errstr, ['Error' => self::getErrorName($errno), 'File' => $file, 'Line' => $line]);
                 break;
         }
 

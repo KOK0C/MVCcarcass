@@ -68,23 +68,23 @@
     </div>
 </div>
 
+<input type="hidden" name="login_token" form="loginForm" value="<?= \IhorRadchenko\App\Components\Token::generate('login_token'); ?>">
+<input type="hidden" name="signup_token" form="signupForm" value="<?= \IhorRadchenko\App\Components\Token::generate('signup_token'); ?>">
+
 <div class="modal fade" id="login" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form-signin" method="post" action="/login">
+            <form class="form-signin" id="loginForm" method="post" action="/login">
                 <div class="modal-header">
                     <h2 class="form-signin-heading">Вход на сайт</h2>
                     <button class="close exit-modal" type="button" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-
                     <div class="alert modal-error" id="loginMessage"></div>
-
                     <label for="inputEmail" class="sr-only">Емейл адресс</label>
                     <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
                     <label for="inputPassword" class="sr-only">Пароль</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
-                    <input type="hidden" name="login_token" value="<?= \IhorRadchenko\App\Components\Token::generate('login_token'); ?>">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="remember-me"> <span>Запомнить меня</span>
@@ -103,7 +103,7 @@
 <div class="modal fade" id="signup" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form-signup" method="post" action="/signup">
+            <form class="form-signup" method="post" action="/signup" id="signupForm">
                 <div class="modal-header">
                     <h2 class="form-signup-heading">Регистрация</h2>
                     <button class="close" type="button" data-dismiss="modal">&times;</button>
@@ -136,7 +136,6 @@
 
                     <label for="inputPasswordAgain" class="sr-only">Повторите пароль</label>
                     <input type="password" name="passwordAgain" id="inputPasswordAgain" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
-                    <input type="hidden" name="signup_token" value="<?= \IhorRadchenko\App\Components\Token::generate('signup_token'); ?>">
                 </div>
                 <div class="modal-footer">
                     <input class="btn btn-primary btn-block" type="submit" value="Зарегистрироваться" name="signup">

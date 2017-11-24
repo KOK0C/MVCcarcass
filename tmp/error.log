@@ -294,3 +294,331 @@ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
 Line : 58;
 
 =======================================================================
+
+[23-11-2017 20:55:53] WARNING
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 48;
+
+=======================================================================
+
+[23-11-2017 20:56:40] WARNING
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 48;
+
+=======================================================================
+
+[23-11-2017 20:58:51] WARNING
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 48;
+
+=======================================================================
+
+[23-11-2017 20:59:24] WARNING
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 48;
+
+=======================================================================
+
+[23-11-2017 21:01:23] WARNING
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 48;
+
+=======================================================================
+
+[23-11-2017 21:01:23] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:24] WARNING
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 48;
+
+=======================================================================
+
+[23-11-2017 21:01:25] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:32] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:34] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:35] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:36] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:38] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:38] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:40] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:01:40] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:02:37] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:02:38] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:03:00] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:03:01] WARNING
+A non-numeric value encountered
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[23-11-2017 21:14:35] WARNING
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 48;
+
+=======================================================================
+
+[23-11-2017 21:47:35] NOTICE
+Undefined index: second_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[23-11-2017 21:47:36] NOTICE
+Undefined index: second_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[23-11-2017 21:47:37] NOTICE
+Undefined index: second_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[23-11-2017 21:47:40] NOTICE
+Undefined index: second_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[23-11-2017 21:47:41] NOTICE
+Undefined index: second_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[23-11-2017 21:47:42] NOTICE
+Undefined index: second_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[23-11-2017 21:47:43] NOTICE
+Undefined index: second_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[23-11-2017 21:48:16] CRITICAL
+syntax error, unexpected ';', expecting ',' or ')'
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[23-11-2017 21:48:17] CRITICAL
+syntax error, unexpected ';', expecting ',' or ')'
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\header.phtml;
+Line : 71;
+
+=======================================================================
+
+[24-11-2017 17:14:27] CRITICAL
+Call to undefined function Sodium\bin2hex()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[24-11-2017 17:14:27] CRITICAL
+Call to undefined function Sodium\bin2hex()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[24-11-2017 17:14:28] CRITICAL
+Call to undefined function Sodium\bin2hex()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Token.php;
+Line : 15;
+
+=======================================================================
+
+[24-11-2017 20:18:53] WARNING
+Undefined index: login_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 53;
+
+=======================================================================
+
+[24-11-2017 20:20:16] WARNING
+Undefined index: login_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 54;
+
+=======================================================================
+
+[24-11-2017 20:21:16] WARNING
+Undefined index: login_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 54;
+
+=======================================================================
+
+[24-11-2017 20:21:43] WARNING
+Undefined index: login_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 54;
+
+=======================================================================
+
+[24-11-2017 20:21:44] WARNING
+Undefined index: login_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 54;
+
+=======================================================================
+
+[24-11-2017 20:22:22] WARNING
+Undefined index: login_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 54;
+
+=======================================================================
+
+[24-11-2017 20:22:42] WARNING
+Undefined index: login_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 53;
+
+=======================================================================
+
+[24-11-2017 20:22:59] WARNING
+Undefined index: login_token
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 53;
+
+=======================================================================

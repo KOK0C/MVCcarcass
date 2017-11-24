@@ -20,7 +20,7 @@ class Token
 
     public static function check(string $name, string $value)
     {
-        if (Session::has($name) && Session::get($name) === $value) {
+        if (Session::has($name) && hash_equals(Session::get($name), $value)) {
             Session::delete($name);
             return true;
         }

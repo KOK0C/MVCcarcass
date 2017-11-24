@@ -38,7 +38,7 @@ class User extends Controller
                 $user->passwordHash();
                 $user->save();
                 Session::set('login', 'success');
-                Redirect::to('/login');
+                Redirect::to();
             }
             Redirect::to();
         }
