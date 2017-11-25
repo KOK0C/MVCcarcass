@@ -742,3 +742,11 @@ File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
 Line : 154;
 
 =======================================================================
+
+[25-11-2017 21:32:30] CRITICAL
+syntax error, unexpected ')'
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 158;
+
+=======================================================================

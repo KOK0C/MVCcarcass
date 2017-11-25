@@ -134,7 +134,32 @@ class User extends Controller
     protected function actionChangePassword()
     {
         if (Session::has('user')) {
-            View::display($this->header, $this->sideBar, $this->footer);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password']) && Token::check('change_password_token', $_POST['change_password_token'])) {
+                $user = Session::get('user');
+                if ($user->passwordVerify($_POST['oldPassword'])) {
+                    $validRules = [
+                        'password' => [
+                            'required' => true,
+                            'minLength' => 6,
+                            'alnum' => true
+                        ],
+                        'passwordAgain' => [
+                            'match' => 'password'
+                        ]
+                    ];
+                    if ($user->load($_POST, $validRules)) {
+                        $user->passwordHash();
+                        $user->save();
+                    } else {
+                        Session::set('change_pass', 'fail');
+                    }
+                } else {
+                    Session::set('change_pass', 'fail');
+                    Session::set('errors', ['old_pass' => json_encode(['Неверный пароль'], JSON_UNESCAPED_UNICODE)]);
+                }
+            }
+            $this->mainPage = new View('/App/templates/personal_area/change_password.phtml');
+            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
         } else {
             throw new Error404();
         }

@@ -67,5 +67,22 @@
     <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
 <?php endif; ?>
 
+<?php if (\IhorRadchenko\App\Components\Session::get('change_pass') === 'fail'): ?>
+    <script>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'old_pass')): ?>
+            var old_pass = <?= \IhorRadchenko\App\Components\Session::get('errors', 'old_pass'); ?>;
+        <?php endif; ?>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'password')): ?>
+            var pass = <?= \IhorRadchenko\App\Components\Session::get('errors', 'password'); ?>;
+        <?php endif; ?>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'passwordAgain')): ?>
+            var pass_again = <?= \IhorRadchenko\App\Components\Session::get('errors', 'passwordAgain'); ?>;
+        <?php endif; ?>
+    </script>
+    <script src="/public/js/change_pass.js"></script>
+    <?php \IhorRadchenko\App\Components\Session::delete('change_pass'); ?>
+    <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+<?php endif; ?>
+
 </body>
 </html>
