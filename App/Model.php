@@ -145,10 +145,11 @@ abstract class Model
      */
     protected function update(): bool
     {
-        $arrayProp = get_object_vars($this);
-        array_pop($arrayProp);
-        foreach ($arrayProp as $k => $v) {
-            $arraySQL[] = "$k = :$k";
+        foreach ($this->fields as $k => $v) {
+            if (! empty($this->fields[$k])) {
+                $arrayProp[$k] = $v;
+                $arraySQL[] = "$k = :$k";
+            }
         }
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(', ', $arraySQL) . ' WHERE id = ' . $this->id;
         if (DataBase::getInstance()->execute($sql, $arrayProp)) {

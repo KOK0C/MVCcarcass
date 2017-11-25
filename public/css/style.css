@@ -312,13 +312,13 @@ pre {
     color: #999;
 }
 
-.modal-error {
+.modal-error, .error-block {
     display: none;
     padding: 0;
     margin-top: 10px;
 }
 
-.modal-error ul, .modal-error p {
+.modal-error ul, .modal-error p, .error-block ul {
     margin: 8px 0;
 }
 

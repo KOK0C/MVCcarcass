@@ -18,7 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <script src="/public/js/calendar.js"></script>
 
-<?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+<?php if (\IhorRadchenko\App\Components\Session::get('signup') === 'fail'): ?>
     <script>
         <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'email')): ?>
             var email = <?= \IhorRadchenko\App\Components\Session::get('errors', 'email'); ?>;
@@ -32,7 +32,9 @@
     </script>
     <script src="/public/js/signup.js"></script>
     <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+    <?php \IhorRadchenko\App\Components\Session::delete('signup'); ?>
 <?php endif; ?>
+
 <?php if (\IhorRadchenko\App\Components\Session::has('login')): ?>
     <script>
         <?php if (\IhorRadchenko\App\Components\Session::get('login') === 'success'): ?>
@@ -44,5 +46,26 @@
     </script>
     <script src="/public/js/login.js"></script>
 <?php endif; ?>
+
+<?php if (\IhorRadchenko\App\Components\Session::get('update_user') === 'fail'): ?>
+    <script>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'email')): ?>
+            var email = <?= \IhorRadchenko\App\Components\Session::get('errors', 'email'); ?>;
+        <?php endif; ?>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'f_name')): ?>
+            var f_name = <?= \IhorRadchenko\App\Components\Session::get('errors', 'f_name'); ?>;
+        <?php endif; ?>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'l_name')): ?>
+            var l_name = <?= \IhorRadchenko\App\Components\Session::get('errors', 'l_name'); ?>;
+        <?php endif; ?>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'phone_number')): ?>
+            var phone_number = <?= \IhorRadchenko\App\Components\Session::get('errors', 'phone_number'); ?>;
+        <?php endif; ?>
+    </script>
+    <script src="/public/js/update_user.js"></script>
+    <?php \IhorRadchenko\App\Components\Session::delete('update_user'); ?>
+    <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+<?php endif; ?>
+
 </body>
 </html>

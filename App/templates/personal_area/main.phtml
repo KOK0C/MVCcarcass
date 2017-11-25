@@ -6,7 +6,11 @@
                 Ваше имя:
             </div>
             <div class="infoValue">
-                <a href="/user/profile"><u>Не указано</u></a>
+                <?php if (! empty(trim($user->getFullName()))): ?>
+                    <?= trim($user->getFullName()); ?>
+                <?php else: ?>
+                    <a href="/user/profile"><u>Не указано</u></a>
+                <?php endif; ?>
             </div>
             <div class="infoTitle">
                 Электронная почта:
@@ -18,7 +22,11 @@
                 Телефон:
             </div>
             <div class="infoValue">
-                <a href="/user/profile"><u>Не указано</u></a>
+                <?php if (! empty($user->phone_number)): ?>
+                    <?= $user->phone_number; ?>
+                <?php else: ?>
+                    <a href="/user/profile"><u>Не указано</u></a>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
     </div>

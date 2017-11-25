@@ -20,7 +20,7 @@ class Validator
      * Массив с возможными проверками
      * @var array $rules
      */
-    private $rules = ['required', 'minLength', 'maxLength', 'email', 'alnum', 'match', 'unique'];
+    private $rules = ['required', 'minLength', 'maxLength', 'email', 'alnum', 'match', 'unique', 'phone', 'length'];
     /**
      * Массив с сообщениями об ошибке
      * @var array $messages
@@ -33,7 +33,8 @@ class Validator
         'alnum'     => 'В строке должны быть только буквы или числа',
         'match'     => 'Поля не совпадают',
         'unique'    => 'Такое значение уже существует',
-        'phone'     => 'Номер телефона не валиден'
+        'phone'     => 'Номер телефона не валиден',
+        'length'    => 'Длина должна составлять :value символов'
     ];
     private $data;
 
@@ -95,6 +96,11 @@ class Validator
         return mb_strlen(trim($value)) <= $ruleValue;
     }
 
+    private function length($field, $value, $ruleValue): bool
+    {
+        return mb_strlen(trim($value)) === $ruleValue;
+    }
+
     private function email($field, $value, $ruleValue): bool
     {
         return filter_var($value, FILTER_VALIDATE_EMAIL);
@@ -117,6 +123,6 @@ class Validator
 
     private function phone($field, $value, $ruleValue): bool
     {
-        return preg_match('~^\+380\d{9}$~', $value);
+        return preg_match('~^\+380[0-9]{9}$~', $value);
     }
 }

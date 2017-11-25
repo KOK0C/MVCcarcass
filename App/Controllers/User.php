@@ -26,7 +26,8 @@ class User extends Controller
             $validRules = [
                 'email' => [
                     'email' => true,
-                    'unique' => 'users'
+                    'unique' => 'users',
+                    'maxLength' => 100
                 ],
                 'password' => [
                     'required' => true,
@@ -43,6 +44,7 @@ class User extends Controller
                 Session::set('login', 'success');
                 Redirect::to();
             }
+            Session::set('signup', 'fail');
             Redirect::to();
         }
         throw new Error404();
@@ -85,8 +87,44 @@ class User extends Controller
     protected function actionProfile()
     {
         if (Session::has('user')) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_user']) && Token::check('update_user_token', $_POST['update_user_token'])) {
+                $user = Session::get('user');
+                $validRules = [
+                    'f_name' => [
+                        'required' => true,
+                        'minLength' => 2,
+                        'maxLength' => 30,
+                    ],
+                    'l_name' => [
+                        'required' => true,
+                        'minLength' => 2,
+                        'maxLength' => 40,
+                    ],
+                    'email' => [
+                        'email' => true,
+                        'maxLength' => 100
+                    ],
+                    'phone_number' => [
+                        'required' => true,
+                        'length' => 13,
+                        'phone' => true,
+                    ]
+                ];
+                if ($user->email !== $_POST['email']) {
+                    $validRules['email']['unique'] = 'users';
+                }
+                if ($user->phone_number !== $_POST['phone_number']) {
+                    $validRules['phone_number']['unique'] = 'users';
+                }
+                if ($user->load($_POST, $validRules)) {
+                    $user->save();
+                } else {
+                    Session::set('update_user', 'fail');
+                }
+            }
             $this->mainPage = new View('/App/templates/personal_area/profile.phtml');
             $this->mainPage->user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
+            Session::set('user', $this->mainPage->user);
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
         } else {
             throw new Error404();

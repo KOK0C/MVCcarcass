@@ -702,3 +702,43 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\personal_area\sidebar.phtml;
 Line : 21;
 
 =======================================================================
+
+[25-11-2017 19:28:21] WARNING
+Undefined variable: arraySQL
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 154;
+
+=======================================================================
+
+[25-11-2017 19:29:32] WARNING
+Undefined variable: arraySQL
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 154;
+
+=======================================================================
+
+[25-11-2017 19:29:54] WARNING
+Undefined variable: arraySQL
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 154;
+
+=======================================================================
+
+[25-11-2017 19:30:18] WARNING
+Undefined variable: arraySQL
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 154;
+
+=======================================================================
+
+[25-11-2017 19:30:27] WARNING
+Undefined variable: arraySQL
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 154;
+
+=======================================================================

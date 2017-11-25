@@ -86,4 +86,9 @@ class User extends Model
     {
         $this->fields['password'] = password_hash($this->fields['password'], PASSWORD_DEFAULT);
     }
+
+    public function getFullName(): string
+    {
+        return $this->f_name . ' ' . $this->l_name;
+    }
 }
