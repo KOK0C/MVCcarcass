@@ -105,6 +105,6 @@ class DataBase
         } catch (\PDOException $e) {
             throw new DbException('Ошибка при извлечении записи из бд');
         }
-        return $stmt->fetch();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 }

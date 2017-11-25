@@ -35,7 +35,7 @@ abstract class Model
         return $this->id;
     }
 
-    private function creat_json($data)
+    private function create_json($data)
     {
         if (is_array($data)) {
             $arr = [];
@@ -59,7 +59,7 @@ abstract class Model
             }
             return true;
         }
-        Session::set('errors', $this->creat_json($validation->errors()->get()));
+        Session::set('errors', $this->create_json($validation->errors()->get()));
         return false;
     }
 

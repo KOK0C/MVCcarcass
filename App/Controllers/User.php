@@ -82,6 +82,26 @@ class User extends Controller
         }
     }
 
+    protected function actionProfile()
+    {
+        if (Session::has('user')) {
+            $this->mainPage = new View('/App/templates/personal_area/profile.phtml');
+            $this->mainPage->user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
+            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+        } else {
+            throw new Error404();
+        }
+    }
+
+    protected function actionChangePassword()
+    {
+        if (Session::has('user')) {
+            View::display($this->header, $this->sideBar, $this->footer);
+        } else {
+            throw new Error404();
+        }
+    }
+
     protected function buildSideBar()
     {
         $this->sideBar = new View('/App/templates/personal_area/sidebar.phtml');

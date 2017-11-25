@@ -32,7 +32,8 @@ class Validator
         'email'     => 'Не корректный email',
         'alnum'     => 'В строке должны быть только буквы или числа',
         'match'     => 'Поля не совпадают',
-        'unique'    => 'Такое значение уже существует'
+        'unique'    => 'Такое значение уже существует',
+        'phone'     => 'Номер телефона не валиден'
     ];
     private $data;
 
@@ -112,5 +113,10 @@ class Validator
     private function unique($field, $value, $ruleValue): bool
     {
         return empty(DataBase::getInstance()->get($field, $ruleValue, $value));
+    }
+
+    private function phone($field, $value, $ruleValue): bool
+    {
+        return preg_match('~^\+380\d{9}$~', $value);
     }
 }
