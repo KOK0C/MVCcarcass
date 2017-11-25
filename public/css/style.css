@@ -325,3 +325,20 @@ pre {
 .modal-error p {
     text-align: center;
 }
+
+.personal-area-btn {
+    background-color: #172c3e;
+    margin: 2px 0;
+}
+
+.personal-area-btn:hover, .personal-area-btn-active {
+    background-color: #ed1927;
+}
+
+.myInfo a {
+    color: #e9ebec;
+}
+
+.infoTitle {
+    color: #ed1927;
+}

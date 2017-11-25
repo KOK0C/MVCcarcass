@@ -13,9 +13,12 @@ use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Components\Token;
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
+use IhorRadchenko\App\View;
 
 class User extends Controller
 {
+    private $mainPage;
+
     protected function actionSignUp()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup']) && Token::check('signup_token', $_POST['signup_token'])) {
@@ -51,18 +54,36 @@ class User extends Controller
             $user = \IhorRadchenko\App\Models\User::findByEmail($_POST['email']);
             if ($user && $user->passwordVerify($_POST['password'])) {
                 Session::set('user', $user);
-                Redirect::to();
+                Redirect::to('/user');
             }
             Session::set('login', 'fail');
+            Redirect::to();
         }
-        Redirect::to();
+        throw new Error404();
     }
 
     protected function actionLogOut()
     {
         if (Session::has('user')) {
             Session::delete('user');
+            Redirect::to('/');
         }
-        Redirect::to();
+        throw new Error404();
+    }
+
+    protected function actionPersonalArea()
+    {
+        if (Session::has('user')) {
+            $this->mainPage = new View('/App/templates/personal_area/main.phtml');
+            $this->mainPage->user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
+            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+        } else {
+            throw new Error404();
+        }
+    }
+
+    protected function buildSideBar()
+    {
+        $this->sideBar = new View('/App/templates/personal_area/sidebar.phtml');
     }
 }

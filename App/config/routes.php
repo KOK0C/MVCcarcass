@@ -7,6 +7,10 @@
  */
 
 return [
+    '^user/profile$'         => ['controller' => 'User', 'action' => 'profile'],
+    '^user/change_password$' => ['controller' => 'User', 'action' => 'changePassword'],
+    '^user$'                 => ['controller' => 'User', 'action' => 'personalArea'],
+
     '^signup$' => ['controller' => 'User', 'action' => 'signUp'],
     '^login$'  => ['controller' => 'User', 'action' => 'logIn'],
     '^logout$' => ['controller' => 'User', 'action' => 'logOut'],

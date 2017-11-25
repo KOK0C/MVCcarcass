@@ -1,0 +1,26 @@
+
+<div class="col-sm-9">
+    <div class="myInfo">
+        <?php if (! empty($user)): ?>
+            <div class="infoTitle">
+                Ваше имя:
+            </div>
+            <div class="infoValue">
+                <a href="/user/profile"><u>Не указано</u></a>
+            </div>
+            <div class="infoTitle">
+                Электронная почта:
+            </div>
+            <div class="infoValue">
+                <?= $user->email; ?>
+            </div>
+            <div class="infoTitle">
+                Телефон:
+            </div>
+            <div class="infoValue">
+                <a href="/user/profile"><u>Не указано</u></a>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+

@@ -622,3 +622,75 @@ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
 Line : 53;
 
 =======================================================================
+
+[25-11-2017 11:54:51] CRITICAL
+Call to undefined method IhorRadchenko\App\Controllers\User::actionPersonalArea()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 52;
+
+=======================================================================
+
+[25-11-2017 12:06:48] CRITICAL
+Call to undefined method IhorRadchenko\App\Controllers\User::actionProfile()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 52;
+
+=======================================================================
+
+[25-11-2017 12:47:54] ALERT
+IhorRadchenko\App\Controllers\User::actionPersonalArea(): The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition &quot;IhorRadchenko\App\Models\User&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition 
+Fatal Error : ERROR [1];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 78;
+
+=======================================================================
+
+[25-11-2017 12:49:20] ALERT
+IhorRadchenko\App\View::main(): The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition &quot;IhorRadchenko\App\Models\User&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition 
+Fatal Error : ERROR [1];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\personal_area\main.phtml;
+Line : 14;
+
+=======================================================================
+
+[25-11-2017 12:55:28] CRITICAL
+syntax error, unexpected ';'
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\personal_area\main.phtml;
+Line : 14;
+
+=======================================================================
+
+[25-11-2017 12:55:49] ALERT
+IhorRadchenko\App\Controllers\User::actionPersonalArea(): The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition &quot;IhorRadchenko\App\Models\User&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition 
+Fatal Error : ERROR [1];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 78;
+
+=======================================================================
+
+[25-11-2017 12:57:01] ALERT
+Access level to IhorRadchenko\App\Controllers\User::$sideBar must be protected (as in class IhorRadchenko\App\Controller) or weaker
+Fatal Error : COMPILE_ERROR [64];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
+Line : 18;
+
+=======================================================================
+
+[25-11-2017 12:57:41] CRITICAL
+Call to undefined method IhorRadchenko\App\Controllers\User::actionProfile()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 52;
+
+=======================================================================
+
+[25-11-2017 12:58:22] CRITICAL
+Call to undefined method IhorRadchenko\App\Controllers\User::actionProfile()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 52;
+
+=======================================================================
