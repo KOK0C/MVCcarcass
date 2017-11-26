@@ -6,8 +6,8 @@
                 Ваше имя:
             </div>
             <div class="infoValue">
-                <?php if (! empty(trim($user->getFullName()))): ?>
-                    <?= trim($user->getFullName()); ?>
+                <?php if (! empty($user->getFullName())): ?>
+                    <?= $user->getFullName(); ?>
                 <?php else: ?>
                     <a href="/user/profile"><u>Не указано</u></a>
                 <?php endif; ?>

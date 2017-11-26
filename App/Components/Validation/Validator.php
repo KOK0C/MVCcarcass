@@ -118,7 +118,7 @@ class Validator
 
     private function unique($field, $value, $ruleValue): bool
     {
-        return empty(DataBase::getInstance()->get($field, $ruleValue, $value));
+        return empty(DataBase::getInstance()->get($ruleValue, $field, $value));
     }
 
     private function phone($field, $value, $ruleValue): bool

@@ -88,7 +88,7 @@ class User extends Controller
     {
         if (Session::has('user')) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_user']) && Token::check('update_user_token', $_POST['update_user_token'])) {
-                $user = Session::get('user');
+                $user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
                 $validRules = [
                     'f_name' => [
                         'required' => true,
@@ -135,7 +135,7 @@ class User extends Controller
     {
         if (Session::has('user')) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password']) && Token::check('change_password_token', $_POST['change_password_token'])) {
-                $user = Session::get('user');
+                $user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
                 if ($user->passwordVerify($_POST['oldPassword'])) {
                     $validRules = [
                         'password' => [

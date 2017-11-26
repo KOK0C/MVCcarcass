@@ -96,7 +96,7 @@ class DataBase
         return $stmt->fetchColumn();
     }
 
-    public function get(string $field, string $table, $value)
+    public function get(string $table, string $field, $value)
     {
         $sql = "SELECT * FROM $table WHERE $field = :v LIMIT 1";
         try {

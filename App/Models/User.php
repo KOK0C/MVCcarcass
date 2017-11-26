@@ -57,7 +57,7 @@ class User extends Model
     {
         switch ($name) {
             case 'group':
-                return DataBase::getInstance()->get('id', 'user_group', $this->group_id)['name'];
+                return DataBase::getInstance()->get('user_group', 'id', $this->group_id)['name'];
                 break;
             default:
                 return false;
@@ -89,6 +89,6 @@ class User extends Model
 
     public function getFullName(): string
     {
-        return $this->f_name . ' ' . $this->l_name;
+        return trim($this->f_name . ' ' . $this->l_name);
     }
 }
