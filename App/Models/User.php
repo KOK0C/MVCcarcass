@@ -57,7 +57,7 @@ class User extends Model
     {
         switch ($name) {
             case 'group':
-                return DataBase::getInstance()->get('user_group', 'id', $this->group_id)['name'];
+                return DataBase::getInstance()->get('user_group', 'id', $this->group_id)->name;
                 break;
             default:
                 return false;

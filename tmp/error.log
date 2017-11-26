@@ -750,3 +750,115 @@ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\User.php;
 Line : 158;
 
 =======================================================================
+
+[26-11-2017 12:26:42] EMERGENCY
+Ошибка при добавлении записи из бд
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 117;
+
+=======================================================================
+
+[26-11-2017 12:30:54] EMERGENCY
+Ошибка при добавлении записи в бд
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 117;
+
+=======================================================================
+
+[26-11-2017 12:42:49] EMERGENCY
+Ошибка при добавлении записи в бд
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 117;
+
+=======================================================================
+
+[26-11-2017 12:44:38] EMERGENCY
+Ошибка при добавлении записи в бд: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ce3d85303a13678e81570aa1ba818c90fbb256c7d62317fae68114f33cef019e' in 'field list'
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 117;
+
+=======================================================================
+
+[26-11-2017 12:54:21] EMERGENCY
+Ошибка при добавлении записи в бд: SQLSTATE[42S22]: Column not found: 1054 Unknown column '9cd45bbd8d2f4a11e19c17d795abf83d8de93b2f9503ab630c48de7d801bceb8' in 'field list'
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 118;
+
+=======================================================================
+
+[26-11-2017 12:56:17] WARNING
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 113;
+
+=======================================================================
+
+[26-11-2017 13:23:16] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[26-11-2017 13:23:16] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[26-11-2017 13:23:36] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[26-11-2017 13:23:36] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[26-11-2017 13:23:37] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[26-11-2017 13:23:37] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[26-11-2017 13:23:38] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[26-11-2017 13:23:39] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================

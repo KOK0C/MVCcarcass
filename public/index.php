@@ -18,6 +18,15 @@ $errorHandler = new IhorRadchenko\App\Components\ErrorHandler($logger);
 
 $route = IhorRadchenko\App\Components\Router::getInstance();
 
+if (! \IhorRadchenko\App\Components\Session::has('user') && \IhorRadchenko\App\Components\Cookie::has('user')) {
+    $userId = \IhorRadchenko\App\DataBase::getInstance()->get(
+        'user_sessions',
+        'hash_user',
+        \IhorRadchenko\App\Components\Cookie::get('user')
+    )->user_id;
+    \IhorRadchenko\App\Components\Session::set('user', \IhorRadchenko\App\Models\User::findById($userId));
+}
+
 try {
     $route->run();
 } catch (IhorRadchenko\App\Exceptions\DbException $e) {

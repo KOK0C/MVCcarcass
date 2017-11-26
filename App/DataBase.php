@@ -39,7 +39,7 @@ class DataBase
             );
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
-            throw new DbException('Подключение к базе данных не удалось');
+            throw new DbException('Подключение к базе данных не удалось: ' . $e->getMessage());
         }
     }
 
@@ -55,7 +55,7 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($params);
         } catch (\PDOException $e) {
-            throw new DbException('Ошибка при запросе к бд');
+            throw new DbException('Ошибка при запросе к бд: ' . $e->getMessage());
         }
     }
 
@@ -72,7 +72,7 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
         } catch (\PDOException $e) {
-            throw new DbException('Ошибка при запросе к бд');
+            throw new DbException('Ошибка при запросе к бд: ' . $e->getMessage());
         }
         return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
     }
@@ -91,7 +91,7 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
         } catch (\PDOException $e) {
-            throw new DbException('Ошибка при подсчете кол-ва записей в бд');
+            throw new DbException('Ошибка при подсчете кол-ва записей в бд: ' . $e->getMessage());
         }
         return $stmt->fetchColumn();
     }
@@ -103,8 +103,34 @@ class DataBase
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute(['v' => $value]);
         } catch (\PDOException $e) {
-            throw new DbException('Ошибка при извлечении записи из бд');
+            throw new DbException('Ошибка при извлечении записи из бд: ' . $e->getMessage());
         }
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function insert(string $table, array $fields)
+    {
+        foreach ($fields as $k => $v) {
+            $arr[":$k"] = $v;
+        }
+        $sql = "INSERT INTO $table (" . implode(', ', array_keys($fields)) . ") VALUES (" . implode(', ', array_keys($arr)) . ")";
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($fields);
+        } catch (\PDOException $e) {
+            throw new DbException('Ошибка при добавлении записи в бд: ' . $e->getMessage());
+        }
+        return $stmt;
+    }
+
+    public function delete(string $table, string $field, $value)
+    {
+        $sql = "DELETE FROM $table WHERE $field = :v LIMIT 1";
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(['v' => $value]);
+        } catch (\PDOException $e) {
+            throw new DbException('Ошибка при удалении записи из бд: ' . $e->getMessage());
+        }
     }
 }

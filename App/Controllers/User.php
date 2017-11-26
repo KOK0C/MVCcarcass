@@ -8,10 +8,12 @@
 
 namespace IhorRadchenko\App\Controllers;
 
+use IhorRadchenko\App\Components\Cookie;
 use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Components\Token;
 use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\DataBase;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\View;
 
@@ -56,6 +58,21 @@ class User extends Controller
             $user = \IhorRadchenko\App\Models\User::findByEmail($_POST['email']);
             if ($user && $user->passwordVerify($_POST['password'])) {
                 Session::set('user', $user);
+
+                if (isset($_POST['remember_me']) && $_POST['remember_me'] === 'on') {
+                    $hash = hash('sha256', uniqid());
+                    $hashCheck = DataBase::getInstance()->get('user_sessions', 'user_id', Session::get('user')->getId());
+                    if (! $hashCheck) {
+                        DataBase::getInstance()->insert(
+                            'user_sessions',
+                            ['user_id' => Session::get('user')->getId(), 'hash_user' => $hash]
+                        );
+                    } else {
+                        $hash = $hashCheck->hash_user;
+                    }
+                    Cookie::set('user', $hash);
+                }
+
                 Redirect::to('/user');
             }
             Session::set('login', 'fail');
@@ -67,6 +84,8 @@ class User extends Controller
     protected function actionLogOut()
     {
         if (Session::has('user')) {
+            DataBase::getInstance()->delete('user_sessions', 'user_id', Session::get('user')->getId());
+            Cookie::delete('user');
             Session::delete('user');
             Redirect::to('/');
         }
