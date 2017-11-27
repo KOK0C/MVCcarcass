@@ -91,4 +91,25 @@ class User extends Model
     {
         return trim($this->f_name . ' ' . $this->l_name);
     }
+
+    public function recordUserSessionInDB(string $hash)
+    {
+        if (DataBase::getInstance()->insert(
+            'user_sessions',
+            ['user_id' => $this->id, 'hash_user' => $hash]
+        )) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function getUserSessionFromDB($value, string $field = 'user_id')
+    {
+        return DataBase::getInstance()->get('user_sessions', $field, $value);
+    }
+
+    public function deleteUserSessionFromDB()
+    {
+        DataBase::getInstance()->delete('user_sessions', 'user_id', $this->id);
+    }
 }

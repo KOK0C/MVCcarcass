@@ -77,11 +77,16 @@ abstract class Controller
         $this->footer = new View('/App/templates/layouts/footer.phtml');
     }
 
-    protected function isAjax()
+    protected function isAjax(): bool
     {
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == "XMLHttpRequest") {
             return true;
         }
         return false;
+    }
+
+    protected function isPost(string $keyPOST): bool
+    {
+        return ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST[$keyPOST]));
     }
 }

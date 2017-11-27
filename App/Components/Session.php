@@ -8,6 +8,10 @@
 
 namespace IhorRadchenko\App\Components;
 
+/**
+ * Class Session
+ * @package IhorRadchenko\App\Components
+ */
 class Session
 {
     public static function set($name, $value)

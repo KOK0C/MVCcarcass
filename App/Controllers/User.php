@@ -13,9 +13,9 @@ use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Components\Token;
 use IhorRadchenko\App\Controller;
-use IhorRadchenko\App\DataBase;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\View;
+use \IhorRadchenko\App\Models\User as UserModel;
 
 class User extends Controller
 {
@@ -23,8 +23,8 @@ class User extends Controller
 
     protected function actionSignUp()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup']) && Token::check('signup_token', $_POST['signup_token'])) {
-            $user = new \IhorRadchenko\App\Models\User();
+        if ($this->isPost('signup') && Token::check('signup_token', $_POST['signup_token'])) {
+            $user = new UserModel();
             $validRules = [
                 'email' => [
                     'email' => true,
@@ -54,19 +54,16 @@ class User extends Controller
 
     protected function actionLogIn()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login']) && Token::check('login_token', $_POST['login_token'])) {
-            $user = \IhorRadchenko\App\Models\User::findByEmail($_POST['email']);
+        if ($this->isPost('login') && Token::check('login_token', $_POST['login_token'])) {
+            $user = UserModel::findByEmail($_POST['email']);
             if ($user && $user->passwordVerify($_POST['password'])) {
                 Session::set('user', $user);
 
                 if (isset($_POST['remember_me']) && $_POST['remember_me'] === 'on') {
                     $hash = hash('sha256', uniqid());
-                    $hashCheck = DataBase::getInstance()->get('user_sessions', 'user_id', Session::get('user')->getId());
+                    $hashCheck = UserModel::getUserSessionFromDB($user->getId());
                     if (! $hashCheck) {
-                        DataBase::getInstance()->insert(
-                            'user_sessions',
-                            ['user_id' => Session::get('user')->getId(), 'hash_user' => $hash]
-                        );
+                        $user->recordUserSessionInDB($hash);
                     } else {
                         $hash = $hashCheck->hash_user;
                     }
@@ -84,7 +81,7 @@ class User extends Controller
     protected function actionLogOut()
     {
         if (Session::has('user')) {
-            DataBase::getInstance()->delete('user_sessions', 'user_id', Session::get('user')->getId());
+            Session::get('user')->deleteUserSessionFromDB();
             Cookie::delete('user');
             Session::delete('user');
             Redirect::to('/');
@@ -96,7 +93,7 @@ class User extends Controller
     {
         if (Session::has('user')) {
             $this->mainPage = new View('/App/templates/personal_area/main.phtml');
-            $this->mainPage->user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
+            $this->mainPage->user = UserModel::findById(Session::get('user')->getId());
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
         } else {
             throw new Error404();
@@ -106,8 +103,8 @@ class User extends Controller
     protected function actionProfile()
     {
         if (Session::has('user')) {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_user']) && Token::check('update_user_token', $_POST['update_user_token'])) {
-                $user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
+            if ($this->isPost('update_user') && Token::check('update_user_token', $_POST['update_user_token'])) {
+                $user = UserModel::findById(Session::get('user')->getId());
                 $validRules = [
                     'f_name' => [
                         'required' => true,
@@ -142,7 +139,7 @@ class User extends Controller
                 }
             }
             $this->mainPage = new View('/App/templates/personal_area/profile.phtml');
-            $this->mainPage->user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
+            $this->mainPage->user = UserModel::findById(Session::get('user')->getId());
             Session::set('user', $this->mainPage->user);
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
         } else {
@@ -153,8 +150,8 @@ class User extends Controller
     protected function actionChangePassword()
     {
         if (Session::has('user')) {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password']) && Token::check('change_password_token', $_POST['change_password_token'])) {
-                $user = \IhorRadchenko\App\Models\User::findById(Session::get('user')->getId());
+            if ($this->isPost('change_password') && Token::check('change_password_token', $_POST['change_password_token'])) {
+                $user = UserModel::findById(Session::get('user')->getId());
                 if ($user->passwordVerify($_POST['oldPassword'])) {
                     $validRules = [
                         'password' => [

@@ -19,10 +19,9 @@ $errorHandler = new IhorRadchenko\App\Components\ErrorHandler($logger);
 $route = IhorRadchenko\App\Components\Router::getInstance();
 
 if (! \IhorRadchenko\App\Components\Session::has('user') && \IhorRadchenko\App\Components\Cookie::has('user')) {
-    $userId = \IhorRadchenko\App\DataBase::getInstance()->get(
-        'user_sessions',
-        'hash_user',
-        \IhorRadchenko\App\Components\Cookie::get('user')
+    $userId = \IhorRadchenko\App\Models\User::getUserSessionFromDB(
+        \IhorRadchenko\App\Components\Cookie::get('user'),
+        'hash_user'
     )->user_id;
     \IhorRadchenko\App\Components\Session::set('user', \IhorRadchenko\App\Models\User::findById($userId));
 }
