@@ -15,6 +15,7 @@ use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\Page;
+use IhorRadchenko\App\Models\Review;
 use IhorRadchenko\App\Models\User;
 
 /**
@@ -30,6 +31,7 @@ use IhorRadchenko\App\Models\User;
  * @property Pagination $pagination
  * @property Car $car
  * @property User $user
+ * @property Review $reviews
  */
 class View
 {

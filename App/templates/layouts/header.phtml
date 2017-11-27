@@ -1,4 +1,4 @@
-
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,17 +21,20 @@
 <div class="blog-masthead">
     <div class="container">
         <nav class="nav">
-            <a href="/" class="nav-link <?php if (explode('/', $_SERVER['REQUEST_URI'])[1] === ''):
+            <a href="/" class="nav-link <?php if ($uri[1] === ''):
                 print 'active';
             endif; ?>">Главная</a>
             <?php if (! empty($categories)): ?>
                 <?php foreach ($categories as $category): ?>
-                    <a class="nav-link <?php if (explode('/', $_SERVER['REQUEST_URI'])[1] === $category->link):
+                    <a class="nav-link <?php if ($uri[1] === $category->link):
                         print 'active';
                     endif; ?>"
                        href="/<?= htmlentities($category->link); ?>"><?= htmlentities($category->name); ?></a>
             <?php endforeach; ?>
             <?php endif; ?>
+            <a href="/reviews" class="nav-link <?php if ($uri[1] === 'reviews'):
+                print 'active';
+            endif; ?>">Отзывы</a>
         </nav>
     </div>
 </div>

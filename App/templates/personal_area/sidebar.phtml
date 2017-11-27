@@ -1,24 +1,24 @@
-<?php $url = explode('/', $_SERVER['REQUEST_URI']); ?>
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
 
 <div class="col-sm-3 personal-area-sideBar">
     <ul class="nav flex-column">
         <li class="nav-item">
             <a class="nav-link personal-area-btn
-            <?php if (! isset($url[2])): ?>
+            <?php if (! isset($uri[2])): ?>
                 personal-area-btn-active
             <?php endif; ?>
             " href="/user">Личный кабинет</a>
         </li>
         <li class="nav-item">
             <a class="nav-link personal-area-btn
-            <?php if (isset($url[2]) && $url[2] === 'profile'): ?>
+            <?php if (isset($uri[2]) && $uri[2] === 'profile'): ?>
                 personal-area-btn-active
             <?php endif; ?>
             " href="/user/profile">Мои данные</a>
         </li>
         <li class="nav-item">
             <a class="nav-link personal-area-btn
-            <?php if (isset($url[2]) && $url[2] === 'change_password'): ?>
+            <?php if (isset($uri[2]) && $uri[2] === 'change_password'): ?>
                 personal-area-btn-active
             <?php endif; ?>
             " href="/user/change_password">Изменить пароль</a>

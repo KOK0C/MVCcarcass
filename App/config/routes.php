@@ -7,6 +7,8 @@
  */
 
 return [
+    '^(reviews)$' => ['controller' => 'Reviews', 'action' => 'index'],
+
     '^user/profile$'         => ['controller' => 'User', 'action' => 'profile'],
     '^user/change_password$' => ['controller' => 'User', 'action' => 'changePassword'],
     '^user$'                 => ['controller' => 'User', 'action' => 'personalArea'],

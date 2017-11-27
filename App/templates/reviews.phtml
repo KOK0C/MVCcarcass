@@ -1,0 +1,32 @@
+
+<div class="col-sm-8 blog-main">
+    <?php if (! empty($reviews)): ?>
+        <?php foreach ($reviews as $review): ?>
+            <div class="review">
+                <img src="<?= htmlentities($review->car->getIcon()); ?>" alt="">
+                <div class="review-model">
+                    <a href="/mark/<?= htmlentities(str_replace(' ', '_', mb_strtolower($review->car->brand->name))) . '/' . htmlentities(str_replace(' ', '_', mb_strtolower($review->car->model))); ?>">
+                        <?= htmlentities(mb_strtoupper($review->car->brand->name)) . ' ' . htmlentities(mb_strtoupper($review->car->model)); ?>
+                    </a>
+                </div>
+                <div class="review-rating">
+                    Оценка: <?= htmlentities($review->rating); ?> из 5
+                </div>
+                <div class="review-content">
+                    <div class="review-author">
+                        <b><?= htmlentities($review->author->f_name); ?></b>
+                        <?php if (! empty($review->author->city)): ?>
+                            <b> | <?= htmlentities($review->author->city); ?></b>
+                        <?php endif; ?>
+                    </div>
+                    <div class="review-text">
+                        <?= nl2br(htmlentities($review->text)); ?>
+                    </div>
+                    <div class="review-date">
+                        <?= htmlentities($review->getDate()); ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>

@@ -27,6 +27,7 @@ class User extends Model
     private $password;
     public $f_name;
     public $l_name;
+    public $city;
     public $phone_number;
     private $group_id;
 
@@ -36,6 +37,7 @@ class User extends Model
         'f_name' => '',
         'l_name' => '',
         'phone_number' => '',
+        'city' => ''
     ];
 
     public function __isset($name)

@@ -7,7 +7,7 @@
             </div>
             <div class="infoValue">
                 <?php if (! empty($user->getFullName())): ?>
-                    <?= $user->getFullName(); ?>
+                    <?= htmlentities($user->getFullName()); ?>
                 <?php else: ?>
                     <a href="/user/profile"><u>Не указано</u></a>
                 <?php endif; ?>
@@ -16,14 +16,14 @@
                 Электронная почта:
             </div>
             <div class="infoValue">
-                <?= $user->email; ?>
+                <?= htmlentities($user->email); ?>
             </div>
             <div class="infoTitle">
                 Телефон:
             </div>
             <div class="infoValue">
                 <?php if (! empty($user->phone_number)): ?>
-                    <?= $user->phone_number; ?>
+                    <?= htmlentities($user->phone_number); ?>
                 <?php else: ?>
                     <a href="/user/profile"><u>Не указано</u></a>
                 <?php endif; ?>

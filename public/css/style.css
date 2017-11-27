@@ -342,3 +342,39 @@ pre {
 .infoTitle {
     color: #ed1927;
 }
+
+.review {
+    max-width: 700px;
+    background-color: #172c3e;
+    position: relative;
+}
+
+.review-model {
+    position: absolute;
+    top: 9px;
+    left: 200px;
+}
+
+.review-rating {
+    position: absolute;
+    top: 45px;
+    left: 200px;
+}
+
+.review-content {
+    padding: 20px 20px 10px 20px;
+}
+
+.review-author {
+    margin-bottom: 5px;
+}
+
+.review-text {
+    font-size: .9rem;
+    text-align: justify;
+    margin-bottom: 5px;
+}
+
+.review-date {
+    font-size: .9rem;
+}
