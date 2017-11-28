@@ -7,11 +7,12 @@
  */
 
 return [
-    '^(reviews)$' => ['controller' => 'Reviews', 'action' => 'index'],
+    '^(reviews)/mark/([a-z-]+)$' => ['controller' => 'Reviews', 'action' => 'mark'],
+    '^(reviews)$'                => ['controller' => 'Reviews', 'action' => 'index'],
 
-    '^user/profile$'         => ['controller' => 'User', 'action' => 'profile'],
-    '^user/change_password$' => ['controller' => 'User', 'action' => 'changePassword'],
-    '^user$'                 => ['controller' => 'User', 'action' => 'personalArea'],
+    '^(user)/profile$'         => ['controller' => 'User', 'action' => 'profile'],
+    '^(user)/change_password$' => ['controller' => 'User', 'action' => 'changePassword'],
+    '^(user)$'                 => ['controller' => 'User', 'action' => 'personalArea'],
 
     '^signup$' => ['controller' => 'User', 'action' => 'signUp'],
     '^login$'  => ['controller' => 'User', 'action' => 'logIn'],

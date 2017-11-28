@@ -918,3 +918,11 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\reviews.phtml;
 Line : 21;
 
 =======================================================================
+
+[28-11-2017 20:57:52] CRITICAL
+syntax error, unexpected ',', expecting variable (T_VARIABLE)
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php;
+Line : 28;
+
+=======================================================================

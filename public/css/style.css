@@ -347,6 +347,19 @@ pre {
     max-width: 700px;
     background-color: #172c3e;
     position: relative;
+    margin: 50px 0 20px 0;
+}
+
+.review img {
+    margin: 1px;
+}
+
+.review:hover {
+    background-color: #ed1927;
+}
+
+.review:hover .review-rating {
+    color: #e9ebec;
 }
 
 .review-model {
@@ -355,10 +368,20 @@ pre {
     left: 200px;
 }
 
+.review-model a {
+    color: #e9ebec;
+}
+
+.review-model a:hover {
+    text-decoration: underline;
+}
+
 .review-rating {
     position: absolute;
     top: 45px;
     left: 200px;
+    color: #ed1927;
+    font-size: .95rem;
 }
 
 .review-content {
@@ -370,11 +393,38 @@ pre {
 }
 
 .review-text {
-    font-size: .9rem;
+    font-size: .95rem;
     text-align: justify;
     margin-bottom: 5px;
 }
 
 .review-date {
+    font-size: .95rem;
+}
+
+#form-reviews {
+    position: relative;
+    height: 30px;
+}
+
+#markCar, #modelCar {
     font-size: .9rem;
+    padding: 3px;
+    width: 300px;
+    height: 30px;
+}
+
+#markCar {
+    position: absolute;
+}
+
+#modelCar {
+    position: absolute;
+    left: 390px;
+    top: 0;
+}
+
+.review-notFound {
+    margin: 20px 0;
+    font-size: 1.5rem;
 }

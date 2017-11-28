@@ -1,16 +1,35 @@
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
 
 <div class="col-sm-8 blog-main">
+    <form action="" id="form-reviews" method="post">
+        <select name="mark" id="markCar" class="form-control">
+            <option value="all">Марка авто</option>
+            <?php if (! empty($brands)): ?>
+                <?php foreach ($brands as $brand): ?>
+                    <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
+                                    <?php if (isset($uri[3]) && $uri[3] ===
+                                    htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name)))) {print 'selected';} ?>
+                    >
+                        <?= htmlentities(mb_ucfirst($brand->name)); ?>
+                    </option>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </select>
+        <select name="model" id="modelCar" disabled class="form-control">
+            <option value="all">Модель</option>
+        </select>
+    </form>
     <?php if (! empty($reviews)): ?>
         <?php foreach ($reviews as $review): ?>
             <div class="review">
                 <img src="<?= htmlentities($review->car->getIcon()); ?>" alt="">
                 <div class="review-model">
-                    <a href="/mark/<?= htmlentities(str_replace(' ', '_', mb_strtolower($review->car->brand->name))) . '/' . htmlentities(str_replace(' ', '_', mb_strtolower($review->car->model))); ?>">
+                    <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($review->car->brand->name))) . '/' . htmlentities(str_replace(' ', '-', mb_strtolower($review->car->model))); ?>">
                         <?= htmlentities(mb_strtoupper($review->car->brand->name)) . ' ' . htmlentities(mb_strtoupper($review->car->model)); ?>
                     </a>
                 </div>
                 <div class="review-rating">
-                    Оценка: <?= htmlentities($review->rating); ?> из 5
+                    <span>&#9733</span> Оценка: <?= htmlentities($review->rating); ?> из 5
                 </div>
                 <div class="review-content">
                     <div class="review-author">
@@ -28,5 +47,13 @@
                 </div>
             </div>
         <?php endforeach; ?>
+    <?php else: ?>
+        <div class="review-notFound">
+            По данному автомобилю отзывов нет...
+        </div>
+    <?php endif; ?>
+    <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
+        <button class="btn btn-block btn-success">ДОБАВИТЬ ОТЗЫВ</button>
     <?php endif; ?>
 </div>
+

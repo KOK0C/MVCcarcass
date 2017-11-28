@@ -9,6 +9,7 @@
 namespace IhorRadchenko\App\Models;
 
 use IhorRadchenko\App\Components\Traits\GetDate;
+use IhorRadchenko\App\DataBase;
 use IhorRadchenko\App\Model;
 
 class Review extends Model
@@ -59,5 +60,17 @@ class Review extends Model
             default:
                 return false;
         }
+    }
+
+    public static function findReviewsByBrand(string $brand)
+    {
+        $sql = '
+                SELECT * FROM ' . self::TABLE . ' WHERE car_id IN 
+                (SELECT cars.id FROM cars WHERE brand_id = 
+                (SELECT id FROM brands WHERE name = :brandName))
+                ORDER BY id DESC
+                ';
+        $result = DataBase::getInstance()->query($sql, self::class, ['brandName' => $brand]);
+        return (! empty($result)) ? $result : null;
     }
 }
