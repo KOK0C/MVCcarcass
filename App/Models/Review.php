@@ -73,4 +73,15 @@ class Review extends Model
         $result = DataBase::getInstance()->query($sql, self::class, ['brandName' => $brand]);
         return (! empty($result)) ? $result : null;
     }
+
+    public static function findReviewsByModel(string $brand, string $model)
+    {
+        $sql = '
+                SELECT * FROM ' . self::TABLE . ' WHERE car_id = 
+                (SELECT id FROM cars WHERE brand_id = 
+                (SELECT id FROM brands WHERE `name` = :brand) AND model = :model) ORDER BY id DESC
+                ';
+        $result = DataBase::getInstance()->query($sql, self::class, ['brand' => $brand, 'model' => $model]);
+        return (! empty($result)) ? $result : null;
+    }
 }

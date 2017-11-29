@@ -40,7 +40,7 @@ abstract class Controller
         $this->buildFooter();
     }
 
-    public function action($action, $arg1 = null, $arg2 = null)
+    public function action($action, $arg1 = null, $arg2 = null, $arg3 = null)
     {
         $methodName = 'action' . ucfirst($action);
         $arg1 = is_null($arg1) ? '' : $arg1;
@@ -49,7 +49,7 @@ abstract class Controller
             $this->header->page = Page::findByLink($arg1);
             $cache->set("page-$arg1", $this->header->page, 3600);
         }
-        $this->$methodName($arg1, $arg2);
+        $this->$methodName($arg1, $arg2, $arg3);
     }
 
     protected function buildHeader()
@@ -79,10 +79,7 @@ abstract class Controller
 
     protected function isAjax(): bool
     {
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == "XMLHttpRequest") {
-            return true;
-        }
-        return false;
+        return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === "XMLHttpRequest");
     }
 
     protected function isPost(string $keyPOST): bool

@@ -18,9 +18,21 @@ function mb_ucfirst(string $string, string $encoding = 'UTF-8'): string
         mb_substr($string, 1, mb_strlen($string, $encoding),$encoding);
 }
 
+function mb_ucwords(string $string, string $encoding = 'UTF-8'): string
+{
+    $string = explode(' ', $string);
+    foreach ($string as &$str) {
+        $str = mb_strtoupper(mb_substr($str, 0, 1, $encoding)) .
+            mb_substr($str, 1, mb_strlen($str, $encoding),$encoding);
+    }
+    $string = implode(' ', $string);
+    return $string;
+}
+
 function debug($var)
 {
     print '<pre>';
     print_r($var);
     print '</pre>';
+    die;
 }

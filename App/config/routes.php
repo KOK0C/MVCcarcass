@@ -7,8 +7,9 @@
  */
 
 return [
-    '^(reviews)/mark/([a-z-]+)$' => ['controller' => 'Reviews', 'action' => 'mark'],
-    '^(reviews)$'                => ['controller' => 'Reviews', 'action' => 'index'],
+    '^(reviews)/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Reviews', 'action' => 'model'],
+    '^(reviews)/mark/([a-z-]+)$'                    => ['controller' => 'Reviews', 'action' => 'mark'],
+    '^(reviews)$'                                   => ['controller' => 'Reviews', 'action' => 'index'],
 
     '^(user)/profile$'         => ['controller' => 'User', 'action' => 'profile'],
     '^(user)/change_password$' => ['controller' => 'User', 'action' => 'changePassword'],

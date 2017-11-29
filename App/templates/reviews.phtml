@@ -10,14 +10,28 @@
                                     <?php if (isset($uri[3]) && $uri[3] ===
                                     htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name)))) {print 'selected';} ?>
                     >
-                        <?= htmlentities(mb_ucfirst($brand->name)); ?>
+                        <?= htmlentities(mb_ucwords($brand->name)); ?>
                     </option>
                 <?php endforeach; ?>
             <?php endif; ?>
         </select>
-        <select name="model" id="modelCar" disabled class="form-control">
-            <option value="all">Модель</option>
-        </select>
+        <?php if (! empty($cars)): ?>
+            <select name="model" id="modelCar" class="form-control">
+                <option value="all">Модель</option>
+                <?php foreach ($cars as $car): ?>
+                    <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $car->model))); ?>"
+                        <?php if (isset($uri[5]) && $uri[5] ===
+                            htmlentities(mb_strtolower(str_replace(' ', '-', $car->model)))) {print 'selected';} ?>
+                    >
+                        <?= htmlentities(mb_ucwords(strtolower($car->model))); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        <?php else: ?>
+            <select name="model" id="modelCar" disabled class="form-control">
+                <option value="all">Модель</option>
+            </select>
+        <?php endif; ?>
     </form>
     <?php if (! empty($reviews)): ?>
         <?php foreach ($reviews as $review): ?>

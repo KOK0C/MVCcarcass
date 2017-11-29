@@ -52,6 +52,9 @@ class Router
                 if (isset($matches[2])) {
                     $this->route['arguments'][2] = $matches[2];
                 }
+                if (isset($matches[3])) {
+                    $this->route['arguments'][3] = $matches[3];
+                }
                 return true;
             }
         }
@@ -66,7 +69,8 @@ class Router
             $controller->action(
                 $this->route['action'],
                 $this->route['arguments'][1] ?? null,
-                $this->route['arguments'][2] ?? null
+                $this->route['arguments'][2] ?? null,
+                $this->route['arguments'][3] ?? null
             );
         } else {
             throw new Error404('Страница не найдена');

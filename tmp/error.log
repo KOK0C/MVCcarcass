@@ -926,3 +926,27 @@ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php;
 Line : 28;
 
 =======================================================================
+
+[29-11-2017 18:29:43] ERROR
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php;
+Line : 33;
+
+=======================================================================
+
+[29-11-2017 18:30:39] ERROR
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php;
+Line : 33;
+
+=======================================================================
+
+[29-11-2017 19:00:15] ERROR
+include(C:/OSPanel/domains/MVCcarcassApp/templates/reviews.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 61;
+
+=======================================================================

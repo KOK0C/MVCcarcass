@@ -31,7 +31,7 @@ use IhorRadchenko\App\Models\User;
  * @property Pagination $pagination
  * @property Car $car
  * @property User $user
- * @property Review $reviews
+ * @property array $reviews Review
  */
 class View
 {
