@@ -124,6 +124,7 @@ abstract class Model
      */
     protected function insert(): bool
     {
+        $arrayPropMod = [];
         foreach ($this->fields as $k => $v) {
             $arrayPropMod[':' . $k] = $v;
         }
@@ -145,6 +146,8 @@ abstract class Model
      */
     protected function update(): bool
     {
+        $arraySQL = [];
+        $arrayProp = [];
         foreach ($this->fields as $k => $v) {
             if (! empty($this->fields[$k])) {
                 $arrayProp[$k] = $v;

@@ -21,6 +21,12 @@ class Reviews extends Controller
 
     protected function actionIndex()
     {
+        if ($this->isAjax()) {
+            $mark = ucwords(str_replace('-', ' ', $_POST['mark']));
+            $data = Car::findCarsByBrand($mark);
+            print json_encode($data, JSON_UNESCAPED_UNICODE);
+            die;
+        }
         $this->mainPage = new View('/App/templates/reviews.phtml');
         $this->mainPage->reviews = Review::findAll(true);
         $this->mainPage->brands = Brand::findAll(false, 'name');

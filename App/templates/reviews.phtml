@@ -67,7 +67,42 @@
         </div>
     <?php endif; ?>
     <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
-        <button class="btn btn-block btn-success">ДОБАВИТЬ ОТЗЫВ</button>
+        <button class="btn btn-block btn-success" data-toggle="modal" data-target="#addReview">ДОБАВИТЬ ОТЗЫВ</button>
     <?php endif; ?>
 </div>
 
+<div class="modal fade" id="addReview" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-addReview" id="addReviewForm" method="post" action="/">
+                <div class="modal-header">
+                    <h2 class="form-addReview-heading">Ваш отзыв</h2>
+                    <button class="close exit-modal" type="button" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+
+                    <select class="form-control modal-field" id="selectMark" name="mark" required>
+                        <option>Марка</option>
+                        <?php if (! empty($brands)): ?>
+                            <?php foreach ($brands as $brand): ?>
+                                <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>">
+                                    <?= htmlentities(mb_ucwords($brand->name)); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
+
+                    <select class="form-control modal-field" id="selectModel" name="model" disabled required>
+                        <option>Модель</option>
+                    </select>
+                    <input type="text" name="f_name" id="inputFName" class="form-control modal-field" placeholder="Имя" required autocomplete="on">
+                    <input type="text" name="city" id="inputCity" class="form-control modal-field" placeholder="Город" required autocomplete="on">
+                    <textarea name="text" class="form-control modal-field" id="reviewText" rows="10" required placeholder="Текст отзыва"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-primary btn-block" type="submit" name="login" value="Отправить">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

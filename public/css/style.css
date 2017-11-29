@@ -428,3 +428,7 @@ pre {
     margin: 20px 0;
     font-size: 1.5rem;
 }
+
+.modal-field {
+    margin: 10px 0;
+}

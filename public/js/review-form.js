@@ -18,3 +18,18 @@ $("#modelCar").change(function () {
         $("#form-reviews").attr('action', '/reviews/mark/' + mark.val() + '/model/' + model.val()).submit();
     }
 });
+
+$("#selectMark").change(function () {
+    var mark = $("#selectMark");
+    $.post(
+        '/reviews',
+        {mark: mark.val()},
+        function (data) {
+            data = $.parseJSON(data);
+            $("#selectModel").prop("disabled", false).empty().append('<option></option>');
+            $.each(data, function () {
+                $("#selectModel").append("<option value='" + this.model + "'>" + this.model + "</option>");
+            });
+        }
+    )
+});
