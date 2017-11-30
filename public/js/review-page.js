@@ -46,8 +46,18 @@ $("#selectMark").change(function () {
 $(document).ready(function () {
     var currentPage = 1;
     $("#btn-moreReview").click(function () {
+        var mark = $("#markCar");
+        var model = $("#modelCar");
+        var url = '';
+        if (mark.val() === 'all' && model.val() === 'all') {
+            url = '/reviews';
+        } else if (model.val() === 'all') {
+            url = '/reviews/mark/' + mark.val();
+        } else {
+            url = '/reviews/mark/' + mark.val() + '/model/' + model.val();
+        }
         $.post(
-            '/reviews',
+            url,
             {page: ++currentPage},
             function (data) {
                 $(".blog-main").append(data);

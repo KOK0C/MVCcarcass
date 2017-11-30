@@ -52,7 +52,7 @@ class Reviews extends Controller
      */
     protected function actionMark($page, string $mark)
     {
-        if ($this->isAjax() && isset($_POST['page'])) {
+        if (isset($_POST['page'])) {
             View::loadForAjax('reviews', Review::findReviewsByBrand($_POST['page'], $mark));
             die;
         }

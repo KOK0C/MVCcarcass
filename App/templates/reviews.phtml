@@ -1,6 +1,8 @@
 <?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
 
-<script>var totalPage = <?= $totalPage ?></script>
+<?php if (! empty($totalPage)): ?>
+    <script>var totalPage = <?= $totalPage ?>;</script>
+<?php endif; ?>
 
 <div class="col-sm-8">
     <div class="blog-main">
@@ -71,7 +73,7 @@
         <?php endif; ?>
     </div>
 
-    <?php if (! empty($reviews)): ?>
+    <?php if (! empty($reviews) && $totalPage !== 1): ?>
         <button id="btn-moreReview" class="btn btn-block btn-success">ПОКАЗАТЬ БОЛЬШЕ ОТЗЫВОВ</button>
     <?php endif; ?>
 
