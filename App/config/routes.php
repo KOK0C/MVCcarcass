@@ -7,6 +7,7 @@
  */
 
 return [
+    '^review/create$'                               => ['controller' => 'Reviews', 'action' => 'create'],
     '^(reviews)/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Reviews', 'action' => 'model'],
     '^(reviews)/mark/([a-z-]+)$'                    => ['controller' => 'Reviews', 'action' => 'mark'],
     '^(reviews)$'                                   => ['controller' => 'Reviews', 'action' => 'index'],

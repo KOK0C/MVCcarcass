@@ -17,6 +17,9 @@ class Error extends Controller
 {
     private $errorPage;
 
+    /**
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     protected function actionPage404()
     {
         $this->errorPage = new View('/App/templates/layouts/errors/error404.phtml');

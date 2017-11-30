@@ -85,6 +85,12 @@ class DataBase
         return $this->pdo->lastInsertId();
     }
 
+    /**
+     * @param string $sql
+     * @param array $params
+     * @return int
+     * @throws DbException
+     */
     public function countRow(string $sql, array $params): int
     {
         try {
@@ -96,6 +102,13 @@ class DataBase
         return $stmt->fetchColumn();
     }
 
+    /**
+     * @param string $table
+     * @param string $field
+     * @param $value
+     * @return mixed
+     * @throws DbException
+     */
     public function get(string $table, string $field, $value)
     {
         $sql = "SELECT * FROM $table WHERE $field = :v LIMIT 1";
@@ -108,6 +121,12 @@ class DataBase
         return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 
+    /**
+     * @param string $table
+     * @param array $fields
+     * @return \PDOStatement
+     * @throws DbException
+     */
     public function insert(string $table, array $fields)
     {
         foreach ($fields as $k => $v) {
@@ -123,6 +142,12 @@ class DataBase
         return $stmt;
     }
 
+    /**
+     * @param string $table
+     * @param string $field
+     * @param $value
+     * @throws DbException
+     */
     public function delete(string $table, string $field, $value)
     {
         $sql = "DELETE FROM $table WHERE $field = :v LIMIT 1";

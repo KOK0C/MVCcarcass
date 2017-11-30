@@ -1,3 +1,7 @@
+String.prototype.ucWords = function() {
+    return this.replace(/^(.)|\s(.)/g, function ( $1 ) { return $1.toUpperCase ( ); } );
+};
+
 $( "#markCar" ).change(function() {
     var mark = $("#markCar");
     if (mark.val() === 'all') {
@@ -20,16 +24,21 @@ $("#modelCar").change(function () {
 });
 
 $("#selectMark").change(function () {
-    var mark = $("#selectMark");
-    $.post(
-        '/reviews',
-        {mark: mark.val()},
-        function (data) {
-            data = $.parseJSON(data);
-            $("#selectModel").prop("disabled", false).empty().append('<option></option>');
-            $.each(data, function () {
-                $("#selectModel").append("<option value='" + this.model + "'>" + this.model + "</option>");
-            });
-        }
-    )
+    var markCar = $("#selectMark");
+    var modelCar = $("#selectModel");
+    if (markCar.val() === '') {
+        modelCar.empty().append('<option>Модель</option>').prop("disabled", true);
+    } else {
+        $.post(
+            '/reviews',
+            {mark: markCar.val()},
+            function (data) {
+                modelCar.prop("disabled", false).empty().append('<option></option>');
+                $.each($.parseJSON(data), function () {
+                    modelCar.append("<option value='" + this.model.split(' ').join('-').toLowerCase() + "'>"
+                        + this.model.toLowerCase().ucWords() + "</option>");
+                });
+            }
+        )
+    }
 });

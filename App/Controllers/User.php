@@ -13,6 +13,7 @@ use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Components\Token;
 use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\View;
 use \IhorRadchenko\App\Models\User as UserModel;
@@ -21,6 +22,10 @@ class User extends Controller
 {
     private $mainPage;
 
+    /**
+     * @throws Error404
+     * @throws DbException
+     */
     protected function actionSignUp()
     {
         if ($this->isPost('signup') && Token::check('signup_token', $_POST['signup_token'])) {
@@ -52,6 +57,10 @@ class User extends Controller
         throw new Error404();
     }
 
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     protected function actionLogIn()
     {
         if ($this->isPost('login') && Token::check('login_token', $_POST['login_token'])) {
@@ -78,6 +87,9 @@ class User extends Controller
         throw new Error404();
     }
 
+    /**
+     * @throws Error404
+     */
     protected function actionLogOut()
     {
         if (Session::has('user')) {
@@ -89,6 +101,10 @@ class User extends Controller
         throw new Error404();
     }
 
+    /**
+     * @throws Error404
+     * @throws DbException
+     */
     protected function actionPersonalArea()
     {
         if (Session::has('user')) {
@@ -100,6 +116,10 @@ class User extends Controller
         }
     }
 
+    /**
+     * @throws Error404
+     * @throws DbException
+     */
     protected function actionProfile()
     {
         if (Session::has('user')) {
@@ -147,6 +167,10 @@ class User extends Controller
         }
     }
 
+    /**
+     * @throws Error404
+     * @throws DbException
+     */
     protected function actionChangePassword()
     {
         if (Session::has('user')) {

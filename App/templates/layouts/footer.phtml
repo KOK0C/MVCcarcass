@@ -85,5 +85,12 @@
     <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
 <?php endif; ?>
 
+<?php if (\IhorRadchenko\App\Components\Session::get('add_review') === 'fail'): ?>
+    <script>
+        $(".modal-error").css('display', 'block');
+        $("#btn-addReview").click();
+    </script>
+    <?php \IhorRadchenko\App\Components\Session::delete('add_review'); ?>
+<?php endif; ?>
 </body>
 </html>

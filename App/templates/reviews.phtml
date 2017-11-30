@@ -67,22 +67,23 @@
         </div>
     <?php endif; ?>
     <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
-        <button class="btn btn-block btn-success" data-toggle="modal" data-target="#addReview">ДОБАВИТЬ ОТЗЫВ</button>
+        <button id="btn-addReview" class="btn btn-block btn-success" data-toggle="modal" data-target="#addReview">ДОБАВИТЬ ОТЗЫВ</button>
     <?php endif; ?>
 </div>
 
 <div class="modal fade" id="addReview" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form-addReview" id="addReviewForm" method="post" action="/">
+            <form class="form-addReview" id="addReviewForm" method="post" action="/review/create">
                 <div class="modal-header">
                     <h2 class="form-addReview-heading">Ваш отзыв</h2>
                     <button class="close exit-modal" type="button" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-
+                    <div class="modal-error alert alert-danger">
+                    </div>
                     <select class="form-control modal-field" id="selectMark" name="mark" required>
-                        <option>Марка</option>
+                        <option value="">Марка</option>
                         <?php if (! empty($brands)): ?>
                             <?php foreach ($brands as $brand): ?>
                                 <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>">
@@ -95,12 +96,23 @@
                     <select class="form-control modal-field" id="selectModel" name="model" disabled required>
                         <option>Модель</option>
                     </select>
-                    <input type="text" name="f_name" id="inputFName" class="form-control modal-field" placeholder="Имя" required autocomplete="on">
-                    <input type="text" name="city" id="inputCity" class="form-control modal-field" placeholder="Город" required autocomplete="on">
+                    <input type="text" name="f_name" id="inputFName" class="form-control modal-field" placeholder="Имя" required autocomplete="on"
+                           value="<?= \IhorRadchenko\App\Components\Session::get('user')->f_name ?? ''; ?>">
+                    <input type="text" name="city" id="inputCity" class="form-control modal-field" placeholder="Город" autocomplete="on"
+                           value="<?= \IhorRadchenko\App\Components\Session::get('user')->city ?? ''; ?>">
+                    <fieldset class="rating">
+                        <span class="rating-desc">Оцените модель:</span>
+                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                        <input required checked type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    </fieldset>
                     <textarea name="text" class="form-control modal-field" id="reviewText" rows="10" required placeholder="Текст отзыва"></textarea>
+                    <input type="hidden" name="token_add_review" value="<?= \IhorRadchenko\App\Components\Token::generate('token_add_review'); ?>">
                 </div>
                 <div class="modal-footer">
-                    <input class="btn btn-primary btn-block" type="submit" name="login" value="Отправить">
+                    <input class="btn btn-primary btn-block" type="submit" name="add_review" value="Отправить">
                 </div>
             </form>
         </div>

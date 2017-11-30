@@ -10,6 +10,7 @@ namespace IhorRadchenko\App;
 use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Components\Validation\ValidationErrorHandler;
 use IhorRadchenko\App\Components\Validation\Validator;
+use IhorRadchenko\App\Exceptions\DbException;
 
 /**
  * Class Model
@@ -69,6 +70,7 @@ abstract class Model
      * @param bool
      * @param string
      * @return array Возвращает массив с объектами
+     * @throws DbException
      */
     public static function findAll(bool $reversedSort = false, string $field = 'id'): array
     {
@@ -84,6 +86,7 @@ abstract class Model
      * и возвращает ее в виде объекта
      * @param int $id
      * @return object Возвращает запись в виде объекта из бд
+     * @throws DbException
      */
     public static function findById(int $id)
     {
@@ -105,6 +108,7 @@ abstract class Model
     /**
      * Метод в зависимости от того, сохранялся ли объект в бд
      * записывает его в бд либо обновляет запись
+     * @throws DbException
      */
     public function save()
     {
@@ -121,6 +125,7 @@ abstract class Model
      * затем отправляет запрос на добавление в бд
      * и записывает в свойство полученный из бд id
      * @return bool
+     * @throws DbException
      */
     protected function insert(): bool
     {
@@ -143,6 +148,7 @@ abstract class Model
      * Метод обновляет запись в бд
      * Сперва получая все свойства объекта кроме id (его не трогаем)
      * @return bool
+     * @throws DbException
      */
     protected function update(): bool
     {
@@ -164,6 +170,7 @@ abstract class Model
     /**
      * Метод удаляет запись объекта из бд
      * @return bool
+     * @throws DbException
      */
     public function delete(): bool
     {

@@ -9,6 +9,7 @@
 namespace IhorRadchenko\App\Models;
 
 use IhorRadchenko\App\DataBase;
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Model;
 
 /**
@@ -26,6 +27,11 @@ class Car extends Model
     private $brand_id;
     private $img;
 
+    /**
+     * @param string $brand
+     * @return array|null
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     public static function findCarsByBrand(string $brand)
     {
         $sql = 'SELECT * FROM ' . self::TABLE .
@@ -35,6 +41,12 @@ class Car extends Model
         return (! empty($result)) ? $result : null;
     }
 
+    /**
+     * @param string $brand
+     * @param string $model
+     * @return null|self
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     public static function findCarByBrandAndModel(string $brand, string $model)
     {
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE brand_id = (SELECT id FROM brands WHERE name = :brandName) AND model = :model LIMIT 1';
@@ -70,6 +82,7 @@ class Car extends Model
     /**
      * @param $name
      * @return bool|object
+     * @throws DbException
      */
     public function __get($name)
     {
@@ -82,6 +95,11 @@ class Car extends Model
         }
     }
 
+    /**
+     * @param string $model
+     * @return array
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     public static function findNewsForCar(string $model): array
     {
         $sql = 'SELECT * FROM news 

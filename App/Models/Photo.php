@@ -9,6 +9,7 @@
 namespace IhorRadchenko\App\Models;
 
 use IhorRadchenko\App\DataBase;
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Model;
 
 class Photo extends Model
@@ -26,6 +27,7 @@ class Photo extends Model
     /**
      * @param int $id ID статьи
      * @return array Массив объектов Photo
+     * @throws DbException
      */
     public static function findForArticle(int $id): array
     {

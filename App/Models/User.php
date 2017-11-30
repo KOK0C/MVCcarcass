@@ -10,6 +10,7 @@ namespace IhorRadchenko\App\Models;
 
 use IhorRadchenko\App\Components\Traits\GetDate;
 use IhorRadchenko\App\DataBase;
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Model;
 
 /**
@@ -54,6 +55,7 @@ class User extends Model
     /**
      * @param $name
      * @return bool|string
+     * @throws DbException
      */
     public function __get($name)
     {
@@ -69,6 +71,7 @@ class User extends Model
     /**
      * @param string $email
      * @return null|User
+     * @throws DbException
      */
     public static function findByEmail(string $email)
     {
@@ -94,6 +97,11 @@ class User extends Model
         return trim($this->f_name . ' ' . $this->l_name);
     }
 
+    /**
+     * @param string $hash
+     * @return bool
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     public function recordUserSessionInDB(string $hash)
     {
         if (DataBase::getInstance()->insert(
@@ -105,11 +113,20 @@ class User extends Model
         return false;
     }
 
+    /**
+     * @param $value
+     * @param string $field
+     * @return mixed
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     public static function getUserSessionFromDB($value, string $field = 'user_id')
     {
         return DataBase::getInstance()->get('user_sessions', $field, $value);
     }
 
+    /**
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     public function deleteUserSessionFromDB()
     {
         DataBase::getInstance()->delete('user_sessions', 'user_id', $this->id);

@@ -432,3 +432,12 @@ pre {
 .modal-field {
     margin: 10px 0;
 }
+
+.rating-desc {
+    display: block;
+    height: 43px;
+    float: left;
+    color: #999;
+    padding: 7px 0 7px 7px;
+    font-size: 1.1rem;
+}

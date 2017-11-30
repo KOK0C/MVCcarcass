@@ -10,6 +10,7 @@ namespace IhorRadchenko\App\Models;
 
 use IhorRadchenko\App\Components\Traits\GetDate;
 use IhorRadchenko\App\DataBase;
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Model;
 
 /**
@@ -62,6 +63,7 @@ class Article extends Model
      * Метод собирает масив с последними записями в виде объектов
      * к каждой категории для главной страницы
      * @return array Массив объектов Category
+     * @throws DbException
      */
     public static function findLastArticle(): array
     {
@@ -79,6 +81,7 @@ class Article extends Model
      * @param int
      * @param bool
      * @return array Возвращает массив с объектами Article
+     * @throws DbException
      */
     public static function findByCategory(string $link, int $page, bool $reversedSort = false)
     {
@@ -94,6 +97,11 @@ class Article extends Model
         return (! empty($result)) ? $result : null;
     }
 
+    /**
+     * @param string $link
+     * @return int
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     public static function getCountArticleInCategory(string $link): int
     {
         $sql = 'SELECT COUNT(*) FROM ' . self::TABLE . ' WHERE category_id = 
@@ -106,6 +114,7 @@ class Article extends Model
      * @param string $link
      * @param string $alias
      * @return Article
+     * @throws DbException
      */
     public static function findOneArticle(string $link, string $alias)
     {

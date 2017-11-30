@@ -9,6 +9,7 @@
 namespace IhorRadchenko\App\Models;
 
 use IhorRadchenko\App\DataBase;
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Model;
 
 class Page extends Model
@@ -30,6 +31,7 @@ class Page extends Model
     /**
      * @param string $link
      * @return Page
+     * @throws DbException
      */
     public static function findByLink(string $link)
     {

@@ -22,6 +22,11 @@ class Cars extends Controller
      */
     private $mainPage;
 
+    /**
+     * @param string $mark
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     protected function actionOneMark(string $mark)
     {
         $this->mainPage = new View('/App/templates/mark_page.phtml');
@@ -34,6 +39,12 @@ class Cars extends Controller
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
+    /**
+     * @param string $mark
+     * @param string $model
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     protected function actionOneModel(string $mark, string $model)
     {
         $this->mainPage = new View('/App/templates/one_model.phtml');

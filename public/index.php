@@ -18,15 +18,15 @@ $errorHandler = new IhorRadchenko\App\Components\ErrorHandler($logger);
 
 $route = IhorRadchenko\App\Components\Router::getInstance();
 
-if (! \IhorRadchenko\App\Components\Session::has('user') && \IhorRadchenko\App\Components\Cookie::has('user')) {
-    $userId = \IhorRadchenko\App\Models\User::getUserSessionFromDB(
-        \IhorRadchenko\App\Components\Cookie::get('user'),
-        'hash_user'
-    )->user_id;
-    \IhorRadchenko\App\Components\Session::set('user', \IhorRadchenko\App\Models\User::findById($userId));
-}
-
 try {
+    if (! \IhorRadchenko\App\Components\Session::has('user') && \IhorRadchenko\App\Components\Cookie::has('user')) {
+        $userId = \IhorRadchenko\App\Models\User::getUserSessionFromDB(
+            \IhorRadchenko\App\Components\Cookie::get('user'),
+            'hash_user'
+        )->user_id;
+        \IhorRadchenko\App\Components\Session::set('user', \IhorRadchenko\App\Models\User::findById($userId));
+    }
+
     $route->run();
 } catch (IhorRadchenko\App\Exceptions\DbException $e) {
     $logger->emergency($e->getMessage(), ['Exception' => get_class($e), 'File' => $e->getFile(), 'Line' => $e->getLine()]);

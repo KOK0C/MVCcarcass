@@ -10,6 +10,7 @@ namespace IhorRadchenko\App\Controllers;
 
 use IhorRadchenko\App\Components\Pagination;
 use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
 use IhorRadchenko\App\View;
@@ -22,6 +23,9 @@ class Main extends Controller
      */
     private $mainPage;
 
+    /**
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     protected function actionIndex()
     {
         $this->mainPage = new View('/App/templates/main_page.phtml');
@@ -33,6 +37,7 @@ class Main extends Controller
      * @param string $link
      * @param string $alias
      * @throws Error404
+     * @throws DbException
      */
     protected function actionOneArticle(string $link, string $alias)
     {
@@ -46,8 +51,9 @@ class Main extends Controller
 
     /**
      * @param string $link
-     * @param int $page
+     * @param $page
      * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
      */
     protected function actionOneCategory(string $link, $page)
     {

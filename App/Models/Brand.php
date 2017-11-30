@@ -24,6 +24,11 @@ class Brand extends Model
         return '/public/img/logo/' . $this->logo;
     }
 
+    /**
+     * @param string $mark
+     * @return null
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     public static function findOneByMark(string $mark)
     {
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE `name` = :mark LIMIT 1';
