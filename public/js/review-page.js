@@ -42,3 +42,19 @@ $("#selectMark").change(function () {
         )
     }
 });
+
+$(document).ready(function () {
+    var currentPage = 1;
+    $("#btn-moreReview").click(function () {
+        $.post(
+            '/reviews',
+            {page: ++currentPage},
+            function (data) {
+                $(".blog-main").append(data);
+                if (currentPage === totalPage) {
+                    $("#btn-moreReview").remove();
+                }
+            }
+        );
+    });
+});

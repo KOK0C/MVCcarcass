@@ -1,71 +1,80 @@
 <?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
 
-<div class="col-sm-8 blog-main">
-    <form action="" id="form-reviews" method="post">
-        <select name="mark" id="markCar" class="form-control">
-            <option value="all">Марка авто</option>
-            <?php if (! empty($brands)): ?>
-                <?php foreach ($brands as $brand): ?>
-                    <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
-                                    <?php if (isset($uri[3]) && $uri[3] ===
-                                    htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name)))) {print 'selected';} ?>
-                    >
-                        <?= htmlentities(mb_ucwords($brand->name)); ?>
-                    </option>
-                <?php endforeach; ?>
+<script>var totalPage = <?= $totalPage ?></script>
+
+<div class="col-sm-8">
+    <div class="blog-main">
+        <form action="" id="form-reviews" method="post">
+            <select name="mark" id="markCar" class="form-control">
+                <option value="all">Марка авто</option>
+                <?php if (! empty($brands)): ?>
+                    <?php foreach ($brands as $brand): ?>
+                        <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
+                            <?php if (isset($uri[3]) && $uri[3] ===
+                                htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name)))) {print 'selected';} ?>
+                        >
+                            <?= htmlentities(mb_ucwords($brand->name)); ?>
+                        </option>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </select>
+            <?php if (! empty($cars)): ?>
+                <select name="model" id="modelCar" class="form-control">
+                    <option value="all">Модель</option>
+                    <?php foreach ($cars as $car): ?>
+                        <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $car->model))); ?>"
+                            <?php if (isset($uri[5]) && $uri[5] ===
+                                htmlentities(mb_strtolower(str_replace(' ', '-', $car->model)))) {print 'selected';} ?>
+                        >
+                            <?= htmlentities(mb_ucwords(strtolower($car->model))); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            <?php else: ?>
+                <select name="model" id="modelCar" disabled class="form-control">
+                    <option value="all">Модель</option>
+                </select>
             <?php endif; ?>
-        </select>
-        <?php if (! empty($cars)): ?>
-            <select name="model" id="modelCar" class="form-control">
-                <option value="all">Модель</option>
-                <?php foreach ($cars as $car): ?>
-                    <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $car->model))); ?>"
-                        <?php if (isset($uri[5]) && $uri[5] ===
-                            htmlentities(mb_strtolower(str_replace(' ', '-', $car->model)))) {print 'selected';} ?>
-                    >
-                        <?= htmlentities(mb_ucwords(strtolower($car->model))); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
+        </form>
+        <?php if (! empty($reviews)): ?>
+            <?php foreach ($reviews as $review): ?>
+                <div class="review">
+                    <img src="<?= htmlentities($review->car->getIcon()); ?>" alt="">
+                    <div class="review-model">
+                        <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($review->car->brand->name))) . '/' . htmlentities(str_replace(' ', '-', mb_strtolower($review->car->model))); ?>">
+                            <?= htmlentities(mb_strtoupper($review->car->brand->name)) . ' ' . htmlentities(mb_strtoupper($review->car->model)); ?>
+                        </a>
+                    </div>
+                    <div class="review-rating">
+                        <span>&#9733</span> Оценка: <?= htmlentities($review->rating); ?> из 5
+                    </div>
+                    <div class="review-content">
+                        <div class="review-author">
+                            <b><?= htmlentities($review->author->f_name); ?></b>
+                            <?php if (! empty($review->author->city)): ?>
+                                <b> | <?= htmlentities($review->author->city); ?></b>
+                            <?php endif; ?>
+                        </div>
+                        <div class="review-text">
+                            <?= nl2br(htmlentities($review->text)); ?>
+                        </div>
+                        <div class="review-date">
+                            <?= htmlentities($review->getDate()); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         <?php else: ?>
-            <select name="model" id="modelCar" disabled class="form-control">
-                <option value="all">Модель</option>
-            </select>
-        <?php endif; ?>
-    </form>
-    <?php if (! empty($reviews)): ?>
-        <?php foreach ($reviews as $review): ?>
-            <div class="review">
-                <img src="<?= htmlentities($review->car->getIcon()); ?>" alt="">
-                <div class="review-model">
-                    <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($review->car->brand->name))) . '/' . htmlentities(str_replace(' ', '-', mb_strtolower($review->car->model))); ?>">
-                        <?= htmlentities(mb_strtoupper($review->car->brand->name)) . ' ' . htmlentities(mb_strtoupper($review->car->model)); ?>
-                    </a>
-                </div>
-                <div class="review-rating">
-                    <span>&#9733</span> Оценка: <?= htmlentities($review->rating); ?> из 5
-                </div>
-                <div class="review-content">
-                    <div class="review-author">
-                        <b><?= htmlentities($review->author->f_name); ?></b>
-                        <?php if (! empty($review->author->city)): ?>
-                            <b> | <?= htmlentities($review->author->city); ?></b>
-                        <?php endif; ?>
-                    </div>
-                    <div class="review-text">
-                        <?= nl2br(htmlentities($review->text)); ?>
-                    </div>
-                    <div class="review-date">
-                        <?= htmlentities($review->getDate()); ?>
-                    </div>
-                </div>
+            <div class="review-notFound">
+                По данному автомобилю отзывов нет...
             </div>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <div class="review-notFound">
-            По данному автомобилю отзывов нет...
-        </div>
+        <?php endif; ?>
+    </div>
+
+    <?php if (! empty($reviews)): ?>
+        <button id="btn-moreReview" class="btn btn-block btn-success">ПОКАЗАТЬ БОЛЬШЕ ОТЗЫВОВ</button>
     <?php endif; ?>
+
     <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
         <button id="btn-addReview" class="btn btn-block btn-success" data-toggle="modal" data-target="#addReview">ДОБАВИТЬ ОТЗЫВ</button>
     <?php endif; ?>

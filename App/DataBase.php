@@ -91,7 +91,7 @@ class DataBase
      * @return int
      * @throws DbException
      */
-    public function countRow(string $sql, array $params): int
+    public function countRow(string $sql, array $params = []): int
     {
         try {
             $stmt = $this->pdo->prepare($sql);

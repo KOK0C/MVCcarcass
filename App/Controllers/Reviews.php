@@ -33,9 +33,13 @@ class Reviews extends Controller
             $data = Car::findCarsByBrand($mark);
             print json_encode($data, JSON_UNESCAPED_UNICODE);
             die;
+        } elseif ($this->isAjax() && isset($_POST['page'])) {
+            View::loadForAjax('reviews', Review::findReviewPerPage($_POST['page']));
+            die;
         }
         $this->mainPage = new View('/App/templates/reviews.phtml');
-        $this->mainPage->reviews = Review::findAll(true);
+        $this->mainPage->totalPage = Review::getCountReview() / Review::PER_PAGE;
+        $this->mainPage->reviews = Review::findReviewPerPage(1);
         $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
@@ -48,14 +52,19 @@ class Reviews extends Controller
      */
     protected function actionMark($page, string $mark)
     {
+        if ($this->isAjax() && isset($_POST['page'])) {
+            View::loadForAjax('reviews', Review::findReviewsByBrand($_POST['page'], $mark));
+            die;
+        }
         $mark = ucwords(str_replace('-', ' ', $mark));
         $this->mainPage = new View('/App/templates/reviews.phtml');
+        $this->mainPage->totalPage = Review::getCountReview($mark) / Review::PER_PAGE;
         $this->mainPage->cars = Car::findCarsByBrand($mark);
         if (! $this->mainPage->cars) {
             throw new Error404();
         }
         $this->header->page->title = "Отзывы об $mark";
-        $this->mainPage->reviews = Review::findReviewsByBrand($mark);
+        $this->mainPage->reviews = Review::findReviewsByBrand(1, $mark);
         $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
@@ -69,14 +78,19 @@ class Reviews extends Controller
      */
     protected function actionModel($page, string $mark, string $model)
     {
+        if ($this->isAjax() && isset($_POST['page'])) {
+            View::loadForAjax('reviews', Review::findReviewsByModel($_POST['page'], $mark, $model));
+            die;
+        }
         $mark = ucwords(str_replace('-', ' ', $mark));
         $model = mb_strtoupper(str_replace('-', ' ', $model));
         $this->mainPage = new View('/App/templates/reviews.phtml');
         if (! Car::findCarByBrandAndModel($mark, $model)) {
             throw new Error404();
         }
+        $this->mainPage->totalPage = Review::getCountReview($mark) / Review::PER_PAGE;
         $this->header->page->title = "Отзывы об $mark $model";
-        $this->mainPage->reviews = Review::findReviewsByModel($mark, $model);
+        $this->mainPage->reviews = Review::findReviewsByModel(1, $mark, $model);
         $this->mainPage->cars = Car::findCarsByBrand($mark);
         $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
@@ -119,8 +133,7 @@ class Reviews extends Controller
                 Session::set('add_review', 'fail');
                 Redirect::to();
             }
-        } else {
-            throw new Error404();
         }
+        throw new Error404();
     }
 }

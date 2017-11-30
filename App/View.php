@@ -72,4 +72,9 @@ class View
             print $view->render();
         }
     }
+
+    public static function loadForAjax(string $view, $data)
+    {
+        require $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/ajax/' . $view . '.phtml';
+    }
 }

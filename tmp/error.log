@@ -1028,3 +1028,159 @@ File : C:\OSPanel\domains\MVCcarcass\App\Models\Review.php;
 Line : 111;
 
 =======================================================================
+
+[30-11-2017 20:26:51] ERROR
+Declaration of IhorRadchenko\App\Models\Review::findAll(int $page): array should be compatible with IhorRadchenko\App\Model::findAll(bool $reversedSort = false, string $field = 'id'): array
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Review.php;
+Line : 17;
+
+=======================================================================
+
+[30-11-2017 20:39:55] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 78;
+
+=======================================================================
+
+[30-11-2017 20:39:57] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 78;
+
+=======================================================================
+
+[30-11-2017 20:40:28] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 78;
+
+=======================================================================
+
+[30-11-2017 20:41:06] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 78;
+
+=======================================================================
+
+[30-11-2017 20:42:40] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 78;
+
+=======================================================================
+
+[30-11-2017 20:45:08] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 78;
+
+=======================================================================
+
+[30-11-2017 20:45:56] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 79;
+
+=======================================================================
+
+[30-11-2017 20:46:21] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 79;
+
+=======================================================================
+
+[30-11-2017 20:47:21] ERROR
+require(C:/OSPanel/domains/MVCcarcass/App/templates/layouts/ajax/review.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 79;
+
+=======================================================================
+
+[30-11-2017 21:02:14] ERROR
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php;
+Line : 40;
+
+=======================================================================
+
+[30-11-2017 21:02:31] ERROR
+Creating default object from empty value
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php;
+Line : 40;
+
+=======================================================================
+
+[30-11-2017 21:10:19] WARNING
+Undefined variable: totalPage
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\reviews.phtml;
+Line : 3;
+
+=======================================================================
+
+[30-11-2017 21:15:03] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IN 
+                (SELECT cars.id FROM cars WHERE brand_id = 
+              ' at line 1
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 100;
+
+=======================================================================
+
+[30-11-2017 21:16:06] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IN 
+                (SELECT cars.id FROM cars WHERE brand_id = 
+              ' at line 1
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 100;
+
+=======================================================================
+
+[30-11-2017 21:17:50] CRITICAL
+Too few arguments to function IhorRadchenko\App\Models\Review::getCountReview(), 0 passed in C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php on line 41 and exactly 1 expected
+Trowable : ArgumentCountError;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Review.php;
+Line : 134;
+
+=======================================================================
+
+[30-11-2017 21:19:14] CRITICAL
+Too few arguments to function IhorRadchenko\App\Models\Review::getCountReview(), 0 passed in C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php on line 41 and exactly 1 expected
+Trowable : ArgumentCountError;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Review.php;
+Line : 134;
+
+=======================================================================
+
+[30-11-2017 21:19:16] CRITICAL
+Too few arguments to function IhorRadchenko\App\Models\Review::getCountReview(), 0 passed in C:\OSPanel\domains\MVCcarcass\App\Controllers\Reviews.php on line 41 and exactly 1 expected
+Trowable : ArgumentCountError;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Review.php;
+Line : 134;
+
+=======================================================================
+
+[30-11-2017 21:24:10] WARNING
+Undefined variable: totalPage
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\reviews.phtml;
+Line : 3;
+
+=======================================================================
