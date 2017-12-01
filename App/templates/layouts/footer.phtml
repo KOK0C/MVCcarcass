@@ -19,78 +19,31 @@
 <script src="/public/js/calendar.js"></script>
 <script src="/public/js/review-page.js"></script>
 
-<?php if (\IhorRadchenko\App\Components\Session::get('signup') === 'fail'): ?>
+<?php if (\IhorRadchenko\App\Components\Session::has('login_success') ||
+            \IhorRadchenko\App\Components\Session::has('login_fail')): ?>
     <script>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'email')): ?>
-            var email = <?= \IhorRadchenko\App\Components\Session::get('errors', 'email'); ?>;
-        <?php endif; ?>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'password')): ?>
-            var pass = <?= \IhorRadchenko\App\Components\Session::get('errors', 'password'); ?>;
-        <?php endif; ?>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'passwordAgain')): ?>
-            var pass_again = <?= \IhorRadchenko\App\Components\Session::get('errors', 'passwordAgain'); ?>;
-        <?php endif; ?>
+        $("#btn-login").click();
     </script>
-    <script src="/public/js/signup.js"></script>
-    <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
-    <?php \IhorRadchenko\App\Components\Session::delete('signup'); ?>
+    <?php \IhorRadchenko\App\Components\Session::delete('login_success'); ?>
+    <?php \IhorRadchenko\App\Components\Session::delete('login_fail'); ?>
 <?php endif; ?>
 
-<?php if (\IhorRadchenko\App\Components\Session::has('login')): ?>
+<?php if (\IhorRadchenko\App\Components\Session::has('signup_error') &&
+\IhorRadchenko\App\Components\Session::get('signup_error') === 'fail'): ?>
     <script>
-        <?php if (\IhorRadchenko\App\Components\Session::get('login') === 'success'): ?>
-            var loginSuccess = true;
-        <?php else: ?>
-            var loginSuccess = false;
-        <?php endif; ?>
-        <?php \IhorRadchenko\App\Components\Session::delete('login'); ?>
+        $("#btn-signup").click();
     </script>
-    <script src="/public/js/login.js"></script>
-<?php endif; ?>
-
-<?php if (\IhorRadchenko\App\Components\Session::get('update_user') === 'fail'): ?>
-    <script>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'email')): ?>
-            var email = <?= \IhorRadchenko\App\Components\Session::get('errors', 'email'); ?>;
-        <?php endif; ?>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'f_name')): ?>
-            var f_name = <?= \IhorRadchenko\App\Components\Session::get('errors', 'f_name'); ?>;
-        <?php endif; ?>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'l_name')): ?>
-            var l_name = <?= \IhorRadchenko\App\Components\Session::get('errors', 'l_name'); ?>;
-        <?php endif; ?>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'phone_number')): ?>
-            var phone_number = <?= \IhorRadchenko\App\Components\Session::get('errors', 'phone_number'); ?>;
-        <?php endif; ?>
-    </script>
-    <script src="/public/js/update_user.js"></script>
-    <?php \IhorRadchenko\App\Components\Session::delete('update_user'); ?>
+    <?php \IhorRadchenko\App\Components\Session::delete('signup_error'); ?>
     <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
 <?php endif; ?>
 
-<?php if (\IhorRadchenko\App\Components\Session::get('change_pass') === 'fail'): ?>
+<?php if (\IhorRadchenko\App\Components\Session::has('add_review') &&
+            \IhorRadchenko\App\Components\Session::get('add_review')): ?>
     <script>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'old_pass')): ?>
-            var old_pass = <?= \IhorRadchenko\App\Components\Session::get('errors', 'old_pass'); ?>;
-        <?php endif; ?>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'password')): ?>
-            var pass = <?= \IhorRadchenko\App\Components\Session::get('errors', 'password'); ?>;
-        <?php endif; ?>
-        <?php if (\IhorRadchenko\App\Components\Session::has('errors', 'passwordAgain')): ?>
-            var pass_again = <?= \IhorRadchenko\App\Components\Session::get('errors', 'passwordAgain'); ?>;
-        <?php endif; ?>
-    </script>
-    <script src="/public/js/change_pass.js"></script>
-    <?php \IhorRadchenko\App\Components\Session::delete('change_pass'); ?>
-    <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
-<?php endif; ?>
-
-<?php if (\IhorRadchenko\App\Components\Session::get('add_review') === 'fail'): ?>
-    <script>
-        $(".modal-error").css('display', 'block');
         $("#btn-addReview").click();
     </script>
     <?php \IhorRadchenko\App\Components\Session::delete('add_review'); ?>
 <?php endif; ?>
+
 </body>
 </html>

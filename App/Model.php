@@ -36,18 +36,6 @@ abstract class Model
         return $this->id;
     }
 
-    private function create_json($data)
-    {
-        if (is_array($data)) {
-            $arr = [];
-            foreach ($data as $key => $value) {
-                $arr[$key] = json_encode($value, JSON_UNESCAPED_UNICODE);
-            }
-            return $arr;
-        }
-        return json_encode($data, JSON_UNESCAPED_UNICODE);
-    }
-
     public function load(array $data, array $rules): bool
     {
         $validator = new Validator((new ValidationErrorHandler()));
@@ -60,7 +48,7 @@ abstract class Model
             }
             return true;
         }
-        Session::set('errors', $this->create_json($validation->errors()->get()));
+        Session::set('errors', $validation->errors()->get());
         return false;
     }
 

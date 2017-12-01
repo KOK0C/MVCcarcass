@@ -17,6 +17,7 @@ use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Review;
+use IhorRadchenko\App\Models\User;
 use IhorRadchenko\App\View;
 
 class Reviews extends Controller
@@ -38,7 +39,7 @@ class Reviews extends Controller
             die;
         }
         $this->mainPage = new View('/App/templates/reviews.phtml');
-        $this->mainPage->totalPage = Review::getCountReview() / Review::PER_PAGE;
+        $this->mainPage->totalPage = ceil(Review::getCountReview() / Review::PER_PAGE);
         $this->mainPage->reviews = Review::findReviewPerPage(1);
         $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
@@ -58,7 +59,7 @@ class Reviews extends Controller
         }
         $mark = ucwords(str_replace('-', ' ', $mark));
         $this->mainPage = new View('/App/templates/reviews.phtml');
-        $this->mainPage->totalPage = Review::getCountReview($mark) / Review::PER_PAGE;
+        $this->mainPage->totalPage = ceil(Review::getCountReview($mark) / Review::PER_PAGE);
         $this->mainPage->cars = Car::findCarsByBrand($mark);
         if (! $this->mainPage->cars) {
             throw new Error404();
@@ -88,7 +89,7 @@ class Reviews extends Controller
         if (! Car::findCarByBrandAndModel($mark, $model)) {
             throw new Error404();
         }
-        $this->mainPage->totalPage = Review::getCountReview($mark) / Review::PER_PAGE;
+        $this->mainPage->totalPage = ceil(Review::getCountReview($mark, $model) / Review::PER_PAGE);
         $this->header->page->title = "Отзывы об $mark $model";
         $this->mainPage->reviews = Review::findReviewsByModel(1, $mark, $model);
         $this->mainPage->cars = Car::findCarsByBrand($mark);
@@ -104,6 +105,7 @@ class Reviews extends Controller
     {
         if (Session::has('user') && $this->isPost('add_review') && Token::check('token_add_review', $_POST['token_add_review'])) {
             $review = new Review();
+            $user = User::findById(Session::get('user')->getId());
             $validRules = [
                 'f_name' => [
                     'required' => true,
@@ -116,18 +118,13 @@ class Reviews extends Controller
                 'text' => [
                     'required' => true,
                 ],
-                'model' => [
-                    'required' => true
-                ],
-                'mark' => [
-                    'required' => true
-                ],
                 'rating' => [
                     'required' => true
                 ]
             ];
-            if ($review->load($_POST, $validRules)) {
+            if ($review->load($_POST, $validRules) && $user->load($_POST, $validRules)) {
                 $review->save();
+                $user->save();
                 Redirect::to();
             } else {
                 Session::set('add_review', 'fail');

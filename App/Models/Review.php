@@ -140,9 +140,9 @@ class Review extends Model
     {
         $sql = 'SELECT COUNT(*) FROM ' . self::TABLE;
         if ($model && $mark) {
-            $sql .= 'WHERE car_id = 
-                    (SELECT id FROM cars WHERE brand_id = 
-                    (SELECT id FROM brands WHERE `name` = :mark) AND model = :model)';
+            $sql .= ' WHERE car_id = 
+                    (SELECT id FROM cars WHERE model = :model AND brand_id = 
+                    (SELECT id FROM brands WHERE name = :mark))';
             return DataBase::getInstance()->countRow($sql, ['mark' => $mark, 'model' => $model]);
         } elseif ($mark) {
             $sql .= ' WHERE car_id IN

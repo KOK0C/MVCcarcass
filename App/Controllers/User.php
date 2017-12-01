@@ -48,10 +48,10 @@ class User extends Controller
             if ($user->load($_POST, $validRules)) {
                 $user->passwordHash();
                 $user->save();
-                Session::set('login', 'success');
+                Session::set('login_success', 'Поздравляем с регистрацией, теперь можете войти');
                 Redirect::to();
             }
-            Session::set('signup', 'fail');
+            Session::set('signup_error', 'fail');
             Redirect::to();
         }
         throw new Error404();
@@ -81,7 +81,7 @@ class User extends Controller
 
                 Redirect::to('/user');
             }
-            Session::set('login', 'fail');
+            Session::set('login_fail', 'Неверный эмейл или пароль');
             Redirect::to();
         }
         throw new Error404();
@@ -195,7 +195,7 @@ class User extends Controller
                     }
                 } else {
                     Session::set('change_pass', 'fail');
-                    Session::set('errors', ['old_pass' => json_encode(['Неверный пароль'], JSON_UNESCAPED_UNICODE)]);
+                    Session::set('errors', ['old_pass' => ['Неверный пароль']]);
                 }
             }
             $this->mainPage = new View('/App/templates/personal_area/change_password.phtml');

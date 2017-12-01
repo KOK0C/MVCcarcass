@@ -1184,3 +1184,40 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\reviews.phtml;
 Line : 3;
 
 =======================================================================
+
+[01-12-2017 18:08:13] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 
+                    (SELECT id FROM cars WHERE brand_id = 
+                ' at line 1
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 100;
+
+=======================================================================
+
+[01-12-2017 18:09:44] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 
+                    (SELECT id FROM cars WHERE model = 'A4' AND brand_id = ' at line 1
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 100;
+
+=======================================================================
+
+[01-12-2017 18:11:09] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 
+                    (SELECT id FROM cars WHERE model = 'A4' AND brand_id = ' at line 1
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 100;
+
+=======================================================================
+
+[01-12-2017 18:11:26] EMERGENCY
+Ошибка при подсчете кол-ва записей в бд: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 
+                    (SELECT id FROM cars WHERE model = 'A4' AND brand_id = ' at line 1
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 100;
+
+=======================================================================

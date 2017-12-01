@@ -26,15 +26,15 @@ class Validator
      * @var array $messages
      */
     private $messages = [
-        'required'  => 'Поле должно быть заполнено',
-        'minLength' => 'Поле должно содержать не менее :value символов',
-        'maxLength' => 'Поле должно содержать не более :value символов',
+        'required'  => 'Поле :field должно быть заполнено',
+        'minLength' => 'Поле :field должно содержать не менее :value символов',
+        'maxLength' => 'Поле :field должно содержать не более :value символов',
         'email'     => 'Не корректный email',
-        'alnum'     => 'В строке должны быть только буквы или числа',
-        'match'     => 'Поля не совпадают',
-        'unique'    => 'Такое значение уже существует',
+        'alnum'     => 'В поле :field должны быть только буквы или числа',
+        'match'     => ':field не совпадают',
+        'unique'    => 'Такое значение поля :field уже существует',
         'phone'     => 'Номер телефона не валиден',
-        'length'    => 'Длина должна составлять :value символов'
+        'length'    => 'Длина поля :field должна составлять :value символов'
     ];
     private $data;
 
@@ -75,7 +75,10 @@ class Validator
             if (in_array($rule, $this->rules) && (! call_user_func_array([$this, $rule], [$field, $item['value'], $ruleValue]))) {
                 $this->validationErrorHandler->addError(
                     $field,
-                    str_replace(':value', $ruleValue, $this->messages[$rule])
+                    str_replace(
+                        ['passwordAgain', 'password', 'email', 'f_name', 'l_name', 'phone_number', 'city', 'text'],
+                        ['Пароли',  '\'Пароль\'', 'Email', '\'Имя\'', '\'Фамилия\'', '\'Номер телефона\'', '\'Город\'', '\'Текст\''],
+                        str_replace([':value', ':field'], [$ruleValue, $field], $this->messages[$rule]))
                 );
             }
         }

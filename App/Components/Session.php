@@ -14,46 +14,31 @@ namespace IhorRadchenko\App\Components;
  */
 class Session
 {
-    public static function set($name, $value)
+    public static function set(string $name, $value)
     {
         $_SESSION[$name] = $value;
     }
 
-    public static function get($parent, $child = '')
+    /**
+     * @param string $key
+     * @return bool|array|string|int|object
+     */
+    public static function get(string $key)
     {
-        if ($child) {
-            return $_SESSION[$parent][$child] ?? false;
-        }
-        return $_SESSION[$parent] ?? false;
+        return $_SESSION[$key] ?? false;
     }
 
-    public static function has($parent, $child = '')
+    public static function has(string $key): bool
     {
-        if ($child) {
-            return isset($_SESSION[$parent][$child]);
-        }
-        return isset($_SESSION[$parent]);
+        return isset($_SESSION[$key]);
     }
 
-    public static function delete($parent, $child = '')
+    public static function delete(string $key): bool
     {
-        if ($child && self::has($parent, $child)) {
-            unset($_SESSION[$parent][$child]);
-            return true;
-        } elseif (! $child && self::has($parent)) {
-            unset($_SESSION[$parent]);
+        if (self::has($key)) {
+            unset($_SESSION[$key]);
             return true;
         }
         return false;
-    }
-
-    public static function message($parent, $child)
-    {
-        if (self::has($parent, $child)) {
-            $msg = self::get($parent, $child);
-            self::delete($parent, $child);
-            return $msg;
-        }
-        return '';
     }
 }
