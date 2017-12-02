@@ -12,6 +12,7 @@
     </title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/public/css/main.css">
     <link rel="stylesheet" href="/public/css/calendar.css">
     <link rel="stylesheet" href="/public/css/style.css">
@@ -94,10 +95,12 @@
                             <?= \IhorRadchenko\App\Components\Session::get('login_fail'); ?>
                         </div>
                     <?php endif; ?>
-                    <label for="inputEmail" class="sr-only">Емейл адресс</label>
-                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
-                    <label for="inputPassword" class="sr-only">Пароль</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required autocomplete="off">
+                    </div>
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="on" name="remember_me"> <span>Запомнить меня</span>
@@ -134,12 +137,15 @@
                             </ul>
                         </div>
                     <?php endif; ?>
-                    <label for="inputEmail" class="sr-only">Емейл адресс</label>
-                    <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
-                    <label for="inputPassword" class="sr-only">Пароль</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password" required autocomplete="off">
-                    <label for="inputPasswordAgain" class="sr-only">Повторите пароль</label>
-                    <input type="password" name="passwordAgain" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="signupPass" class="form-control" placeholder="Password" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="passwordAgain" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <input class="btn btn-primary btn-block" type="submit" value="Зарегистрироваться" name="signup">

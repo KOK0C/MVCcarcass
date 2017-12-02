@@ -33,10 +33,10 @@ class Reviews extends Controller
             $mark = ucwords(str_replace('-', ' ', $_POST['mark']));
             $data = Car::findCarsByBrand($mark);
             print json_encode($data, JSON_UNESCAPED_UNICODE);
-            die;
+            exit();
         } elseif ($this->isAjax() && isset($_POST['page'])) {
             View::loadForAjax('reviews', Review::findReviewPerPage($_POST['page']));
-            die;
+            exit();
         }
         $this->mainPage = new View('/App/templates/reviews.phtml');
         $this->mainPage->totalPage = ceil(Review::getCountReview() / Review::PER_PAGE);
@@ -55,7 +55,7 @@ class Reviews extends Controller
     {
         if (isset($_POST['page'])) {
             View::loadForAjax('reviews', Review::findReviewsByBrand($_POST['page'], $mark));
-            die;
+            exit();
         }
         $mark = ucwords(str_replace('-', ' ', $mark));
         $this->mainPage = new View('/App/templates/reviews.phtml');
@@ -81,7 +81,7 @@ class Reviews extends Controller
     {
         if ($this->isAjax() && isset($_POST['page'])) {
             View::loadForAjax('reviews', Review::findReviewsByModel($_POST['page'], $mark, $model));
-            die;
+            exit();
         }
         $mark = ucwords(str_replace('-', ' ', $mark));
         $model = mb_strtoupper(str_replace('-', ' ', $model));
@@ -117,9 +117,6 @@ class Reviews extends Controller
                 ],
                 'text' => [
                     'required' => true,
-                ],
-                'rating' => [
-                    'required' => true
                 ]
             ];
             if ($review->load($_POST, $validRules) && $user->load($_POST, $validRules)) {

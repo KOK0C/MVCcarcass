@@ -141,7 +141,6 @@ class User extends Controller
                         'maxLength' => 100
                     ],
                     'phone_number' => [
-                        'required' => true,
                         'length' => 13,
                         'phone' => true,
                     ]

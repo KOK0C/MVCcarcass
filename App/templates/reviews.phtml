@@ -73,7 +73,7 @@
         <?php endif; ?>
     </div>
 
-    <?php if (! empty($reviews) && isset($totalPage) &&$totalPage > 1): ?>
+    <?php if (! empty($reviews) && isset($totalPage) && $totalPage > 1): ?>
         <button id="btn-moreReview" class="btn btn-block btn-success">ПОКАЗАТЬ БОЛЬШЕ ОТЗЫВОВ</button>
     <?php endif; ?>
 
@@ -104,33 +104,50 @@
                         </div>
                         <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
                     <?php endif; ?>
-                    <select class="form-control modal-field" id="selectMark" name="mark" required>
-                        <option value="">Марка</option>
-                        <?php if (! empty($brands)): ?>
-                            <?php foreach ($brands as $brand): ?>
-                                <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>">
-                                    <?= htmlentities(mb_ucwords($brand->name)); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </select>
 
-                    <select class="form-control modal-field" id="selectModel" name="model" disabled required>
-                        <option>Модель</option>
-                    </select>
-                    <input type="text" name="f_name" id="inputFName" class="form-control modal-field" placeholder="Имя" required autocomplete="on"
-                           value="<?= \IhorRadchenko\App\Components\Session::get('user')->f_name ?? ''; ?>">
-                    <input type="text" name="city" id="inputCity" class="form-control modal-field" placeholder="Город" autocomplete="on"
-                           value="<?= \IhorRadchenko\App\Components\Session::get('user')->city ?? ''; ?>">
-                    <fieldset class="rating">
-                        <span class="rating-desc">Оцените модель:</span>
-                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                        <input required checked type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                    </fieldset>
-                    <textarea name="text" class="form-control modal-field" id="reviewText" rows="10" required placeholder="Текст отзыва"></textarea>
+                    <div class="form-group">
+                        <select class="form-control modal-field" id="selectMark" name="mark" required>
+                            <option value="">Марка</option>
+                            <?php if (! empty($brands)): ?>
+                                <?php foreach ($brands as $brand): ?>
+                                    <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>">
+                                        <?= htmlentities(mb_ucwords($brand->name)); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control modal-field" id="selectModel" name="model" disabled required>
+                            <option>Модель</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="f_name" id="inputFName" class="form-control modal-field" placeholder="Имя" required autocomplete="on"
+                               value="<?= \IhorRadchenko\App\Components\Session::get('user')->f_name ?? ''; ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="city" id="inputCity" class="form-control modal-field" placeholder="Город" autocomplete="on"
+                               value="<?= \IhorRadchenko\App\Components\Session::get('user')->city ?? ''; ?>">
+                    </div>
+                    <div class="stars">
+                        <div class="star-title">Оцените модель:</div>
+                        <div class="star-cont">
+                            <input class="star star-5" id="star-5" type="radio" name="star"/>
+                            <label class="star star-5" for="star-5"></label>
+                            <input class="star star-4" id="star-4" type="radio" name="star"/>
+                            <label class="star star-4" for="star-4"></label>
+                            <input class="star star-3" id="star-3" type="radio" name="star"/>
+                            <label class="star star-3" for="star-3"></label>
+                            <input class="star star-2" id="star-2" type="radio" name="star"/>
+                            <label class="star star-2" for="star-2"></label>
+                            <input checked class="star star-1" id="star-1" type="radio" name="star"/>
+                            <label class="star star-1" for="star-1"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="text" class="form-control modal-field" id="reviewText" rows="10" required placeholder="Текст отзыва"></textarea>
+                    </div>
                     <input type="hidden" name="token_add_review" value="<?= \IhorRadchenko\App\Components\Token::generate('token_add_review'); ?>">
                 </div>
                 <div class="modal-footer">

@@ -3,6 +3,10 @@ body {
     color: #e9ebec;
 }
 
+* {
+    outline: 0 !important;
+}
+
 h1, .h1,
 h2, .h2,
 h3, .h3,
@@ -432,11 +436,46 @@ pre {
     margin: 10px 0;
 }
 
-.rating-desc {
-    display: block;
-    height: 43px;
+.star-title {
+    height: 54px;
     float: left;
     color: #999;
-    padding: 7px 0 7px 7px;
+    padding: 10px 0 7px 7px;
     font-size: 1.1rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.icon-success, .icon-fail {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.icon-success {
+    color: #5cb85c;
+}
+
+.icon-fail {
+    color: #d9534f;
+}
+
+input.valid {
+    border-color: #5cb85c;
+}
+
+input.error {
+    border-color: #d9534f;
+}
+
+label.error {
+    display: block;
+    padding-left: 5px;
+    color: #d9534f;
+    font-size: .9rem;
 }

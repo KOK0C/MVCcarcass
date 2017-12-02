@@ -119,6 +119,13 @@ class Validator
         return ($value === $this->data[$ruleValue]);
     }
 
+    /**
+     * @param $field
+     * @param $value
+     * @param $ruleValue
+     * @return bool
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     private function unique($field, $value, $ruleValue): bool
     {
         return empty(DataBase::getInstance()->get($ruleValue, $field, $value));
