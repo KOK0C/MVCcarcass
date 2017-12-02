@@ -7,6 +7,8 @@
  */
 
 return [
+    '^(forum)$' => ['controller' => 'Forum', 'action' => 'index'],
+
     '^check/email$' => ['controller' => 'Check', 'action' => 'email'],
 
     '^review/create$'                               => ['controller' => 'Reviews', 'action' => 'create'],

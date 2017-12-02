@@ -32,6 +32,7 @@ use IhorRadchenko\App\Models\User;
  * @property Car $car
  * @property User $user
  * @property array $reviews Review
+ * @property array $forums
  */
 class View
 {

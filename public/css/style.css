@@ -479,3 +479,30 @@ label.error {
     color: #d9534f;
     font-size: .9rem;
 }
+
+.forumSection {
+    display: block;
+    height: 75px;
+    padding: 25px;
+    text-transform: uppercase;
+    background-color: #172c3e;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.forumSection:hover {
+    background-color: #ed1927;
+    color: #e9ebec;
+}
+
+.forumSection:hover .count-right {
+    color: #ed1927;
+}
+
+.count-right {
+    display: block;
+    width: 27px;
+    float: right;
+    background-color: #0b2233;
+    border-radius: 3px;
+}

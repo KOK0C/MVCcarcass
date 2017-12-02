@@ -59,6 +59,7 @@ $().ready(function () {
                 maxlength: 40
             },
             email: {
+                required: true,
                 email: true,
                 maxlength: 100
             },
