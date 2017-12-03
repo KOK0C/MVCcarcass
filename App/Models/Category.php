@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App\Models;
 
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Model;
 
 /**
@@ -36,6 +37,7 @@ class Category extends Model
     /**
      * @param $name
      * @return bool|string
+     * @throws DbException
      */
     public function __get($name)
     {

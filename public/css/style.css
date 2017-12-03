@@ -41,10 +41,30 @@ a:hover {
 
 .nav-link {
     color: #e9ebec;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background: #e9ebec;
+    top: 0;
+    left: 0;
+    transition: .5s;
+    opacity: 0;
+    z-index: -1;
 }
 
 .nav-link:hover {
-    color: #d6dadd;
+    color: rgb(231, 140, 92);
+}
+
+.nav-link:hover::before {
+    width: 100%;
+    opacity: 1;
 }
 
 .blog-footer {
@@ -155,8 +175,9 @@ a .article-short-text , a .article-title, a .article-date {
 .sidebarItem {
     text-align: center;
     display: block;
-    margin: 10px 50px 10px 50px;
-    width: 110px;
+    margin: 10px 25px 10px 25px;
+    width: 150px;
+    height: 100px;
     border: solid 1px #172c3e;
     box-sizing: border-box;
 }
@@ -505,4 +526,23 @@ label.error {
     float: right;
     background-color: #0b2233;
     border-radius: 3px;
+}
+
+.theme {
+    padding: 10px 5px 10px 10px;
+    font-size: .9rem;
+}
+
+.dopInfo {
+    font-size: .7rem;
+}
+
+.dopInfo a {
+    text-decoration: underline;
+    color: #e9ebec;
+}
+
+.dopInfo a:hover {
+    color: #ed1927;
+    text-decoration: none;
 }

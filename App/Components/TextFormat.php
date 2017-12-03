@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App\Components;
 
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Models\Photo;
 
 /**
@@ -18,6 +19,12 @@ use IhorRadchenko\App\Models\Photo;
 class TextFormat
 {
 
+    /**
+     * @param string $text
+     * @param int $id
+     * @return string
+     * @throws DbException
+     */
     public static function format(string $text, int $id): string
     {
         $text = self::changeTag($text, 'p');
@@ -31,7 +38,7 @@ class TextFormat
     private static function changeTag(string $text, string $tagName): string
     {
         return preg_replace(
-            "~\[$tagName\](.*)\[/$tagName\]~",
+            "~\[$tagName\](.*?)\[/$tagName\]~s",
             "<$tagName>$1</$tagName>",
             $text
         );
@@ -42,6 +49,7 @@ class TextFormat
      * @param string $text
      * @param int $categoryId
      * @return string
+     * @throws DbException
      */
     private static function createPhoto(string $text, int $categoryId): string
     {

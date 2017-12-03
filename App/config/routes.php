@@ -7,7 +7,8 @@
  */
 
 return [
-    '^(forum)$' => ['controller' => 'Forum', 'action' => 'index'],
+    '^(forum)/([a-z0-9-]+)$' => ['controller' => 'Forum', 'action' => 'section'],
+    '^(forum)$'              => ['controller' => 'Forum', 'action' => 'index'],
 
     '^check/email$' => ['controller' => 'Check', 'action' => 'email'],
 

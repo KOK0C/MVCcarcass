@@ -1221,3 +1221,11 @@ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
 Line : 100;
 
 =======================================================================
+
+[03-12-2017 18:06:40] ALERT
+Declaration of IhorRadchenko\App\Models\ForumSection::findAll() must be compatible with IhorRadchenko\App\Model::findAll(bool $reversedSort = false, string $field = 'id'): array
+Fatal Error : COMPILE_ERROR [64];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\ForumSection.php;
+Line : 39;
+
+=======================================================================
