@@ -1,0 +1,26 @@
+
+<div class="col-sm-5">
+    <?php if (! empty($forums)): ?>
+        <h1 class="blog-header forum-header">
+            <?= htmlentities(mb_strtoupper($forums[0]->parent->title)); ?>
+            <span><?= htmlentities($forums[0]->parent->count); ?></span>
+        </h1>
+        <?php foreach ($forums as $theme): ?>
+            <div class="forum-theme">
+                <div><a href=""><?= htmlentities(mb_strtoupper($theme->title)); ?></a></div>
+                <div class="countMessage"><i class="fa fa-envelope-o" aria-hidden="true"></i>Сообщений: </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <button class="btn btn-block btn-warning btn-sm">ПОКАЗАТЬ БОЛЬШЕ ТЕМ</button>
+        </div>
+        <div class="col-sm-6">
+            <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
+                <button class="btn btn-block btn-warning btn-sm">ПРЕДЛОЖИТЬ ТЕМУ</button>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

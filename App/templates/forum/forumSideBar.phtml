@@ -1,13 +1,16 @@
 
 <div class="col-sm-3">
-    <h2 class="blog-header">Активные темы</h2>
+    <h2 class="blog-header forum-header">Актуальные темы</h2>
     <?php if (! empty($forums)): ?>
         <?php foreach ($forums as $theme): ?>
             <div class="theme">
                 <a href=""><?= htmlentities(mb_strtoupper($theme->title)); ?></a>
                 <div class="dopInfo">
-                    <div>Ответов</div>
-                    <a href="/<?= htmlentities($theme->parent->getAlias()); ?>"><?= htmlentities(mb_ucfirst(mb_strtolower($theme->parent->title))); ?></a>
+                    <div><i class="fa fa-envelope" aria-hidden="true"></i> Ответов:</div>
+                    <div>
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                        <a href="<?= htmlentities($theme->parent->getAlias()); ?>"><?= htmlentities(mb_ucfirst(mb_strtolower($theme->parent->title))); ?></a>
+                    </div>
                 </div>
             </div>
         <?php endforeach; ?>

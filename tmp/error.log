@@ -1229,3 +1229,27 @@ File : C:\OSPanel\domains\MVCcarcass\App\Models\ForumSection.php;
 Line : 39;
 
 =======================================================================
+
+[04-12-2017 19:06:02] ERROR
+include(C:/OSPanel/domains/MVCcarcassApp/templates/forum/forum.phtml): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 62;
+
+=======================================================================
+
+[04-12-2017 19:29:09] CRITICAL
+Call to a member function getAlias() on array
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\forum\forumSideBar.phtml;
+Line : 12;
+
+=======================================================================
+
+[04-12-2017 20:13:40] CRITICAL
+Argument 2 passed to IhorRadchenko\App\View::display() must be an instance of IhorRadchenko\App\View, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controllers\Forum.php on line 51
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 70;
+
+=======================================================================

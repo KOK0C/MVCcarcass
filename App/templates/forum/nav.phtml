@@ -1,0 +1,14 @@
+
+    <div class="col-sm-8">
+        <div class="forum-nav post-header-title">
+            <a href="/">ГЛАВНАЯ</a>
+            <?php if (! empty($themes)): ?>
+                | <a href="/forum">АВТОМОБИЛЬНЫЙ ФОРУМ</a>
+                | <span><?= htmlentities(mb_strtoupper($themes[0]->parent->title)); ?></span>
+            <?php else: ?>
+                | <span>АВТОМОБИЛЬНЫЙ ФОРУМ</span>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<div class="row">

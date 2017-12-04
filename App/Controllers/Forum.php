@@ -9,6 +9,7 @@
 namespace IhorRadchenko\App\Controllers;
 
 use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\ForumSection;
 use IhorRadchenko\App\Models\ForumTheme;
 use IhorRadchenko\App\View;
@@ -17,6 +18,7 @@ class Forum extends Controller
 {
     private $mainPage;
     private $leftSideBar;
+    private $nav;
 
     /**
      * Forum constructor.
@@ -34,13 +36,27 @@ class Forum extends Controller
     protected function actionIndex()
     {
         $this->mainPage = new View('/App/templates/forum/main.phtml');
+        $this->nav = new View('/App/templates/forum/nav.phtml');
         $this->mainPage->forums = ForumSection::getMainForumSection();
-        View::display($this->header, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
+        View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
     }
 
-    protected function actionSection(string $parent)
+    /**
+     * @param string $parent
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     * @throws Error404
+     */
+    protected function actionSection($page, string $parent)
     {
-
+        $this->mainPage = new View('/App/templates/forum/forum.phtml');
+        $this->nav = new View('/App/templates/forum/nav.phtml');
+        $themes = ForumTheme::findByParentAlias($parent);
+        if (! $themes) {
+            throw new Error404();
+        }
+        $this->mainPage->forums = $themes;
+        $this->nav->themes = $themes;
+        View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
     }
 
     /**
