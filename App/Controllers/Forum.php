@@ -54,6 +54,7 @@ class Forum extends Controller
         if (! $themes) {
             throw new Error404();
         }
+        $this->mainPage->totalPage = ceil(ForumTheme::getCountTheme($parent) / ForumTheme::PER_PAGE);
         $this->mainPage->forums = $themes;
         $this->nav->themes = $themes;
         View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
@@ -66,5 +67,18 @@ class Forum extends Controller
     {
         $this->leftSideBar = new View('/App/templates/forum/forumSideBar.phtml');
         $this->leftSideBar->forums = ForumTheme::get5LastTheme();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionAjaxLoadTheme()
+    {
+        if ($this->isAjax() && isset($_POST['parent_id']) && isset($_POST['page'])) {
+            View::loadForAjax('forum_themes', ForumTheme::getThemePerPage($_POST['page'], $_POST['parent_id']));
+            exit();
+        }
+        throw new Error404();
     }
 }

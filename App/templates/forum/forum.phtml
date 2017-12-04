@@ -5,17 +5,21 @@
             <?= htmlentities(mb_strtoupper($forums[0]->parent->title)); ?>
             <span><?= htmlentities($forums[0]->parent->count); ?></span>
         </h1>
-        <?php foreach ($forums as $theme): ?>
-            <div class="forum-theme">
-                <div><a href=""><?= htmlentities(mb_strtoupper($theme->title)); ?></a></div>
-                <div class="countMessage"><i class="fa fa-envelope-o" aria-hidden="true"></i>Сообщений: </div>
-            </div>
-        <?php endforeach; ?>
     <?php endif; ?>
+    <div class="forum-themes">
+        <?php if (! empty($forums)): ?>
+            <?php foreach ($forums as $theme): ?>
+                <div class="forum-theme">
+                    <div><a href=""><?= htmlentities(mb_strtoupper($theme->title)); ?></a></div>
+                    <div class="countMessage"><i class="fa fa-envelope-o" aria-hidden="true"></i>Сообщений: </div>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
 
     <div class="row">
         <div class="col-sm-6">
-            <button class="btn btn-block btn-warning btn-sm">ПОКАЗАТЬ БОЛЬШЕ ТЕМ</button>
+            <button class="btn btn-block btn-warning btn-sm" id="moreTheme">ПОКАЗАТЬ БОЛЬШЕ ТЕМ</button>
         </div>
         <div class="col-sm-6">
             <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
@@ -24,3 +28,10 @@
         </div>
     </div>
 </div>
+
+<?php if (! empty($forums) && ! empty($totalPage)): ?>
+    <script>
+        var parentId = <?= $forums[0]->parent->getId(); ?>;
+        var totalPage = <?= $totalPage; ?>;
+    </script>
+<?php endif; ?>

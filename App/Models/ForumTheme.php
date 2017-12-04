@@ -31,8 +31,8 @@ class ForumTheme extends ForumSection
      */
     public static function findByParentAlias(string $parent)
     {
-        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE parent_id = 
-        (SELECT id FROM ' . static::TABLE . ' WHERE parent_id = 0 AND alias = :parent) ORDER BY id DESC LIMIT ' . self::PER_PAGE;
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE parent_id = 
+        (SELECT id FROM ' . self::TABLE . ' WHERE parent_id = 0 AND alias = :parent) ORDER BY id DESC LIMIT ' . self::PER_PAGE;
         $result = DataBase::getInstance()->query($sql, self::class, ['parent' => $parent]);
         return (! empty($result)) ? $result : null;
     }
@@ -62,5 +62,29 @@ class ForumTheme extends ForumSection
             default:
                 return false;
         }
+    }
+
+    /**
+     * @param string $parent
+     * @return int
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    public static function getCountTheme(string $parent): int
+    {
+        $sql = 'SELECT COUNT(*) FROM ' . self::TABLE . ' WHERE parent_id = (SELECT id FROM ' . self::TABLE . ' WHERE alias = :alias)';
+        return DataBase::getInstance()->countRow($sql, ['alias' => $parent]);
+    }
+
+    /**
+     * @param int $page
+     * @param int $parentId
+     * @return array
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    public static function getThemePerPage(int $page, int $parentId)
+    {
+        $offset = ($page - 1) * self::PER_PAGE;
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE parent_id = :id ORDER BY id DESC LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
+        return DataBase::getInstance()->query($sql, self::class, ['id' => $parentId]);
     }
 }
