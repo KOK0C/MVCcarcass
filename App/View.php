@@ -14,6 +14,7 @@ use IhorRadchenko\App\Models\Article;
 use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
+use IhorRadchenko\App\Models\ForumTheme;
 use IhorRadchenko\App\Models\Page;
 use IhorRadchenko\App\Models\Review;
 use IhorRadchenko\App\Models\User;
@@ -33,6 +34,8 @@ use IhorRadchenko\App\Models\User;
  * @property User $user
  * @property array $reviews Review
  * @property array $forums
+ * @property ForumTheme $theme
+ * @property array $themes
  */
 class View
 {

@@ -18,7 +18,7 @@ class ForumSection extends Model
     public $title;
     protected $parent_id;
     protected $alias;
-    public $count;
+    private $count;
 
     protected $fields = [];
 
@@ -47,5 +47,13 @@ class ForumSection extends Model
     public function getAlias(): string
     {
         return '/forum/' . $this->alias;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCount(): int
+    {
+        return $this->count;
     }
 }

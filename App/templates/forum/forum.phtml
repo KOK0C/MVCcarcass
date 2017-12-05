@@ -3,15 +3,15 @@
     <?php if (! empty($forums)): ?>
         <h1 class="blog-header forum-header">
             <?= htmlentities(mb_strtoupper($forums[0]->parent->title)); ?>
-            <span><?= htmlentities($forums[0]->parent->count); ?></span>
+            <span><?= htmlentities($forums[0]->parent->getCount()); ?></span>
         </h1>
     <?php endif; ?>
     <div class="forum-themes">
         <?php if (! empty($forums)): ?>
             <?php foreach ($forums as $theme): ?>
                 <div class="forum-theme">
-                    <div><a href=""><?= htmlentities(mb_strtoupper($theme->title)); ?></a></div>
-                    <div class="countMessage"><i class="fa fa-envelope-o" aria-hidden="true"></i>Сообщений: </div>
+                    <div><a href="<?= htmlentities($theme->getAlias()); ?>"><?= htmlentities(mb_strtoupper($theme->title)); ?></a></div>
+                    <div class="countMessage"><i class="fa fa-envelope-o" aria-hidden="true"></i>Сообщений: <?= htmlentities($theme->count); ?></div>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -19,7 +19,9 @@
 
     <div class="row">
         <div class="col-sm-6">
-            <button class="btn btn-block btn-warning btn-sm" id="moreTheme">ПОКАЗАТЬ БОЛЬШЕ ТЕМ</button>
+            <?php if (isset($totalPage) && $totalPage > 1): ?>
+                <button class="btn btn-block btn-warning btn-sm" id="moreTheme">ПОКАЗАТЬ БОЛЬШЕ ТЕМ</button>
+            <?php endif; ?>
         </div>
         <div class="col-sm-6">
             <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>

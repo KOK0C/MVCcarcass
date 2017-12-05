@@ -2,8 +2,8 @@
 <?php if (! empty($data)): ?>
     <?php foreach ($data as $theme): ?>
         <div class="forum-theme">
-            <div><a href=""><?= htmlentities(mb_strtoupper($theme->title)); ?></a></div>
-            <div class="countMessage"><i class="fa fa-envelope-o" aria-hidden="true"></i>Сообщений: </div>
+            <div><a href="<?= htmlentities($theme->getAlias()); ?>"><?= htmlentities(mb_strtoupper($theme->title)); ?></a></div>
+            <div class="countMessage"><i class="fa fa-envelope-o" aria-hidden="true"></i>Сообщений: <?= htmlentities($theme->count); ?></div>
         </div>
     <?php endforeach; ?>
 <?php endif; ?>

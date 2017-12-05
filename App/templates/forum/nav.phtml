@@ -2,7 +2,11 @@
     <div class="col-sm-8">
         <div class="forum-nav post-header-title">
             <a href="/">ГЛАВНАЯ</a>
-            <?php if (! empty($themes)): ?>
+            <?php if (! empty($theme)): ?>
+                | <a href="/forum">АВТОМОБИЛЬНЫЙ ФОРУМ</a>
+                | <a href="<?= htmlentities($theme->parent->getAlias()); ?>"><?= htmlentities(mb_strtoupper($theme->parent->title)); ?></a>
+                | <span><?= htmlentities(mb_strtoupper($theme->title)); ?></span>
+            <?php elseif (! empty($themes)): ?>
                 | <a href="/forum">АВТОМОБИЛЬНЫЙ ФОРУМ</a>
                 | <span><?= htmlentities(mb_strtoupper($themes[0]->parent->title)); ?></span>
             <?php else: ?>

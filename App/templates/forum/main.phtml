@@ -6,7 +6,7 @@
                 <a href="<?= htmlentities($section->getAlias()); ?>" class="forumSection">
                     <span class="forum-title"><?= htmlentities(mb_strtoupper($section->title)); ?></span>
                     <span class="count-right text-center">
-                        <?= htmlentities($section->count); ?>
+                        <?= htmlentities($section->getCount()); ?>
                     </span>
                 </a>
             <?php endforeach; ?>

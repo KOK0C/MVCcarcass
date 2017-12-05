@@ -584,3 +584,41 @@ label.error {
     padding-left: 10px;
     border-radius: 5px;
 }
+
+.comment {
+    min-height: 220px;
+    margin-bottom: 10px;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #172c3e;
+}
+
+.authorComment {
+    width: 130px;
+    background-color: #172c3e;
+    padding-top: 20px;
+    min-height: 220px;
+}
+
+.authorAvatar img {
+    width: 58px;
+    height: 58px;
+    margin: 0 36px 15px 36px;
+    border-radius: 50%;
+}
+
+.authorName {
+    margin-bottom: 10px;
+    font-size: .98rem;
+}
+
+.commentDate {
+    font-size: .8rem;
+}
+
+.commentText {
+    padding-top: 20px;
+    position: absolute;
+    top: 0;
+    left: 135px;
+}

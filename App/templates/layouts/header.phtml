@@ -76,88 +76,90 @@
     </div>
 </div>
 
-<input type="hidden" name="login_token" form="loginForm" value="<?= \IhorRadchenko\App\Components\Token::generate('login_token'); ?>">
-<input type="hidden" name="signup_token" form="signupForm" value="<?= \IhorRadchenko\App\Components\Token::generate('signup_token'); ?>">
+<?php if (! \IhorRadchenko\App\Components\Session::has('user')): ?>
+    <input type="hidden" name="login_token" form="loginForm" value="<?= \IhorRadchenko\App\Components\Token::generate('login_token'); ?>">
+    <input type="hidden" name="signup_token" form="signupForm" value="<?= \IhorRadchenko\App\Components\Token::generate('signup_token'); ?>">
 
-<div class="modal fade" id="login" data-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form class="form-signin" id="loginForm" method="post" action="/login">
-                <div class="modal-header">
-                    <h2 class="form-signin-heading">Вход на сайт</h2>
-                    <button class="close exit-modal" type="button" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <?php if (\IhorRadchenko\App\Components\Session::has('login_success')): ?>
-                        <div class="alert alert-success modal-error text-center">
-                            <?= \IhorRadchenko\App\Components\Session::get('login_success'); ?>
+    <div class="modal fade" id="login" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-signin" id="loginForm" method="post" action="/login">
+                    <div class="modal-header">
+                        <h2 class="form-signin-heading">Вход на сайт</h2>
+                        <button class="close exit-modal" type="button" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <?php if (\IhorRadchenko\App\Components\Session::has('login_success')): ?>
+                            <div class="alert alert-success modal-error text-center">
+                                <?= \IhorRadchenko\App\Components\Session::get('login_success'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (\IhorRadchenko\App\Components\Session::has('login_fail')): ?>
+                            <div class="alert alert-danger modal-error text-center">
+                                <?= \IhorRadchenko\App\Components\Session::get('login_fail'); ?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
                         </div>
-                    <?php endif; ?>
-                    <?php if (\IhorRadchenko\App\Components\Session::has('login_fail')): ?>
-                        <div class="alert alert-danger modal-error text-center">
-                            <?= \IhorRadchenko\App\Components\Session::get('login_fail'); ?>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required autocomplete="off">
                         </div>
-                    <?php endif; ?>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="on" name="remember_me"> <span>Запомнить меня</span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Password" required autocomplete="off">
+                    <div class="modal-footer">
+                        <input class="btn btn-primary btn-block" type="submit" name="login" value="Войти">
+                        <button class="btn btn-danger exit-modal" type="button" data-dismiss="modal">Отмена</button>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="on" name="remember_me"> <span>Запомнить меня</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input class="btn btn-primary btn-block" type="submit" name="login" value="Войти">
-                    <button class="btn btn-danger exit-modal" type="button" data-dismiss="modal">Отмена</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="signup" data-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form class="form-signup" method="post" action="/signup" id="signupForm">
-                <div class="modal-header">
-                    <h2 class="form-signup-heading">Регистрация</h2>
-                    <button class="close" type="button" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <?php if (\IhorRadchenko\App\Components\Session::has('signup_error') &&
-                                \IhorRadchenko\App\Components\Session::get('signup_error') === 'fail'): ?>
-                        <div class="alert alert-danger modal-error">
-                            <ul>
-                                <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
-                                    <?php foreach ($field as $error): ?>
-                                        <li><?= $error; ?></li>
+    <div class="modal fade" id="signup" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-signup" method="post" action="/signup" id="signupForm">
+                    <div class="modal-header">
+                        <h2 class="form-signup-heading">Регистрация</h2>
+                        <button class="close" type="button" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <?php if (\IhorRadchenko\App\Components\Session::has('signup_error') &&
+                            \IhorRadchenko\App\Components\Session::get('signup_error') === 'fail'): ?>
+                            <div class="alert alert-danger modal-error">
+                                <ul>
+                                    <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
+                                        <?php foreach ($field as $error): ?>
+                                            <li><?= $error; ?></li>
+                                        <?php endforeach; ?>
                                     <?php endforeach; ?>
-                                <?php endforeach; ?>
-                            </ul>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
                         </div>
-                    <?php endif; ?>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus autocomplete="on">
+                        <div class="form-group">
+                            <input type="password" name="password" id="signupPass" class="form-control" placeholder="Password" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="passwordAgain" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password" id="signupPass" class="form-control" placeholder="Password" required autocomplete="off">
+                    <div class="modal-footer">
+                        <input class="btn btn-primary btn-block" type="submit" value="Зарегистрироваться" name="signup">
+                        <button class="btn btn-danger" type="button" data-dismiss="modal">Отмена</button>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="passwordAgain" class="form-control" placeholder="Please repeat your password" required autocomplete="off">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input class="btn btn-primary btn-block" type="submit" value="Зарегистрироваться" name="signup">
-                    <button class="btn btn-danger" type="button" data-dismiss="modal">Отмена</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+<?php endif; ?>
 
 <div class="container">
     <div class="row">

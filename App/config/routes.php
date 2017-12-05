@@ -7,9 +7,10 @@
  */
 
 return [
-    '^forum/ajax/loadTheme$' => ['controller' => 'Forum', 'action' => 'ajaxLoadTheme'],
-    '^(forum)/([a-z0-9-]+)$' => ['controller' => 'Forum', 'action' => 'section'],
-    '^(forum)$'              => ['controller' => 'Forum', 'action' => 'index'],
+    '^(forum)/theme/([a-z0-9-]+)$' => ['controller' => 'Forum', 'action' => 'theme'],
+    '^forum/ajax/loadTheme$'       => ['controller' => 'Forum', 'action' => 'ajaxLoadTheme'],
+    '^(forum)/([a-z0-9-]+)$'       => ['controller' => 'Forum', 'action' => 'section'],
+    '^(forum)$'                    => ['controller' => 'Forum', 'action' => 'index'],
 
     '^check/email$' => ['controller' => 'Check', 'action' => 'email'],
 

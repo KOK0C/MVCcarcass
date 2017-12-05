@@ -10,6 +10,11 @@ namespace IhorRadchenko\App\Models;
 
 use IhorRadchenko\App\DataBase;
 
+/**
+ * Class ForumTheme
+ * @package IhorRadchenko\App\Models
+ * @property int $count
+ */
 class ForumTheme extends ForumSection
 {
     const PER_PAGE = 2;
@@ -50,7 +55,7 @@ class ForumTheme extends ForumSection
 
     /**
      * @param $name
-     * @return bool|object
+     * @return bool|object|int
      * @throws \IhorRadchenko\App\Exceptions\DbException
      */
     public function __get($name)
@@ -58,6 +63,9 @@ class ForumTheme extends ForumSection
         switch ($name) {
             case 'parent':
                 return ForumSection::findById($this->parent_id);
+                break;
+            case 'count':
+                return DataBase::getInstance()->countRow('SELECT COUNT(*) FROM comments WHERE theme_id = :id', ['id' => $this->id]);
                 break;
             default:
                 return false;
@@ -86,5 +94,22 @@ class ForumTheme extends ForumSection
         $offset = ($page - 1) * self::PER_PAGE;
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE parent_id = :id ORDER BY id DESC LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
         return DataBase::getInstance()->query($sql, self::class, ['id' => $parentId]);
+    }
+
+    public function getAlias(): string
+    {
+        return '/forum/theme/' . $this->alias;
+    }
+
+    /**
+     * @param string $alias
+     * @return null|self
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    public static function findByAlias(string $alias)
+    {
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE alias = :alias LIMIT 1';
+        $result = DataBase::getInstance()->query($sql, self::class, ['alias' => $alias]);
+        return (! empty($result)) ? $result[0] : null;
     }
 }

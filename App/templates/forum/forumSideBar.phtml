@@ -4,9 +4,9 @@
     <?php if (! empty($forums)): ?>
         <?php foreach ($forums as $theme): ?>
             <div class="theme">
-                <a href=""><?= htmlentities(mb_strtoupper($theme->title)); ?></a>
+                <a href="<?= htmlentities($theme->getAlias()); ?>"><?= htmlentities(mb_strtoupper($theme->title)); ?></a>
                 <div class="dopInfo">
-                    <div><i class="fa fa-envelope" aria-hidden="true"></i> Ответов:</div>
+                    <div><i class="fa fa-envelope" aria-hidden="true"></i> Ответов: <?= htmlentities($theme->count); ?></div>
                     <div>
                         <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                         <a href="<?= htmlentities($theme->parent->getAlias()); ?>"><?= htmlentities(mb_ucfirst(mb_strtolower($theme->parent->title))); ?></a>

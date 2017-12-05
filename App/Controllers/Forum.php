@@ -10,6 +10,7 @@ namespace IhorRadchenko\App\Controllers;
 
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
+use IhorRadchenko\App\Models\Comment;
 use IhorRadchenko\App\Models\ForumSection;
 use IhorRadchenko\App\Models\ForumTheme;
 use IhorRadchenko\App\View;
@@ -57,6 +58,27 @@ class Forum extends Controller
         $this->mainPage->totalPage = ceil(ForumTheme::getCountTheme($parent) / ForumTheme::PER_PAGE);
         $this->mainPage->forums = $themes;
         $this->nav->themes = $themes;
+        View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
+    }
+
+    /**
+     * @param $page
+     * @param string $alias
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionTheme($page, string $alias)
+    {
+        $this->mainPage = new View('/App/templates/forum/theme.phtml');
+        $this->nav = new View('/App/templates/forum/nav.phtml');
+        $theme = ForumTheme::findByAlias($alias);
+        if (! $theme) {
+            throw new Error404();
+        }
+        $this->mainPage->theme = $theme;
+        $this->nav->theme = $theme;
+        $this->mainPage->forums = Comment::getForTheme($theme->getId());
+        $this->mainPage->totalComments = $theme->count;
         View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
     }
 
