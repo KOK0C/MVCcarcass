@@ -78,7 +78,7 @@ class Forum extends Controller
         $this->mainPage->theme = $theme;
         $this->nav->theme = $theme;
         $this->mainPage->forums = Comment::getForTheme($theme->getId());
-        $this->mainPage->totalComments = $theme->count;
+        $this->mainPage->totalComments = ceil($theme->count / Comment::PER_PAGE);
         View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
     }
 
@@ -99,6 +99,19 @@ class Forum extends Controller
     {
         if ($this->isAjax() && isset($_POST['parent_id']) && isset($_POST['page'])) {
             View::loadForAjax('forum_themes', ForumTheme::getThemePerPage($_POST['page'], $_POST['parent_id']));
+            exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionAjaxLoadComment()
+    {
+        if ($this->isAjax() && isset($_POST['theme']) && isset($_POST['page'])) {
+            View::loadForAjax('forum_comments', Comment::getCommentsPerPage($_POST['page'], $_POST['theme']));
             exit();
         }
         throw new Error404();

@@ -1,28 +1,42 @@
 
+<?php if (! empty($totalComments) && ! empty($theme)): ?>
+    <script>
+        var totalComments = <?= $totalComments; ?>;
+        var themeId = <?= $theme->getId(); ?>;
+    </script>
+<?php endif; ?>
+
 <div class="col-sm-5">
     <?php if (! empty($theme)): ?>
         <h1 class="blog-header forum-header"><?= htmlentities(mb_strtoupper($theme->title)); ?></h1>
     <?php endif; ?>
     <?php if (! empty($forums)): ?>
-        <?php foreach ($forums as $comment): ?>
-            <div class="comment">
-                <div class="authorComment">
-                    <div class="authorAvatar">
-                        <img src="/public/img/avatar/defaultAvatar.png" alt="">
+        <div class="comments">
+            <?php foreach ($forums as $comment): ?>
+                <div class="comment">
+                    <div class="authorComment">
+                        <div class="authorAvatar">
+                            <img src="/public/img/avatar/defaultAvatar.png" alt="">
+                        </div>
+                        <div class="authorName text-center">
+                            <?= htmlentities($comment->author->getFullName()); ?>
+                        </div>
+                        <div class="commentDate text-center">
+                            <?= htmlentities($comment->getDate()); ?>
+                        </div>
                     </div>
-                    <div class="authorName text-center">
-                        <?= htmlentities($comment->author->getFullName()); ?>
-                    </div>
-                    <div class="commentDate text-center">
-                        <?= htmlentities($comment->getDate()); ?>
+                    <div class="commentText">
+                        <?= nl2br(htmlentities($comment->text)); ?>
                     </div>
                 </div>
-                <div class="commentText">
-                    <?= nl2br(htmlentities($comment->text)); ?>
-                </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     <?php else: ?>
         <div>В данной теме еще нет сообщений</div>
     <?php endif; ?>
+
+    <?php if (! empty($forums) && isset($totalComments) && $totalComments > 1): ?>
+        <button class="btn btn-block btn-success" id="moreComments">ПОКАЗАТЬ БОЛЬШЕ СООБЩЕНИЙ</button>
+    <?php endif; ?>
+
 </div>

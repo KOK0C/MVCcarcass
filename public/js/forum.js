@@ -16,4 +16,20 @@ $().ready(function () {
             }
         );
     });
+    var currentCommentPage = 1;
+    $("#moreComments").click(function () {
+        $.post(
+            '/forum/ajax/loadComment',
+            {
+                page: ++currentCommentPage,
+                theme: themeId
+            },
+            function (data) {
+                $(".comments").append(data);
+                if (currentCommentPage === totalComments) {
+                    $("#moreComments").remove();
+                }
+            }
+        );
+    });
 });

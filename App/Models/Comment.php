@@ -66,4 +66,17 @@ class Comment extends Model
         $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE theme_id = :id ORDER BY id LIMIT ' . self::PER_PAGE;
         return DataBase::getInstance()->query($sql, self::class, ['id' => $id]);
     }
+
+    /**
+     * @param int $page
+     * @param int $themeId
+     * @return array
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    public static function getCommentsPerPage(int $page, int $themeId)
+    {
+        $offset = ($page - 1) * self::PER_PAGE;
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE theme_id = :id ORDER BY id LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
+        return DataBase::getInstance()->query($sql, self::class, ['id' => $themeId]);
+    }
 }

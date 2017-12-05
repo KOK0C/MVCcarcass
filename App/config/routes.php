@@ -9,6 +9,7 @@
 return [
     '^(forum)/theme/([a-z0-9-]+)$' => ['controller' => 'Forum', 'action' => 'theme'],
     '^forum/ajax/loadTheme$'       => ['controller' => 'Forum', 'action' => 'ajaxLoadTheme'],
+    '^forum/ajax/loadComment$'     => ['controller' => 'Forum', 'action' => 'ajaxLoadComment'],
     '^(forum)/([a-z0-9-]+)$'       => ['controller' => 'Forum', 'action' => 'section'],
     '^(forum)$'                    => ['controller' => 'Forum', 'action' => 'index'],
 

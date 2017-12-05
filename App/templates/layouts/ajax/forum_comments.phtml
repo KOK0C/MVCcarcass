@@ -1,0 +1,21 @@
+
+<?php if (! empty($data)): ?>
+    <?php foreach ($data as $comment): ?>
+        <div class="comment">
+            <div class="authorComment">
+                <div class="authorAvatar">
+                    <img src="/public/img/avatar/defaultAvatar.png" alt="">
+                </div>
+                <div class="authorName text-center">
+                    <?= htmlentities($comment->author->getFullName()); ?>
+                </div>
+                <div class="commentDate text-center">
+                    <?= htmlentities($comment->getDate()); ?>
+                </div>
+            </div>
+            <div class="commentText">
+                <?= nl2br(htmlentities($comment->text)); ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
