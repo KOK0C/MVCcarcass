@@ -24,8 +24,8 @@
             <?php endif; ?>
         </div>
         <div class="col-sm-6">
-            <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
-                <button class="btn btn-block btn-warning btn-sm">ПРЕДЛОЖИТЬ ТЕМУ</button>
+            <?php if (\IhorRadchenko\App\Components\Session::has('user') && ! empty($forums)): ?>
+                <a href="<?= htmlentities($forums[0]->parent->getAlias() . '/add'); ?>" class="btn btn-block btn-warning btn-sm">ПРЕДЛОЖИТЬ ТЕМУ</a>
             <?php endif; ?>
         </div>
     </div>

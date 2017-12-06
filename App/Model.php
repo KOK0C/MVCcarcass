@@ -73,7 +73,7 @@ abstract class Model
      * Метод достает запись из бд по запрашиваемому id
      * и возвращает ее в виде объекта
      * @param int $id
-     * @return object Возвращает запись в виде объекта из бд
+     * @return static|null
      * @throws DbException
      */
     public static function findById(int $id)

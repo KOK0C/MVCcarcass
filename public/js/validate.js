@@ -113,4 +113,16 @@ $().ready(function () {
             }
         }
     });
+
+    $("#addTheme").validate({
+        rules: {
+            title: {
+                required: true,
+                minlength: 2
+            },
+            text: {
+                required: true
+            }
+        }
+    });
 });

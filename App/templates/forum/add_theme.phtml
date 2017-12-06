@@ -1,0 +1,30 @@
+
+<div class="col-sm-5">
+    <?php if (\IhorRadchenko\App\Components\Session::has('user') && ! empty($section)): ?>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $fields): ?>
+                        <?php foreach ($fields as $error): ?>
+                            <li><?= $error; ?></li>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+        <?php endif; ?>
+        <h1 class="blog-header forum-header">
+            <?= htmlentities(mb_strtoupper($section->title)) . '. ПРЕДЛОЖИТЬ ТЕМУ'; ?>
+        </h1>
+        <form action="/forum/create/theme" method="post" id="addTheme">
+            <div class="form-group">
+                <input type="text" class="form-control" required placeholder="Название темы" name="title">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" required name="text" id="" cols="30" rows="10" placeholder="Коментарий"></textarea>
+            </div>
+            <input type="hidden" name="parent_id" value="<?= $section->getId(); ?>">
+            <input type="submit" class="btn btn-block btn-outline-success" value="ПРЕДЛОЖИТЬ ТЕМУ" name="add_theme">
+        </form>
+    <?php endif; ?>
+</div>

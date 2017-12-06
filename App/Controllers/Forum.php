@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App\Controllers;
 
+use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Components\Validation\ValidationErrorHandler;
 use IhorRadchenko\App\Components\Validation\Validator;
@@ -83,6 +84,58 @@ class Forum extends Controller
         $this->mainPage->forums = Comment::getForTheme($theme->getId());
         $this->mainPage->totalComments = ceil($theme->count / Comment::PER_PAGE);
         View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
+    }
+
+    /**
+     * @param $page
+     * @param string $alias
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionAddTheme($page, string $alias)
+    {
+        $this->mainPage = new View('/App/templates/forum/add_theme.phtml');
+        $this->nav = new View('/App/templates/forum/nav.phtml');
+        $section = ForumSection::findByAlias($alias);
+        if (! $section) {
+            throw new Error404();
+        }
+        $this->mainPage->section = $section;
+        $this->nav->section = $section;
+        View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionCreateTheme()
+    {
+        if (Session::has('user') && $this->isPost('add_theme')) {
+            $theme = new ForumTheme();
+            $location = ForumSection::findById($_POST['parent_id'])->getAlias();
+            $validRules = [
+                'title' => [
+                    'required' => true,
+                    'minLength' => 2
+                ],
+                'text' => [
+                    'required' => true
+                ]
+            ];
+            if ($theme->load($_POST, $validRules)) {
+                $theme->save();
+                $comment = new Comment();
+                if ($comment->load(array_merge($_POST, ['theme_id' => $theme->getId()]), $validRules)) {
+                    $comment->save();
+                    Redirect::to($location);
+                }
+                Redirect::to();
+            }
+            Redirect::to();
+        } else {
+            throw new Error404();
+        }
     }
 
     /**

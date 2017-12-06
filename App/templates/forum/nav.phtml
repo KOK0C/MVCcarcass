@@ -6,6 +6,9 @@
                 | <a href="/forum">АВТОМОБИЛЬНЫЙ ФОРУМ</a>
                 | <a href="<?= htmlentities($theme->parent->getAlias()); ?>"><?= htmlentities(mb_strtoupper($theme->parent->title)); ?></a>
                 | <span><?= htmlentities(mb_strtoupper($theme->title)); ?></span>
+            <?php elseif (! empty($section)): ?>
+                | <a href="/forum">АВТОМОБИЛЬНЫЙ ФОРУМ</a>
+                | <span><?= htmlentities(mb_strtoupper($section->title)); ?></span>
             <?php elseif (! empty($themes)): ?>
                 | <a href="/forum">АВТОМОБИЛЬНЫЙ ФОРУМ</a>
                 | <span><?= htmlentities(mb_strtoupper($themes[0]->parent->title)); ?></span>

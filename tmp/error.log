@@ -1325,3 +1325,11 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\forum_comments.p
 Line : 10;
 
 =======================================================================
+
+[06-12-2017 19:35:46] WARNING
+Undefined property: IhorRadchenko\App\Models\ForumSection::$parent
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\forum\nav.phtml;
+Line : 11;
+
+=======================================================================

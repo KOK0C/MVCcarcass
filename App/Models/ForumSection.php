@@ -44,6 +44,18 @@ class ForumSection extends Model
         return DataBase::getInstance()->query($sql, self::class, ['id' => $id])[0];
     }
 
+    /**
+     * @param string $alias
+     * @return array|null
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    public static function findByAlias(string $alias)
+    {
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE parent_id = 0 AND alias = :alias LIMIT 1';
+        $result = DataBase::getInstance()->query($sql, self::class, ['alias' => $alias]);
+        return (! empty($result)) ? $result[0] : null;
+    }
+
     public function getAlias(): string
     {
         return '/forum/' . $this->alias;
