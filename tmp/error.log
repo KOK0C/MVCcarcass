@@ -1293,3 +1293,35 @@ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
 Line : 100;
 
 =======================================================================
+
+[06-12-2017 19:07:49] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\forum_comments.phtml;
+Line : 10;
+
+=======================================================================
+
+[06-12-2017 19:08:18] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\forum_comments.phtml;
+Line : 10;
+
+=======================================================================
+
+[06-12-2017 19:13:02] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\forum_comments.phtml;
+Line : 10;
+
+=======================================================================
+
+[06-12-2017 19:14:02] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\forum_comments.phtml;
+Line : 10;
+
+=======================================================================

@@ -8,6 +8,8 @@
 
 namespace IhorRadchenko\App\Components;
 
+use IhorRadchenko\App\Models\User;
+
 /**
  * Class Session
  * @package IhorRadchenko\App\Components
@@ -21,7 +23,7 @@ class Session
 
     /**
      * @param string $key
-     * @return bool|array|string|int|object
+     * @return bool|array|string|int|User
      */
     public static function get(string $key)
     {

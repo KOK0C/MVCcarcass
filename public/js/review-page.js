@@ -60,7 +60,7 @@ $(document).ready(function () {
             url,
             {page: ++currentPage},
             function (data) {
-                $(".blog-main").append(data);
+                $(data).hide().appendTo(".blog-main").fadeIn(1000);
                 if (currentPage === totalPage) {
                     $("#btn-moreReview").remove();
                 }

@@ -89,6 +89,7 @@ class User extends Controller
 
     /**
      * @throws Error404
+     * @throws DbException
      */
     protected function actionLogOut()
     {

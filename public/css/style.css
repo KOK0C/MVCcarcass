@@ -622,3 +622,8 @@ label.error {
     top: 0;
     left: 135px;
 }
+
+#commentId {
+    border-radius: 10px;
+    background-color: #ffe7c0;
+}

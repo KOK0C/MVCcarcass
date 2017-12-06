@@ -39,4 +39,22 @@
         <button class="btn btn-block btn-success" id="moreComments">ПОКАЗАТЬ БОЛЬШЕ СООБЩЕНИЙ</button>
     <?php endif; ?>
 
+    <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
+        <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
+                        <?php foreach ($field as $error): ?>
+                        <li><?= $error; ?></li>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+        <?php endif; ?>
+    <h2 class="blog-header forum-header">Добавить сообщение</h2>
+        <textarea name="text" id="commentId" cols="44" rows="5" placeholder="Сообщение" required></textarea>
+        <button type="submit" class="btn btn-block btn-success btn-sm" id="addComment">ОТПРАВИТЬ</button>
+    <?php endif; ?>
+
 </div>

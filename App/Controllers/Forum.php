@@ -8,6 +8,9 @@
 
 namespace IhorRadchenko\App\Controllers;
 
+use IhorRadchenko\App\Components\Session;
+use IhorRadchenko\App\Components\Validation\ValidationErrorHandler;
+use IhorRadchenko\App\Components\Validation\Validator;
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Comment;
@@ -113,6 +116,28 @@ class Forum extends Controller
         if ($this->isAjax() && isset($_POST['theme']) && isset($_POST['page'])) {
             View::loadForAjax('forum_comments', Comment::getCommentsPerPage($_POST['page'], $_POST['theme']));
             exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionAjaxCreateComment()
+    {
+        if ($this->isAjax() && isset($_POST['theme_id']) && isset($_POST['text']) && Session::has('user')) {
+            $validRules = [
+                'text' => [
+                    'required' => true
+                ]
+            ];
+            $comment = new Comment();
+            if ($comment->load($_POST, $validRules)) {
+                $comment->save();
+                View::loadForAjax('forum_comments', [Comment::findById($comment->getId())]);
+                exit();
+            }
         }
         throw new Error404();
     }

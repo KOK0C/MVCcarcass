@@ -9,7 +9,7 @@ $().ready(function () {
                 parent_id: parentId
             },
             function (data) {
-                $(".forum-themes").append(data);
+                $(data).hide().appendTo(".forum-themes").fadeIn(1000);
                 if (currentPage === totalPage) {
                     $("#moreTheme").remove();
                 }
@@ -25,11 +25,29 @@ $().ready(function () {
                 theme: themeId
             },
             function (data) {
-                $(".comments").append(data);
+                $(data).hide().appendTo(".comments").fadeIn(1000);
                 if (currentCommentPage === totalComments) {
                     $("#moreComments").remove();
                 }
             }
         );
+    });
+    $("#addComment").click(function () {
+        var comment = $("#commentId");
+        if (comment.val().length > 0) {
+            $.post(
+                '/forum/ajax/createComment',
+                {
+                    theme_id: themeId,
+                    text: comment.val()
+                },
+                function (data) {
+                    comment.css('border-color', 'rgb(169, 169, 169)').prop('placeholder', 'Сообщение').val('');
+                    $(data).hide().appendTo(".comments").fadeIn(1000);
+                }
+            );
+        } else {
+            comment.css('border-color', '#d9534f').prop('placeholder', 'Напишите коментарий');
+        }
     });
 });
