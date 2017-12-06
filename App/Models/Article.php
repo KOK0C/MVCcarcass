@@ -46,7 +46,8 @@ class Article extends Model
 
     /**
      * @param $name
-     * @return bool|object Category
+     * @return bool|Category
+     * @throws DbException
      */
     public function __get($name)
     {
@@ -67,13 +68,8 @@ class Article extends Model
      */
     public static function findLastArticle(): array
     {
-        $array = [];
-        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE category_id = :cat_id ORDER BY id DESC LIMIT 1';
-        $categories = Category::findAll();
-        foreach ($categories as $category) {
-            $array[] = DataBase::getInstance()->query($sql, self::class, ['cat_id' => $category->getId()])[0];
-        }
-        return $array;
+        $sql = 'SELECT * FROM news WHERE id IN (SELECT MAX(id) id FROM news GROUP BY category_id) ORDER BY category_id';
+        return DataBase::getInstance()->query($sql, self::class);
     }
 
     /**
