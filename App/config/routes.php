@@ -31,9 +31,9 @@ return [
     '^login$'  => ['controller' => 'User', 'action' => 'logIn'],
     '^logout$' => ['controller' => 'User', 'action' => 'logOut'],
 
+    '^mark/ajax/loadNews$'          => ['controller' => 'Cars', 'action' => 'showNews'],
     '^mark/([a-z-]+)/([a-z0-9-]+)$' => ['controller' => 'Cars', 'action' => 'oneModel'],
-
-    '^mark/([a-z-]+)$' => ['controller' => 'Cars', 'action' => 'oneMark'],
+    '^mark/([a-z-]+)$'              => ['controller' => 'Cars', 'action' => 'oneMark'],
 
     '^(news)/page-([0-9]+)$'         => ['controller' => 'Main', 'action' => 'oneCategory'],
     '^(overviews)/page-([0-9]+)$'    => ['controller' => 'Main', 'action' => 'oneCategory'],

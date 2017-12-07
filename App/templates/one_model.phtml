@@ -22,22 +22,32 @@
             <h1 class="blog-header text-center">Последние новости:</h1>
             <?php foreach ($news as $article): ?>
                 <a href="/<?= htmlentities($article->category->link) . '/' . htmlentities($article->alias); ?>" class="article">
-            <span class="articleImg">
-                <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="articlePic">
-            </span>
-            <div class="article-description">
-                <span class="article-title">
-                    <?= htmlentities($article->title); ?>
-                </span>
-                <span class="article-short-text">
-                    <?= htmlentities($article->description); ?>
-                </span>
-                <span class="article-date">
-                    <?= htmlentities($article->getDate()); ?>
-                </span>
-            </div>
+                    <span class="articleImg">
+                        <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="articlePic">
+                    </span>
+                    <div class="article-description">
+                        <span class="article-title">
+                            <?= htmlentities($article->title); ?>
+                        </span>
+                        <span class="article-short-text">
+                            <?= htmlentities($article->description); ?>
+                        </span>
+                        <span class="article-date">
+                            <?= htmlentities($article->getDate()); ?>
+                        </span>
+                    </div>
                 </a>
             <?php endforeach; ?>
+            <?php if (isset($totalPage) && $totalPage > 1): ?>
+                <button class="btn btn-block btn-outline-primary" id="moreNews">БОЛЬШЕ СТАТЕЙ</button>
+            <?php endif; ?>
         </div>
     <?php endif; ?>
 </div>
+
+<?php if (isset($totalPage) && ! empty($car)): ?>
+    <script>
+        var totalPage = <?= $totalPage; ?>;
+        var modelCar = <?= json_encode(htmlentities($car->model), JSON_UNESCAPED_UNICODE); ?>;
+    </script>
+<?php endif; ?>

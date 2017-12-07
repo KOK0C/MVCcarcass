@@ -20,6 +20,7 @@ use IhorRadchenko\App\Model;
 class Car extends Model
 {
     const TABLE = 'cars';
+    const PER_PAGE = 1;
 
     public $model;
     public $text;
@@ -97,17 +98,30 @@ class Car extends Model
 
     /**
      * @param string $model
+     * @param int $page
      * @return array
      * @throws \IhorRadchenko\App\Exceptions\DbException
      */
-    public static function findNewsForCar(string $model): array
+    public static function findNewsForCar(string $model, int $page): array
     {
+        $offset = ($page - 1) * self::PER_PAGE;
         $sql = 'SELECT * FROM news 
                 INNER JOIN car_news ON news.id = car_news.news_id 
                 WHERE car_news.car_id = 
                 (SELECT id FROM cars WHERE cars.model = :model) 
-                ORDER BY id DESC LIMIT 3';
+                ORDER BY id DESC LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
         return DataBase::getInstance()->query($sql, Article::class, ['model' => $model]);
     }
 
+    /**
+     * @param string $model
+     * @return int
+     * @throws DbException
+     */
+    public static function getCountArticleForCar(string $model): int
+    {
+        $sql = 'SELECT COUNT(*) FROM news INNER JOIN car_news ON news.id = car_news.news_id
+                WHERE  car_news.car_id = (SELECT id FROM cars WHERE cars.model = :model)';
+        return DataBase::getInstance()->countRow($sql, ['model' => $model]);
+    }
 }

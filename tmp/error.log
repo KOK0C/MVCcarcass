@@ -1333,3 +1333,67 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\forum\nav.phtml;
 Line : 11;
 
 =======================================================================
+
+[07-12-2017 19:15:39] CRITICAL
+Argument 2 passed to IhorRadchenko\App\Controllers\Cars::actionOneModel() must be of the type string, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controller.php on line 52
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Cars.php;
+Line : 48;
+
+=======================================================================
+
+[07-12-2017 19:15:41] CRITICAL
+Argument 2 passed to IhorRadchenko\App\Controllers\Cars::actionOneModel() must be of the type string, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controller.php on line 52
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Cars.php;
+Line : 48;
+
+=======================================================================
+
+[07-12-2017 19:15:43] CRITICAL
+Argument 2 passed to IhorRadchenko\App\Controllers\Cars::actionOneModel() must be of the type string, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controller.php on line 52
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Cars.php;
+Line : 48;
+
+=======================================================================
+
+[07-12-2017 19:15:43] CRITICAL
+Argument 2 passed to IhorRadchenko\App\Controllers\Cars::actionOneModel() must be of the type string, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controller.php on line 52
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Cars.php;
+Line : 48;
+
+=======================================================================
+
+[07-12-2017 19:16:29] CRITICAL
+Argument 2 passed to IhorRadchenko\App\Controllers\Cars::actionOneModel() must be of the type string, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controller.php on line 52
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Cars.php;
+Line : 48;
+
+=======================================================================
+
+[07-12-2017 19:17:22] CRITICAL
+Argument 2 passed to IhorRadchenko\App\Controllers\Cars::actionOneModel() must be of the type string, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controller.php on line 52
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Cars.php;
+Line : 48;
+
+=======================================================================
+
+[07-12-2017 19:17:23] CRITICAL
+Argument 2 passed to IhorRadchenko\App\Controllers\Cars::actionOneModel() must be of the type string, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controller.php on line 52
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Cars.php;
+Line : 48;
+
+=======================================================================
+
+[07-12-2017 19:17:24] CRITICAL
+Argument 2 passed to IhorRadchenko\App\Controllers\Cars::actionOneModel() must be of the type string, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controller.php on line 52
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Cars.php;
+Line : 48;
+
+=======================================================================
