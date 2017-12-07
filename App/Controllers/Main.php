@@ -66,4 +66,19 @@ class Main extends Controller
         }
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
+
+    /**
+     * @throws DbException
+     * @throws Error404
+     */
+    protected function actionSearch()
+    {
+        if ($this->isGet('query')) {
+            $this->mainPage = new View('/App/templates/search.phtml');
+            $this->mainPage->news = Article::search($_GET['query']);
+            View::display($this->header, $this->mainPage, $this->footer);
+        } else {
+            throw new Error404();
+        }
+    }
 }

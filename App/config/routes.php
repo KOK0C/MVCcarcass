@@ -7,6 +7,8 @@
  */
 
 return [
+    '^search'                     => ['controller' => 'Main', 'action' => 'search'],
+
     '^forum/create/theme$'         => ['controller' => 'Forum', 'action' => 'createTheme'],
     '^(forum)/([a-z0-9-]+)/add$'   => ['controller' => 'Forum', 'action' => 'addTheme'],
     '^(forum)/theme/([a-z0-9-]+)$' => ['controller' => 'Forum', 'action' => 'theme'],

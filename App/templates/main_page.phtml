@@ -9,7 +9,7 @@
                         <?= htmlentities($article->category->name); ?>
                     </a>
                 </p>
-                <a href="<?= htmlentities($article->category->link) . '/' . htmlentities($article->alias); ?>" class="article">
+                <a href="/<?= htmlentities($article->category->link) . '/' . htmlentities($article->alias); ?>" class="article">
                 <span class="articleImg">
                     <img src="<?= htmlentities($article->getImage()); ?>" alt="" class="articlePic">
                 </span>

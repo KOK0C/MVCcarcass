@@ -84,6 +84,11 @@ abstract class Controller
 
     protected function isPost(string $keyPOST): bool
     {
-        return ($_SERVER['REQUEST_METHOD'] === 'POST' and isset($_POST[$keyPOST]));
+        return ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST[$keyPOST]));
+    }
+
+    protected function isGet(string $keyGET): bool
+    {
+        return ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET[$keyGET]));
     }
 }

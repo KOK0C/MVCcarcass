@@ -130,4 +130,17 @@ class Article extends Model
     {
         return '/public/img/articles/' . $this->image;
     }
+
+    /**
+     * @param string $query
+     * @return array
+     * @throws DbException
+     */
+    public static function search(string $query): array
+    {
+        $sql = 'SELECT * FROM ' . self::TABLE . ' WHERE title LIKE :querySearch OR description LIKE :querySearch OR `text` LIKE :querySearch ORDER BY id DESC';
+        $query = strtr($query, ['_' => '\_', '%' => '\%']);
+        $query = "%{$query}%";
+        return DataBase::getInstance()->query($sql, self::class, ['querySearch' => $query]);
+    }
 }

@@ -48,6 +48,16 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
+                <form action="/search" method="get" class="Search">
+                    <div class="formSearch">
+                        <input type="search" name="query" placeholder="Например BMW M5" autocomplete="off">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
                 <h1 class="blog-title">
                     <?php if (! empty($page)): ?>
                         <?= htmlentities($page->title); ?>

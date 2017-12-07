@@ -629,3 +629,42 @@ label.error {
     border-radius: 10px;
     background-color: #ffe7c0;
 }
+
+.Search {
+    position: relative;
+    height: 30px;
+}
+
+.formSearch {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #172c3e;
+    border-radius: 5px;
+}
+
+.formSearch input {
+    background-color: #172c3e;
+    border: none;
+    border-radius: 5px;
+    color: #e9ebec;
+}
+
+.formSearch button {
+    background-color: #172c3e;
+    border: none;
+    color: #e9ebec;
+    border-radius: 5px;
+}
+
+.searchList {
+    text-transform: lowercase;
+}
+
+.searchItem {
+    display: block;
+}
+
+.searchItem:first-letter {
+    text-transform: uppercase;
+}
