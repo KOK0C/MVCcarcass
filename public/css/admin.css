@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    outline: 0 !important;
+}
+
+body {
+    min-height: 100vh; /* Замените на height: 100vh чтобы также работало в IE */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+footer {
+    /* Опустить в самый низ */
+    margin-top: auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.nav-container {
+    background-color: #e74c3c;
+    border-color: #c0392b;
+}
+
+.nav-link {
+    color: #ecf0f1;
+}
+
+.nav-pills .nav-link.active, .show>.nav-pills .nav-link {
+    background-color: #c0392b;
+    color: #ffbbbc;
+}
+
+.nav-link:hover {
+    color: #ffbbbc;
+}
+
+.main-link {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.welcome {
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    color: #fff;
+}
+
+.welcome a {
+    color: #ecf0f1;
+}
+
+.welcome a:hover {
+    color: #ffbbbc;
+    text-decoration: none;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+small {
+    font-size: .65em;
+    color: #777;
+}
+
+.header-title {
+    margin: 20px 0 10px 0;
+}
+
+.dropdownCreate {
+    padding-top: 15px;
+}
+
+.dropdownCreate .btn-default {
+    border-color: #ccc;
+    background-color: #fff;
+}
+
+.dropdownCreate .btn-default a {
+    color: #333;
+}

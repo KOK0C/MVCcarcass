@@ -7,6 +7,8 @@
  */
 
 return [
+    '^(admin)$' => ['controller' => 'Admin\\Main', 'action' => 'index'],
+
     '^search'                     => ['controller' => 'Main', 'action' => 'search'],
 
     '^forum/create/theme$'         => ['controller' => 'Forum', 'action' => 'createTheme'],
@@ -18,7 +20,8 @@ return [
     '^(forum)/([a-z0-9-]+)$'       => ['controller' => 'Forum', 'action' => 'section'],
     '^(forum)$'                    => ['controller' => 'Forum', 'action' => 'index'],
 
-    '^check/email$' => ['controller' => 'Check', 'action' => 'email'],
+    '^check/email$'      => ['controller' => 'Check', 'action' => 'email'],
+    '^check/themeTitle$' => ['controller' => 'Check', 'action' => 'themeTitle'],
 
     '^review/create$'                               => ['controller' => 'Reviews', 'action' => 'create'],
     '^(reviews)/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Reviews', 'action' => 'model'],

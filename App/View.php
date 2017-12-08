@@ -17,7 +17,6 @@ use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\ForumSection;
 use IhorRadchenko\App\Models\ForumTheme;
 use IhorRadchenko\App\Models\Page;
-use IhorRadchenko\App\Models\Review;
 use IhorRadchenko\App\Models\User;
 
 /**

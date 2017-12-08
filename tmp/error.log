@@ -1493,3 +1493,27 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\search.phtml;
 Line : 6;
 
 =======================================================================
+
+[08-12-2017 19:56:05] CRITICAL
+Class 'IhorRadchenko\App\Controllers\Admin/Main' not found
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Router.php;
+Line : 68;
+
+=======================================================================
+
+[08-12-2017 20:02:31] CRITICAL
+Argument 2 passed to IhorRadchenko\App\View::display() must be an instance of IhorRadchenko\App\View, null given, called in C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\Main.php on line 20
+Trowable : TypeError;
+File : C:\OSPanel\domains\MVCcarcass\App\View.php;
+Line : 74;
+
+=======================================================================
+
+[08-12-2017 20:11:46] WARNING
+Undefined property: IhorRadchenko\App\Models\Page::$desription
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 49;
+
+=======================================================================

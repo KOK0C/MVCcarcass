@@ -33,6 +33,10 @@ abstract class Controller
      */
     protected $footer;
 
+    /**
+     * Controller constructor.
+     * @throws Exceptions\DbException
+     */
     public function __construct()
     {
         $this->buildHeader();
@@ -40,6 +44,13 @@ abstract class Controller
         $this->buildFooter();
     }
 
+    /**
+     * @param $action
+     * @param null $arg1
+     * @param null $arg2
+     * @param null $arg3
+     * @throws Exceptions\DbException
+     */
     public function action($action, $arg1 = null, $arg2 = null, $arg3 = null)
     {
         $methodName = 'action' . ucfirst($action);
@@ -52,6 +63,9 @@ abstract class Controller
         $this->$methodName($arg1, $arg2, $arg3);
     }
 
+    /**
+     * @throws Exceptions\DbException
+     */
     protected function buildHeader()
     {
         $this->header = new View('/App/templates/layouts/header.phtml');
@@ -62,6 +76,9 @@ abstract class Controller
         }
     }
 
+    /**
+     * @throws Exceptions\DbException
+     */
     protected function buildSideBar()
     {
         $this->sideBar = new View('/App/templates/layouts/sidebar.phtml');

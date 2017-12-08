@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <h1 class="blog-title">
                     <?php if (! empty($page)): ?>
                         <?= htmlentities($page->title); ?>
@@ -69,8 +69,13 @@
                     <?php endif; ?>
                 </p>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 <div class="signup-login">
+                    <?php if (\IhorRadchenko\App\Components\Session::has('user')
+                                && \IhorRadchenko\App\Components\Session::get('user')->group === 'admin'): ?>
+                        <a href="/admin" class="user-action">АДМИНКА</a>
+                        <span>|</span>
+                    <?php endif; ?>
                     <?php if (\IhorRadchenko\App\Components\Session::has('user')): ?>
                         <a href="/user" class="user-action">ЛИЧНЫЙ КАБИНЕТ</a>
                         <span>|</span>

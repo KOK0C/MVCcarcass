@@ -118,10 +118,22 @@ $().ready(function () {
         rules: {
             title: {
                 required: true,
-                minlength: 2
+                minlength: 2,
+                remote: {
+                    url: '/check/themeTitle',
+                    type: "post",
+                    data: {
+                        title: $('#addTheme:input[name="title"]').val()
+                    }
+                }
             },
             text: {
                 required: true
+            }
+        },
+        messages: {
+            title: {
+                remote: 'Такая тема уже существует'
             }
         }
     });

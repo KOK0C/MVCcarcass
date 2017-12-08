@@ -668,3 +668,9 @@ label.error {
 .searchItem:first-letter {
     text-transform: uppercase;
 }
+
+.searchCount {
+    margin-bottom: 1rem;
+    color: #999999;
+    font-size: .9rem;
+}

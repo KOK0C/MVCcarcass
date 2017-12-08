@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <?php if (! empty($page)): ?>
+            <?= htmlentities($page->title); ?>
+        <?php endif; ?>
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/public/css/admin.css">
+</head>
+<body>
+<div class="nav-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <nav class="nav nav-pills flex-column flex-sm-row">
+                    <a class="flex-sm-fill text-sm-center nav-link main-link" href="/">АвтоБлог</a>
+                    <a class="flex-sm-fill text-sm-center nav-link active" href="#">Главная</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Статьи</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Категории</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Отзывы</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Пользователи</a>
+                </nav>
+            </div>
+            <div class="col-sm-4">
+                <div class="welcome">
+                    <div class="admin">Добро пожаловать, Игорь</div>
+                    <a href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10">
+                <h1 class="header-title">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span>Dashboard</span>
+                    <?php if (! empty($page)): ?>
+                        <small><?= htmlentities($page->description); ?></small>
+                    <?php endif; ?>
+                </h1>
+            </div>
+            <div class="col-sm-2">
+                <div class="dropdownCreate">
+                    <button class="btn btn-default btn-sm">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Добавление контента</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>

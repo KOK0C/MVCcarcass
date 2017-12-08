@@ -75,7 +75,7 @@ class Main extends Controller
     {
         if ($this->isGet('query')) {
             $this->mainPage = new View('/App/templates/search.phtml');
-            $this->mainPage->news = Article::search($_GET['query']);
+            $this->mainPage->news = (mb_strlen(trim($_GET['query'])) > 0) ? Article::search($_GET['query']) : [];
             View::display($this->header, $this->mainPage, $this->footer);
         } else {
             throw new Error404();

@@ -1,7 +1,8 @@
 
 <div class="col-sm-12">
     <h1 class="blog-header text-center">ПОИСК</h1>
-    <?php if (! empty($news)): ?>
+    <?php if (isset($news)): ?>
+        <div class="searchCount">Результатов: <?= count($news); ?></div>
         <div class="blog-post searchList">
             <?php foreach ($news as $article): ?>
                 <a class="searchItem" href="/<?= htmlentities($article->category->link) . '/' . htmlentities($article->alias); ?>">

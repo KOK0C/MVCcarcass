@@ -21,11 +21,20 @@ class Check extends Controller
     protected function actionEmail()
     {
         if ($this->isAjax() && isset($_POST['email'])) {
-            if (empty(DataBase::getInstance()->get('users', 'email', trim($_POST['email'])))) {
-                print 'true';
-                exit();
-            }
-            print 'false';
+            print (empty(DataBase::getInstance()->get('users', 'email', trim($_POST['email'])))) ? 'true' : 'false';
+            exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionThemeTitle()
+    {
+        if ($this->isAjax() && isset($_POST['title'])) {
+            print (empty(DataBase::getInstance()->get('forum', 'title', trim($_POST['title'])))) ? 'true' : 'false';
             exit();
         }
         throw new Error404();
