@@ -105,23 +105,13 @@ class Reviews extends Controller
     {
         if (Session::has('user') && $this->isPost('add_review') && Token::check('token_add_review', $_POST['token_add_review'])) {
             $review = new Review();
-            $user = User::findById(Session::get('user')->getId());
             $validRules = [
-                'f_name' => [
-                    'required' => true,
-                    'minLength' => 2,
-                    'maxLength' => 30,
-                ],
-                'city' => [
-                    'maxLength' => 64
-                ],
                 'text' => [
                     'required' => true,
                 ]
             ];
-            if ($review->load($_POST, $validRules) && $user->load($_POST, $validRules)) {
+            if ($review->load($_POST, $validRules)) {
                 $review->save();
-                $user->save();
                 Redirect::to();
             } else {
                 Session::set('add_review', 'fail');

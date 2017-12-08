@@ -36,6 +36,8 @@ class Validator
         'phone'     => 'Номер телефона не валиден',
         'length'    => 'Длина поля :field должна составлять :value символов'
     ];
+    private $enFields = ['passwordAgain', 'password', 'email', 'f_name', 'l_name', 'phone_number', 'city', 'text'];
+    private $ruFields = ['Пароли',  '\'Пароль\'', 'Email', '\'Имя\'', '\'Фамилия\'', '\'Номер телефона\'', '\'Город\'', '\'Текст\''];
     private $data;
 
     public function __construct(ValidationErrorHandler $validationErrorHandler)
@@ -76,8 +78,8 @@ class Validator
                 $this->validationErrorHandler->addError(
                     $field,
                     str_replace(
-                        ['passwordAgain', 'password', 'email', 'f_name', 'l_name', 'phone_number', 'city', 'text'],
-                        ['Пароли',  '\'Пароль\'', 'Email', '\'Имя\'', '\'Фамилия\'', '\'Номер телефона\'', '\'Город\'', '\'Текст\''],
+                        $this->enFields,
+                        $this->ruFields,
                         str_replace([':value', ':field'], [$ruleValue, $field], $this->messages[$rule]))
                 );
             }

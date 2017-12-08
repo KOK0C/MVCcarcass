@@ -19,6 +19,16 @@
                 <?= htmlentities($user->email); ?>
             </div>
             <div class="infoTitle">
+                Город:
+            </div>
+            <div class="infoValue">
+                <?php if (! empty($user->city)): ?>
+                    <?= htmlentities($user->city); ?>
+                <?php else: ?>
+                    <a href="/user/profile"><u>Не указано</u></a>
+                <?php endif; ?>
+            </div>
+            <div class="infoTitle">
                 Телефон:
             </div>
             <div class="infoValue">

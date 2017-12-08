@@ -65,6 +65,9 @@ $().ready(function () {
             },
             phone_number: {
                 pattern: '\\+380\\d{9}'
+            },
+            city : {
+                maxlength: 64
             }
         },
         messages: {
@@ -89,14 +92,6 @@ $().ready(function () {
 
     $("#addReviewForm").validate({
         rules: {
-            f_name: {
-                required: true,
-                minlength: 2,
-                maxlength: 30
-            },
-            city: {
-                maxlength: 64
-            },
             text: {
                 required: true
             }

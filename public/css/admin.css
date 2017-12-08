@@ -12,6 +12,7 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
+    background-color: #0b2233;
 }
 
 footer {
@@ -29,16 +30,16 @@ h1 {
 }
 
 .nav-container {
-    background-color: #e74c3c;
-    border-color: #c0392b;
+    background-color: #ed1927;
+    border-color: #b21820;
 }
 
 .nav-link {
-    color: #ecf0f1;
+    color: #e9ebec;
 }
 
 .nav-pills .nav-link.active, .show>.nav-pills .nav-link {
-    background-color: #c0392b;
+    background-color: #b21820;
     color: #ffbbbc;
 }
 
@@ -55,11 +56,11 @@ h1 {
     display: flex;
     justify-content: space-around;
     padding: 8px 0;
-    color: #fff;
+    color: #e9ebec;
 }
 
 .welcome a {
-    color: #ecf0f1;
+    color: #e9ebec;
 }
 
 .welcome a:hover {
@@ -69,14 +70,14 @@ h1 {
 
 header {
     background-color: #333;
-    color: #fff;
+    color: #e9ebec;
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
 
 small {
     font-size: .65em;
-    color: #777;
+    color: #999999;
 }
 
 .header-title {
@@ -89,9 +90,18 @@ small {
 
 .dropdownCreate .btn-default {
     border-color: #ccc;
-    background-color: #fff;
+    background-color: #e9ebec;
 }
 
 .dropdownCreate .btn-default a {
     color: #333;
+}
+
+.breadcrumb {
+    width: 100%;
+    background-color: #172c3e;
+}
+
+.breadcrumb-item.active {
+    color: #999;
 }

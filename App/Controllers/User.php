@@ -144,6 +144,9 @@ class User extends Controller
                     'phone_number' => [
                         'length' => 13,
                         'phone' => true,
+                    ],
+                    'city' => [
+                        'maxLength' => 64
                     ]
                 ];
                 if ($user->email !== $_POST['email']) {
