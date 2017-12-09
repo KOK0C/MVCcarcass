@@ -1,0 +1,24 @@
+
+<?php if (! empty($data)): ?>
+    <?php foreach ($data as $article): ?>
+        <tr>
+            <td class="firstLetterUC">
+                <a href="/<?= htmlentities($article->category->link) . '/' . htmlentities($article->alias); ?>">
+                    <?= htmlentities(mb_strtolower($article->title)); ?>
+                </a>
+            </td>
+            <td>
+                <a href="/<?= htmlentities($article->category->link); ?>">
+                    <?= htmlentities($article->category->name); ?>
+                </a>
+            </td>
+            <td><?= $article->formatDate(); ?></td>
+            <td>
+                <a href="" class="btn btn-primary btn-sm">Редактировать</a>
+            </td>
+            <td>
+                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>

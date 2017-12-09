@@ -26,6 +26,10 @@ class Article extends Admin
     protected function actionIndex()
     {
         if (Session::has('user') && Session::get('user')->group === 'admin') {
+            if ($this->isAjax() && isset($_POST['page'])) {
+                View::loadForAjax('admin/articles', ArticleModel::findPerPage($_POST['page']));
+                exit();
+            }
             $this->mainPage = new View('/App/templates/admin/articles.phtml');
             $this->header->page->title .= ' | Статьи';
             $this->mainPage->news = ArticleModel::getLastRecord(5);

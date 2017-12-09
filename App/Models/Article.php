@@ -94,6 +94,18 @@ class Article extends Model
     }
 
     /**
+     * @param int $page
+     * @return array
+     * @throws DbException
+     */
+    public static function findPerPage(int $page): array
+    {
+        $offset = ($page - 1) * self::PER_PAGE;
+        $sql = 'SELECT * FROM ' . self::TABLE . ' ORDER BY id DESC LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
+        return DataBase::getInstance()->query($sql, self::class);
+    }
+
+    /**
      * @param string $link
      * @return int
      * @throws \IhorRadchenko\App\Exceptions\DbException
