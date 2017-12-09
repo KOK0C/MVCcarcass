@@ -1,3 +1,4 @@
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -21,11 +22,21 @@
             <div class="col-sm-8">
                 <nav class="nav nav-pills flex-column flex-sm-row">
                     <a class="flex-sm-fill text-sm-center nav-link main-link" href="/">АвтоБлог</a>
-                    <a class="flex-sm-fill text-sm-center nav-link active" href="/admin">Главная</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Статьи</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Авто</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Отзывы</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Пользователи</a>
+                    <a class="flex-sm-fill text-sm-center nav-link
+                        <?php if (! isset($uri[2])) {print 'active';} ?>
+                    " href="/admin">Главная</a>
+                    <a class="flex-sm-fill text-sm-center nav-link
+                        <?php if (isset($uri[2]) && $uri[2] === 'articles') {print 'active';} ?>
+                    " href="/admin/articles">Статьи</a>
+                    <a class="flex-sm-fill text-sm-center nav-link
+                        <?php if (isset($uri[2]) && $uri[2] === 'cars') {print 'active';} ?>
+                    " href="/admin/cars">Авто</a>
+                    <a class="flex-sm-fill text-sm-center nav-link
+                        <?php if (isset($uri[2]) && $uri[2] === 'reviews') {print 'active';} ?>
+                    " href="/admin/reviews">Отзывы</a>
+                    <a class="flex-sm-fill text-sm-center nav-link
+                        <?php if (isset($uri[2]) && $uri[2] === 'users') {print 'active';} ?>
+                    " href="/admin/users">Пользователи</a>
                 </nav>
             </div>
             <div class="col-sm-4">
@@ -73,7 +84,7 @@
 <div class="container">
     <div class="row">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active">Home</li>
+            <li class="breadcrumb-item active">Dashboard</li>
         </ol>
     </div>
 </div>

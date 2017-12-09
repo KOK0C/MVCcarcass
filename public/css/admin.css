@@ -201,9 +201,16 @@ main {
 
 .table td, .table th {
     border-top: 1px solid #172c3e;
-    text-align: center;
 }
 
 .table-hover tbody tr:hover {
     background-color: #172c3e;
+}
+
+.firstLetterUC:first-letter {
+    text-transform: uppercase;
+}
+
+.table a {
+    color: #e9ebec;
 }

@@ -41,7 +41,8 @@ class ForumSection extends Model
     {
         $sql = 'SELECT f2.parent_id, COUNT(f1.parent_id) count, f2.title, f2.alias, f2.id FROM forum f1, forum f2
                 WHERE f2.id = f1.parent_id AND f2.id = :id GROUP BY f1.parent_id';
-        return DataBase::getInstance()->query($sql, self::class, ['id' => $id])[0];
+        $result = DataBase::getInstance()->query($sql, self::class, ['id' => $id]);
+        return (! empty($result)) ? $result[0] : null;
     }
 
     /**

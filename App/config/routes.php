@@ -7,7 +7,11 @@
  */
 
 return [
-    '^(admin)$' => ['controller' => 'Admin\\Main', 'action' => 'index'],
+    '^(admin)/articles$' => ['controller' => 'Admin\\Article', 'action' => 'index'],
+    '^(admin)/cars$'     => ['controller' => 'Admin\\Car',     'action' => 'index'],
+    '^(admin)/reviews$'  => ['controller' => 'Admin\\Review',  'action' => 'index'],
+    '^(admin)/users$'    => ['controller' => 'Admin\\User',    'action' => 'index'],
+    '^(admin)$'          => ['controller' => 'Admin\\Main',    'action' => 'index'],
 
     '^search'                     => ['controller' => 'Main', 'action' => 'search'],
 

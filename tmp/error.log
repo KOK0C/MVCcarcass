@@ -1541,3 +1541,27 @@ File : C:\OSPanel\domains\MVCcarcass\App\Models\ForumSection.php;
 Line : 44;
 
 =======================================================================
+
+[09-12-2017 14:44:00] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\articles.phtml;
+Line : 13;
+
+=======================================================================
+
+[09-12-2017 14:44:15] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\articles.phtml;
+Line : 13;
+
+=======================================================================
+
+[09-12-2017 14:44:31] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\articles.phtml;
+Line : 13;
+
+=======================================================================
