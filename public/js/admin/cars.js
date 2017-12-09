@@ -1,9 +1,16 @@
 
 $().ready(function () {
     var currentPage = 1;
+    var mark = $("#selectMarkCar");
+    var uri;
     $("#moreCars").click(function () {
+        if (mark.val() === 'all') {
+            uri = '/admin/cars'
+        } else {
+            uri = '/admin/cars/mark/' + mark.val();
+        }
         $.post(
-            '/admin/cars',
+            uri,
             {
                 page: ++currentPage
             },
@@ -14,5 +21,12 @@ $().ready(function () {
                 }
             }
         );
+    });
+    mark.change(function () {
+        if (mark.val() === 'all') {
+            $("#carsForm").attr('action', '/admin/cars').submit();
+        } else {
+            $("#carsForm").attr('action', '/admin/cars/mark/' + mark.val()).submit();
+        }
     });
 });

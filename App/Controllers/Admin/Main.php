@@ -8,7 +8,6 @@
 
 namespace IhorRadchenko\App\Controllers\Admin;
 
-use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Controllers\Admin;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\User;
@@ -24,7 +23,7 @@ class Main extends Admin
      */
     protected function actionIndex()
     {
-        if (Session::has('user') && Session::get('user')->group === 'admin') {
+        if (User::isAdmin()) {
             $this->mainPage = new View('/App/templates/admin/main.phtml');
             $this->mainPage->counts = $this->sideBar->counts;
             $this->mainPage->users = User::getLastRecord(5);

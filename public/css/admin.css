@@ -172,6 +172,10 @@ main {
     padding: 15px;
 }
 
+.panel-body form {
+    margin-bottom: 10px;
+}
+
 .dash-box {
     text-align: center;
     min-height: 20px;

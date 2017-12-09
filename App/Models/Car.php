@@ -44,6 +44,22 @@ class Car extends Model
 
     /**
      * @param string $brand
+     * @param int $page
+     * @param int $perPage
+     * @return array
+     * @throws DbException
+     */
+    public static function findCarsByBrandPerPage(string $brand, int $page, int $perPage): array
+    {
+        $offset = ($page - 1) * $perPage;
+        $sql = 'SELECT * FROM ' . self::TABLE .
+                ' WHERE brand_id = (SELECT id FROM brands WHERE name = :brandName) 
+               ORDER BY id DESC LIMIT ' . $perPage . ' OFFSET ' . $offset;
+        return DataBase::getInstance()->query($sql, self::class, ['brandName' => $brand]);
+    }
+
+    /**
+     * @param string $brand
      * @param string $model
      * @return null|self
      * @throws \IhorRadchenko\App\Exceptions\DbException
@@ -123,5 +139,17 @@ class Car extends Model
         $sql = 'SELECT COUNT(*) FROM news INNER JOIN car_news ON news.id = car_news.news_id
                 WHERE  car_news.car_id = (SELECT id FROM cars WHERE cars.model = :model)';
         return DataBase::getInstance()->countRow($sql, ['model' => $model]);
+    }
+
+    /**
+     * @param string $brand
+     * @return int
+     * @throws DbException
+     */
+    public static function getCountCarByBrand(string $brand): int
+    {
+        $sql = 'SELECT COUNT(*) FROM ' . self::TABLE .
+            ' WHERE brand_id = (SELECT id FROM brands WHERE `name` = :brandName)';
+        return DataBase::getInstance()->countRow($sql, ['brandName' => $brand]);
     }
 }

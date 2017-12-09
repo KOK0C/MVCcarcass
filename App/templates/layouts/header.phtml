@@ -71,8 +71,7 @@
             </div>
             <div class="col-sm-5">
                 <div class="signup-login">
-                    <?php if (\IhorRadchenko\App\Components\Session::has('user')
-                                && \IhorRadchenko\App\Components\Session::get('user')->group === 'admin'): ?>
+                    <?php if (\IhorRadchenko\App\Models\User::isAdmin()): ?>
                         <a href="/admin" class="user-action">АДМИНКА</a>
                         <span>|</span>
                     <?php endif; ?>

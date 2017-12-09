@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App\Models;
 
+use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Components\Traits\GetDate;
 use IhorRadchenko\App\DataBase;
 use IhorRadchenko\App\Exceptions\DbException;
@@ -131,5 +132,10 @@ class User extends Model
     public function deleteUserSessionFromDB()
     {
         DataBase::getInstance()->delete('user_sessions', 'user_id', $this->id);
+    }
+
+    public static function isAdmin(): bool
+    {
+        return (Session::has('user') && Session::get('user')->group === 'admin');
     }
 }

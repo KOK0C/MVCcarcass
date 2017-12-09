@@ -6,46 +6,20 @@
                 <h2>Статьи</h2>
             </div>
             <div class="panel-body">
-                <form method="post" id="categoryForm">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <select name="mark" id="selectMarkCar" class="form-control">
-                                    <option value="all"
-                                        <?php if (! isset($uri[3])) {print 'selected';} ?>
-                                    >Марка</option>
-                                    <?php foreach ($brands as $brand): ?>
-                                        <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
-                                            <?php if (isset($uri[3]) && $uri[3] ===
-                                                htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name)))) {print 'selected';} ?>
-                                        >
-                                            <?= htmlentities(mb_ucwords($brand->name)); ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <?php if (! empty($models)): ?>
-                                    <select name="model" id="modelCar" class="form-control">
-                                        <option value="all">Модель</option>
-                                        <?php foreach ($models as $car): ?>
-                                            <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $car->model))); ?>"
-                                                <?php if (isset($uri[5]) && $uri[5] ===
-                                                    htmlentities(mb_strtolower(str_replace(' ', '-', $car->model)))) {print 'selected';} ?>
-                                            >
-                                                <?= htmlentities(mb_ucwords(strtolower($car->model))); ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                <?php else: ?>
-                                    <select name="model" id="modelCar" disabled class="form-control">
-                                        <option value="all">Модель</option>
-                                    </select>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-
+                <form method="post" id="carsForm">
+                    <select name="mark" id="selectMarkCar" class="form-control">
+                        <option value="all"
+                            <?php if (! isset($uri[3])) {print 'selected';} ?>
+                        >Марка</option>
+                        <?php foreach ($brands as $brand): ?>
+                            <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
+                                <?php if (isset($uri[4]) && $uri[4] ===
+                                    htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name)))) {print 'selected';} ?>
+                            >
+                                <?= htmlentities(mb_ucwords($brand->name)); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </form>
                 <table class="table table-hover">
                     <thead>

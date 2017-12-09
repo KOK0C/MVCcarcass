@@ -8,11 +8,11 @@
 
 namespace IhorRadchenko\App\Controllers\Admin;
 
-use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Controllers\Admin;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article as ArticleModel;
 use IhorRadchenko\App\Models\Category;
+use IhorRadchenko\App\Models\User;
 use IhorRadchenko\App\View;
 
 class Article extends Admin
@@ -25,7 +25,7 @@ class Article extends Admin
      */
     protected function actionIndex()
     {
-        if (Session::has('user') && Session::get('user')->group === 'admin') {
+        if (User::isAdmin()) {
             if ($this->isAjax() && isset($_POST['page'])) {
                 View::loadForAjax('admin/articles', ArticleModel::findPerPage($_POST['page'], ArticleModel::PER_PAGE));
                 exit();
@@ -49,7 +49,7 @@ class Article extends Admin
      */
     protected function actionCategory($page, string $category)
     {
-        if (Session::has('user') && Session::get('user')->group === 'admin') {
+        if (User::isAdmin()) {
             if ($this->isAjax() && isset($_POST['page'])) {
                 View::loadForAjax('admin/articles', ArticleModel::findByCategory($category, $_POST['page']));
                 exit();
