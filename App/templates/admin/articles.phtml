@@ -1,4 +1,4 @@
-
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
 <div class="col-sm-9">
     <?php if (! empty($news)): ?>
         <div class="panel">
@@ -6,12 +6,16 @@
                 <h2>Статьи</h2>
             </div>
             <div class="panel-body">
-                <form method="post">
+                <form method="post" id="categoryForm">
                     <?php if (! empty($categories)): ?>
                         <select name="category" id="selectCategory" class="form-control">
-                            <option value="all"></option>
+                            <option value="all"
+                            <?php if (! isset($uri[3])) {print 'selected';} ?>
+                            ></option>
                             <?php foreach ($categories as $category): ?>
-                                <option value="<?= htmlentities($category->link); ?>"><?= htmlentities($category->name); ?></option>
+                                <option value="<?= htmlentities($category->link); ?>"
+                                    <?php if (isset($uri[3]) && $uri[3] === htmlentities($category->link)) {print 'selected';} ?>
+                                ><?= htmlentities($category->name); ?></option>
                             <?php endforeach; ?>
                         </select>
                     <?php endif; ?>

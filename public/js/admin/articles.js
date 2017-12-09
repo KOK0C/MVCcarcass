@@ -1,9 +1,16 @@
 
 $().ready(function () {
     var currentPage = 1;
+    var category = $("#selectCategory");
+    var uri;
     $("#moreArticle").click(function () {
+        if (category.val() === 'all') {
+            uri = '/admin/articles'
+        } else {
+            uri = '/admin/articles/' + category.val();
+        }
         $.post(
-            '/admin/articles',
+            uri,
             {
                 page: ++currentPage
             },
@@ -14,5 +21,12 @@ $().ready(function () {
                 }
             }
         );
+    });
+    category.change(function () {
+        if (category.val() === 'all') {
+            $("#categoryForm").attr('action', '/admin/articles').submit();
+        } else {
+            $("#categoryForm").attr('action', '/admin/articles/' + category.val()).submit();
+        }
     });
 });

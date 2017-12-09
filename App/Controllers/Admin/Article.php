@@ -40,4 +40,31 @@ class Article extends Admin
             throw new Error404();
         }
     }
+
+    /**
+     * @param $page
+     * @param string $category
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionCategory($page, string $category)
+    {
+        if (Session::has('user') && Session::get('user')->group === 'admin') {
+            if ($this->isAjax() && isset($_POST['page'])) {
+                View::loadForAjax('admin/articles', ArticleModel::findByCategory($category, $_POST['page']));
+                exit();
+            }
+            $this->mainPage = new View('/App/templates/admin/articles.phtml');
+            $this->mainPage->news = ArticleModel::findByCategory($category, 1);
+            if (! $this->mainPage->news) {
+                throw new Error404('Несуществующая страница');
+            }
+            $this->header->page->title .= ' | Статьи';
+            $this->mainPage->categories = Category::findAll();
+            $this->mainPage->totalPages = ceil(ArticleModel::getCountArticleInCategory($category) / ArticleModel::PER_PAGE);
+            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+        } else {
+            throw new Error404();
+        }
+    }
 }
