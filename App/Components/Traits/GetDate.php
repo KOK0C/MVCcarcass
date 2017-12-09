@@ -8,14 +8,21 @@
 
 namespace IhorRadchenko\App\Components\Traits;
 
+use DateTime;
+
 trait GetDate
 {
     private $date;
+    private $pattern_date = '~^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$~';
 
     public function getDate(): string
     {
-        $pattern = '~^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$~';
         $replacement = "[$3/$2/$1]";
-        return preg_replace($pattern, $replacement, $this->date);
+        return preg_replace($this->pattern_date, $replacement, $this->date);
+    }
+
+    public function formatDate(): string
+    {
+        return DateTime::createFromFormat('Y-m-d H:i:s', $this->date)->format('M j, Y');
     }
 }

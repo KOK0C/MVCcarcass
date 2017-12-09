@@ -84,6 +84,27 @@ abstract class Model
     }
 
     /**
+     * @return int
+     * @throws DbException
+     */
+    public static function getAllCount(): int
+    {
+        $sql = 'SELECT COUNT(*) FROM ' . static::TABLE;
+        return DataBase::getInstance()->countRow($sql);
+    }
+
+    /**
+     * @param int $limit
+     * @return array
+     * @throws DbException
+     */
+    public static function getLastRecord(int $limit)
+    {
+        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC LIMIT ' . $limit;
+        return DataBase::getInstance()->query($sql, static::class);
+    }
+
+    /**
      * Метод определяет сохранялся ли ранее объект в бд,
      * если да - возращает false
      * @return bool Возвращает false если объект уже существует в бд

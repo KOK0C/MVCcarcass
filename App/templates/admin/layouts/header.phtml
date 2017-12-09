@@ -10,7 +10,7 @@
             <?= htmlentities($page->title); ?>
         <?php endif; ?>
     </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/public/css/admin.css">
 </head>
@@ -23,14 +23,14 @@
                     <a class="flex-sm-fill text-sm-center nav-link main-link" href="/">АвтоБлог</a>
                     <a class="flex-sm-fill text-sm-center nav-link active" href="/admin">Главная</a>
                     <a class="flex-sm-fill text-sm-center nav-link" href="#">Статьи</a>
-                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Категории</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Авто</a>
                     <a class="flex-sm-fill text-sm-center nav-link" href="#">Отзывы</a>
                     <a class="flex-sm-fill text-sm-center nav-link" href="#">Пользователи</a>
                 </nav>
             </div>
             <div class="col-sm-4">
                 <div class="welcome">
-                    <div class="admin">Добро пожаловать, Игорь</div>
+                    <div class="admin">Добро пожаловать, <?= htmlentities(mb_ucfirst(\IhorRadchenko\App\Components\Session::get('user')->f_name)); ?></div>
                     <a href="/logout">Выйти</a>
                 </div>
             </div>

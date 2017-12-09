@@ -8,25 +8,29 @@
 
 namespace IhorRadchenko\App\Controllers\Admin;
 
-use IhorRadchenko\App\Controller;
+use IhorRadchenko\App\Components\Session;
+use IhorRadchenko\App\Controllers\Admin;
+use IhorRadchenko\App\Exceptions\Error404;
+use IhorRadchenko\App\Models\User;
 use IhorRadchenko\App\View;
 
-class Main extends Controller
+class Main extends Admin
 {
     private $mainPage;
 
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     protected function actionIndex()
     {
-        View::display($this->header, $this->footer);
-    }
-
-    protected function buildHeader()
-    {
-        $this->header = new View('/App/templates/admin/layouts/header.phtml');
-    }
-
-    protected function buildFooter()
-    {
-        $this->footer = new View('/App/templates/admin/layouts/footer.phtml');
+        if (Session::has('user') && Session::get('user')->group === 'admin') {
+            $this->mainPage = new View('/App/templates/admin/main.phtml');
+            $this->mainPage->counts = $this->sideBar->counts;
+            $this->mainPage->users = User::getLastRecord(5);
+            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+        } else {
+            throw new Error404();
+        }
     }
 }

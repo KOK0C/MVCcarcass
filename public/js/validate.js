@@ -64,7 +64,14 @@ $().ready(function () {
                 maxlength: 100
             },
             phone_number: {
-                pattern: '\\+380\\d{9}'
+                pattern: '\\+380\\d{9}',
+                remote: {
+                    url: '/check/phone',
+                    type: "post",
+                    data: {
+                        phone: $('#profileForm:input[name="phone_number"]').val()
+                    }
+                }
             },
             city : {
                 maxlength: 64
@@ -72,7 +79,8 @@ $().ready(function () {
         },
         messages: {
             phone_number: {
-                pattern: 'Введите корректный номер телефона'
+                pattern: 'Введите корректный номер телефона',
+                remote: 'Такой номер телефона уже используеться'
             }
         }
     });

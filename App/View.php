@@ -32,11 +32,13 @@ use IhorRadchenko\App\Models\User;
  * @property Pagination $pagination
  * @property Car $car
  * @property User $user
+ * @property array $users
  * @property array $reviews Review
  * @property array $forums
  * @property ForumTheme $theme
  * @property array $themes
  * @property ForumSection $section
+ * @property array $counts
  */
 class View
 {

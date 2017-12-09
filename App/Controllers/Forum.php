@@ -144,7 +144,7 @@ class Forum extends Controller
     private function buildLeftSideBar()
     {
         $this->leftSideBar = new View('/App/templates/forum/forumSideBar.phtml');
-        $this->leftSideBar->forums = ForumTheme::get5LastTheme();
+        $this->leftSideBar->forums = ForumTheme::getLastRecord(5);
     }
 
     /**

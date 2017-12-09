@@ -17,6 +17,7 @@ use IhorRadchenko\App\Model;
  * Class User
  * @package App\Models
  * Реализует модель таблицы users
+ * @property $group
  */
 class User extends Model
 {

@@ -1,0 +1,82 @@
+
+<div class="col-sm-9">
+    <div class="panel">
+        <div class="panel-header main-color-bg">
+            <h2>Обзор веб-сайта</h2>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <?php if (! empty($counts)): ?>
+                        <div class="col-sm-3">
+                            <div class="dash-box">
+                                <h2>
+                                    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                    <span><?= htmlentities($counts['articles']); ?></span>
+                                </h2>
+                                <h4>Статьи</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="dash-box">
+                                <h2>
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                    <span><?= htmlentities($counts['cars']); ?></span>
+                                </h2>
+                                <h4>Авто</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="dash-box">
+                                <h2>
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <span><?= htmlentities($counts['reviews']); ?></span>
+                                </h2>
+                                <h4>Отзывы</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="dash-box">
+                                <h2>
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <span><?= htmlentities($counts['users']); ?></span>
+                                </h2>
+                                <h4>Пользователи</h4>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if (! empty($users)): ?>
+        <div class="panel">
+            <div class="panel-header panel-default">
+                <h2>Последние пользователи</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Email</th>
+                        <th>Зарегистрирован</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?= htmlentities(mb_ucwords($user->getFullName())); ?></td>
+                            <td><?= htmlentities($user->email); ?></td>
+                            <td><?= $user->formatDate(); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+</div>
+</div>
+</main>

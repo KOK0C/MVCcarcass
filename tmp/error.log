@@ -1517,3 +1517,27 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
 Line : 49;
 
 =======================================================================
+
+[09-12-2017 10:19:53] CRITICAL
+syntax error, unexpected 'endif' (T_ENDIF), expecting end of file
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\footer.phtml;
+Line : 17;
+
+=======================================================================
+
+[09-12-2017 10:20:05] CRITICAL
+syntax error, unexpected 'endif' (T_ENDIF), expecting end of file
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\footer.phtml;
+Line : 17;
+
+=======================================================================
+
+[09-12-2017 13:09:03] WARNING
+Undefined offset: 0
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\ForumSection.php;
+Line : 44;
+
+=======================================================================

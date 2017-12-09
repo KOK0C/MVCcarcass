@@ -22,6 +22,7 @@ return [
 
     '^check/email$'      => ['controller' => 'Check', 'action' => 'email'],
     '^check/themeTitle$' => ['controller' => 'Check', 'action' => 'themeTitle'],
+    '^check/phone$'      => ['controller' => 'Check', 'action' => 'phone'],
 
     '^review/create$'                               => ['controller' => 'Reviews', 'action' => 'create'],
     '^(reviews)/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Reviews', 'action' => 'model'],

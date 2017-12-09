@@ -26,16 +26,6 @@ class ForumTheme extends ForumSection
     ];
 
     /**
-     * @return array
-     * @throws \IhorRadchenko\App\Exceptions\DbException
-     */
-    public static function get5LastTheme(): array
-    {
-        $sql = 'SELECT * FROM ' . self::TABLE . ' ORDER BY id DESC LIMIT 5';
-        return DataBase::getInstance()->query($sql, self::class);
-    }
-
-    /**
      * @param string $parent
      * @return array|null
      * @throws \IhorRadchenko\App\Exceptions\DbException
