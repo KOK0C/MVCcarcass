@@ -1,0 +1,103 @@
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
+<div class="col-sm-9">
+    <?php if (! empty($brands) && ! empty($cars)): ?>
+        <div class="panel">
+            <div class="panel-header main-color-bg">
+                <h2>Статьи</h2>
+            </div>
+            <div class="panel-body">
+                <form method="post" id="categoryForm">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <select name="mark" id="selectMarkCar" class="form-control">
+                                    <option value="all"
+                                        <?php if (! isset($uri[3])) {print 'selected';} ?>
+                                    >Марка</option>
+                                    <?php foreach ($brands as $brand): ?>
+                                        <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
+                                            <?php if (isset($uri[3]) && $uri[3] ===
+                                                htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name)))) {print 'selected';} ?>
+                                        >
+                                            <?= htmlentities(mb_ucwords($brand->name)); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <?php if (! empty($models)): ?>
+                                    <select name="model" id="modelCar" class="form-control">
+                                        <option value="all">Модель</option>
+                                        <?php foreach ($models as $car): ?>
+                                            <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $car->model))); ?>"
+                                                <?php if (isset($uri[5]) && $uri[5] ===
+                                                    htmlentities(mb_strtolower(str_replace(' ', '-', $car->model)))) {print 'selected';} ?>
+                                            >
+                                                <?= htmlentities(mb_ucwords(strtolower($car->model))); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                <?php else: ?>
+                                    <select name="model" id="modelCar" disabled class="form-control">
+                                        <option value="all">Модель</option>
+                                    </select>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Авто</th>
+                        <th>Марка</th>
+                        <th>Модель</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    <?php foreach ($cars as $car): ?>
+                        <tr>
+                            <td class="firstLetterUC">
+                                <img src="<?= htmlentities($car->getIcon()); ?>" alt="">
+                            </td>
+                            <td>
+                                <a href="/mark/<?= htmlentities(str_replace(' ', '-', strtolower($car->brand->name))); ?>">
+                                    <?= htmlentities($car->brand->name); ?>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/mark/<?= htmlentities(str_replace(' ', '-', strtolower($car->brand->name))) .
+                                '/' . htmlentities(str_replace(' ', '-', strtolower($car->model))); ?>">
+                                    <?= htmlentities(mb_ucwords(mb_strtolower($car->model))); ?>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm">Редактировать</a>
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php if (isset($totalPages) && $totalPages > 1): ?>
+                    <button class="btn btn-block btn-success" id="moreCars">ЕЩЕ АВТОМОБИЛИ</button>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php if (isset($totalPages)): ?>
+    <script>
+        var totalPages = <?= $totalPages; ?>;
+    </script>
+<?php endif; ?>
+
+</div>
+</div>
+</main>

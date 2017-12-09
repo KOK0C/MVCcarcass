@@ -84,7 +84,28 @@
 <div class="container">
     <div class="row">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active">Dashboard</li>
+            <?php if (isset($uri[2])): ?>
+                <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                <li class="breadcrumb-item active">
+                    <?php switch ($uri[2]):
+                            case 'articles':
+                                print 'Статьи';
+                                break;
+                            case 'cars':
+                                print 'Авто';
+                                break;
+                            case 'reviews':
+                                print 'Отзывы';
+                                break;
+                            case 'users':
+                                print 'Пользователи';
+                                break;
+                            default: print '404';
+                    endswitch; ?>
+                </li>
+            <?php else: ?>
+                <li class="breadcrumb-item active">Dashboard</li>
+            <?php endif; ?>
         </ol>
     </div>
 </div>

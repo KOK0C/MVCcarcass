@@ -22,6 +22,7 @@ abstract class Model
      * @var string Хранит название таблицы в бд
      */
     const TABLE = '';
+    const PER_PAGE = 0;
     /**
      * @var integer
      */
@@ -81,6 +82,18 @@ abstract class Model
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id LIMIT 1';
         $result = DataBase::getInstance()->query($sql, static::class, ['id' => $id]);
         return (! empty($result)) ? $result[0] : null;
+    }
+
+    /**
+     * @param int $page
+     * @return array
+     * @throws DbException
+     */
+    public static function findPerPage(int $page, int $perPage): array
+    {
+        $offset = ($page - 1) * $perPage;
+        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC LIMIT ' . $perPage . ' OFFSET ' . $offset;
+        return DataBase::getInstance()->query($sql, static::class);
     }
 
     /**

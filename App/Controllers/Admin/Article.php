@@ -27,7 +27,7 @@ class Article extends Admin
     {
         if (Session::has('user') && Session::get('user')->group === 'admin') {
             if ($this->isAjax() && isset($_POST['page'])) {
-                View::loadForAjax('admin/articles', ArticleModel::findPerPage($_POST['page']));
+                View::loadForAjax('admin/articles', ArticleModel::findPerPage($_POST['page'], ArticleModel::PER_PAGE));
                 exit();
             }
             $this->mainPage = new View('/App/templates/admin/articles.phtml');

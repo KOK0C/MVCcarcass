@@ -1,0 +1,27 @@
+
+<?php if (! empty($data)): ?>
+    <?php foreach ($data as $car): ?>
+        <tr>
+            <td class="firstLetterUC">
+                <img src="<?= htmlentities($car->getIcon()); ?>" alt="">
+            </td>
+            <td>
+                <a href="/mark/<?= htmlentities(str_replace(' ', '-', strtolower($car->brand->name))); ?>">
+                    <?= htmlentities($car->brand->name); ?>
+                </a>
+            </td>
+            <td>
+                <a href="/mark/<?= htmlentities(str_replace(' ', '-', strtolower($car->brand->name))) .
+                '/' . htmlentities(str_replace(' ', '-', strtolower($car->model))); ?>">
+                    <?= htmlentities(mb_ucwords(mb_strtolower($car->model))); ?>
+                </a>
+            </td>
+            <td>
+                <a href="" class="btn btn-primary btn-sm">Редактировать</a>
+            </td>
+            <td>
+                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>

@@ -201,6 +201,7 @@ main {
 
 .table td, .table th {
     border-top: 1px solid #172c3e;
+    vertical-align: middle;
 }
 
 .table-hover tbody tr:hover {

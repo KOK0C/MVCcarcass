@@ -1565,3 +1565,67 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\articles.phtml;
 Line : 13;
 
 =======================================================================
+
+[09-12-2017 17:10:12] CRITICAL
+syntax error, unexpected '                        ', expecting endswitch (T_ENDSWITCH) or case (T_CASE) or default (T_DEFAULT)
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 91;
+
+=======================================================================
+
+[09-12-2017 17:10:59] CRITICAL
+syntax error, unexpected '                        ', expecting endswitch (T_ENDSWITCH) or case (T_CASE) or default (T_DEFAULT)
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 91;
+
+=======================================================================
+
+[09-12-2017 17:27:42] WARNING
+Undefined variable: news
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\cars.phtml;
+Line : 61;
+
+=======================================================================
+
+[09-12-2017 17:29:12] WARNING
+Undefined variable: article
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\cars.phtml;
+Line : 64;
+
+=======================================================================
+
+[09-12-2017 17:54:48] ERROR
+Declaration of IhorRadchenko\App\Models\Article::findPerPage(int $page): array should be compatible with IhorRadchenko\App\Model::findPerPage(int $page, int $perPage): array
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Article.php;
+Line : 21;
+
+=======================================================================
+
+[09-12-2017 17:55:43] CRITICAL
+Too few arguments to function IhorRadchenko\App\Model::findPerPage(), 1 passed in C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\Article.php on line 30 and exactly 2 expected
+Trowable : ArgumentCountError;
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 92;
+
+=======================================================================
+
+[09-12-2017 17:55:44] CRITICAL
+Too few arguments to function IhorRadchenko\App\Model::findPerPage(), 1 passed in C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\Article.php on line 30 and exactly 2 expected
+Trowable : ArgumentCountError;
+File : C:\OSPanel\domains\MVCcarcass\App\Model.php;
+Line : 92;
+
+=======================================================================
+
+[09-12-2017 18:09:33] CRITICAL
+syntax error, unexpected 'exit' (T_EXIT)
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\Car.php;
+Line : 31;
+
+=======================================================================
