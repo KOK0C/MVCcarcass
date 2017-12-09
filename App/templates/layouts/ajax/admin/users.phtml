@@ -1,0 +1,16 @@
+
+<?php if (! empty($data)): ?>
+    <?php foreach ($data as $user): ?>
+        <tr>
+            <td><?= htmlentities(mb_ucwords($user->getFullName())); ?></td>
+            <td><?= htmlentities($user->email); ?></td>
+            <td><?= $user->formatDate(); ?></td>
+            <td>
+                <a href="" class="btn btn-primary btn-sm">Редактировать</a>
+            </td>
+            <td>
+                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>

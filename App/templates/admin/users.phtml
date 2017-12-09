@@ -1,0 +1,51 @@
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
+<div class="col-sm-9">
+    <?php if (! empty($users)): ?>
+        <div class="panel">
+            <div class="panel-header main-color-bg">
+                <h2>Пользователи</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Email</th>
+                        <th>Зарегистрирован</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?= htmlentities(mb_ucwords($user->getFullName())); ?></td>
+                            <td><?= htmlentities($user->email); ?></td>
+                            <td><?= $user->formatDate(); ?></td>
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm">Редактировать</a>
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php if (isset($totalPages) && $totalPages > 1): ?>
+                    <button class="btn btn-block btn-success" id="moreUser">ЕЩЕ ПОЛЬЗОВАТЕЛИ</button>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php if (isset($totalPages)): ?>
+    <script>
+        var totalPages = <?= $totalPages; ?>;
+    </script>
+<?php endif; ?>
+
+</div>
+</div>
+</main>

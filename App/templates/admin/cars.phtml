@@ -3,14 +3,14 @@
     <?php if (! empty($brands) && ! empty($cars)): ?>
         <div class="panel">
             <div class="panel-header main-color-bg">
-                <h2>Статьи</h2>
+                <h2>Авто</h2>
             </div>
             <div class="panel-body">
                 <form method="post" id="carsForm">
                     <select name="mark" id="selectMarkCar" class="form-control">
                         <option value="all"
                             <?php if (! isset($uri[3])) {print 'selected';} ?>
-                        >Марка</option>
+                        ></option>
                         <?php foreach ($brands as $brand): ?>
                             <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
                                 <?php if (isset($uri[4]) && $uri[4] ===

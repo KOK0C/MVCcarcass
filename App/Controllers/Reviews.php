@@ -35,12 +35,12 @@ class Reviews extends Controller
             print json_encode($data, JSON_UNESCAPED_UNICODE);
             exit();
         } elseif ($this->isAjax() && isset($_POST['page'])) {
-            View::loadForAjax('reviews', Review::findReviewPerPage($_POST['page']));
+            View::loadForAjax('reviews', Review::findPerPage($_POST['page'], Review::PER_PAGE));
             exit();
         }
         $this->mainPage = new View('/App/templates/reviews.phtml');
         $this->mainPage->totalPage = ceil(Review::getCountReview() / Review::PER_PAGE);
-        $this->mainPage->reviews = Review::findReviewPerPage(1);
+        $this->mainPage->reviews = Review::findPerPage(1, Review::PER_PAGE);
         $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }

@@ -10,8 +10,6 @@ namespace IhorRadchenko\App\Controllers;
 
 use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Components\Session;
-use IhorRadchenko\App\Components\Validation\ValidationErrorHandler;
-use IhorRadchenko\App\Components\Validation\Validator;
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Comment;

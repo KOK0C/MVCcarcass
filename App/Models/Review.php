@@ -67,19 +67,6 @@ class Review extends Model
     }
 
     /**
-     * @param int $page
-     * @return array
-     * @throws DbException
-     */
-    public static function findReviewPerPage(int $page): array
-    {
-        $offset = ($page - 1) * self::PER_PAGE;
-        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC';
-        $sql .= " LIMIT " . self::PER_PAGE . " OFFSET $offset";
-        return DataBase::getInstance()->query($sql, static::class);
-    }
-
-    /**
      * @param string $brand
      * @param int $page
      * @return array|null

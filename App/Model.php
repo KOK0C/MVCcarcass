@@ -22,7 +22,7 @@ abstract class Model
      * @var string Хранит название таблицы в бд
      */
     const TABLE = '';
-    const PER_PAGE = 0;
+    const PER_PAGE = 5;
     /**
      * @var integer
      */

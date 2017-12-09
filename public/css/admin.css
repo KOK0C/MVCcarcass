@@ -219,3 +219,24 @@ main {
 .table a {
     color: #e9ebec;
 }
+
+#go-top {
+    position: fixed;
+    bottom: 25px;
+    right: 10px;
+    cursor:pointer;
+    display:none;
+    width: 62px;
+    height: 32px;
+    background: #172c3e;
+    border: #b21820 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+    color: #e9ebec;
+    font-weight: bold;
+    text-align: center;
+}
+
+#go-top:hover {
+    background: #ed1927;
+}
