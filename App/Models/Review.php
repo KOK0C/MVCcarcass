@@ -19,7 +19,7 @@ class Review extends Model
     use GetDate;
 
     const TABLE = 'reviews';
-    const PER_PAGE = 1;
+    const PER_PAGE = 5;
 
     public $text;
     private $author_id;

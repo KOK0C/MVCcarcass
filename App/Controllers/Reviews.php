@@ -53,11 +53,11 @@ class Reviews extends Controller
      */
     protected function actionMark($page, string $mark)
     {
+        $mark = ucwords(str_replace('-', ' ', $mark));
         if (isset($_POST['page'])) {
             View::loadForAjax('reviews', Review::findReviewsByBrand($_POST['page'], $mark));
             exit();
         }
-        $mark = ucwords(str_replace('-', ' ', $mark));
         $this->mainPage = new View('/App/templates/reviews.phtml');
         $this->mainPage->totalPage = ceil(Review::getCountReview($mark) / Review::PER_PAGE);
         $this->mainPage->cars = Car::findCarsByBrand($mark);
@@ -79,12 +79,12 @@ class Reviews extends Controller
      */
     protected function actionModel($page, string $mark, string $model)
     {
+        $mark = ucwords(str_replace('-', ' ', $mark));
+        $model = mb_strtoupper(str_replace('-', ' ', $model));
         if ($this->isAjax() && isset($_POST['page'])) {
             View::loadForAjax('reviews', Review::findReviewsByModel($_POST['page'], $mark, $model));
             exit();
         }
-        $mark = ucwords(str_replace('-', ' ', $mark));
-        $model = mb_strtoupper(str_replace('-', ' ', $model));
         $this->mainPage = new View('/App/templates/reviews.phtml');
         if (! Car::findCarByBrandAndModel($mark, $model)) {
             throw new Error404();

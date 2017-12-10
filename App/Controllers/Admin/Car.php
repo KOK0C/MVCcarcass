@@ -30,7 +30,9 @@ class Car extends Admin
                 View::loadForAjax('admin/cars', CarModel::findPerPage($_POST['page'], 5));
                 exit();
             }
-            $this->buildMainPage();
+            $this->header->page->title .= ' | Авто';
+            $this->mainPage = new View('/App/templates/admin/cars.phtml');
+            $this->mainPage->brands = Brand::findAll(false, 'name');
             $this->mainPage->cars = CarModel::findPerPage(1, 5);
             $this->mainPage->totalPages = ceil(CarModel::getAllCount() / 5);
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
@@ -56,22 +58,14 @@ class Car extends Admin
             if (! Brand::findOneByMark($brand)) {
                 throw new Error404();
             }
-            $this->buildMainPage();
+            $this->header->page->title .= ' | Авто';
+            $this->mainPage = new View('/App/templates/admin/cars.phtml');
+            $this->mainPage->brands = Brand::findAll(false, 'name');
             $this->mainPage->cars = CarModel::findCarsByBrandPerPage($brand ,1, 5);
             $this->mainPage->totalPages = ceil(CarModel::getCountCarByBrand($brand) / 5);
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
         } else {
             throw new Error404();
         }
-    }
-
-    /**
-     * @throws \IhorRadchenko\App\Exceptions\DbException
-     */
-    private function buildMainPage()
-    {
-        $this->header->page->title .= ' | Авто';
-        $this->mainPage = new View('/App/templates/admin/cars.phtml');
-        $this->mainPage->brands = Brand::findAll(false, 'name');
     }
 }

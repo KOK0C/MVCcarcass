@@ -1629,3 +1629,27 @@ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\Car.php;
 Line : 31;
 
 =======================================================================
+
+[10-12-2017 11:34:10] CRITICAL
+Call to undefined method IhorRadchenko\App\Models\Review::formanDate()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\reviews.phtml;
+Line : 32;
+
+=======================================================================
+
+[10-12-2017 12:14:12] ERROR
+Invalid argument supplied for foreach()
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\reviews.phtml;
+Line : 3;
+
+=======================================================================
+
+[10-12-2017 12:15:16] CRITICAL
+syntax error, unexpected ';', expecting ',' or ')'
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\Review.php;
+Line : 31;
+
+=======================================================================

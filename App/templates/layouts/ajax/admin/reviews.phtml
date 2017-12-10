@@ -1,0 +1,22 @@
+
+<?php if (! empty($data)): ?>
+    <?php foreach ($data as $review): ?>
+        <tr>
+            <td>
+                <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($review->car->brand->name))) . '/' . htmlentities(str_replace(' ', '-', mb_strtolower($review->car->model))); ?>">
+                    <?= htmlentities(mb_strtoupper($review->car->brand->name)) . ' ' . htmlentities(mb_strtoupper($review->car->model)); ?>
+                </a>
+            </td>
+            <td>
+                <?= htmlentities($review->author->email); ?>
+            </td>
+            <td><?= htmlentities($review->rating) . '/5'; ?></td>
+            <td>
+                <?= $review->formatDate(); ?>
+            </td>
+            <td>
+                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>

@@ -30,7 +30,9 @@ class Article extends Admin
                 View::loadForAjax('admin/articles', ArticleModel::findPerPage($_POST['page'], ArticleModel::PER_PAGE));
                 exit();
             }
-            $this->buildMainPage();
+            $this->mainPage = new View('/App/templates/admin/articles.phtml');
+            $this->header->page->title .= ' | Статьи';
+            $this->mainPage->categories = Category::findAll();
             $this->mainPage->news = ArticleModel::getLastRecord(5);
             $this->mainPage->totalPages = ceil(ArticleModel::getAllCount() / ArticleModel::PER_PAGE);
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
@@ -52,7 +54,9 @@ class Article extends Admin
                 View::loadForAjax('admin/articles', ArticleModel::findByCategory($category, $_POST['page']));
                 exit();
             }
-            $this->buildMainPage();
+            $this->mainPage = new View('/App/templates/admin/articles.phtml');
+            $this->header->page->title .= ' | Статьи';
+            $this->mainPage->categories = Category::findAll();
             $this->mainPage->news = ArticleModel::findByCategory($category, 1);
             if (! $this->mainPage->news) {
                 throw new Error404('Несуществующая страница');
@@ -62,15 +66,5 @@ class Article extends Admin
         } else {
             throw new Error404();
         }
-    }
-
-    /**
-     * @throws \IhorRadchenko\App\Exceptions\DbException
-     */
-    private function buildMainPage()
-    {
-        $this->mainPage = new View('/App/templates/admin/articles.phtml');
-        $this->header->page->title .= ' | Статьи';
-        $this->mainPage->categories = Category::findAll();
     }
 }

@@ -1,0 +1,97 @@
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
+<div class="col-sm-9">
+    <div class="panel">
+        <div class="panel-header main-color-bg">
+            <h2>Отзывы</h2>
+        </div>
+        <div class="panel-body">
+            <form method="post" id="selectCarForm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <select name="mark" id="markCarSelect" class="form-control">
+                                <option value="all">Марка авто</option>
+                                <?php if (! empty($brands)): ?>
+                                    <?php foreach ($brands as $brand): ?>
+                                        <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
+                                            <?php if (isset($uri[4]) && $uri[4] ===
+                                                htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name)))) {print 'selected';} ?>
+                                        >
+                                            <?= htmlentities(mb_ucwords($brand->name)); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <?php if (! empty($cars)): ?>
+                                <select name="model" id="modelCarSelect" class="form-control">
+                                    <option value="all">Модель</option>
+                                    <?php foreach ($cars as $car): ?>
+                                        <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $car->model))); ?>"
+                                            <?php if (isset($uri[6]) && $uri[6] ===
+                                                htmlentities(mb_strtolower(str_replace(' ', '-', $car->model)))) {print 'selected';} ?>
+                                        >
+                                            <?= htmlentities(mb_ucwords(strtolower($car->model))); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            <?php else: ?>
+                                <select name="model" id="modelCar" disabled class="form-control">
+                                    <option value="all">Модель</option>
+                                </select>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Авто</th>
+                    <th>Автор</th>
+                    <th>Оценка</th>
+                    <th>Публикация</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody class="table-body">
+                <?php if (! empty($reviews)): ?>
+                    <?php foreach ($reviews as $review): ?>
+                        <tr>
+                            <td>
+                                <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($review->car->brand->name))) . '/' . htmlentities(str_replace(' ', '-', mb_strtolower($review->car->model))); ?>">
+                                    <?= htmlentities(mb_strtoupper($review->car->brand->name)) . ' ' . htmlentities(mb_strtoupper($review->car->model)); ?>
+                                </a>
+                            </td>
+                            <td>
+                                <?= htmlentities($review->author->email); ?>
+                            </td>
+                            <td><?= htmlentities($review->rating) . '/5'; ?></td>
+                            <td>
+                                <?= $review->formatDate(); ?>
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                </tbody>
+            </table>
+            <?php if (isset($totalPages) && $totalPages > 1): ?>
+                <button class="btn btn-block btn-success" id="moreReviews">ЕЩЕ ОТЗЫВЫ</button>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<?php if (isset($totalPages)): ?>
+    <script>
+        var totalPages = <?= $totalPages; ?>;
+    </script>
+<?php endif; ?>
+
+</div>
+</div>
+</main>
