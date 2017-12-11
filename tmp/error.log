@@ -1653,3 +1653,19 @@ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\Review.php;
 Line : 31;
 
 =======================================================================
+
+[11-12-2017 19:54:26] WARNING
+Undefined variable: breadcrumb
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 92;
+
+=======================================================================
+
+[11-12-2017 19:54:33] WARNING
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 92;
+
+=======================================================================

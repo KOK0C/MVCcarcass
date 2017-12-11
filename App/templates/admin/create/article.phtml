@@ -1,0 +1,66 @@
+
+<div class="col-sm-6">
+    <form action="/admin/articles/create" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+        <div class="form-group">
+            <input type="text" name="title" class="form-control" placeholder="Заголовок статьи" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="description" class="form-control" placeholder="Небольшое описание статьи" required>
+        </div>
+        <div class="form-group">
+            <label for="selectCategory">Выберите категорию</label>
+            <select name="category_id" class="form-control" required id="selectCategory">
+                <?php if (! empty($categories)): ?>
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category->getId(); ?>"><?= $category->name; ?></option>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="imageArticle">Шапка для статьи</label>
+            <input type="file" class="form-control" name="image" required id="imageArticle">
+            <small id="fileHelp" class="form-text">Желательно 1012x372</small>
+        </div>
+        <div class="form-group">
+            <label for="editor">Содержание статьи...</label>
+            <textarea name="text" class="form-control" id="editor" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="selectMark">Можете выбрать марку авто...</label>
+                        <select name="mark" id="selectMark" class="form-control">
+
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="selectModel">...и модель</label>
+                        <select name="model" id="selectModel" disabled class="form-control">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="form-control" name="add_article" value="Добавить">
+    </form>
+</div>
+
+<script src="/public/plugin/ckeditor/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor', {
+        filebrowserBrowseUrl: '/public/plugin/ckeditor/ckfinder/ckfinder.html',
+        filebrowserImageBrowseUrl: '/public/plugin/ckeditor/ckfinder/ckfinder.html?type=Images',
+        filebrowserFlashBrowseUrl: '/public/plugin/ckeditor/ckfinder/ckfinder.html?type=Flash',
+        filebrowserUploadUrl: '/public/plugin/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+        filebrowserImageUploadUrl: '/public/plugin/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+        filebrowserFlashUploadUrl: '/public/plugin/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+    })
+</script>
+
+</div>
+</div>
+</main>

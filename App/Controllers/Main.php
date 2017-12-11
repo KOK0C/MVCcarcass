@@ -43,6 +43,7 @@ class Main extends Controller
     {
         $this->mainPage = new View('/App/templates/one_article.phtml');
         $this->mainPage->article = Article::findOneArticle($link, $alias);
+        $this->header->page->title = mb_strtoupper($this->mainPage->article->title);
         if (! $this->mainPage->article) {
             throw new Error404('Статья не найдена');
         }

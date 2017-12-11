@@ -219,3 +219,7 @@ main {
 .table a {
     color: #e9ebec;
 }
+
+label {
+    color: #007bff;
+}

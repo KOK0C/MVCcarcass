@@ -7,6 +7,7 @@
  */
 
 return [
+    '^(admin)/articles/create$'                           => ['controller' => 'Admin\\Article', 'action' => 'create'],
     '^(admin)/reviews/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Admin\\Review',  'action' => 'model'],
     '^(admin)/reviews/mark/([a-z-]+)$'                    => ['controller' => 'Admin\\Review',  'action' => 'mark'],
     '^(admin)/cars/mark/([a-z-]+)$'                       => ['controller' => 'Admin\\Car',     'action' => 'mark'],

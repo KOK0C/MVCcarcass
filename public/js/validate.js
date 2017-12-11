@@ -61,7 +61,14 @@ $().ready(function () {
             email: {
                 required: true,
                 email: true,
-                maxlength: 100
+                maxlength: 100,
+                remote: {
+                    url: '/check/email',
+                    type: "post",
+                    data: {
+                        email: $('#profileForm:input[name="email"]').val()
+                    }
+                },
             },
             phone_number: {
                 pattern: '\\+380\\d{9}',

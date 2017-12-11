@@ -32,6 +32,7 @@ class Article extends Admin
             }
             $this->mainPage = new View('/App/templates/admin/articles.phtml');
             $this->header->page->title .= ' | Статьи';
+            $this->header->breadcrumb = ['main' => 'Cтатьи'];
             $this->mainPage->categories = Category::findAll();
             $this->mainPage->news = ArticleModel::getLastRecord(5);
             $this->mainPage->totalPages = ceil(ArticleModel::getAllCount() / ArticleModel::PER_PAGE);
@@ -56,12 +57,30 @@ class Article extends Admin
             }
             $this->mainPage = new View('/App/templates/admin/articles.phtml');
             $this->header->page->title .= ' | Статьи';
+            $this->header->breadcrumb = ['main' => 'Cтатьи'];
             $this->mainPage->categories = Category::findAll();
             $this->mainPage->news = ArticleModel::findByCategory($category, 1);
             if (! $this->mainPage->news) {
                 throw new Error404('Несуществующая страница');
             }
             $this->mainPage->totalPages = ceil(ArticleModel::getCountArticleInCategory($category) / ArticleModel::PER_PAGE);
+            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionCreate()
+    {
+        if (User::isAdmin()) {
+            $this->mainPage = new View('/App/templates/admin/create/article.phtml');
+            $this->header->page->title .= ' | Создание статьи';
+            $this->header->breadcrumb = ['main' => 'Создание', 'child' => ['href' => '/admin/articles', 'title' => 'Статьи']];
+            $this->mainPage->categories = Category::findAll();
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
         } else {
             throw new Error404();

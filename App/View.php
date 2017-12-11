@@ -39,6 +39,7 @@ use IhorRadchenko\App\Models\User;
  * @property array $themes
  * @property ForumSection $section
  * @property array $counts
+ * @property array $breadcrumb
  */
 class View
 {

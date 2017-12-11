@@ -22,7 +22,8 @@ class Check extends Controller
     protected function actionEmail()
     {
         if ($this->isAjax() && isset($_POST['email'])) {
-            print (empty(DataBase::getInstance()->get('users', 'email', trim($_POST['email'])))) ? 'true' : 'false';
+            print ((Session::has('user') && Session::get('user')->email === $_POST['email'])
+                || empty(DataBase::getInstance()->get('users', 'email', trim($_POST['email'])))) ? 'true' : 'false';
             exit();
         }
         throw new Error404();

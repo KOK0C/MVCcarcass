@@ -143,4 +143,21 @@ class Article extends Model
         $query = "%{$query}%";
         return DataBase::getInstance()->query($sql, self::class, ['querySearch' => $query]);
     }
+
+    /**
+     * @param string $model
+     * @param int $page
+     * @return array
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    public static function findNewsForCar(string $model, int $page): array
+    {
+        $offset = ($page - 1) * self::PER_PAGE;
+        $sql = 'SELECT * FROM news 
+                INNER JOIN car_news ON news.id = car_news.news_id 
+                WHERE car_news.car_id = 
+                (SELECT id FROM cars WHERE cars.model = :model) 
+                ORDER BY id DESC LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
+        return DataBase::getInstance()->query($sql, Article::class, ['model' => $model]);
+    }
 }

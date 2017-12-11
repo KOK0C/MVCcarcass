@@ -10,6 +10,7 @@ namespace IhorRadchenko\App\Controllers;
 
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
+use IhorRadchenko\App\Models\Article;
 use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\View;
@@ -55,7 +56,7 @@ class Cars extends Controller
             throw new Error404('Модель авто не найдена');
         }
         $this->header->page->title .= " $model";
-        $this->mainPage->news = Car::findNewsForCar($model, 1);
+        $this->mainPage->news = Article::findNewsForCar($model, 1);
         $this->mainPage->totalPage = ceil(Car::getCountArticleForCar($model) / Car::PER_PAGE);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
@@ -67,7 +68,7 @@ class Cars extends Controller
     protected function actionShowNews()
     {
         if ($this->isAjax() && isset($_POST['page']) && isset($_POST['model'])) {
-            View::loadForAjax('car_news', Car::findNewsForCar($_POST['model'], $_POST['page']));
+            View::loadForAjax('car_news', Article::findNewsForCar($_POST['model'], $_POST['page']));
             exit();
         }
         throw new Error404();

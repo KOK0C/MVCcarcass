@@ -19,7 +19,7 @@
             </p>
             <p class="blog-post-meta"><?= htmlentities($article->date); ?></p>
             <div class="blog-post-text">
-                <?= IhorRadchenko\App\Components\TextFormat::format(htmlentities($article->text), $article->getId()); ?>
+                <?= $article->text; ?>
             </div>
         <?php endif; ?>
     </div><!-- /.blog-post -->

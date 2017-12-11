@@ -1,4 +1,5 @@
 <?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -69,7 +70,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Добавление контента</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="/admin/articles/create">Добавить статью</a>
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
@@ -85,24 +86,18 @@
 <div class="container">
     <div class="row">
         <ol class="breadcrumb">
-            <?php if (isset($uri[2])): ?>
+            <?php if (isset($uri[3]) && isset($breadcrumb)): ?>
+                <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                <li class="breadcrumb-item">
+                    <a href="<?= $breadcrumb['child']['href']; ?>"><?= $breadcrumb['child']['title']; ?></a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <?= $breadcrumb['main']; ?>
+                </li>
+            <?php elseif (isset($uri[2]) && ! isset($uri[3]) && isset($breadcrumb)): ?>
                 <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                 <li class="breadcrumb-item active">
-                    <?php switch ($uri[2]):
-                            case 'articles':
-                                print 'Статьи';
-                                break;
-                            case 'cars':
-                                print 'Авто';
-                                break;
-                            case 'reviews':
-                                print 'Отзывы';
-                                break;
-                            case 'users':
-                                print 'Пользователи';
-                                break;
-                            default: print '404';
-                    endswitch; ?>
+                    <?= $breadcrumb['main']; ?>
                 </li>
             <?php else: ?>
                 <li class="breadcrumb-item active">Dashboard</li>

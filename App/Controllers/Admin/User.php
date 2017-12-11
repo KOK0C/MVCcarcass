@@ -32,6 +32,7 @@ class User extends Admin
             $this->mainPage->users = UserModel::findPerPage(1, UserModel::PER_PAGE);
             $this->mainPage->totalPages = ceil(UserModel::getAllCount() / UserModel::PER_PAGE);
             $this->header->page->title .= ' | Пользователи';
+            $this->header->breadcrumb = ['main' => 'Пользователи'];
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
         } else {
             throw new Error404();

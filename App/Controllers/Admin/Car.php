@@ -31,6 +31,7 @@ class Car extends Admin
                 exit();
             }
             $this->header->page->title .= ' | Авто';
+            $this->header->breadcrumb = ['main' => 'Авто'];
             $this->mainPage = new View('/App/templates/admin/cars.phtml');
             $this->mainPage->brands = Brand::findAll(false, 'name');
             $this->mainPage->cars = CarModel::findPerPage(1, 5);
@@ -59,6 +60,7 @@ class Car extends Admin
                 throw new Error404();
             }
             $this->header->page->title .= ' | Авто';
+            $this->header->breadcrumb = ['main' => 'Авто'];
             $this->mainPage = new View('/App/templates/admin/cars.phtml');
             $this->mainPage->brands = Brand::findAll(false, 'name');
             $this->mainPage->cars = CarModel::findCarsByBrandPerPage($brand ,1, 5);
