@@ -25,9 +25,6 @@ try {
             'hash_user'
         )->user_id;
         \IhorRadchenko\App\Components\Session::set('user', \IhorRadchenko\App\Models\User::findById($userId));
-        if (\IhorRadchenko\App\Models\User::isAdmin()) {
-            \IhorRadchenko\App\Components\Session::set('KCFINDER', ['disabled' => false, 'uploadURL' => '/public/img/photo']);
-        }
     }
 
     $route->run();

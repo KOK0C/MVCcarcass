@@ -88,6 +88,9 @@ $().ready(function () {
             phone_number: {
                 pattern: 'Введите корректный номер телефона',
                 remote: 'Такой номер телефона уже используеться'
+            },
+            email: {
+                remote: 'Такой Email уже занят'
             }
         }
     });
@@ -144,6 +147,42 @@ $().ready(function () {
         messages: {
             title: {
                 remote: 'Такая тема уже существует'
+            }
+        }
+    });
+
+    $("#createArticle").validate({
+        rules: {
+            title: {
+                minlength: 3,
+                maxlength: 200,
+                remote: {
+                    url: '/check/articleTitle',
+                    type: "post",
+                    data: {
+                        title: $('#createArticle:input[name="title"]').val()
+                    }
+                }
+            },
+            description: {
+                minlength: 3,
+                maxlength: 255
+            },
+            image: {
+                accept: "image/*",
+                required: true
+            },
+            text: {
+                required: true
+            }
+        },
+        messages: {
+            title: {
+                remote: 'Такая статья уже существует'
+            },
+            image: {
+                accept: 'Выберите картинку',
+                required: 'Необходимо выбрать файл'
             }
         }
     });

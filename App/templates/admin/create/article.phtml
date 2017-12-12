@@ -1,6 +1,18 @@
 
 <div class="col-sm-6">
-    <form action="/admin/articles/create" method="post" enctype="multipart/form-data">
+    <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+        <div class="alert alert-danger error-block">
+            <ul class="text-left">
+                <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
+                    <?php foreach ($field as $error): ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+    <?php endif; ?>
+    <form action="/admin/articles/create" method="post" enctype="multipart/form-data" id="createArticle">
         <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
         <div class="form-group">
             <input type="text" name="title" class="form-control" placeholder="Заголовок статьи" required>
@@ -33,13 +45,20 @@
                     <div class="col-sm-6">
                         <label for="selectMark">Можете выбрать марку авто...</label>
                         <select name="mark" id="selectMark" class="form-control">
-
+                            <option value="">Марка</option>
+                            <?php if (! empty($brands)): ?>
+                                <?php foreach ($brands as $brand): ?>
+                                    <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>">
+                                        <?= htmlentities(mb_ucwords($brand->name)); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
                     </div>
                     <div class="col-sm-6">
                         <label for="selectModel">...и модель</label>
                         <select name="model" id="selectModel" disabled class="form-control">
-
+                            <option>Модель</option>
                         </select>
                     </div>
                 </div>

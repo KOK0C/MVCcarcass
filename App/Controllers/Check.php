@@ -55,4 +55,17 @@ class Check extends Controller
         }
         throw new Error404();
     }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionArticleTitle()
+    {
+        if ($this->isAjax() && isset($_POST['title'])) {
+            print (empty(DataBase::getInstance()->get('news', 'title', trim($_POST['title'])))) ? 'true' : 'false';
+            exit();
+        }
+        throw new Error404();
+    }
 }

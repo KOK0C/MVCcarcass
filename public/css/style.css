@@ -279,7 +279,7 @@ pre {
     text-align: center;
 }
 
-.blog-post-text .fig img {
+.blog-post-text p img {
     width: 600px;
 }
 
@@ -473,23 +473,6 @@ pre {
 
 .form-group {
     position: relative;
-}
-
-.icon-success, .icon-fail {
-    position: absolute;
-    top: 9px;
-    right: 10px;
-    display: block;
-    width: 20px;
-    height: 20px;
-}
-
-.icon-success {
-    color: #5cb85c;
-}
-
-.icon-fail {
-    color: #d9534f;
 }
 
 input.valid {

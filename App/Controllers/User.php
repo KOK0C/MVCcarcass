@@ -79,12 +79,6 @@ class User extends Controller
                     Cookie::set('user', $hash);
                 }
 
-                if (UserModel::isAdmin()) {
-                    Session::set('KCFINDER', [
-                        'disabled' => false,
-                        'uploadURL' => '/public/img/photo'
-                    ]);
-                }
                 Redirect::to('/user');
             }
             Session::set('login_fail', 'Неверный эмейл или пароль');

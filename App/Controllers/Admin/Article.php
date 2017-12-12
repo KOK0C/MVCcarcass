@@ -11,6 +11,8 @@ namespace IhorRadchenko\App\Controllers\Admin;
 use IhorRadchenko\App\Controllers\Admin;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article as ArticleModel;
+use IhorRadchenko\App\Models\Brand;
+use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\User;
 use IhorRadchenko\App\View;
@@ -66,10 +68,17 @@ class Article extends Admin
      */
     protected function actionCreate()
     {
+        if ($this->isAjax() && isset($_POST['mark'])) {
+            $mark = ucwords(str_replace('-', ' ', $_POST['mark']));
+            $data = Car::findCarsByBrand($mark);
+            print json_encode($data, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
         $this->mainPage = new View('/App/templates/admin/create/article.phtml');
         $this->header->page->title .= ' | Создание статьи';
         $this->header->breadcrumb = ['main' => 'Создание', 'child' => ['href' => '/admin/articles', 'title' => 'Статьи']];
         $this->mainPage->categories = Category::findAll();
+        $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
 }

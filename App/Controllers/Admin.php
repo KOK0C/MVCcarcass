@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App\Controllers;
 
+use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
@@ -28,6 +29,10 @@ abstract class Admin extends Controller
         if (! User::isAdmin()) {
             throw new Error404();
         }
+        Session::set('KCFINDER', [
+            'disabled' => false,
+            'uploadURL' => '/public/img/photo'
+        ]);
         parent::__construct();
     }
 
