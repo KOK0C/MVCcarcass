@@ -21,25 +21,20 @@ class Article extends Admin
 
     /**
      * @throws \IhorRadchenko\App\Exceptions\DbException
-     * @throws Error404
      */
     protected function actionIndex()
     {
-        if (User::isAdmin()) {
-            if ($this->isAjax() && isset($_POST['page'])) {
-                View::loadForAjax('admin/articles', ArticleModel::findPerPage($_POST['page'], ArticleModel::PER_PAGE));
-                exit();
-            }
-            $this->mainPage = new View('/App/templates/admin/articles.phtml');
-            $this->header->page->title .= ' | Статьи';
-            $this->header->breadcrumb = ['main' => 'Cтатьи'];
-            $this->mainPage->categories = Category::findAll();
-            $this->mainPage->news = ArticleModel::getLastRecord(5);
-            $this->mainPage->totalPages = ceil(ArticleModel::getAllCount() / ArticleModel::PER_PAGE);
-            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
-        } else {
-            throw new Error404();
+        if ($this->isAjax() && isset($_POST['page'])) {
+            View::loadForAjax('admin/articles', ArticleModel::findPerPage($_POST['page'], ArticleModel::PER_PAGE));
+            exit();
         }
+        $this->mainPage = new View('/App/templates/admin/articles.phtml');
+        $this->header->page->title .= ' | Статьи';
+        $this->header->breadcrumb = ['main' => 'Cтатьи'];
+        $this->mainPage->categories = Category::findAll();
+        $this->mainPage->news = ArticleModel::getLastRecord(5);
+        $this->mainPage->totalPages = ceil(ArticleModel::getAllCount() / ArticleModel::PER_PAGE);
+        View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
 
     /**
@@ -50,40 +45,31 @@ class Article extends Admin
      */
     protected function actionCategory($page, string $category)
     {
-        if (User::isAdmin()) {
-            if ($this->isAjax() && isset($_POST['page'])) {
-                View::loadForAjax('admin/articles', ArticleModel::findByCategory($category, $_POST['page']));
-                exit();
-            }
-            $this->mainPage = new View('/App/templates/admin/articles.phtml');
-            $this->header->page->title .= ' | Статьи';
-            $this->header->breadcrumb = ['main' => 'Cтатьи'];
-            $this->mainPage->categories = Category::findAll();
-            $this->mainPage->news = ArticleModel::findByCategory($category, 1);
-            if (! $this->mainPage->news) {
-                throw new Error404('Несуществующая страница');
-            }
-            $this->mainPage->totalPages = ceil(ArticleModel::getCountArticleInCategory($category) / ArticleModel::PER_PAGE);
-            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
-        } else {
-            throw new Error404();
+        if ($this->isAjax() && isset($_POST['page'])) {
+            View::loadForAjax('admin/articles', ArticleModel::findByCategory($category, $_POST['page']));
+            exit();
         }
+        $this->mainPage = new View('/App/templates/admin/articles.phtml');
+        $this->header->page->title .= ' | Статьи';
+        $this->header->breadcrumb = ['main' => 'Cтатьи'];
+        $this->mainPage->categories = Category::findAll();
+        $this->mainPage->news = ArticleModel::findByCategory($category, 1);
+        if (! $this->mainPage->news) {
+            throw new Error404('Несуществующая страница');
+        }
+        $this->mainPage->totalPages = ceil(ArticleModel::getCountArticleInCategory($category) / ArticleModel::PER_PAGE);
+        View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
 
     /**
-     * @throws Error404
      * @throws \IhorRadchenko\App\Exceptions\DbException
      */
     protected function actionCreate()
     {
-        if (User::isAdmin()) {
-            $this->mainPage = new View('/App/templates/admin/create/article.phtml');
-            $this->header->page->title .= ' | Создание статьи';
-            $this->header->breadcrumb = ['main' => 'Создание', 'child' => ['href' => '/admin/articles', 'title' => 'Статьи']];
-            $this->mainPage->categories = Category::findAll();
-            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
-        } else {
-            throw new Error404();
-        }
+        $this->mainPage = new View('/App/templates/admin/create/article.phtml');
+        $this->header->page->title .= ' | Создание статьи';
+        $this->header->breadcrumb = ['main' => 'Создание', 'child' => ['href' => '/admin/articles', 'title' => 'Статьи']];
+        $this->mainPage->categories = Category::findAll();
+        View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
 }

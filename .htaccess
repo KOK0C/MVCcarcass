@@ -1,3 +1,5 @@
 RewriteEngine On
 
+RewriteCond %{REQUEST_FILENAME} !/vendor/ckeditor/ckeditor/.*
+RewriteCond %{REQUEST_FILENAME} !/vendor/sunhater/kcfinder/.*
 RewriteRule ^.*$ /public/ [QSA]

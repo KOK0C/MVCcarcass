@@ -25,6 +25,9 @@ try {
             'hash_user'
         )->user_id;
         \IhorRadchenko\App\Components\Session::set('user', \IhorRadchenko\App\Models\User::findById($userId));
+        if (\IhorRadchenko\App\Models\User::isAdmin()) {
+            \IhorRadchenko\App\Components\Session::set('KCFINDER', ['disabled' => false, 'uploadURL' => '/public/img/photo']);
+        }
     }
 
     $route->run();
@@ -34,5 +37,11 @@ try {
     die();
 } catch (IhorRadchenko\App\Exceptions\Error404 $e) {
     $controller = new IhorRadchenko\App\Controllers\Error;
-    $controller->action('page404');
+    try {
+        $controller->action('page404');
+    } catch (\IhorRadchenko\App\Exceptions\DbException $e) {
+        $logger->emergency($e->getMessage(), ['Exception' => get_class($e), 'File' => $e->getFile(), 'Line' => $e->getLine()]);
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/errors/errorDB.phtml';
+        die();
+    }
 }

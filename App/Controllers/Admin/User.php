@@ -19,23 +19,18 @@ class User extends Admin
 
     /**
      * @throws \IhorRadchenko\App\Exceptions\DbException
-     * @throws Error404
      */
     protected function actionIndex()
     {
-        if (UserModel::isAdmin()) {
-            if ($this->isAjax() && isset($_POST['page'])) {
-                View::loadForAjax('admin/users', UserModel::findPerPage($_POST['page'], UserModel::PER_PAGE));
-                exit();
-            }
-            $this->mainPage = new View('/App/templates/admin/users.phtml');
-            $this->mainPage->users = UserModel::findPerPage(1, UserModel::PER_PAGE);
-            $this->mainPage->totalPages = ceil(UserModel::getAllCount() / UserModel::PER_PAGE);
-            $this->header->page->title .= ' | Пользователи';
-            $this->header->breadcrumb = ['main' => 'Пользователи'];
-            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
-        } else {
-            throw new Error404();
+        if ($this->isAjax() && isset($_POST['page'])) {
+            View::loadForAjax('admin/users', UserModel::findPerPage($_POST['page'], UserModel::PER_PAGE));
+            exit();
         }
+        $this->mainPage = new View('/App/templates/admin/users.phtml');
+        $this->mainPage->users = UserModel::findPerPage(1, UserModel::PER_PAGE);
+        $this->mainPage->totalPages = ceil(UserModel::getAllCount() / UserModel::PER_PAGE);
+        $this->header->page->title .= ' | Пользователи';
+        $this->header->breadcrumb = ['main' => 'Пользователи'];
+        View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
 }

@@ -49,15 +49,10 @@
     </form>
 </div>
 
-<script src="/public/plugin/vendors/ckeditor/ckeditor.js"></script>
+<script src="/vendor/ckeditor/ckeditor/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('editor', {
-        filebrowserBrowseUrl: '/public/plugin/vendors/ckfinder/ckfinder.html',
-        filebrowserImageBrowseUrl: '/public/plugin/vendors/ckfinder/ckfinder.html?type=Images',
-        filebrowserFlashBrowseUrl: '/public/plugin/vendors/ckfinder/ckfinder.html?type=Flash',
-        filebrowserUploadUrl: '/public/plugin/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-        filebrowserImageUploadUrl: '/public/plugin/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-        filebrowserFlashUploadUrl: '/public/plugin/vendors/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+        customConfig: '/public/plugin/custom/ckeditor_config.js'
     })
 </script>
 

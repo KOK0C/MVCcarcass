@@ -1669,3 +1669,11 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
 Line : 92;
 
 =======================================================================
+
+[12-12-2017 19:48:09] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 46;
+
+=======================================================================

@@ -18,18 +18,13 @@ class Main extends Admin
     private $mainPage;
 
     /**
-     * @throws Error404
      * @throws \IhorRadchenko\App\Exceptions\DbException
      */
     protected function actionIndex()
     {
-        if (User::isAdmin()) {
-            $this->mainPage = new View('/App/templates/admin/main.phtml');
-            $this->mainPage->counts = $this->sideBar->counts;
-            $this->mainPage->users = User::getLastRecord(5);
-            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
-        } else {
-            throw new Error404();
-        }
+        $this->mainPage = new View('/App/templates/admin/main.phtml');
+        $this->mainPage->counts = $this->sideBar->counts;
+        $this->mainPage->users = User::getLastRecord(5);
+        View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
 }
