@@ -2,4 +2,7 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !/vendor/ckeditor/ckeditor/.*
 RewriteCond %{REQUEST_FILENAME} !/vendor/sunhater/kcfinder/.*
+RewriteCond %{REQUEST_FILENAME} !/vendor/twbs/bootstrap/.*
+RewriteCond %{REQUEST_FILENAME} !/vendor/fortawesome/font-awesome/.*
+RewriteCond %{REQUEST_FILENAME} !/vendor/components/jquery/.*
 RewriteRule ^.*$ /public/ [QSA]

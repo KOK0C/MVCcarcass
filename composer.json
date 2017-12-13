@@ -2,7 +2,10 @@
   "require": {
     "psr/log": "1.0.2",
     "ckeditor/ckeditor": "4.7.3",
-    "sunhater/kcfinder": "dev-master"
+    "sunhater/kcfinder": "dev-master",
+    "twbs/bootstrap": "v4.0.0-beta.2",
+    "fortawesome/font-awesome": "v4.7.0",
+    "components/jquery": "3.2.1"
   },
   "autoload": {
     "psr-4": {
