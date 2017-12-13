@@ -1677,3 +1677,115 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
 Line : 46;
 
 =======================================================================
+
+[13-12-2017 18:07:13] CRITICAL
+Call to undefined method IhorRadchenko\App\Controllers\Admin\CRUD\Create::actionArticle()
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Controller.php;
+Line : 63;
+
+=======================================================================
+
+[13-12-2017 18:42:25] CRITICAL
+Non-static method finfo::file() cannot be called statically
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\CRUD\Create.php;
+Line : 22;
+
+=======================================================================
+
+[13-12-2017 18:43:38] ERROR
+finfo_file(defaultAvatar.png): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\CRUD\Create.php;
+Line : 22;
+
+=======================================================================
+
+[13-12-2017 18:45:00] ERROR
+finfo_file(defaultAvatar.png): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\CRUD\Create.php;
+Line : 22;
+
+=======================================================================
+
+[13-12-2017 18:45:30] ERROR
+finfo_file(defaultAvatar.png): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\CRUD\Create.php;
+Line : 22;
+
+=======================================================================
+
+[13-12-2017 19:22:27] ALERT
+IhorRadchenko\App\Models\Article and IhorRadchenko\App\Components\Traits\LoadFile define the same property ($uploadDir) in the composition of IhorRadchenko\App\Models\Article. However, the definition differs and is considered incompatible. Class was composed
+Fatal Error : COMPILE_ERROR [64];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Article.php;
+Line : 22;
+
+=======================================================================
+
+[13-12-2017 19:23:14] ALERT
+IhorRadchenko\App\Models\Article and IhorRadchenko\App\Components\Traits\LoadFile define the same property ($uploadDir) in the composition of IhorRadchenko\App\Models\Article. However, the definition differs and is considered incompatible. Class was composed
+Fatal Error : COMPILE_ERROR [64];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Article.php;
+Line : 22;
+
+=======================================================================
+
+[13-12-2017 19:37:09] WARNING
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 56;
+
+=======================================================================
+
+[13-12-2017 19:39:38] ERROR
+move_uploaded_file(/public/img/articles/833a462e341abdedf2cae76a5edbb910.jpg): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 24;
+
+=======================================================================
+
+[13-12-2017 19:40:16] WARNING
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 56;
+
+=======================================================================
+
+[13-12-2017 19:46:54] ERROR
+finfo_file(C:\OSPanel\userdata\temp\phpA329.tmp): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 18;
+
+=======================================================================
+
+[13-12-2017 19:53:33] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php;
+Line : 46;
+
+=======================================================================
+
+[13-12-2017 19:53:40] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php;
+Line : 46;
+
+=======================================================================
+
+[13-12-2017 19:53:50] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php;
+Line : 46;
+
+=======================================================================

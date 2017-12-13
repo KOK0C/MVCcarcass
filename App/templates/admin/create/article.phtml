@@ -12,7 +12,7 @@
         </div>
         <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
     <?php endif; ?>
-    <form action="/admin/articles/create" method="post" enctype="multipart/form-data" id="createArticle">
+    <form action="/create/article" method="post" enctype="multipart/form-data" id="createArticle">
         <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
         <div class="form-group">
             <input type="text" name="title" class="form-control" placeholder="Заголовок статьи" required>

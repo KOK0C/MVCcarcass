@@ -116,7 +116,10 @@ class Review extends Model
             Session::set('errors', ['car' => ['Выберите модель авто']]);
             return false;
         }
-        $car = Car::findCarByBrandAndModel($data['mark'], $data['model']);
+        $car = Car::findCarByBrandAndModel(
+            str_replace('-', ' ', $data['mark']),
+            str_replace('-', ' ', $data['model'])
+        );
         if (! $car) {
             Session::set('errors', ['car' => ['Выберите корректную модель авто']]);
             return false;

@@ -18,6 +18,12 @@ function mb_ucfirst(string $string, string $encoding = 'UTF-8'): string
         mb_substr($string, 1, mb_strlen($string, $encoding),$encoding);
 }
 
+/**
+ * Многобайтовый аналог ф-ции ucwords
+ * @param string $string
+ * @param string $encoding
+ * @return string
+ */
 function mb_ucwords(string $string, string $encoding = 'UTF-8'): string
 {
     $string = explode(' ', $string);

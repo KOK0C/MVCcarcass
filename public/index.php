@@ -9,7 +9,7 @@
 //require_once $_SERVER['DOCUMENT_ROOT'] . '/autoload.php';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/function.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/App/function.php';
 
 session_start();
 

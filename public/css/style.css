@@ -275,11 +275,12 @@ pre {
     margin-top: 10px;
 }
 
-.blog-post-text .fig {
-    text-align: center;
+.blog-post-text img {
+    margin: 0 50px;
 }
 
 .blog-post-text p img {
+    display: block;
     width: 600px;
 }
 

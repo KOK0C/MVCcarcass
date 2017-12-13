@@ -26,18 +26,22 @@ class Validator
      * @var array $messages
      */
     private $messages = [
-        'required'  => 'Поле :field должно быть заполнено',
-        'minLength' => 'Поле :field должно содержать не менее :value символов',
-        'maxLength' => 'Поле :field должно содержать не более :value символов',
-        'email'     => 'Не корректный email',
-        'alnum'     => 'В поле :field должны быть только буквы или числа',
-        'match'     => ':field не совпадают',
-        'unique'    => 'Такое значение поля :field уже существует',
-        'phone'     => 'Номер телефона не валиден',
-        'length'    => 'Длина поля :field должна составлять :value символов'
+        'required'      => 'Поле :field должно быть заполнено',
+        'minLength'     => 'Поле :field должно содержать не менее :value символов',
+        'maxLength'     => 'Поле :field должно содержать не более :value символов',
+        'email'         => 'Не корректный email',
+        'alnum'         => 'В поле :field должны быть только буквы или числа',
+        'match'         => ':field не совпадают',
+        'unique'        => 'Такое значение поля :field уже существует',
+        'phone'         => 'Номер телефона не валиден',
+        'length'        => 'Длина поля :field должна составлять :value символов'
     ];
-    private $enFields = ['passwordAgain', 'password', 'email', 'f_name', 'l_name', 'phone_number', 'city', 'text'];
-    private $ruFields = ['Пароли',  '\'Пароль\'', 'Email', '\'Имя\'', '\'Фамилия\'', '\'Номер телефона\'', '\'Город\'', '\'Текст\''];
+    private $enFields = [
+        'passwordAgain', 'password', 'email', 'f_name', 'l_name', 'phone_number', 'city', 'text', 'title', 'description'
+    ];
+    private $ruFields = [
+        'Пароли',  '\'Пароль\'', 'Email', '\'Имя\'', '\'Фамилия\'', '\'Номер телефона\'', '\'Город\'', '\'Текст\'', '\'Заголовок\'', '\'Описание\''
+    ];
     private $data;
 
     public function __construct(ValidationErrorHandler $validationErrorHandler)

@@ -238,3 +238,7 @@ label.error {
     color: #d9534f;
     font-size: .9rem;
 }
+
+.error-block ul {
+    margin: 0;
+}

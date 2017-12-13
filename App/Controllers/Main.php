@@ -43,10 +43,10 @@ class Main extends Controller
     {
         $this->mainPage = new View('/App/templates/one_article.phtml');
         $this->mainPage->article = Article::findOneArticle($link, $alias);
-        $this->header->page->title = mb_strtoupper($this->mainPage->article->title);
         if (! $this->mainPage->article) {
             throw new Error404('Статья не найдена');
         }
+        $this->header->page->title = mb_strtoupper($this->mainPage->article->title);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 
@@ -59,12 +59,12 @@ class Main extends Controller
     protected function actionOneCategory(string $link, $page)
     {
         $this->mainPage = new View('/App/templates/category_page.phtml');
-        $countArticle = Article::getCountArticleInCategory($link);
-        $this->mainPage->pagination = new Pagination($countArticle, $page, Article::PER_PAGE);
         $this->mainPage->news = Article::findByCategory($link, is_null($page) ? 1 : $page, true);
         if (! $this->mainPage->news) {
             throw new Error404('Несуществующая страница');
         }
+        $countArticle = Article::getCountArticleInCategory($link);
+        $this->mainPage->pagination = new Pagination($countArticle, $page, Article::PER_PAGE);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 

@@ -7,16 +7,22 @@
  */
 
 return [
-    '^(admin)/articles/create$'                           => ['controller' => 'Admin\\Article', 'action' => 'create'],
-    '^(admin)/reviews/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Admin\\Review',  'action' => 'model'],
-    '^(admin)/reviews/mark/([a-z-]+)$'                    => ['controller' => 'Admin\\Review',  'action' => 'mark'],
-    '^(admin)/cars/mark/([a-z-]+)$'                       => ['controller' => 'Admin\\Car',     'action' => 'mark'],
-    '^(admin)/articles/([a-z]+)$'                         => ['controller' => 'Admin\\Article', 'action' => 'category'],
-    '^(admin)/articles$'                                  => ['controller' => 'Admin\\Article', 'action' => 'index'],
-    '^(admin)/cars$'                                      => ['controller' => 'Admin\\Car',     'action' => 'index'],
-    '^(admin)/reviews$'                                   => ['controller' => 'Admin\\Review',  'action' => 'index'],
-    '^(admin)/users$'                                     => ['controller' => 'Admin\\User',    'action' => 'index'],
-    '^(admin)$'                                           => ['controller' => 'Admin\\Main',    'action' => 'index'],
+    '^create/article' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],
+
+    '^(admin)/articles/create$'   => ['controller' => 'Admin\\Article', 'action' => 'create'],
+    '^(admin)/articles/([a-z]+)$' => ['controller' => 'Admin\\Article', 'action' => 'category'],
+    '^(admin)/articles$'          => ['controller' => 'Admin\\Article', 'action' => 'index'],
+
+    '^(admin)/reviews/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Admin\\Review', 'action' => 'model'],
+    '^(admin)/reviews/mark/([a-z-]+)$'                    => ['controller' => 'Admin\\Review', 'action' => 'mark'],
+    '^(admin)/reviews$'                                   => ['controller' => 'Admin\\Review', 'action' => 'index'],
+
+    '^(admin)/cars/mark/([a-z-]+)$' => ['controller' => 'Admin\\Car',  'action' => 'mark'],
+    '^(admin)/cars$'                => ['controller' => 'Admin\\Car',  'action' => 'index'],
+
+    '^(admin)/users$' => ['controller' => 'Admin\\User', 'action' => 'index'],
+
+    '^(admin)$' => ['controller' => 'Admin\\Main', 'action' => 'index'],
 
     '^search'                     => ['controller' => 'Main', 'action' => 'search'],
 

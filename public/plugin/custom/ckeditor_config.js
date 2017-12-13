@@ -4,6 +4,7 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
+    //Подключение KCfinder
     config.filebrowserBrowseUrl = '/vendor/sunhater/kcfinder/browse.php?opener=ckeditor&type=files';
     config.filebrowserImageBrowseUrl = '/vendor/sunhater/kcfinder/browse.php?opener=ckeditor&type=images';
     config.filebrowserFlashBrowseUrl = '/vendor/sunhater/kcfinder/browse.php?opener=ckeditor&type=flash';
