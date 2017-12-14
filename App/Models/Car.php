@@ -119,8 +119,8 @@ class Car extends Model
      */
     public static function getCountArticleForCar(string $model): int
     {
-        $sql = 'SELECT COUNT(*) FROM news INNER JOIN car_news ON news.id = car_news.news_id
-                WHERE  car_news.car_id = (SELECT id FROM cars WHERE cars.model = :model)';
+        $sql = 'SELECT COUNT(*) FROM news
+                WHERE  car_id = (SELECT id FROM cars WHERE cars.model = :model)';
         return DataBase::getInstance()->countRow($sql, ['model' => $model]);
     }
 

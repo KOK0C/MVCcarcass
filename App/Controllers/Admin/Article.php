@@ -14,7 +14,6 @@ use IhorRadchenko\App\Models\Article as ArticleModel;
 use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
-use IhorRadchenko\App\Models\User;
 use IhorRadchenko\App\View;
 
 class Article extends Admin
@@ -80,5 +79,33 @@ class Article extends Admin
         $this->mainPage->categories = Category::findAll();
         $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+    }
+
+    /**
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     * @throws Error404
+     */
+    protected function actionUpdate()
+    {
+        if ($this->isAjax() && isset($_POST['mark'])) {
+            $mark = ucwords(str_replace('-', ' ', $_POST['mark']));
+            $data = Car::findCarsByBrand($mark);
+            print json_encode($data, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
+        if ($this->isPost('update_article') && ! empty($_POST['article_id'])) {
+            $this->mainPage = new View('/App/templates/admin/update/article.phtml');
+            $this->header->page->title .= ' | Обновление статьи';
+            $this->header->breadcrumb = ['main' => 'Обновление', 'child' => ['href' => '/admin/articles', 'title' => 'Статьи']];
+            $this->mainPage->article = ArticleModel::findById($_POST['article_id']);
+            if ($car = $this->mainPage->article->car) {
+                $this->mainPage->cars = Car::findCarsByBrand($car->brand->name);
+            }
+            $this->mainPage->categories = Category::findAll();
+            $this->mainPage->brands = Brand::findAll(false, 'name');
+            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+        } else {
+            throw new Error404();
+        }
     }
 }

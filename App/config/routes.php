@@ -10,6 +10,7 @@ return [
     '^create/article' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],
 
     '^(admin)/articles/create$'   => ['controller' => 'Admin\\Article', 'action' => 'create'],
+    '^(admin)/articles/update$'   => ['controller' => 'Admin\\Article', 'action' => 'update'],
     '^(admin)/articles/([a-z]+)$' => ['controller' => 'Admin\\Article', 'action' => 'category'],
     '^(admin)/articles$'          => ['controller' => 'Admin\\Article', 'action' => 'index'],
 

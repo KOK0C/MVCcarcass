@@ -1,0 +1,106 @@
+
+<div class="col-sm-6">
+    <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+        <div class="alert alert-danger error-block">
+            <ul class="text-left">
+                <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
+                    <?php foreach ($field as $error): ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+    <?php endif; ?>
+    <?php if (! empty($article)): ?>
+        <form action="/update/article" method="post" enctype="multipart/form-data" id="updateArticle">
+            <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+            <div class="form-group">
+                <input type="text" name="title" class="form-control" placeholder="Заголовок статьи" required value="<?= htmlentities($article->title); ?>">
+            </div>
+            <div class="form-group">
+                <input type="text" value="<?= htmlentities($article->description); ?>" name="description" class="form-control" placeholder="Небольшое описание статьи" required>
+            </div>
+            <div class="form-group">
+                <label for="selectCategory">Выберите категорию</label>
+                <select name="category_id" class="form-control" required id="selectCategory">
+                    <?php if (! empty($categories)): ?>
+                        <?php foreach ($categories as $category): ?>
+                            <option value="<?= $category->getId(); ?>"
+                            <?php if ($article->category->getId() === $category->getId()) {print 'selected';} ?>
+                            >
+                                <?= $category->name; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </select>
+            </div>
+            <div class="form-group image-group">
+                <div class="imagePreLoad">
+                    <img src="<?= htmlentities($article->getImage()); ?>" alt="">
+                </div>
+                <label for="imageArticle">Шапка для статьи</label>
+                <input type="file" class="form-control" name="image" required id="imageArticle">
+                <small id="fileHelp" class="form-text">Желательно 1012x372</small>
+            </div>
+            <div class="form-group">
+                <label for="editor">Содержание статьи...</label>
+                <textarea name="text" class="form-control" id="editor" rows="5" required>
+                    <?= $article->text; ?>
+                </textarea>
+            </div>
+            <div class="form-group">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="selectMark">Можете выбрать марку авто...</label>
+                            <select name="mark" id="selectMark" class="form-control">
+                                <option value="">Марка</option>
+                                <?php if (! empty($brands)): ?>
+                                    <?php foreach ($brands as $brand): ?>
+                                        <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $brand->name))); ?>"
+                                        <?php if (! empty($cars) && $article->car->brand->getId() === $brand->getId()) {print 'selected';} ?>
+                                        >
+                                            <?= htmlentities(mb_ucwords($brand->name)); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="selectModel">...и модель</label>
+                                <?php if (! empty($cars)): ?>
+                                    <select name="model" id="selectModel" class="form-control">
+                                        <option></option>
+                                        <?php foreach ($cars as $car): ?>
+                                            <option value="<?= htmlentities(mb_strtolower(str_replace(' ', '-', $car->model))); ?>"
+                                            <?php if ($car->getId() === $article->car->getId()) {print 'selected';} ?>
+                                            >
+                                                <?= htmlentities(mb_ucwords(mb_strtolower($car->model))); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                <?php else: ?>
+                                    <select name="model" id="selectModel" disabled class="form-control">
+                                        <option>Модель</option>
+                                    </select>
+                                <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="form-control" name="update_article" value="Изменить">
+        </form>
+    <?php endif; ?>
+</div>
+
+<script src="/vendor/ckeditor/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor', {
+        customConfig: '/public/plugin/custom/ckeditor_config.js'
+    })
+</script>
+
+</div>
+</div>
+</main>

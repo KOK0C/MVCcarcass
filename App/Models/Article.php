@@ -19,6 +19,7 @@ use IhorRadchenko\App\Model;
  * Class Article
  * @package App\Models
  * @property Category $category
+ * @property Car $car
  */
 class Article extends Model
 {
@@ -34,6 +35,7 @@ class Article extends Model
     private $category_id;
     private $image;
     public $alias;
+    private $car_id;
 
     private $uploadDir = '/public/img/articles/';
     protected $fields = [
@@ -45,11 +47,14 @@ class Article extends Model
         'alias' => ''
     ];
 
-    public function __isset($name)
+    public function __isset($name): bool
     {
         switch ($name) {
             case 'category':
                 return isset($this->category_id);
+                break;
+            case 'car':
+                return isset($this->car_id) && $this->car_id !== 0;
                 break;
             default:
                 return false;
@@ -58,7 +63,7 @@ class Article extends Model
 
     /**
      * @param $name
-     * @return bool|Category
+     * @return bool|Category|Car
      * @throws DbException
      */
     public function __get($name)
@@ -66,6 +71,9 @@ class Article extends Model
         switch ($name) {
             case 'category':
                 return Category::findById($this->category_id);
+                break;
+            case 'car':
+                return Car::findById($this->car_id);
                 break;
             default:
                 return false;
@@ -76,9 +84,16 @@ class Article extends Model
      * @param array $data
      * @param array $rules
      * @return bool
+     * @throws DbException
      */
     public function load(array $data, array $rules): bool
     {
+        if (! empty($data['model']) && ! empty($data['mark']) && $car = Car::findCarByBrandAndModel(
+                str_replace('-', ' ', $data['mark']),
+                str_replace('-', ' ', $data['model'])
+            )) {
+            $this->fields['car_id'] = $car->getId();
+        }
         if (! $data['image'] = $this->loadFile($data['image'],  'jpeg|png|jpg')) {
             return false;
         }
@@ -186,17 +201,17 @@ class Article extends Model
     /**
      * @param string $model
      * @param int $page
+     * @param int $perPage
      * @return array
      * @throws \IhorRadchenko\App\Exceptions\DbException
      */
-    public static function findNewsForCar(string $model, int $page): array
+    public static function findNewsForCar(string $model, int $page, int $perPage): array
     {
-        $offset = ($page - 1) * self::PER_PAGE;
+        $offset = ($page - 1) * $perPage;
         $sql = 'SELECT * FROM news 
-                INNER JOIN car_news ON news.id = car_news.news_id 
-                WHERE car_news.car_id = 
+                WHERE car_id = 
                 (SELECT id FROM cars WHERE cars.model = :model) 
-                ORDER BY id DESC LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
+                ORDER BY id DESC LIMIT ' . $perPage . ' OFFSET ' . $offset;
         return DataBase::getInstance()->query($sql, Article::class, ['model' => $model]);
     }
 }

@@ -56,7 +56,7 @@ class Cars extends Controller
             throw new Error404('Модель авто не найдена');
         }
         $this->header->page->title .= " $model";
-        $this->mainPage->news = Article::findNewsForCar($model, 1);
+        $this->mainPage->news = Article::findNewsForCar($model, 1, 1);
         $this->mainPage->totalPage = ceil(Car::getCountArticleForCar($model) / Car::PER_PAGE);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
@@ -68,7 +68,7 @@ class Cars extends Controller
     protected function actionShowNews()
     {
         if ($this->isAjax() && isset($_POST['page']) && isset($_POST['model'])) {
-            View::loadForAjax('car_news', Article::findNewsForCar($_POST['model'], $_POST['page']));
+            View::loadForAjax('car_news', Article::findNewsForCar($_POST['model'], $_POST['page'], 1));
             exit();
         }
         throw new Error404();

@@ -242,3 +242,21 @@ label.error {
 .error-block ul {
     margin: 0;
 }
+
+.panel-body td form {
+    margin: 0;
+}
+
+.image-group {
+    background-color: #172c3e;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.imagePreLoad {
+    text-align: center;
+}
+
+.imagePreLoad img{
+    max-width: 500px;
+}

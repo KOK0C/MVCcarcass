@@ -1789,3 +1789,11 @@ File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Main.php;
 Line : 46;
 
 =======================================================================
+
+[14-12-2017 19:44:44] EMERGENCY
+Ошибка при запросе к бд: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'car_blog.car_news' doesn't exist
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 75;
+
+=======================================================================

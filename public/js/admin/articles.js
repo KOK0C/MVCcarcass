@@ -50,4 +50,15 @@ $().ready(function () {
             )
         }
     });
+    $("#imageArticle").change(function () {
+        var preview = document.querySelector('img');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+        reader.onload = function () {
+            preview.src = reader.result;
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    })
 });

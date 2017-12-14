@@ -45,7 +45,10 @@
                             </td>
                             <td><?= $article->formatDate(); ?></td>
                             <td>
-                                <a href="" class="btn btn-primary btn-sm">Редактировать</a>
+                                <form action="/admin/articles/update" method="post">
+                                    <input type="hidden" value="<?= $article->getId(); ?>" name="article_id">
+                                    <input type="submit" class="btn btn-primary btn-sm" value="Редактировать" name="update_article">
+                                </form>
                             </td>
                             <td>
                                 <a href="" class="btn btn-danger btn-sm">Удалить</a>

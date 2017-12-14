@@ -44,12 +44,6 @@ class Create extends Admin
             $article = new Article();
             if ($article->load(array_merge($_POST, $_FILES), $validRules)) {
                 $article->save();
-                if (! empty($_POST['model']) && ! empty($_POST['mark']) && $car = Car::findCarByBrandAndModel(
-                        str_replace('-', ' ', $_POST['mark']),
-                        str_replace('-', ' ', $_POST['model'])
-                    )) {
-                    Article::createRelationArticleCar($article, $car);
-                }
                 Redirect::to('/admin/articles');
             }
             Redirect::to();
