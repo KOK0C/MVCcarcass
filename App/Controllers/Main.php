@@ -64,7 +64,7 @@ class Main extends Controller
             throw new Error404('Несуществующая страница');
         }
         $countArticle = Article::getCountArticleInCategory($link);
-        $this->mainPage->pagination = new Pagination($countArticle, $page, Article::PER_PAGE);
+        $this->mainPage->pagination = new Pagination($countArticle, is_null($page) ? 1 : $page, Article::PER_PAGE);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 

@@ -86,7 +86,7 @@
 <div class="container">
     <div class="row">
         <ol class="breadcrumb">
-            <?php if (isset($uri[3]) && isset($breadcrumb)): ?>
+            <?php if (isset($uri[3]) && isset($breadcrumb) && ! in_array($uri[3], ['news', 'overviews', 'tuning', 'technologies', 'useful', 'mark'])): ?>
                 <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                 <li class="breadcrumb-item">
                     <a href="<?= $breadcrumb['child']['href']; ?>"><?= $breadcrumb['child']['title']; ?></a>
@@ -94,7 +94,7 @@
                 <li class="breadcrumb-item active">
                     <?= $breadcrumb['main']; ?>
                 </li>
-            <?php elseif (isset($uri[2]) && ! isset($uri[3]) && isset($breadcrumb)): ?>
+            <?php elseif (isset($uri[2]) && isset($breadcrumb)): ?>
                 <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                 <li class="breadcrumb-item active">
                     <?= $breadcrumb['main']; ?>

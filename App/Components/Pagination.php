@@ -63,7 +63,6 @@ class Pagination
         $html = '<ul class="pagination">';
 
         if ($this->amount === 1) {
-//            Если страница одна - пагинация не нужна
             return '';
         }
 

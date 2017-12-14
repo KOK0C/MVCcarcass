@@ -54,7 +54,7 @@ class Article extends Admin
         $this->header->page->title .= ' | Статьи';
         $this->header->breadcrumb = ['main' => 'Cтатьи'];
         $this->mainPage->categories = Category::findAll();
-        $this->mainPage->news = ArticleModel::findByCategory($category, 1);
+        $this->mainPage->news = ArticleModel::findByCategory($category, 1, true);
         if (! $this->mainPage->news) {
             throw new Error404('Несуществующая страница');
         }

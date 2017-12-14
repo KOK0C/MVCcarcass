@@ -186,4 +186,27 @@ $().ready(function () {
             }
         }
     });
+    $("#updateArticle").validate({
+        rules: {
+            title: {
+                minlength: 3,
+                maxlength: 200
+            },
+            description: {
+                minlength: 3,
+                maxlength: 255
+            },
+            image: {
+                accept: "image/*"
+            },
+            text: {
+                required: true
+            }
+        },
+        messages: {
+            image: {
+                accept: 'Выберите картинку'
+            }
+        }
+    });
 });

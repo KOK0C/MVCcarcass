@@ -1797,3 +1797,123 @@ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
 Line : 75;
 
 =======================================================================
+
+[14-12-2017 20:02:38] WARNING
+Undefined index: child
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 92;
+
+=======================================================================
+
+[14-12-2017 20:05:28] WARNING
+Undefined index: child
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 92;
+
+=======================================================================
+
+[14-12-2017 20:05:35] WARNING
+Undefined index: child
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 92;
+
+=======================================================================
+
+[14-12-2017 20:06:57] WARNING
+Undefined index: child
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\header.phtml;
+Line : 92;
+
+=======================================================================
+
+[14-12-2017 20:30:01] ERROR
+finfo_file(): Empty filename or path
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 31;
+
+=======================================================================
+
+[14-12-2017 20:32:31] ERROR
+finfo_file(): Empty filename or path
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 31;
+
+=======================================================================
+
+[14-12-2017 20:40:18] ERROR
+finfo_file(): Empty filename or path
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 31;
+
+=======================================================================
+
+[14-12-2017 20:41:09] ERROR
+finfo_file(): Empty filename or path
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 31;
+
+=======================================================================
+
+[14-12-2017 20:43:52] ERROR
+Declaration of IhorRadchenko\App\Models\Article::load(array $data, array $rules, bool $isFile): bool should be compatible with IhorRadchenko\App\Model::load(array $data, array $rules): bool
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Article.php;
+Line : 24;
+
+=======================================================================
+
+[14-12-2017 20:45:28] ERROR
+finfo_file(): Empty filename or path
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 31;
+
+=======================================================================
+
+[14-12-2017 20:45:55] ERROR
+finfo_file(): Empty filename or path
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 31;
+
+=======================================================================
+
+[14-12-2017 20:46:26] ERROR
+finfo_file(): Empty filename or path
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\LoadFile.php;
+Line : 31;
+
+=======================================================================
+
+[14-12-2017 20:48:14] WARNING
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 56;
+
+=======================================================================
+
+[14-12-2017 20:49:24] WARNING
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 56;
+
+=======================================================================
+
+[14-12-2017 20:59:05] WARNING
+Undefined index: errors
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Article.php;
+Line : 97;
+
+=======================================================================

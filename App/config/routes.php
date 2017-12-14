@@ -7,7 +7,9 @@
  */
 
 return [
-    '^create/article' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],
+    '^create/article$' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],
+
+    '^update/article$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
 
     '^(admin)/articles/create$'   => ['controller' => 'Admin\\Article', 'action' => 'create'],
     '^(admin)/articles/update$'   => ['controller' => 'Admin\\Article', 'action' => 'update'],
