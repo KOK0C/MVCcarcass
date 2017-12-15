@@ -8,6 +8,7 @@
 
 return [
     '^create/article$' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],
+    '^create/mark'     => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'mark'],
 
     '^delete/article$' => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'article'],
 
@@ -22,6 +23,7 @@ return [
     '^(admin)/reviews/mark/([a-z-]+)$'                    => ['controller' => 'Admin\\Review', 'action' => 'mark'],
     '^(admin)/reviews$'                                   => ['controller' => 'Admin\\Review', 'action' => 'index'],
 
+    '^(admin)/mark/create$'         => ['controller' => 'Admin\\Car', 'action' => 'createMark'],
     '^(admin)/cars/mark/([a-z-]+)$' => ['controller' => 'Admin\\Car',  'action' => 'mark'],
     '^(admin)/cars$'                => ['controller' => 'Admin\\Car',  'action' => 'index'],
 
@@ -44,6 +46,7 @@ return [
     '^check/themeTitle$'   => ['controller' => 'Check', 'action' => 'themeTitle'],
     '^check/articleTitle$' => ['controller' => 'Check', 'action' => 'articleTitle'],
     '^check/phone$'        => ['controller' => 'Check', 'action' => 'phone'],
+    '^check/mark$'         => ['controller' => 'Check', 'action' => 'mark'],
 
     '^review/create$'                               => ['controller' => 'Reviews', 'action' => 'create'],
     '^(reviews)/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Reviews', 'action' => 'model'],

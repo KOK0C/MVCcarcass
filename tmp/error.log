@@ -1933,3 +1933,27 @@ File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\File.php;
 Line : 48;
 
 =======================================================================
+
+[15-12-2017 20:51:54] WARNING
+Undefined property: IhorRadchenko\App\Models\Brand::$uploadDir
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\File.php;
+Line : 22;
+
+=======================================================================
+
+[15-12-2017 20:52:33] EMERGENCY
+Ошибка при запросе к бд: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'kamaz' for key 'PRIMARY'
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 58;
+
+=======================================================================
+
+[15-12-2017 20:58:31] EMERGENCY
+Ошибка при запросе к бд: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'kamaz' for key 'PRIMARY'
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 58;
+
+=======================================================================

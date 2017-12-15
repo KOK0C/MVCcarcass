@@ -61,4 +61,11 @@ class Car extends Admin
         $this->mainPage->totalPages = ceil(CarModel::getCountCarByBrand($brand) / 5);
         View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
+
+    protected function actionCreateMark()
+    {
+        $this->mainPage = new View('/App/templates/admin/create/mark.phtml');
+        $this->header->breadcrumb = ['main' => 'Добавление марки авто', 'child' => ['href' => '/admin/cars', 'title' => 'Авто']];
+        View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+    }
 }

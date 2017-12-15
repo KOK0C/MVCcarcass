@@ -209,4 +209,36 @@ $().ready(function () {
             }
         }
     });
+    $("#createMark").validate({
+        rules: {
+            name: {
+                required: true,
+                maxlength: 50,
+                remote: {
+                    url: '/check/mark',
+                    type: "post",
+                    data: {
+                        name: $('#createMark:input[name="name"]').val()
+                    }
+                }
+            },
+            description_page: {
+                maxlength: 255
+            },
+            description: {
+                required: true
+            },
+            logo: {
+                accept: "png"
+            }
+        },
+        messages: {
+            logo: {
+                accept: 'Выберите картинку в формате png'
+            },
+            name: {
+                remote: 'Такая марка уже существует'
+            }
+        }
+    });
 });
