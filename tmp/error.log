@@ -1917,3 +1917,19 @@ File : C:\OSPanel\domains\MVCcarcass\App\Models\Article.php;
 Line : 97;
 
 =======================================================================
+
+[14-12-2017 22:18:02] CRITICAL
+syntax error, unexpected '}'
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\File.php;
+Line : 48;
+
+=======================================================================
+
+[14-12-2017 22:21:08] CRITICAL
+syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST)
+Trowable : ParseError;
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\File.php;
+Line : 48;
+
+=======================================================================

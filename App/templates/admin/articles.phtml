@@ -32,7 +32,7 @@
                     </thead>
                     <tbody class="table-body">
                     <?php foreach ($news as $article): ?>
-                        <tr>
+                        <tr class="table-row">
                             <td class="firstLetterUC">
                                 <a href="/<?= htmlentities($article->category->link) . '/' . htmlentities($article->alias); ?>">
                                     <?= htmlentities(mb_strtolower($article->title)); ?>
@@ -51,7 +51,7 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+                                <button data-id="<?= $article->getId(); ?>" class="btn btn-danger btn-sm btn-delete">Удалить</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>

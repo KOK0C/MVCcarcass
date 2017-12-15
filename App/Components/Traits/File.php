@@ -10,11 +10,11 @@ namespace IhorRadchenko\App\Components\Traits;
 
 use IhorRadchenko\App\Components\Session;
 
-trait LoadFile
+trait File
 {
     private function loadFile(array $file, string $extension)
     {
-        if (! in_array($this->getFileExtension($file), explode('|', $extension))) {
+        if (!in_array($this->getFileExtension($file), explode('|', $extension))) {
             Session::set('errors', ['image' => ['Некорректный формат файла']]);
             return false;
         }
@@ -34,5 +34,17 @@ trait LoadFile
     private function getFileName(array $file): string
     {
         return preg_replace('/^(.*)\.([a-z])$/i', md5('$1') . '.$2', basename($file['name']));
+    }
+
+    private function deleteFile(string $fileName)
+    {
+        $file = $_SERVER['DOCUMENT_ROOT'] . $fileName;
+        return file_exists($file) && unlink($file) ? true : false;
+    }
+
+    private function getImages(string $text)
+    {
+        preg_match_all('~<img.*src=(.*?)/?>~', $text, $matches);
+        return $matches[1];
     }
 }
