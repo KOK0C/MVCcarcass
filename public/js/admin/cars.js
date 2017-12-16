@@ -29,4 +29,28 @@ $().ready(function () {
             $("#carsForm").attr('action', '/admin/cars/mark/' + mark.val()).submit();
         }
     });
+    $("#imageIconCar").change(function () {
+        var preview = document.querySelector('#icon');
+        var file = document.querySelector('#imageIconCar').files[0];
+        var reader = new FileReader();
+        reader.onload = function () {
+            preview.src = reader.result;
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+    $("#imageHeadCar").change(function () {
+        var preview = document.querySelector('#image');
+        var file = document.querySelector('#imageHeadCar').files[0];
+        console.log(file);
+        var reader = new FileReader();
+        reader.onload = function () {
+            preview.src = reader.result;
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    })
 });

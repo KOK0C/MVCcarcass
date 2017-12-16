@@ -46,7 +46,7 @@ class Update extends Admin
                 $article->save();
                 Redirect::to('/admin/articles');
             }
-            Redirect::to();
+            Redirect::to('/admin/articles/update');
         } else {
             throw new Error404();
         }

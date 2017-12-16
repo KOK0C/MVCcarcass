@@ -61,6 +61,9 @@ class Router
         return false;
     }
 
+    /**
+     * @throws Error404
+     */
     public function run()
     {
         if ($this->matchRoutes()) {

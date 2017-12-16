@@ -1,0 +1,63 @@
+
+<div class="col-sm-6">
+    <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+        <div class="alert alert-danger error-block">
+            <ul class="text-left">
+                <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
+                    <?php foreach ($field as $error): ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+    <?php endif; ?>
+    <form action="/create/car" method="post" enctype="multipart/form-data" id="createCar">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+        <div class="form-group">
+            <?php if (! empty($brands)): ?>
+                <label for="brandId">Марка авто</label>
+                <select name="brand_id" id="brandId" required class="form-control">
+                    <?php foreach ($brands as $brand): ?>
+                        <option value="<?= $brand->getId(); ?>"><?= htmlentities($brand->name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            <?php endif; ?>
+        </div>
+        <div class="form-group">
+            <input type="text" name="model" class="form-control" placeholder="Модель" required>
+        </div>
+        <div class="form-group image-group">
+            <div class="imagePreLoad">
+                <img src="" alt="" id="icon">
+            </div>
+            <label for="imageIconCar">Иконка автомобиля</label>
+            <input type="file" class="form-control" name="icon" required id="imageIconCar">
+            <small id="fileHelp" class="form-text">Желательно 166x92</small>
+        </div>
+        <div class="form-group image-group">
+            <div class="imagePreLoad">
+                <img src="" alt="" id="image">
+            </div>
+            <label for="imageHeadCar">Превью для модели</label>
+            <input type="file" class="form-control" name="img" required id="imageHeadCar">
+            <small id="fileHelp" class="form-text">Желательно 1012x372</small>
+        </div>
+        <div class="form-group">
+            <label for="editor">Описание для производителя</label>
+            <textarea name="text" class="form-control" id="editor" rows="5" required></textarea>
+        </div>
+        <input type="submit" class="form-control" name="add_car" value="Добавить">
+    </form>
+</div>
+
+<script src="/vendor/ckeditor/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor', {
+        customConfig: '/public/plugin/custom/ckeditor_config.js'
+    })
+</script>
+
+</div>
+</div>
+</main>

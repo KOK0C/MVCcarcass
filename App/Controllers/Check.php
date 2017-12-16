@@ -12,6 +12,7 @@ use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\DataBase;
 use IhorRadchenko\App\Exceptions\Error404;
+use IhorRadchenko\App\Models\Car;
 
 class Check extends Controller
 {
@@ -77,6 +78,19 @@ class Check extends Controller
     {
         if ($this->isAjax() && isset($_POST['name'])) {
             print (empty(DataBase::getInstance()->get('brands', 'name', trim($_POST['name'])))) ? 'true' : 'false';
+            exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionCar()
+    {
+        if ($this->isAjax() && isset($_POST['model'])) {
+            print (empty(DataBase::getInstance()->get('cars', 'model', trim($_POST['model'])))) ? 'true' : 'false';
             exit();
         }
         throw new Error404();

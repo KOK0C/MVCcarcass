@@ -241,4 +241,46 @@ $().ready(function () {
             }
         }
     });
+    $("#createCar").validate({
+        rules: {
+            model: {
+                required: true,
+                minlength: 2,
+                maxlength: 50,
+                remote: {
+                    url: '/check/car',
+                    type: "post",
+                    data: {
+                        model: $('#createCar:input[name="model"]').val()
+                    }
+                }
+            },
+            text: {
+                required: true
+            },
+            icon: {
+                accept: "png"
+            },
+            img: {
+                accept: "image/*"
+            },
+            brand_id: {
+                required: true
+            }
+        },
+        messages: {
+            model: {
+                remote: 'Такое авто уже существует'
+            },
+            icon: {
+                accept: 'Выберите картинку в формате png'
+            },
+            img: {
+                accept: 'Выберите картинку'
+            },
+            brand_id: {
+                required: 'Выберите марку для авто'
+            }
+        }
+    });
 });

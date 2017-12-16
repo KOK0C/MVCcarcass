@@ -50,14 +50,14 @@ class Car extends Admin
             View::loadForAjax('admin/cars', CarModel::findCarsByBrandPerPage($brand, $_POST['page'], 5));
             exit();
         }
-        if (! Brand::findOneByMark($brand)) {
+        if (!Brand::findOneByMark($brand)) {
             throw new Error404();
         }
         $this->header->page->title .= ' | Авто';
         $this->header->breadcrumb = ['main' => 'Авто'];
         $this->mainPage = new View('/App/templates/admin/cars.phtml');
         $this->mainPage->brands = Brand::findAll(false, 'name');
-        $this->mainPage->cars = CarModel::findCarsByBrandPerPage($brand ,1, 5);
+        $this->mainPage->cars = CarModel::findCarsByBrandPerPage($brand, 1, 5);
         $this->mainPage->totalPages = ceil(CarModel::getCountCarByBrand($brand) / 5);
         View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
@@ -66,6 +66,17 @@ class Car extends Admin
     {
         $this->mainPage = new View('/App/templates/admin/create/mark.phtml');
         $this->header->breadcrumb = ['main' => 'Добавление марки авто', 'child' => ['href' => '/admin/cars', 'title' => 'Авто']];
+        View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+    }
+
+    /**
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionCreateCar()
+    {
+        $this->mainPage = new View('/App/templates/admin/create/car.phtml');
+        $this->header->breadcrumb = ['main' => 'Добавление авто', 'child' => ['href' => '/admin/cars', 'title' => 'Авто']];
+        $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
 }

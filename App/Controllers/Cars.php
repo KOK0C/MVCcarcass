@@ -33,10 +33,10 @@ class Cars extends Controller
         $this->mainPage = new View('/App/templates/mark_page.phtml');
         $mark = ucwords(str_replace('-', ' ', $mark));
         $this->mainPage->mark = Brand::findOneByMark($mark);
-        $this->mainPage->cars = Car::findCarsByBrand($mark);
-        if (! $this->mainPage->cars) {
+        if (! $this->mainPage->mark) {
             throw new Error404('Страница не найдена');
         }
+        $this->mainPage->cars = Car::findCarsByBrand($mark);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);
     }
 

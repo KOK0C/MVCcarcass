@@ -48,7 +48,7 @@ class Create extends Admin
                 $article->save();
                 Redirect::to('/admin/articles');
             }
-            Redirect::to();
+            Redirect::to('/admin/articles/create');
         } else {
             throw new Error404();
         }
@@ -83,7 +83,36 @@ class Create extends Admin
                     Redirect::to('/admin/cars');
                 }
             }
-            Redirect::to();
+            Redirect::to('/admin/mark/create');
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws DbException
+     * @throws Error404
+     */
+    protected function actionCar()
+    {
+        if ($this->isPost('add_car')) {
+            $car = new Car();
+            $validRules = [
+                'model' => [
+                    'required' => true,
+                    'minLength' => 2,
+                    'maxLength' => 50,
+                    'unique' => 'cars'
+                ],
+                'text' => [
+                    'required' => true
+                ]
+            ];
+            if ($car->load(array_merge($_POST, $_FILES), $validRules)) {
+                $car->save();
+                Redirect::to('/admin/cars');
+            }
+            Redirect::to('/admin/cars/create');
         } else {
             throw new Error404();
         }

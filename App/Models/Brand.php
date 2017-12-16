@@ -55,7 +55,7 @@ class Brand extends Model
     public function load(array $data, array $rules): bool
     {
         if ($data['logo']['error'] === 0) {
-            if (! $data['logo'] = $this->loadFile($data['logo'],  'png')) {
+            if (! $data['logo'] = $this->loadFile($data['logo'],  'png', $this->uploadDir)) {
                 return false;
             }
         } else {

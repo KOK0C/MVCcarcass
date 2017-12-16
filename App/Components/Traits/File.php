@@ -12,14 +12,14 @@ use IhorRadchenko\App\Components\Session;
 
 trait File
 {
-    private function loadFile(array $file, string $extension)
+    private function loadFile(array $file, string $extension, string $path)
     {
         if (!in_array($this->getFileExtension($file), explode('|', $extension))) {
             Session::set('errors', ['image' => ['Некорректный формат файла']]);
             return false;
         }
         $fileName = $this->getFileName($file);
-        if (move_uploaded_file($file['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $this->uploadDir . $fileName)) {
+        if (move_uploaded_file($file['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $path . $fileName)) {
             return $fileName;
         }
         Session::set('errors', ['image' => ['Неудалось загрузить файл']]);
@@ -45,6 +45,8 @@ trait File
     private function getImages(string $text)
     {
         preg_match_all('~<img.*src=(.*?)/?>~', $text, $matches);
-        return $matches[1];
+        return array_map(function ($value) {
+            return trim($value, '"');
+        }, $matches[1]);
     }
 }

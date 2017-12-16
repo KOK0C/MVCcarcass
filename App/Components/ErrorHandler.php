@@ -9,6 +9,7 @@
 namespace IhorRadchenko\App\Components;
 
 use IhorRadchenko\App\Controllers\Error;
+use IhorRadchenko\App\Exceptions\DbException;
 
 class ErrorHandler
 {
@@ -33,6 +34,7 @@ class ErrorHandler
      * @param string $file
      * @param int $line
      * @return bool
+     * @throws DbException
      */
     public function errorHandler(int $errno, string $errstr, string $file, int $line)
     {
@@ -60,6 +62,7 @@ class ErrorHandler
      * вызванные вне блока try/catch
      *
      * @param \Throwable $e
+     * @throws DbException
      */
     public function exceptionHandler(\Throwable $e)
     {
@@ -67,6 +70,9 @@ class ErrorHandler
         $this->showError(get_class($e), $e->getMessage(), $e->getFile(), $e->getLine());
     }
 
+    /**
+     * @throws DbException
+     */
     public function fatalErrorHandler()
     {
         $error = error_get_last();
@@ -83,6 +89,7 @@ class ErrorHandler
      * @param $file
      * @param $line
      * @param int $response
+     * @throws DbException
      */
     private function showError($errno, $errstr, $file, $line, $response = 503)
     {
