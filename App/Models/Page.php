@@ -49,9 +49,9 @@ class Page extends Model
 
     public function load(array $data, array $rules): bool
     {
+        unset($data['description']);
         $this->fields['description'] = ! empty($data['description_page']) ? $data['description_page'] : '';
         $this->fields['link'] = Transliterator::ru2Lat($data['name']);
-        $this->fields['title'] = $data['name'];
-        return true;
+        return parent::load($data, $rules);
     }
 }

@@ -9,12 +9,15 @@
 namespace IhorRadchenko\App\Controllers\Admin\CRUD;
 
 use IhorRadchenko\App\Components\Redirect;
+use IhorRadchenko\App\Components\Session;
+use IhorRadchenko\App\Components\Transliterator;
 use IhorRadchenko\App\Controllers\Admin;
 use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
 use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
+use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\Page;
 
 class Create extends Admin
@@ -77,7 +80,7 @@ class Create extends Admin
             $mark = new Brand();
             if ($mark->load(array_merge($_POST, $_FILES), $validRules)) {
                 $page = new Page();
-                if ($page->load(array_merge($_POST, $_FILES), $validRules)) {
+                if ($page->load(array_merge($_POST, $_FILES, ['title' => $_POST['name']]), $validRules)) {
                     $page->save();
                     $mark->save();
                     Redirect::to('/admin/cars');
@@ -113,6 +116,43 @@ class Create extends Admin
                 Redirect::to('/admin/cars');
             }
             Redirect::to('/admin/cars/create');
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws DbException
+     * @throws Error404
+     */
+    protected function actionCategory()
+    {
+        if ($this->isPost('add_category')) {
+            $validRules = [
+                'name' => [
+                    'required' => true,
+                    'minLength' => 2,
+                    'maxLength' => 50,
+                    'unique' => 'categories'
+                ],
+                'description_page' => [
+                    'maxLength' => 255
+                ]
+            ];
+            $page = new Page();
+            if ($page->load(
+                array_merge($_POST, ['name' => Transliterator::translate($_POST['name'], 'ru', 'en'), 'title' => $_POST['name']]),
+                $validRules
+            )) {
+                $page->save();
+                $category = new Category();
+                if ($category->load(array_merge($_POST, ['page_id' => $page->getId()]), $validRules)) {
+                    $category->save();
+                    Redirect::to('/admin');
+                }
+            }
+            Session::set('create_category', false);
+            Redirect::to();
         } else {
             throw new Error404();
         }

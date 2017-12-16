@@ -10,6 +10,7 @@ return [
     '^create/article$' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],
     '^create/mark$'    => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'mark'],
     '^create/car$'     => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'car'],
+    '^create/category' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'category'],
 
     '^delete/article$' => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'article'],
 
@@ -50,6 +51,7 @@ return [
     '^check/phone$'        => ['controller' => 'Check', 'action' => 'phone'],
     '^check/mark$'         => ['controller' => 'Check', 'action' => 'mark'],
     '^check/car$'          => ['controller' => 'Check', 'action' => 'car'],
+    '^check/category$'     => ['controller' => 'Check', 'action' => 'category'],
 
     '^review/create$'                               => ['controller' => 'Reviews', 'action' => 'create'],
     '^(reviews)/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Reviews', 'action' => 'model'],

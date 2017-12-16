@@ -283,4 +283,28 @@ $().ready(function () {
             }
         }
     });
+    $("#formCreateCategory").validate({
+        rules: {
+            name: {
+                required: true,
+                maxlength: 50,
+                minlength: 2,
+                remote: {
+                    url: '/check/category',
+                    type: "post",
+                    data: {
+                        name: $('#formCreateCategory:input[name="name"]').val()
+                    }
+                }
+            },
+            description_page: {
+                maxlength: 255
+            }
+        },
+        messages: {
+            name: {
+                remote: 'Такая категория уже существует'
+            }
+        }
+    });
 });

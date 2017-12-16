@@ -18,5 +18,12 @@
 <script src="/public/js/admin/delete.js"></script>
 <script src="/public/js/go_top.js"></script>
 
+<?php if (\IhorRadchenko\App\Components\Session::has('create_category') && \IhorRadchenko\App\Components\Session::get('create_category') === false): ?>
+    <script>
+        $("#createCat").click();
+    </script>
+    <?php \IhorRadchenko\App\Components\Session::delete('create_category'); ?>
+<?php endif; ?>
+
 </body>
 </html>

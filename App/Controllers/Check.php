@@ -95,4 +95,17 @@ class Check extends Controller
         }
         throw new Error404();
     }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionCategory()
+    {
+        if ($this->isAjax() && isset($_POST['name'])) {
+            print (empty(DataBase::getInstance()->get('categories', 'name', trim($_POST['name'])))) ? 'true' : 'false';
+            exit();
+        }
+        throw new Error404();
+    }
 }

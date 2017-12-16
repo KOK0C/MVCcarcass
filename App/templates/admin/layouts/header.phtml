@@ -70,6 +70,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Добавление контента</a>
                                 <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#createCategory" data-toggle="modal" id="createCat">Создать категорию</a>
                                     <a class="dropdown-item" href="/admin/articles/create">Добавить статью</a>
                                     <a class="dropdown-item" href="/admin/mark/create">Добавить марку авто</a>
                                     <a class="dropdown-item" href="/admin/cars/create">Добавить авто</a>
@@ -82,6 +83,46 @@
         </div>
     </div>
 </header>
+
+<!-- Modal -->
+<div class="modal fade" id="createCategory" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/create/category" id="formCreateCategory" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Создание категории</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+                        <div class="alert alert-danger error-block">
+                            <ul class="text-left">
+                                <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
+                                    <?php foreach ($field as $error): ?>
+                                        <li><?= $error; ?></li>
+                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+                    <?php endif; ?>
+                    <div class="form-group">
+                        <input type="text" name="name" required placeholder="Наименование категории" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="description_page" placeholder="Небольшое описание" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                    <button type="submit" class="btn btn-primary" name="add_category">Создать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="row">

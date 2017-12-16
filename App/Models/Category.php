@@ -23,6 +23,11 @@ class Category extends Model
     public $name;
     private $page_id;
 
+    protected $fields = [
+        'name' => '',
+        'page_id' => ''
+    ];
+
     public function __isset($name)
     {
         switch ($name) {
