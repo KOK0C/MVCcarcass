@@ -7,10 +7,10 @@
  */
 
 return [
-    '^create/article$' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],
-    '^create/mark$'    => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'mark'],
-    '^create/car$'     => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'car'],
-    '^create/category' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'category'],
+    '^create/article$'  => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],
+    '^create/mark$'     => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'mark'],
+    '^create/car$'      => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'car'],
+    '^create/category$' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'category'],
 
     '^delete/article$' => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'article'],
 
@@ -20,6 +20,8 @@ return [
     '^(admin)/articles/update$'   => ['controller' => 'Admin\\Article', 'action' => 'update'],
     '^(admin)/articles/([a-z]+)$' => ['controller' => 'Admin\\Article', 'action' => 'category'],
     '^(admin)/articles$'          => ['controller' => 'Admin\\Article', 'action' => 'index'],
+
+    '^(admin)/categories$' => ['controller' => 'Admin\\Category', 'action' => 'index'],
 
     '^(admin)/reviews/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Admin\\Review', 'action' => 'model'],
     '^(admin)/reviews/mark/([a-z-]+)$'                    => ['controller' => 'Admin\\Review', 'action' => 'mark'],

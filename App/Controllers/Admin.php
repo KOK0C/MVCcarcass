@@ -13,6 +13,7 @@ use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
 use IhorRadchenko\App\Models\Car;
+use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\Review;
 use IhorRadchenko\App\Models\User;
 use IhorRadchenko\App\View;
@@ -53,10 +54,11 @@ abstract class Admin extends Controller
     {
         $this->sideBar = new View('/App/templates/admin/layouts/side_bar.phtml');
         $this->sideBar->counts = [
-            'users'    => User::getAllCount(),
-            'cars'     => Car::getAllCount(),
-            'articles' => Article::getAllCount(),
-            'reviews'  => Review::getAllCount()
+            'users'      => User::getAllCount(),
+            'cars'       => Car::getAllCount(),
+            'articles'   => Article::getAllCount(),
+            'reviews'    => Review::getAllCount(),
+            'categories' => Category::getAllCount()
         ];
     }
 }

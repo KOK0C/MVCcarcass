@@ -9,6 +9,11 @@
                             <i class="fa fa-cog" aria-hidden="true"></i>
                             <span>Dashboard</span>
                         </a>
+                        <a href="/admin/categories" class="list-group-item list-group-item-action">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            <span>Категории</span>
+                            <div class="badge"><?= htmlentities($counts['categories']); ?></div>
+                        </a>
                         <a href="/admin/articles" class="list-group-item list-group-item-action">
                             <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                             <span>Статьи</span>

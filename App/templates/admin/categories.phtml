@@ -1,0 +1,55 @@
+<?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
+<div class="col-sm-9">
+    <?php if (! empty($categories)): ?>
+        <div class="panel">
+            <div class="panel-header main-color-bg">
+                <h2>Статьи</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Кол-во статей</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-body">
+                    <?php foreach ($categories as $category): ?>
+                        <tr class="table-row">
+                            <td class="firstLetterUC">
+                                <a href="/<?= htmlentities($category->link); ?>">
+                                    <?= htmlentities(mb_strtolower($category->name)); ?>
+                                </a>
+                            </td>
+                            <td>
+                                <?= htmlentities($category->countNews); ?>
+                            </td>
+                            <td>
+                                <input type="submit" class="btn btn-primary btn-sm" value="Редактировать" name="update_article">
+                            </td>
+                            <td>
+                                <button data-id="<?= $category->getId(); ?>" class="btn btn-danger btn-sm btn-delete">Удалить</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php if (isset($totalPages) && $totalPages > 1): ?>
+                    <button class="btn btn-block btn-success" id="moreCategory">ЕЩЕ КАТЕГОРИИ</button>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php if (isset($totalPages)): ?>
+    <script>
+        var totalPages = <?= $totalPages; ?>;
+    </script>
+<?php endif; ?>
+
+</div>
+</div>
+</main>

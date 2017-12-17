@@ -1,0 +1,21 @@
+
+<?php if (! empty($data)): ?>
+    <?php foreach ($data as $category): ?>
+        <tr class="table-row">
+            <td class="firstLetterUC">
+                <a href="/<?= htmlentities($category->link); ?>">
+                    <?= htmlentities(mb_strtolower($category->name)); ?>
+                </a>
+            </td>
+            <td>
+                <?= htmlentities($category->countNews); ?>
+            </td>
+            <td>
+                <input type="submit" class="btn btn-primary btn-sm" value="Редактировать" name="update_article">
+            </td>
+            <td>
+                <button data-id="<?= $category->getId(); ?>" class="btn btn-danger btn-sm btn-delete">Удалить</button>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+<?php endif; ?>

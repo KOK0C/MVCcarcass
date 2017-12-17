@@ -28,6 +28,9 @@
                         <?php if (! isset($uri[2])) {print 'active';} ?>
                     " href="/admin">Главная</a>
                     <a class="flex-sm-fill text-sm-center nav-link
+                        <?php if (isset($uri[2]) && $uri[2] === 'categories') {print 'active';} ?>
+                    " href="/admin/categories">Категории</a>
+                    <a class="flex-sm-fill text-sm-center nav-link
                         <?php if (isset($uri[2]) && $uri[2] === 'articles') {print 'active';} ?>
                     " href="/admin/articles">Статьи</a>
                     <a class="flex-sm-fill text-sm-center nav-link

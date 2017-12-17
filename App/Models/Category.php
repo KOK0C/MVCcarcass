@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App\Models;
 
+use IhorRadchenko\App\DataBase;
 use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Model;
 
@@ -20,6 +21,8 @@ class Category extends Model
 {
     const TABLE = 'categories';
 
+    const PER_PAGE = 5;
+
     public $name;
     private $page_id;
 
@@ -31,6 +34,9 @@ class Category extends Model
     public function __isset($name)
     {
         switch ($name) {
+            case 'countNews':
+                return true;
+                break;
             case 'link':
                 return isset($this->page_id);
                 break;
@@ -47,6 +53,8 @@ class Category extends Model
     public function __get($name)
     {
         switch ($name) {
+            case 'countNews':
+                return DataBase::getInstance()->countRow('SELECT COUNT(*) FROM news WHERE category_id = ' . $this->id);
             case 'link':
                 return Page::findById($this->page_id)->getLink();
                 break;
