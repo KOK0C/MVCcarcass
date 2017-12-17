@@ -14,14 +14,16 @@ return [
 
     '^delete/article$' => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'article'],
 
-    '^update/article$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
+    '^update/article$'  => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
+    '^update/category$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'category'],
 
     '^(admin)/articles/create$'   => ['controller' => 'Admin\\Article', 'action' => 'create'],
     '^(admin)/articles/update$'   => ['controller' => 'Admin\\Article', 'action' => 'update'],
     '^(admin)/articles/([a-z]+)$' => ['controller' => 'Admin\\Article', 'action' => 'category'],
     '^(admin)/articles$'          => ['controller' => 'Admin\\Article', 'action' => 'index'],
 
-    '^(admin)/categories$' => ['controller' => 'Admin\\Category', 'action' => 'index'],
+    '^(admin)/categories/update$' => ['controller' => 'Admin\\Category', 'action' => 'update'],
+    '^(admin)/categories$'        => ['controller' => 'Admin\\Category', 'action' => 'index'],
 
     '^(admin)/reviews/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Admin\\Review', 'action' => 'model'],
     '^(admin)/reviews/mark/([a-z-]+)$'                    => ['controller' => 'Admin\\Review', 'action' => 'mark'],

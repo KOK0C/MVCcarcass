@@ -154,6 +154,7 @@ $().ready(function () {
     $("#createArticle").validate({
         rules: {
             title: {
+                required: true,
                 minlength: 3,
                 maxlength: 200,
                 remote: {
@@ -165,6 +166,7 @@ $().ready(function () {
                 }
             },
             description: {
+                required: true,
                 minlength: 3,
                 maxlength: 255
             },
@@ -189,14 +191,17 @@ $().ready(function () {
     $("#updateArticle").validate({
         rules: {
             title: {
+                required: true,
                 minlength: 3,
                 maxlength: 200
             },
             description: {
+                required: true,
                 minlength: 3,
                 maxlength: 255
             },
             image: {
+                required: true,
                 accept: "image/*"
             },
             text: {
@@ -229,6 +234,7 @@ $().ready(function () {
                 required: true
             },
             logo: {
+                required: true,
                 accept: "png"
             }
         },
@@ -259,9 +265,11 @@ $().ready(function () {
                 required: true
             },
             icon: {
+                required: true,
                 accept: "png"
             },
             img: {
+                required: true,
                 accept: "image/*"
             },
             brand_id: {

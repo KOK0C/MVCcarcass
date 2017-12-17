@@ -4,27 +4,31 @@
     <p>Copyright © <?= date('Y'); ?></p>
 </footer>
 
-<script src="/vendor/components/jquery/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
-<script src="/public/js/messages_ru.min.js"></script>
-<script src="/public/js/validate.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/public/js/admin/articles.js"></script>
-<script src="/public/js/admin/cars.js"></script>
-<script src="/public/js/admin/user.js"></script>
-<script src="/public/js/admin/reviews.js"></script>
-<script src="/public/js/admin/categories.js"></script>
-<script src="/public/js/admin/delete.js"></script>
-<script src="/public/js/go_top.js"></script>
-
-<?php if (\IhorRadchenko\App\Components\Session::has('create_category') && \IhorRadchenko\App\Components\Session::get('create_category') === false): ?>
-    <script>
-        $("#createCat").click();
-    </script>
-    <?php \IhorRadchenko\App\Components\Session::delete('create_category'); ?>
-<?php endif; ?>
+<div id="scripts">
+    <script src="/vendor/components/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+    <script src="/public/js/messages_ru.min.js"></script>
+    <script src="/public/js/validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/public/js/admin/articles.js"></script>
+    <script src="/public/js/admin/cars.js"></script>
+    <script src="/public/js/admin/user.js"></script>
+    <script src="/public/js/admin/reviews.js"></script>
+    <script src="/public/js/admin/categories.js"></script>
+    <script src="/public/js/go_top.js"></script>
+    <?php $uri = explode('/', $_SERVER['REQUEST_URI']); ?>
+    <?php if (isset($uri[2])): ?>
+        <?php switch ($uri[2]):
+            case 'articles':
+                print '<script src="/public/js/admin/delete/articles.js"></script>';
+                break;
+            case 'categories':
+                print '<script src="/public/js/admin/update/categories.js"></script>';
+        endswitch; ?>
+    <?php endif; ?>
+</div>
 
 </body>
 </html>

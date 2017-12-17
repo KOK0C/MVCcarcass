@@ -16,6 +16,9 @@ use IhorRadchenko\App\Model;
  * Class Category
  * @package App\Models
  * Реализует модель таблицы categories
+ * @property int $countNews
+ * @property string $link
+ * @property Page $page
  */
 class Category extends Model
 {
@@ -37,6 +40,7 @@ class Category extends Model
             case 'countNews':
                 return true;
                 break;
+            case 'page':
             case 'link':
                 return isset($this->page_id);
                 break;
@@ -57,6 +61,9 @@ class Category extends Model
                 return DataBase::getInstance()->countRow('SELECT COUNT(*) FROM news WHERE category_id = ' . $this->id);
             case 'link':
                 return Page::findById($this->page_id)->getLink();
+                break;
+            case 'page':
+                return Page::findById($this->page_id);
                 break;
             default:
                 return false;

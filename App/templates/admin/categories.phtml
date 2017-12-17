@@ -3,9 +3,21 @@
     <?php if (! empty($categories)): ?>
         <div class="panel">
             <div class="panel-header main-color-bg">
-                <h2>Статьи</h2>
+                <h2>Категории</h2>
             </div>
             <div class="panel-body">
+                <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+                    <div class="alert alert-danger error-block">
+                        <ul class="text-left">
+                            <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
+                                <?php foreach ($field as $error): ?>
+                                    <li><?= $error; ?></li>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+                <?php endif; ?>
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -27,7 +39,9 @@
                                 <?= htmlentities($category->countNews); ?>
                             </td>
                             <td>
-                                <input type="submit" class="btn btn-primary btn-sm" value="Редактировать" name="update_article">
+                                <button data-id="<?= $category->getId(); ?>" class="btn btn-primary btn-sm btn-update">
+                                    Редактировать
+                                </button>
                             </td>
                             <td>
                                 <button data-id="<?= $category->getId(); ?>" class="btn btn-danger btn-sm btn-delete">Удалить</button>
@@ -43,6 +57,8 @@
         </div>
     <?php endif; ?>
 </div>
+
+<div id="forModal"></div>
 
 <?php if (isset($totalPages)): ?>
     <script>

@@ -148,11 +148,10 @@ class Create extends Admin
                 $category = new Category();
                 if ($category->load(array_merge($_POST, ['page_id' => $page->getId()]), $validRules)) {
                     $category->save();
-                    Redirect::to('/admin');
+                    Redirect::to('/admin/categories');
                 }
             }
-            Session::set('create_category', false);
-            Redirect::to();
+            Redirect::to('/admin/categories');
         } else {
             throw new Error404();
         }

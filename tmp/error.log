@@ -2021,3 +2021,211 @@ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
 Line : 58;
 
 =======================================================================
+
+[17-12-2017 16:48:19] CRITICAL
+Cannot use object of type IhorRadchenko\App\Models\Category as array
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\categories.phtml;
+Line : 28;
+
+=======================================================================
+
+[17-12-2017 17:06:50] WARNING
+Undefined offset: 2
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\admin\layouts\footer.phtml;
+Line : 22;
+
+=======================================================================
+
+[17-12-2017 17:26:21] WARNING
+Undefined index: id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Controllers\Admin\CRUD\Update.php;
+Line : 77;
+
+=======================================================================
+
+[17-12-2017 17:33:34] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:33:36] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:33:37] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:33:38] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:33:50] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:33:51] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:35:18] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:35:18] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:35:34] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:35:35] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:35:36] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:35:41] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:35:42] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:36:21] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:36:43] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:38:42] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 60;
+
+=======================================================================
+
+[17-12-2017 17:42:07] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 63;
+
+=======================================================================
+
+[17-12-2017 17:43:50] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 63;
+
+=======================================================================
+
+[17-12-2017 17:43:52] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 63;
+
+=======================================================================
+
+[17-12-2017 17:44:14] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 63;
+
+=======================================================================
+
+[17-12-2017 17:44:30] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 63;
+
+=======================================================================
+
+[17-12-2017 17:44:58] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 63;
+
+=======================================================================
+
+[17-12-2017 17:45:43] CRITICAL
+Call to a member function getLink() on null
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
+Line : 63;
+
+=======================================================================

@@ -9,9 +9,14 @@
 namespace IhorRadchenko\App\Controllers\Admin\CRUD;
 
 use IhorRadchenko\App\Components\Redirect;
+use IhorRadchenko\App\Components\Session;
+use IhorRadchenko\App\Components\Transliterator;
 use IhorRadchenko\App\Controllers\Admin;
+use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
+use IhorRadchenko\App\Models\Category;
+use IhorRadchenko\App\Models\Page;
 
 class Update extends Admin
 {
@@ -47,6 +52,44 @@ class Update extends Admin
                 Redirect::to('/admin/articles');
             }
             Redirect::to('/admin/articles/update');
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws Error404
+     * @throws DbException
+     */
+    protected function actionCategory()
+    {
+        if ($this->isPost('update_category')) {
+            $validRules = [
+                'name' => [
+                    'required' => true,
+                    'minLength' => 2,
+                    'maxLength' => 50
+                ],
+                'description_page' => [
+                    'maxLength' => 255
+                ]
+            ];
+            $category = Category::findById($_POST['id']);
+            $page = $category->page;
+            if (! $category->name === $_POST['name']) {
+                $validRules['name']['unique'] = 'categories';
+            }
+            if ($page->load(
+                array_merge($_POST, ['name' => Transliterator::translate($_POST['name'], 'ru', 'en'), 'title' => $_POST['name']]),
+                $validRules
+            )) {
+                $page->save();
+                if ($category->load(array_merge($_POST, ['page_id' => $page->getId()]), $validRules)) {
+                    $category->save();
+                    Redirect::to('/admin/categories');
+                }
+            }
+            Redirect::to('/admin/categories');
         } else {
             throw new Error404();
         }

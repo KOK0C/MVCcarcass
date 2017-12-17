@@ -1,0 +1,31 @@
+
+<!-- Modal -->
+<?php if (! empty($data)): ?>
+    <div class="modal fade" id="updateCategory" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/update/category" id="formUpdateCategory" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Обновление категории</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" name="name" required placeholder="Наименование категории" class="form-control" minlength="2" maxlength="50" autofocus value="<?= htmlentities($data->name); ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="description_page" placeholder="Небольшое описание" class="form-control" maxlength="255" value="<?= htmlentities($data->page->description); ?>">
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value="<?= $data->getId(); ?>">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary" name="update_category">Обновить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
