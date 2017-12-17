@@ -11,7 +11,9 @@
                 <?= htmlentities($category->countNews); ?>
             </td>
             <td>
-                <input type="submit" class="btn btn-primary btn-sm" value="Редактировать" name="update_article">
+                <button data-id="<?= $category->getId(); ?>" class="btn btn-primary btn-sm btn-update">
+                    Редактировать
+                </button>
             </td>
             <td>
                 <button data-id="<?= $category->getId(); ?>" class="btn btn-danger btn-sm btn-delete">Удалить</button>

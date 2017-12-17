@@ -12,7 +12,8 @@ return [
     '^create/car$'      => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'car'],
     '^create/category$' => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'category'],
 
-    '^delete/article$' => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'article'],
+    '^delete/article$'  => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'article'],
+    '^delete/category$' => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'category'],
 
     '^update/article$'  => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
     '^update/category$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'category'],

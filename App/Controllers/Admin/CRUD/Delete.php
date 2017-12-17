@@ -11,6 +11,7 @@ namespace IhorRadchenko\App\Controllers\Admin\CRUD;
 use IhorRadchenko\App\Controllers\Admin;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
+use IhorRadchenko\App\Models\Category;
 
 class Delete extends Admin
 {
@@ -23,6 +24,22 @@ class Delete extends Admin
         if ($this->isAjax() && isset($_POST['id'])) {
             $article = Article::findById($_POST['id']);
             if ($article->delete()) {
+                print 'true';
+            }
+            exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionCategory()
+    {
+        if ($this->isAjax() && isset($_POST['id'])) {
+            $category = Category::findById($_POST['id']);
+            if ($category->delete()) {
                 print 'true';
             }
             exit();

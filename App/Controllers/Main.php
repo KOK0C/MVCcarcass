@@ -13,6 +13,7 @@ use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
+use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\View;
 
 class Main extends Controller
@@ -59,10 +60,10 @@ class Main extends Controller
     protected function actionOneCategory(string $link, $page)
     {
         $this->mainPage = new View('/App/templates/category_page.phtml');
-        $this->mainPage->news = Article::findByCategory($link, is_null($page) ? 1 : $page, true);
-        if (! $this->mainPage->news) {
+        if (! Category::findByLink($link)) {
             throw new Error404('Несуществующая страница');
         }
+        $this->mainPage->news = Article::findByCategory($link, is_null($page) ? 1 : $page, true);
         $countArticle = Article::getCountArticleInCategory($link);
         $this->mainPage->pagination = new Pagination($countArticle, is_null($page) ? 1 : $page, Article::PER_PAGE);
         View::display($this->header, $this->mainPage, $this->sideBar, $this->footer);

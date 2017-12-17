@@ -1,7 +1,7 @@
 $(".btn-delete").click(function () {
     var elem = $(this).parent().parent();
     $.post(
-        '/delete/article',
+        deleteUri,
         {
             id: $(this).data('id')
         },

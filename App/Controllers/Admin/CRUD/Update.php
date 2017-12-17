@@ -84,7 +84,7 @@ class Update extends Admin
                 $validRules
             )) {
                 $page->save();
-                if ($category->load(array_merge($_POST, ['page_id' => $page->getId()]), $validRules)) {
+                if ($category->load($_POST, $validRules)) {
                     $category->save();
                     Redirect::to('/admin/categories');
                 }

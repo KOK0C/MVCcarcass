@@ -22,10 +22,13 @@
     <?php if (isset($uri[2])): ?>
         <?php switch ($uri[2]):
             case 'articles':
-                print '<script src="/public/js/admin/delete/articles.js"></script>';
+                print '<script> var deleteUri = \'/delete/article\'</script>';
+                print '<script src="/public/js/admin/delete.js"></script>';
                 break;
             case 'categories':
                 print '<script src="/public/js/admin/update/categories.js"></script>';
+                print '<script> var deleteUri = \'/delete/category\';</script>';
+                print '<script src="/public/js/admin/delete.js"></script>';
         endswitch; ?>
     <?php endif; ?>
 </div>
