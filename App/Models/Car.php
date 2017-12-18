@@ -164,12 +164,16 @@ class Car extends Model
         } else {
             unset($data['image']);
         }
+        $pathCarIcon = $this->iconDir . str_replace(' ', '_', mb_strtolower(Brand::findById($data['brand_id'])->name));
+        if (! file_exists($_SERVER['DOCUMENT_ROOT'] . $pathCarIcon)) {
+            mkdir($_SERVER['DOCUMENT_ROOT'] . $pathCarIcon);
+        }
         if ($data['icon']['error'] === 0) {
             if (! $data['icon'] = $this->loadFile(
                 $data['icon'],
                 'png',
-                $this->iconDir . str_replace(' ', '_', mb_strtolower(Brand::findById($data['brand_id'])->name) . '/')
-            )) {
+                $pathCarIcon . '/')
+            ) {
                 return false;
             }
         } else {

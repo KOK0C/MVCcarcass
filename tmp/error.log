@@ -2229,3 +2229,27 @@ File : C:\OSPanel\domains\MVCcarcass\App\Models\Category.php;
 Line : 63;
 
 =======================================================================
+
+[18-12-2017 19:44:11] ERROR
+move_uploaded_file(C:/OSPanel/domains/MVCcarcass/public/img/icon/kamaz/remont-kamaz-3.png): failed to open stream: No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Components\Traits\File.php;
+Line : 22;
+
+=======================================================================
+
+[18-12-2017 19:49:13] ERROR
+mkdir(): No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php;
+Line : 169;
+
+=======================================================================
+
+[18-12-2017 19:52:05] ERROR
+mkdir(): No such file or directory
+Error : WARNING [2];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php;
+Line : 169;
+
+=======================================================================

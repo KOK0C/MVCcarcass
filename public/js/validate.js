@@ -201,7 +201,6 @@ $().ready(function () {
                 maxlength: 255
             },
             image: {
-                required: true,
                 accept: "image/*"
             },
             text: {
@@ -244,6 +243,28 @@ $().ready(function () {
             },
             name: {
                 remote: 'Такая марка уже существует'
+            }
+        }
+    });
+    $("#updateMark").validate({
+        rules: {
+            name: {
+                required: true,
+                maxlength: 50
+            },
+            description_page: {
+                maxlength: 255
+            },
+            description: {
+                required: true
+            },
+            logo: {
+                accept: "png"
+            }
+        },
+        messages: {
+            logo: {
+                accept: 'Выберите картинку в формате png'
             }
         }
     });

@@ -283,6 +283,10 @@ pre {
     width: 600px;
 }
 
+.blog-post-text p iframe {
+    margin: 0 30px;
+}
+
 .blog-post-text .video {
     margin-left: 70px;
 }

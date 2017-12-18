@@ -15,6 +15,7 @@ use IhorRadchenko\App\Controllers\Admin;
 use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
+use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\Page;
 
@@ -82,14 +83,49 @@ class Update extends Admin
             if ($page->load(
                 array_merge($_POST, ['name' => Transliterator::translate($_POST['name'], 'ru', 'en'), 'title' => $_POST['name']]),
                 $validRules
-            )) {
+            ) && $category->load($_POST, $validRules)) {
                 $page->save();
-                if ($category->load($_POST, $validRules)) {
-                    $category->save();
-                    Redirect::to('/admin/categories');
-                }
+                $category->save();
+                Redirect::to('/admin/categories');
             }
             Redirect::to('/admin/categories');
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws DbException
+     * @throws Error404
+     */
+    protected function actionMark()
+    {
+        if ($this->isPost('update_mark')) {
+            $mark = Brand::findById($_POST['id']);
+            $page = $mark->page;
+            $validRules = [
+                'name' => [
+                    'required' => true,
+                    'maxLength' => 50
+                ],
+                'description_page' => [
+                    'maxLength' => 255
+                ],
+                'description' => [
+                    'required' => true
+                ]
+            ];
+            if (! $mark->name === $_POST['name']) {
+                $validRules['name']['unique'] = 'brands';
+            }
+            if ($mark->load(array_merge($_POST, $_FILES), $validRules) && $page->load(array_merge($_POST, $_FILES, ['title' => $_POST['name']]), $validRules)) {
+                $page->save();
+                $mark->save();
+                Redirect::to('/admin/cars');
+            }
+            $_POST['update_mark'] = true;
+            $_POST['mark'] = $mark->getId();
+            Redirect::to('/admin/mark/update');
         } else {
             throw new Error404();
         }

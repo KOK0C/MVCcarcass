@@ -17,6 +17,7 @@ return [
 
     '^update/article$'  => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
     '^update/category$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'category'],
+    '^update/mark$'     => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'mark'],
 
     '^(admin)/articles/create$'   => ['controller' => 'Admin\\Article', 'action' => 'create'],
     '^(admin)/articles/update$'   => ['controller' => 'Admin\\Article', 'action' => 'update'],
@@ -30,10 +31,13 @@ return [
     '^(admin)/reviews/mark/([a-z-]+)$'                    => ['controller' => 'Admin\\Review', 'action' => 'mark'],
     '^(admin)/reviews$'                                   => ['controller' => 'Admin\\Review', 'action' => 'index'],
 
+    '^(admin)/mark/update$'         => ['controller' => 'Admin\\Car', 'action' => 'updateMark'],
+    '^(admin)/cars/update$'         => ['controller' => 'Admin\\Car', 'action' => 'updateCar'],
     '^(admin)/mark/create$'         => ['controller' => 'Admin\\Car', 'action' => 'createMark'],
-    '^(admin)/cars/create$'         => ['controller' => 'Admin\\Car',  'action' => 'createCar'],
-    '^(admin)/cars/mark/([a-z-]+)$' => ['controller' => 'Admin\\Car',  'action' => 'mark'],
-    '^(admin)/cars$'                => ['controller' => 'Admin\\Car',  'action' => 'index'],
+    '^(admin)/cars/create$'         => ['controller' => 'Admin\\Car', 'action' => 'createCar'],
+    '^(admin)/car/update$'          => ['controller' => 'Admin\\Car', 'action' => 'update'],
+    '^(admin)/cars/mark/([a-z-]+)$' => ['controller' => 'Admin\\Car', 'action' => 'mark'],
+    '^(admin)/cars$'                => ['controller' => 'Admin\\Car', 'action' => 'index'],
 
     '^(admin)/users$' => ['controller' => 'Admin\\User', 'action' => 'index'],
 

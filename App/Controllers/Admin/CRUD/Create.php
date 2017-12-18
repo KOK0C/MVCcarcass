@@ -77,14 +77,15 @@ class Create extends Admin
                     'required' => true
                 ]
             ];
-            $mark = new Brand();
-            if ($mark->load(array_merge($_POST, $_FILES), $validRules)) {
-                $page = new Page();
-                if ($page->load(array_merge($_POST, $_FILES, ['title' => $_POST['name']]), $validRules)) {
-                    $page->save();
+            $page = new Page();
+            if ($page->load(array_merge($_POST, $_FILES, ['title' => $_POST['name']]), $validRules)) {
+                $page->save();
+                $mark = new Brand();
+                if ($mark->load(array_merge($_POST, $_FILES, ['page_id' => $page->getId()]), $validRules)) {
                     $mark->save();
                     Redirect::to('/admin/cars');
                 }
+                $page->delete();
             }
             Redirect::to('/admin/mark/create');
         } else {
@@ -150,6 +151,7 @@ class Create extends Admin
                     $category->save();
                     Redirect::to('/admin/categories');
                 }
+                $page->delete();
             }
             Redirect::to('/admin/categories');
         } else {

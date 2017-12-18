@@ -79,4 +79,33 @@ class Car extends Admin
         $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionUpdate()
+    {
+        if ($this->isAjax() && isset($_POST['id'])) {
+            View::loadForAjax('admin/update/cars', CarModel::findById($_POST['id']));
+            exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionUpdateMark()
+    {
+        if ($this->isPost('update_mark') && isset($_POST['mark'])) {
+            $this->mainPage = new View('/App/templates/admin/update/mark.phtml');
+            $this->mainPage->mark = Brand::findById($_POST['mark']);
+            $this->header->breadcrumb = ['main' => 'Редактирование марки авто', 'child' => ['href' => '/admin/cars', 'title' => 'Авто']];
+            View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
+        } else {
+            throw new Error404();
+        }
+    }
 }
