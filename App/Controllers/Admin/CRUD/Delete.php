@@ -8,9 +8,12 @@
 
 namespace IhorRadchenko\App\Controllers\Admin\CRUD;
 
+use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Controllers\Admin;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
+use IhorRadchenko\App\Models\Brand;
+use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
 
 class Delete extends Admin
@@ -45,5 +48,35 @@ class Delete extends Admin
             exit();
         }
         throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionCar()
+    {
+        if ($this->isPost('delete_model') && ! empty($_POST['model'])) {
+            $car = Car::findById($_POST['model']);
+            $car->delete();
+            Redirect::to('/admin/cars');
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionMark()
+    {
+        if ($this->isPost('delete_mark') && ! empty($_POST['mark'])) {
+            $mark = Brand::findById($_POST['mark']);
+            $mark->delete();
+            Redirect::to('/admin/cars');
+        } else {
+            throw new Error404();
+        }
     }
 }

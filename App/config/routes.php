@@ -14,6 +14,8 @@ return [
 
     '^delete/article$'  => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'article'],
     '^delete/category$' => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'category'],
+    '^delete/car$'      => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'car'],
+    '^delete/mark$'     => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'mark'],
 
     '^update/article$'  => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
     '^update/category$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'category'],
@@ -37,6 +39,7 @@ return [
     '^(admin)/mark/create$'         => ['controller' => 'Admin\\Car', 'action' => 'createMark'],
     '^(admin)/cars/create$'         => ['controller' => 'Admin\\Car', 'action' => 'createCar'],
     '^(admin)/car/update$'          => ['controller' => 'Admin\\Car', 'action' => 'update'],
+    '^(admin)/car/delete$'          => ['controller' => 'Admin\\Car', 'action' => 'delete'],
     '^(admin)/cars/mark/([a-z-]+)$' => ['controller' => 'Admin\\Car', 'action' => 'mark'],
     '^(admin)/cars$'                => ['controller' => 'Admin\\Car', 'action' => 'index'],
 

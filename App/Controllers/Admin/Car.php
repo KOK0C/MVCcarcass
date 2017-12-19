@@ -97,6 +97,19 @@ class Car extends Admin
      * @throws Error404
      * @throws \IhorRadchenko\App\Exceptions\DbException
      */
+    protected function actionDelete()
+    {
+        if ($this->isAjax() && isset($_POST['id'])) {
+            View::loadForAjax('admin/delete/cars', CarModel::findById($_POST['id']));
+            exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
     protected function actionUpdateMark()
     {
         if ($this->isPost('update_mark') && ! empty($_POST['mark'])) {
