@@ -18,6 +18,7 @@ return [
     '^update/article$'  => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
     '^update/category$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'category'],
     '^update/mark$'     => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'mark'],
+    '^update/car$'      => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'car'],
 
     '^(admin)/articles/create$'   => ['controller' => 'Admin\\Article', 'action' => 'create'],
     '^(admin)/articles/update$'   => ['controller' => 'Admin\\Article', 'action' => 'update'],

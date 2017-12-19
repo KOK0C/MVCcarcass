@@ -260,3 +260,7 @@ label.error {
 .imagePreLoad img{
     max-width: 500px;
 }
+
+.table-body tr td img {
+    max-width: 166px;
+}

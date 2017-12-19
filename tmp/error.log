@@ -2253,3 +2253,11 @@ File : C:\OSPanel\domains\MVCcarcass\App\Models\Car.php;
 Line : 169;
 
 =======================================================================
+
+[19-12-2017 18:57:23] WARNING
+Array to string conversion
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 56;
+
+=======================================================================

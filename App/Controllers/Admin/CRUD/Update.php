@@ -16,6 +16,7 @@ use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
 use IhorRadchenko\App\Models\Brand;
+use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\Page;
 
@@ -52,6 +53,8 @@ class Update extends Admin
                 $article->save();
                 Redirect::to('/admin/articles');
             }
+            $_POST['update_article'] = true;
+            $_POST['article_id'] = $article->getId();
             Redirect::to('/admin/articles/update');
         } else {
             throw new Error404();
@@ -115,7 +118,7 @@ class Update extends Admin
                     'required' => true
                 ]
             ];
-            if (! $mark->name === $_POST['name']) {
+            if ($mark->name !== $_POST['name']) {
                 $validRules['name']['unique'] = 'brands';
             }
             if ($mark->load(array_merge($_POST, $_FILES), $validRules) && $page->load(array_merge($_POST, $_FILES, ['title' => $_POST['name']]), $validRules)) {
@@ -126,6 +129,39 @@ class Update extends Admin
             $_POST['update_mark'] = true;
             $_POST['mark'] = $mark->getId();
             Redirect::to('/admin/mark/update');
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws DbException
+     * @throws Error404
+     */
+    protected function actionCar()
+    {
+        if ($this->isPost('update_car')) {
+            $car = Car::findById($_POST['id']);
+            $validRules = [
+                'model' => [
+                    'required' => true,
+                    'minLength' => 2,
+                    'maxLength' => 50
+                ],
+                'text' => [
+                    'required' => true
+                ]
+            ];
+            if ($car->model !== $_POST['model']) {
+                $validRules['model']['unique'] = 'cars';
+            }
+            if ($car->load(array_merge($_POST, $_FILES), $validRules)) {
+                $car->save();
+                Redirect::to('/admin/cars');
+            }
+            $_POST['update_car'] = true;
+            $_POST['model'] = $car->getId();
+            Redirect::to('/admin/cars/update');
         } else {
             throw new Error404();
         }

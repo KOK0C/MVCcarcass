@@ -336,4 +336,36 @@ $().ready(function () {
             }
         }
     });
+    $("#updateCar").validate({
+        rules: {
+            model: {
+                required: true,
+                minlength: 2,
+                maxlength: 50
+            },
+            text: {
+                required: true
+            },
+            icon: {
+                accept: "png"
+            },
+            img: {
+                accept: "image/*"
+            },
+            brand_id: {
+                required: true
+            }
+        },
+        messages: {
+            icon: {
+                accept: 'Выберите картинку в формате png'
+            },
+            img: {
+                accept: 'Выберите картинку'
+            },
+            brand_id: {
+                required: 'Выберите марку для авто'
+            }
+        }
+    });
 });

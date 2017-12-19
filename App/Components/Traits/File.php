@@ -19,7 +19,7 @@ trait File
             return false;
         }
         $fileName = $this->getFileName($file);
-        if (move_uploaded_file($file['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $path . $fileName)) {
+        if (move_uploaded_file($file['tmp_name'], $path . $fileName)) {
             return $fileName;
         }
         Session::set('errors', ['image' => ['Неудалось загрузить файл']]);

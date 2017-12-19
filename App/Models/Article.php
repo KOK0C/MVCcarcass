@@ -96,7 +96,7 @@ class Article extends Model
             $this->fields['car_id'] = $car->getId();
         }
         if ($data['image']['error'] === 0) {
-            if (! $data['image'] = $this->loadFile($data['image'],  'jpeg|png|jpg', $this->uploadDir)) {
+            if (! $data['image'] = $this->loadFile($data['image'],  'jpeg|png|jpg', $_SERVER['DOCUMENT_ROOT'] . $this->uploadDir)) {
                 return false;
             }
         } else {
