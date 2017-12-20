@@ -13,7 +13,7 @@
         <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
     <?php endif; ?>
     <?php if (! empty($article)): ?>
-        <form action="/update/article" method="post" enctype="multipart/form-data" id="updateArticle">
+        <form action="/update/article" method="post" id="updateArticle">
             <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
             <div class="form-group">
                 <input type="text" name="title" class="form-control" placeholder="Заголовок статьи" required value="<?= htmlentities($article->title); ?>">
@@ -40,7 +40,7 @@
                     <img src="<?= htmlentities($article->getImage()); ?>" alt="">
                 </div>
                 <label for="imageArticle">Шапка для статьи</label>
-                <input type="file" class="form-control" name="image" id="imageArticle">
+                <input type="file" class="form-control" id="imageArticle">
                 <small id="fileHelp" class="form-text">Желательно 1012x372</small>
             </div>
             <div class="form-group">

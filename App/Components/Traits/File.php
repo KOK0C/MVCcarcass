@@ -14,7 +14,11 @@ trait File
 {
     private function loadFile(array $file, string $extension, string $path)
     {
-        if (!in_array($this->getFileExtension($file), explode('|', $extension))) {
+        if (empty($file['name'])) {
+            Session::set('errors', ['image' => ['Загрузите файл']]);
+            return false;
+        }
+        if (! in_array($this->getFileExtension($file), explode('|', $extension))) {
             Session::set('errors', ['image' => ['Некорректный формат файла']]);
             return false;
         }

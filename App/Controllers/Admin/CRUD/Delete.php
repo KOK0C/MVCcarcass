@@ -15,6 +15,7 @@ use IhorRadchenko\App\Models\Article;
 use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
+use IhorRadchenko\App\Models\Review;
 
 class Delete extends Admin
 {
@@ -75,6 +76,23 @@ class Delete extends Admin
             $mark = Brand::findById($_POST['mark']);
             $mark->delete();
             Redirect::to('/admin/cars');
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionReview()
+    {
+        if ($this->isAjax() && ! empty($_POST['id'])) {
+            $review = Review::findById($_POST['id']);
+            if ($review->delete()) {
+                print 'true';
+            }
+            exit();
         } else {
             throw new Error404();
         }

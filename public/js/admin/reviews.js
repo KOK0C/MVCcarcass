@@ -42,4 +42,16 @@ $().ready(function () {
             }
         );
     });
+    $(".showMore").click(function () {
+        $.post(
+            '/admin/reviews/show',
+            {
+                id: $(this).data('id')
+            },
+            function (data) {
+                $("#forModal").empty().append(data);
+                $("#reviewModal").modal('show');
+            }
+        );
+    });
 });

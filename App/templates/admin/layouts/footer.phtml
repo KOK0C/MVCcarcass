@@ -24,6 +24,7 @@
             case 'articles':
                 print '<script> var deleteUri = \'/delete/article\'</script>';
                 print '<script src="/public/js/admin/delete.js"></script>';
+                print '<script src="/public/js/admin/update/articles.js"></script>';
                 break;
             case 'categories':
                 print '<script src="/public/js/admin/update/categories.js"></script>';
@@ -33,6 +34,10 @@
             case 'cars':
                 print '<script src="/public/js/admin/update/cars.js"></script>';
                 print '<script src="/public/js/admin/delete/cars.js"></script>';
+                break;
+            case 'reviews':
+                print '<script> var deleteUri = \'/delete/review\';</script>';
+                print '<script src="/public/js/admin/delete.js"></script>';
         endswitch; ?>
     <?php endif; ?>
 </div>

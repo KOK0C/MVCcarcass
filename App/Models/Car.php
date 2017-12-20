@@ -157,18 +157,16 @@ class Car extends Model
      */
     public function load(array $data, array $rules): bool
     {
-        if ($data['img']['error'] === 0) {
+        if (isset($data['img'])) {
             if (! $data['img'] = $this->loadFile($data['img'],  'jpeg|png|jpg|JPG|JPEG|PNG', $_SERVER['DOCUMENT_ROOT'] . $this->carImgDir)) {
                 return false;
             }
-        } else {
-            unset($data['img']);
         }
         $pathCarIcon = $_SERVER['DOCUMENT_ROOT'] . $this->iconDir . str_replace(' ', '_', mb_strtolower(Brand::findById($data['brand_id'])->name));
         if (! file_exists($pathCarIcon)) {
             mkdir($pathCarIcon);
         }
-        if ($data['icon']['error'] === 0) {
+        if (isset($data['icon'])) {
             if (! $data['icon'] = $this->loadFile(
                 $data['icon'],
                 'png',

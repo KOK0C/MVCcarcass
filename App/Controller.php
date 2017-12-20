@@ -82,11 +82,7 @@ abstract class Controller
     protected function buildSideBar()
     {
         $this->sideBar = new View('/App/templates/layouts/sidebar.phtml');
-        $cache = new Cache();
-        if (! $this->sideBar->brands = $cache->get('side_bar')) {
-            $this->sideBar->brands = Brand::findAll(false, 'name');
-            $cache->set('side_bar', $this->sideBar->brands, 3600);
-        }
+        $this->sideBar->brands = Brand::findAll(false, 'name');
     }
 
     protected function buildFooter()

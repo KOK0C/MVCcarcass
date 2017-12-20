@@ -91,4 +91,17 @@ class Review extends Admin
         $this->mainPage->brands = Brand::findAll(false, 'name');
         View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionShow()
+    {
+        if ($this->isAjax() && ! empty($_POST['id'])) {
+            View::loadForAjax('admin/review_modal', ReviewModel::findById($_POST['id']));
+        } else {
+            throw new Error404();
+        }
+    }
 }

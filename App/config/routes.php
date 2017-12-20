@@ -16,6 +16,7 @@ return [
     '^delete/category$' => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'category'],
     '^delete/car$'      => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'car'],
     '^delete/mark$'     => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'mark'],
+    '^delete/review$'   => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'review'],
 
     '^update/article$'  => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
     '^update/category$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'category'],
@@ -30,6 +31,7 @@ return [
     '^(admin)/categories/update$' => ['controller' => 'Admin\\Category', 'action' => 'update'],
     '^(admin)/categories$'        => ['controller' => 'Admin\\Category', 'action' => 'index'],
 
+    '^(admin)/reviews/show$'                              => ['controller' => 'Admin\\Review', 'action' => 'show'],
     '^(admin)/reviews/mark/([a-z-]+)/model/([a-z0-9-]+)$' => ['controller' => 'Admin\\Review', 'action' => 'model'],
     '^(admin)/reviews/mark/([a-z-]+)$'                    => ['controller' => 'Admin\\Review', 'action' => 'mark'],
     '^(admin)/reviews$'                                   => ['controller' => 'Admin\\Review', 'action' => 'index'],

@@ -53,6 +53,7 @@
                     <th>Оценка</th>
                     <th>Публикация</th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody class="table-body">
@@ -72,7 +73,12 @@
                                 <?= $review->formatDate(); ?>
                             </td>
                             <td>
-                                <a href="" class="btn btn-danger btn-sm">Удалить</a>
+                                <button class="showMore" data-id="<?= $review->getId(); ?>">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm btn-delete" data-id="<?= $review->getId(); ?>">Удалить</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -85,6 +91,8 @@
         </div>
     </div>
 </div>
+
+<div id="forModal"></div>
 
 <?php if (isset($totalPages)): ?>
     <script>
