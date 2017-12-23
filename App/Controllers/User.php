@@ -141,19 +141,21 @@ class User extends Controller
                         'email' => true,
                         'maxLength' => 100
                     ],
-                    'phone_number' => [
-                        'length' => 13,
-                        'phone' => true,
-                    ],
                     'city' => [
                         'maxLength' => 64
                     ]
                 ];
+                if (! empty($_POST['phone_number'])) {
+                    $validRules['phone_number'] = [
+                        'length' => 13,
+                        'phone' => true,
+                    ];
+                    if ($user->phone_number !== $_POST['phone_number']) {
+                        $validRules['phone_number']['unique'] = 'users';
+                    }
+                }
                 if ($user->email !== $_POST['email']) {
                     $validRules['email']['unique'] = 'users';
-                }
-                if ($user->phone_number !== $_POST['phone_number']) {
-                    $validRules['phone_number']['unique'] = 'users';
                 }
                 if ($user->load($_POST, $validRules)) {
                     $user->save();

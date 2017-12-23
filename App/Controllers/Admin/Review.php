@@ -100,8 +100,8 @@ class Review extends Admin
     {
         if ($this->isAjax() && ! empty($_POST['id'])) {
             View::loadForAjax('admin/review_modal', ReviewModel::findById($_POST['id']));
-        } else {
-            throw new Error404();
+            exit();
         }
+        throw new Error404();
     }
 }

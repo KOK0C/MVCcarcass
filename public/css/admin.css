@@ -265,8 +265,18 @@ label.error {
     max-width: 166px;
 }
 
-.showMore {
+.showMore{
     background-color: inherit;
     border: none;
+    font-size: 1.2rem;
+}
+
+.showUser {
+    background-color: inherit;
+    border: none;
+    color: #e9ebec;
+}
+
+.userInfo {
     font-size: 1.2rem;
 }

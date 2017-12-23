@@ -46,4 +46,17 @@ class User extends Admin
         }
         throw new Error404();
     }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionShow()
+    {
+        if ($this->isAjax() && ! empty($_POST['id'])) {
+            View::loadForAjax('admin/user_modal', UserModel::findById($_POST['id']));
+            exit();
+        }
+        throw new Error404();
+    }
 }

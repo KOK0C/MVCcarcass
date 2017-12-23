@@ -48,6 +48,7 @@ return [
     '^(admin)/cars$'                => ['controller' => 'Admin\\Car', 'action' => 'index'],
 
     '^(admin)/users/update$' => ['controller' => 'Admin\\User', 'action' => 'update'],
+    '^(admin)/users/show$'   => ['controller' => 'Admin\\User', 'action' => 'show'],
     '^(admin)/users$'        => ['controller' => 'Admin\\User', 'action' => 'index'],
 
     '^(admin)$' => ['controller' => 'Admin\\Main', 'action' => 'index'],

@@ -66,7 +66,9 @@
                                 </a>
                             </td>
                             <td>
-                                <?= htmlentities($review->author->email); ?>
+                                <button class="showUser" data-id="<?= $review->author->getId(); ?>">
+                                    <?= htmlentities($review->author->email); ?>
+                                </button>
                             </td>
                             <td><?= htmlentities($review->rating) . '/5'; ?></td>
                             <td>

@@ -54,4 +54,16 @@ $().ready(function () {
             }
         );
     });
+    $(".showUser").click(function () {
+        $.post(
+            '/admin/users/show',
+            {
+                id: $(this).data('id')
+            },
+            function (data) {
+                $("#forModal").empty().append(data);
+                $("#reviewModal").modal('show');
+            }
+        );
+    });
 });

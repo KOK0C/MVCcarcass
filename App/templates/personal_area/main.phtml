@@ -6,11 +6,7 @@
                 Ваше имя:
             </div>
             <div class="infoValue">
-                <?php if (! empty($user->getFullName())): ?>
-                    <?= htmlentities($user->getFullName()); ?>
-                <?php else: ?>
-                    <a href="/user/profile"><u>Не указано</u></a>
-                <?php endif; ?>
+                <?= htmlentities($user->getFullName()) ?: '<a href="/user/profile"><u>Не указано</u></a>'; ?>
             </div>
             <div class="infoTitle">
                 Электронная почта:
@@ -22,21 +18,13 @@
                 Город:
             </div>
             <div class="infoValue">
-                <?php if (! empty($user->city)): ?>
-                    <?= htmlentities($user->city); ?>
-                <?php else: ?>
-                    <a href="/user/profile"><u>Не указано</u></a>
-                <?php endif; ?>
+                <?= htmlentities($user->city) ?: '<a href="/user/profile"><u>Не указано</u></a>'; ?>
             </div>
             <div class="infoTitle">
                 Телефон:
             </div>
             <div class="infoValue">
-                <?php if (! empty($user->phone_number)): ?>
-                    <?= htmlentities($user->phone_number); ?>
-                <?php else: ?>
-                    <a href="/user/profile"><u>Не указано</u></a>
-                <?php endif; ?>
+                <?= htmlentities($user->phone_number) ?: '<a href="/user/profile"><u>Не указано</u></a>'; ?>
             </div>
         <?php endif; ?>
     </div>
