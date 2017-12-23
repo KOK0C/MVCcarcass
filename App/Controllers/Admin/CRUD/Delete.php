@@ -16,6 +16,7 @@ use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\Review;
+use IhorRadchenko\App\Models\User;
 
 class Delete extends Admin
 {
@@ -93,8 +94,23 @@ class Delete extends Admin
                 print 'true';
             }
             exit();
-        } else {
-            throw new Error404();
         }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionUser()
+    {
+        if ($this->isAjax() && ! empty($_POST['id'])) {
+            $user = User::findById($_POST['id']);
+            if ($user->delete()) {
+                print 'true';
+            }
+            exit();
+        }
+        throw new Error404();
     }
 }

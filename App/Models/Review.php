@@ -152,4 +152,15 @@ class Review extends Model
         }
         return DataBase::getInstance()->countRow($sql);
     }
+
+    /**
+     * @param int $id
+     * @return array
+     * @throws DbException
+     */
+    public static function findByAuthorId(int $id)
+    {
+        $sql = 'SELECT * FROM reviews WHERE author_id = :author';
+        return DataBase::getInstance()->query($sql, self::class, ['author' => $id]);
+    }
 }

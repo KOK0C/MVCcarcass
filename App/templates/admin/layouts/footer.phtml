@@ -41,6 +41,8 @@
                 break;
             case 'users':
                 print '<script src="/public/js/admin/update/users.js"></script>';
+                print '<script> var deleteUri = \'/delete/user\';</script>';
+                print '<script src="/public/js/admin/delete.js"></script>';
                 break;
         endswitch; ?>
     <?php endif; ?>

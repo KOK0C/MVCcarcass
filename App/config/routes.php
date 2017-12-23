@@ -17,6 +17,7 @@ return [
     '^delete/car$'      => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'car'],
     '^delete/mark$'     => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'mark'],
     '^delete/review$'   => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'review'],
+    '^delete/user$'     => ['controller' => 'Admin\\CRUD\\Delete', 'action' => 'user'],
 
     '^update/article$'  => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'article'],
     '^update/category$' => ['controller' => 'Admin\\CRUD\\Update', 'action' => 'category'],

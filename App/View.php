@@ -83,6 +83,6 @@ class View
 
     public static function loadForAjax(string $view, $data)
     {
-        require $_SERVER['DOCUMENT_ROOT'] . '/App/templates/layouts/ajax/' . $view . '.phtml';
+        require $_SERVER['DOCUMENT_ROOT'] . '/App/templates/ajax/' . $view . '.phtml';
     }
 }
