@@ -6,7 +6,7 @@
             <td><?= htmlentities($user->email); ?></td>
             <td><?= $user->formatDate(); ?></td>
             <td>
-                <a href="" class="btn btn-primary btn-sm">Редактировать</a>
+                <button class="btn btn-primary btn-sm btn-update" data-id="<?= $user->getId(); ?>">Редактировать</button>
             </td>
             <td>
                 <a href="" class="btn btn-danger btn-sm">Удалить</a>

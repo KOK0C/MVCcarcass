@@ -1,0 +1,51 @@
+
+<!-- Modal -->
+<?php if (! empty($data)): ?>
+    <div class="modal fade" id="updateUser" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/update/user" id="formUpdateUser" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Обновление пользователя</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="email" name="email" required maxlength="100" placeholder="Email" class="form-control" autofocus value="<?= htmlentities($data->email); ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="f_name" placeholder="Имя" minlength="2" maxlength="30" class="form-control" value="<?= htmlentities($data->f_name); ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="l_name" placeholder="Фамилия" minlength="2" maxlength="40" class="form-control" value="<?= htmlentities($data->l_name); ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="phone_number" pattern="\+380\d{9}" placeholder="Номер телефона" class="form-control" value="<?= htmlentities($data->phone_number); ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="city" placeholder="Город" maxlength="64" class="form-control" value="<?= htmlentities($data->city); ?>">
+                        </div>
+                        <div class="form-group">
+                            <select name="group_id" class="form-control" required>
+                                <?php foreach ($data->getUserGroups() as $group): ?>
+                                    <option value="<?= $group->id; ?>"
+                                        <?php if ($group->name === $data->group) {print 'selected';} ?>
+                                    >
+                                        <?= $group->name; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value="<?= $data->getId(); ?>">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary" name="update_user">Обновить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

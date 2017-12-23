@@ -158,4 +158,21 @@ class DataBase
             throw new DbException('Ошибка при удалении записи из бд: ' . $e->getMessage());
         }
     }
+
+    /**
+     * @param string $table
+     * @return array
+     * @throws DbException
+     */
+    public function getAll(string $table)
+    {
+        $sql = 'SELECT * FROM ' . $table;
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            throw new DbException('Ошибка при получении данных из бд: ' . $e->getMessage());
+        }
+         return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
 }

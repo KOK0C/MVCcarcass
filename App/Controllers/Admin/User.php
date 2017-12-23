@@ -33,4 +33,17 @@ class User extends Admin
         $this->header->breadcrumb = ['main' => 'Пользователи'];
         View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
     }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionUpdate()
+    {
+        if ($this->isAjax() && isset($_POST['id'])) {
+            View::loadForAjax('admin/update/users', UserModel::findById($_POST['id']));
+            exit();
+        }
+        throw new Error404();
+    }
 }

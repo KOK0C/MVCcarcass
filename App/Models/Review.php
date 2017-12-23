@@ -91,14 +91,16 @@ class Review extends Model
      * @return array|null
      * @throws \IhorRadchenko\App\Exceptions\DbException
      */
-    public static function findReviewsByModel(int $page, string $brand, string $model)
+    public static function findReviewsByModel(int $page = 0, string $brand, string $model)
     {
         $offset = ($page - 1) * self::PER_PAGE;
         $sql = '
                 SELECT * FROM ' . self::TABLE . ' WHERE car_id = 
                 (SELECT id FROM cars WHERE brand_id = 
-                (SELECT id FROM brands WHERE `name` = :brand) AND model = :model) ORDER BY id DESC 
-                LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
+                (SELECT id FROM brands WHERE `name` = :brand) AND model = :model) ORDER BY id DESC ';
+        if ($page) {
+            $sql .= ' LIMIT ' . self::PER_PAGE . ' OFFSET ' . $offset;
+        }
         $result = DataBase::getInstance()->query($sql, self::class, ['brand' => $brand, 'model' => $model]);
         return (! empty($result)) ? $result : null;
     }

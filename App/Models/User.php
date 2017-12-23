@@ -18,7 +18,7 @@ use IhorRadchenko\App\Model;
  * Class User
  * @package App\Models
  * Реализует модель таблицы users
- * @property $group
+ * @property string $group
  */
 class User extends Model
 {
@@ -40,7 +40,8 @@ class User extends Model
         'f_name' => '',
         'l_name' => '',
         'phone_number' => '',
-        'city' => ''
+        'city' => '',
+        'group_id' => 1
     ];
 
     public function __isset($name)
@@ -137,5 +138,14 @@ class User extends Model
     public static function isAdmin(): bool
     {
         return (Session::has('user') && Session::get('user')->group === 'admin');
+    }
+
+    /**
+     * @return array
+     * @throws DbException
+     */
+    public function getUserGroups()
+    {
+        return DataBase::getInstance()->getAll('user_group');
     }
 }

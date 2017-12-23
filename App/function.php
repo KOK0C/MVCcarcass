@@ -34,11 +34,3 @@ function mb_ucwords(string $string, string $encoding = 'UTF-8'): string
     $string = implode(' ', $string);
     return $string;
 }
-
-function debug($var)
-{
-    print '<pre>';
-    print_r($var);
-    print '</pre>';
-    die;
-}

@@ -68,7 +68,7 @@ $().ready(function () {
                     data: {
                         email: $('#profileForm:input[name="email"]').val()
                     }
-                },
+                }
             },
             phone_number: {
                 pattern: '\\+380\\d{9}',

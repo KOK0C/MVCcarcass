@@ -19,6 +19,7 @@ use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Car;
 use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\Models\Page;
+use IhorRadchenko\App\Models\User;
 
 class Update extends Admin
 {
@@ -162,6 +163,53 @@ class Update extends Admin
             $_POST['update_car'] = true;
             $_POST['model'] = $car->getId();
             Redirect::to('/admin/cars/update');
+        } else {
+            throw new Error404();
+        }
+    }
+
+    /**
+     * @throws DbException
+     * @throws Error404
+     */
+    protected function actionUser()
+    {
+        if ($this->isPost('update_user')) {
+            $user = User::findById($_POST['id']);
+            $validRules = [
+                'f_name' => [
+                    'required' => true,
+                    'minLength' => 2,
+                    'maxLength' => 30,
+                ],
+                'l_name' => [
+                    'required' => true,
+                    'minLength' => 2,
+                    'maxLength' => 40,
+                ],
+                'email' => [
+                    'email' => true,
+                    'maxLength' => 100
+                ],
+                'phone_number' => [
+                    'length' => 13,
+                    'phone' => true,
+                ],
+                'city' => [
+                    'maxLength' => 64
+                ]
+            ];
+            if ($user->email !== $_POST['email']) {
+                $validRules['email']['unique'] = 'users';
+            }
+            if ($user->phone_number !== $_POST['phone_number']) {
+                $validRules['phone_number']['unique'] = 'users';
+            }
+            if ($user->load($_POST, $validRules)) {
+                $user->save();
+                Redirect::to('/admin/users');
+            }
+            Redirect::to('/admin/users');
         } else {
             throw new Error404();
         }

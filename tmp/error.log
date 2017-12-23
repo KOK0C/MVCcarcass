@@ -2349,3 +2349,155 @@ File : C:\OSPanel\domains\MVCcarcass\App\DataBase.php;
 Line : 58;
 
 =======================================================================
+
+[23-12-2017 13:03:04] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:03:17] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:03:20] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:04:22] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:04:51] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:05:22] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:07:32] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:09:09] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[23-12-2017 13:09:17] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[23-12-2017 13:09:18] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[23-12-2017 13:33:23] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:33:45] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:34:56] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:35:36] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:36:08] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:36:09] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:37:13] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:40:08] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================
+
+[23-12-2017 13:40:27] WARNING
+Undefined property: Generator::$id
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\templates\layouts\ajax\admin\update\users.phtml;
+Line : 33;
+
+=======================================================================

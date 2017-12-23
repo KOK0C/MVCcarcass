@@ -6,6 +6,18 @@
                 <h2>Пользователи</h2>
             </div>
             <div class="panel-body">
+                <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
+                    <div class="alert alert-danger error-block">
+                        <ul class="text-left">
+                            <?php foreach (\IhorRadchenko\App\Components\Session::get('errors') as $field): ?>
+                                <?php foreach ($field as $error): ?>
+                                    <li><?= $error; ?></li>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
+                <?php endif; ?>
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -23,7 +35,7 @@
                             <td><?= htmlentities($user->email); ?></td>
                             <td><?= $user->formatDate(); ?></td>
                             <td>
-                                <a href="" class="btn btn-primary btn-sm">Редактировать</a>
+                                <button class="btn btn-primary btn-sm btn-update" data-id="<?= $user->getId(); ?>">Редактировать</button>
                             </td>
                             <td>
                                 <a href="" class="btn btn-danger btn-sm">Удалить</a>
@@ -39,6 +51,8 @@
         </div>
     <?php endif; ?>
 </div>
+
+<div id="forModal"></div>
 
 <?php if (isset($totalPages)): ?>
     <script>
