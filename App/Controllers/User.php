@@ -10,6 +10,7 @@ namespace IhorRadchenko\App\Controllers;
 
 use IhorRadchenko\App\Components\Cookie;
 use IhorRadchenko\App\Components\Redirect;
+use IhorRadchenko\App\Components\SendMail;
 use IhorRadchenko\App\Components\Session;
 use IhorRadchenko\App\Components\Token;
 use IhorRadchenko\App\Controller;
@@ -25,6 +26,7 @@ class User extends Controller
     /**
      * @throws Error404
      * @throws DbException
+     * @throws \Exception
      */
     protected function actionSignUp()
     {
@@ -45,10 +47,16 @@ class User extends Controller
                     'match' => 'password'
                 ]
             ];
-            if ($user->load($_POST, $validRules)) {
+            $confirmToken = bin2hex(random_bytes(32));
+            if ($user->load(array_merge($_POST, ['token' => $confirmToken]), $validRules)) {
                 $user->passwordHash();
                 $user->save();
-                Session::set('login_success', 'Поздравляем с регистрацией, теперь можете войти');
+
+                $mail = new SendMail();
+                $mail->confirmReg($_POST['email'], $confirmToken);
+                $mail->send();
+
+                Session::set('login_success', 'Поздравляем с регистрацией, теперь можете войти, не забудьте подтвердить email адресс');
                 Redirect::to();
             }
             Session::set('signup_error', 'fail');
@@ -207,6 +215,25 @@ class User extends Controller
             View::display($this->header, $this->sideBar, $this->mainPage, $this->footer);
         } else {
             throw new Error404();
+        }
+    }
+
+    /**
+     * @param $page
+     * @param string $token
+     * @throws DbException
+     * @throws Error404
+     */
+    protected function actionConfirm($page, string $token)
+    {
+        $user = UserModel::findUserByToken($token);
+        if (! $user) {
+            throw new Error404();
+        }
+        if ($user->load(['verified' => 1, 'token' => "NULL"], [])) {
+            $user->save();
+            $this->mainPage = new View('/App/templates/confirm.phtml');
+            View::display($this->header, $this->mainPage, $this->footer);
         }
     }
 

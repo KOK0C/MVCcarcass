@@ -49,9 +49,9 @@ class Check extends Controller
      */
     protected function actionPhone()
     {
-        if ($this->isAjax() && isset($_POST['phone'])) {
-            print (Session::get('user')->phone_number === $_POST['phone']
-                || empty(DataBase::getInstance()->get('users', 'email', trim($_POST['email'])))) ? 'true' : 'false';
+        if ($this->isAjax() && isset($_POST['phone_number'])) {
+            print (Session::get('user')->phone_number === $_POST['phone_number']
+                || empty(DataBase::getInstance()->get('users', 'phone_number', trim($_POST['phone_number'])))) ? 'true' : 'false';
             exit();
         }
         throw new Error404();

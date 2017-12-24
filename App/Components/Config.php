@@ -13,8 +13,8 @@ use IhorRadchenko\App\Components\Traits\Singleton;
 /**
  * Class Config
  * @package App
- * @property string $domen
  * @property array $db
+ * @property array $smtp
  */
 class Config
 {
