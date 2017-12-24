@@ -52,9 +52,11 @@
             </div>
             <?php \IhorRadchenko\App\Components\Session::delete('errors'); ?>
         <?php endif; ?>
-    <h2 class="blog-header forum-header">Добавить сообщение</h2>
-        <textarea name="text" id="commentId" cols="44" rows="5" placeholder="Сообщение" required></textarea>
-        <button type="submit" class="btn btn-block btn-success btn-sm" id="addComment">ОТПРАВИТЬ</button>
+        <?php if (\IhorRadchenko\App\Models\User::isVerified()): ?>
+            <h2 class="blog-header forum-header">Добавить сообщение</h2>
+            <textarea name="text" id="commentId" cols="44" rows="5" placeholder="Сообщение" required></textarea>
+            <button type="submit" class="btn btn-block btn-success btn-sm" id="addComment">ОТПРАВИТЬ</button>
+        <?php endif; ?>
     <?php endif; ?>
 
 </div>

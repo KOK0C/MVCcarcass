@@ -145,7 +145,15 @@ class User extends Model
 
     public static function isVerified(): bool
     {
-        return (Session::has('user') && Session::get('user')->verified === 1);
+        return (Session::has('user') && Session::get('user')->verified === '1');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVerified()
+    {
+        return $this->verified;
     }
 
     /**

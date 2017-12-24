@@ -110,6 +110,21 @@ class Reviews extends Controller
                     'required' => true,
                 ]
             ];
+            if (isset($_POST['f_name'])) {
+                $validRules['f_name'] = [
+                    'required' => true,
+                    'minLength' => 2,
+                    'maxLength' => 30,
+                ];
+                $user = User::findById(Session::get('user')->getId());
+                if ($user->load($_POST, $validRules)) {
+                    $user->save();
+                    Session::set('user', User::findById($user->getId()));
+                } else {
+                    Session::set('add_review', 'fail');
+                    Redirect::to();
+                }
+            }
             if ($review->load($_POST, $validRules)) {
                 $review->save();
                 Redirect::to();

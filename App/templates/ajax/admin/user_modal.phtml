@@ -21,6 +21,9 @@
                         Фамилия: <?= htmlentities($data->l_name) ?: 'Не указано'; ?>
                     </div>
                     <div class="userInfo">
+                        Дата регистрации: <?= $data->formatDate(); ?>
+                    </div>
+                    <div class="userInfo">
                         Номер телефона: <?= htmlentities($data->phone_number) ?: 'Не указано'; ?>
                     </div>
                     <div class="userInfo">
@@ -28,6 +31,9 @@
                     </div>
                     <div class="userInfo">
                         Роль: <?= htmlentities($data->group) ?: 'Не указано'; ?>
+                    </div>
+                    <div class="userInfo">
+                        Подтвердил email: <?= $data->getVerified() ? 'true' : 'false'; ?>
                     </div>
                 </div>
                 <div class="modal-footer">

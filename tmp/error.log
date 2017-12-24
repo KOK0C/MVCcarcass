@@ -2677,3 +2677,307 @@ File : C:\OSPanel\domains\MVCcarcass\public\index.php;
 Line : 26;
 
 =======================================================================
+
+[24-12-2017 15:22:08] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:22:09] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:22:15] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:22:16] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:23:22] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:23:23] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:23:38] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:23:40] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:24:29] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:25:13] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:26:07] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:26:37] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:26:38] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:26:40] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:27:57] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:28:04] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:28:47] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:29:01] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:29:02] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:29:41] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:29:41] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:31:13] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:33:06] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:35:58] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:17] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:18] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:20] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:21] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:23] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:23] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:24] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:24] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:25] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:25] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:26] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:36:27] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:37:28] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================
+
+[24-12-2017 15:37:28] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
+Line : 70;
+
+=======================================================================

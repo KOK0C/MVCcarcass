@@ -1,6 +1,6 @@
 
 <div class="col-sm-5">
-    <?php if (\IhorRadchenko\App\Components\Session::has('user') && ! empty($section)): ?>
+    <?php if (\IhorRadchenko\App\Models\User::isVerified() && ! empty($section)): ?>
         <?php if (\IhorRadchenko\App\Components\Session::has('errors')): ?>
             <div class="alert alert-danger">
                 <ul>

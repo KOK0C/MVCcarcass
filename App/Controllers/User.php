@@ -230,8 +230,11 @@ class User extends Controller
         if (! $user) {
             throw new Error404();
         }
-        if ($user->load(['verified' => 1, 'token' => "NULL"], [])) {
+        if ($user->load(['verified' => 1, 'token' => 0], [])) {
             $user->save();
+            if (Session::has('user')) {
+                Session::set('user', UserModel::findById($user->getId()));
+            }
             $this->mainPage = new View('/App/templates/confirm.phtml');
             View::display($this->header, $this->mainPage, $this->footer);
         }
