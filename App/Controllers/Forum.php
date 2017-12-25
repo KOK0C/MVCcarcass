@@ -10,11 +10,13 @@ namespace IhorRadchenko\App\Controllers;
 
 use IhorRadchenko\App\Components\Redirect;
 use IhorRadchenko\App\Components\Session;
+use IhorRadchenko\App\Components\TextFormat;
 use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Comment;
 use IhorRadchenko\App\Models\ForumSection;
 use IhorRadchenko\App\Models\ForumTheme;
+use IhorRadchenko\App\Models\User;
 use IhorRadchenko\App\View;
 
 class Forum extends Controller
@@ -80,6 +82,7 @@ class Forum extends Controller
         $this->mainPage->theme = $theme;
         $this->nav->theme = $theme;
         $this->mainPage->forums = Comment::getForTheme($theme->getId());
+        $this->mainPage->bbCode = new TextFormat();
         $this->mainPage->totalComments = ceil($theme->count / Comment::PER_PAGE);
         View::display($this->header, $this->nav, $this->leftSideBar, $this->mainPage, $this->sideBar, $this->footer);
     }
@@ -183,6 +186,20 @@ class Forum extends Controller
                     'required' => true
                 ]
             ];
+            if (isset($_POST['f_name'])) {
+                $validRules['f_name'] = [
+                    'required' => true,
+                    'minLength' => 2,
+                    'maxLength' => 30,
+                ];
+                $user = User::findById(Session::get('user')->getId());
+                if ($user->load($_POST, $validRules)) {
+                    $user->save();
+                    Session::set('user', User::findById($user->getId()));
+                } else {
+                    exit();
+                }
+            }
             $comment = new Comment();
             if ($comment->load($_POST, $validRules)) {
                 $comment->save();
@@ -230,11 +247,14 @@ class Forum extends Controller
     {
         if ($this->isAjax() && isset($_POST['idComment'])) {
             $data = Comment::findById($_POST['idComment']);
-            if ($data->load($_POST, [])) {
+            if ($data->load($_POST, [
+                'text' => [
+                    'required' => true
+                ]
+            ])) {
                 $data->save();
-                $data = Comment::findById($_POST['idComment']);
+                View::loadForAjax('insert_update_comment', [Comment::findById($_POST['idComment']), (new TextFormat())]);
             }
-            print json_encode($data, JSON_UNESCAPED_UNICODE);
             exit();
         }
         throw new Error404();

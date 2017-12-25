@@ -647,6 +647,10 @@ h2.blog-header.forum-header {
     padding: 5px 15px;
 }
 
+.commentText img {
+    max-width: 250px;
+}
+
 #commentId {
     border-radius: 10px;
     background-color: #ffe7c0;

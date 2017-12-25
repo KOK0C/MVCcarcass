@@ -43,6 +43,7 @@ $("#addComment").click(function () {
             function (data) {
                 comment.css('border-color', 'rgb(169, 169, 169)').prop('placeholder', 'Сообщение').val('');
                 $(data).hide().appendTo(".comments").fadeIn(1000);
+                totalComments++;
             }
         );
     } else {
@@ -87,8 +88,7 @@ $("#forModal").on('click', '.btnUpdateComment', function () {
             text: $("#textComment").val()
         },
         function (data) {
-            data = $.parseJSON(data);
-            $('[data-idComment=' + $("#updateCommentId").val() + ']').children(".commentText").empty().append(data.text);
+            $('[data-idComment=' + $("#updateCommentId").val() + ']').children(".commentText").empty().append(data);
             $("#updateComments").modal('hide');
         }
     );

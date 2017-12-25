@@ -1,0 +1,4 @@
+
+<?php if (! empty($data)): ?>
+    <?= $data[1]->bbCode(nl2br(htmlentities($data[0]->text))); ?>
+<?php endif; ?>

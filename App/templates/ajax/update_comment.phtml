@@ -11,7 +11,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <textarea name="text" id="textComment" cols="30" rows="10" required placeholder="Текст сообщения" class="form-control"><?= trim(nl2br(htmlentities($data->text))); ?></textarea>
+                        <textarea name="text" id="textComment" cols="30" rows="10" required placeholder="Текст сообщения" class="form-control"><?= nl2br(htmlentities($data->text)); ?></textarea>
                     </div>
                     <input type="hidden" id="updateCommentId" value="<?= $data->getId(); ?>">
                     <div class="modal-footer">

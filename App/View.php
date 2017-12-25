@@ -8,6 +8,7 @@
 
 namespace IhorRadchenko\App;
 
+use IhorRadchenko\App\Components\TextFormat;
 use IhorRadchenko\App\Components\Traits\Magic;
 use IhorRadchenko\App\Components\Pagination;
 use IhorRadchenko\App\Models\Article;
@@ -40,6 +41,7 @@ use IhorRadchenko\App\Models\User;
  * @property ForumSection $section
  * @property array $counts
  * @property array $breadcrumb
+ * @property TextFormat $bbCode
  */
 class View
 {

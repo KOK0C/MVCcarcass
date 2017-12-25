@@ -41,7 +41,9 @@
                             </div>
                         <?php endif; ?>
                         <div class="commentText">
-                            <?= nl2br(htmlentities($comment->text)); ?>
+                            <?php if (isset($bbCode)): ?>
+                                <?= $bbCode->bbCode(nl2br(htmlentities($comment->text))); ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -69,6 +71,11 @@
         <?php endif; ?>
         <?php if (\IhorRadchenko\App\Models\User::isVerified()): ?>
             <h2 class="blog-header forum-header">Добавить сообщение</h2>
+            <?php if (! \IhorRadchenko\App\Components\Session::get('user')->f_name): ?>
+                <div class="form-group">
+                    <input type="text" class="form-control" required minlength="2" maxlength="30" placeholder="Имя" name="f_name">
+                </div>
+            <?php endif; ?>
             <textarea name="text" id="commentId" cols="44" rows="5" placeholder="Сообщение" required></textarea>
             <button type="submit" class="btn btn-block btn-success btn-sm" id="addComment">ОТПРАВИТЬ</button>
         <?php endif; ?>
