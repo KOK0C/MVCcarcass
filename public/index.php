@@ -20,11 +20,13 @@ $route = IhorRadchenko\App\Components\Router::getInstance();
 
 try {
     if (! \IhorRadchenko\App\Components\Session::has('user') && \IhorRadchenko\App\Components\Cookie::has('user')) {
-        $userId = \IhorRadchenko\App\Models\User::getUserSessionFromDB(
+        $findSession = \IhorRadchenko\App\Models\User::getUserSessionFromDB(
             \IhorRadchenko\App\Components\Cookie::get('user'),
             'hash_user'
-        )->user_id;
-        \IhorRadchenko\App\Components\Session::set('user', \IhorRadchenko\App\Models\User::findById($userId));
+        );
+        if ($findSession) {
+            \IhorRadchenko\App\Components\Session::set('user', \IhorRadchenko\App\Models\User::findById($findSession->user_id));
+        }
     }
 
     $route->run();

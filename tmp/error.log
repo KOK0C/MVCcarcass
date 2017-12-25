@@ -2981,3 +2981,67 @@ File : C:\OSPanel\domains\MVCcarcass\App\Models\User.php;
 Line : 70;
 
 =======================================================================
+
+[25-12-2017 12:09:04] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[25-12-2017 12:09:05] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[25-12-2017 12:09:21] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[25-12-2017 12:09:22] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[25-12-2017 12:09:34] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[25-12-2017 12:09:35] WARNING
+Trying to get property of non-object
+Error : NOTICE [8];
+File : C:\OSPanel\domains\MVCcarcass\public\index.php;
+Line : 26;
+
+=======================================================================
+
+[25-12-2017 12:11:22] CRITICAL
+Call to a member function getId() on boolean
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\forum\theme.phtml;
+Line : 29;
+
+=======================================================================
+
+[25-12-2017 12:12:00] CRITICAL
+Call to a member function getId() on boolean
+Trowable : Error;
+File : C:\OSPanel\domains\MVCcarcass\App\templates\forum\theme.phtml;
+Line : 29;
+
+=======================================================================

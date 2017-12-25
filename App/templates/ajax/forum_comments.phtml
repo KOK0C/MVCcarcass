@@ -1,7 +1,7 @@
 
 <?php if (! empty($data)): ?>
     <?php foreach ($data as $comment): ?>
-        <div class="comment">
+        <div class="comment" data-idComment="<?= $comment->getId(); ?>">
             <div class="authorComment">
                 <div class="authorAvatar">
                     <img src="/public/img/avatar/defaultAvatar.png" alt="">
@@ -13,6 +13,16 @@
                     <?= htmlentities($comment->getDate()); ?>
                 </div>
             </div>
+            <?php if (\IhorRadchenko\App\Models\User::isAdmin() || (\IhorRadchenko\App\Components\Session::has('user') && \IhorRadchenko\App\Components\Session::get('user')->getId() === $comment->author->getId())): ?>
+                <div class="control">
+                    <button class="btn-update" data-id="<?= $comment->getId(); ?>">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn-delete" data-id="<?= $comment->getId(); ?>">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            <?php endif; ?>
             <div class="commentText">
                 <?= nl2br(htmlentities($comment->text)); ?>
             </div>

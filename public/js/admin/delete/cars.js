@@ -1,5 +1,5 @@
 
-$(".btn-delete").click(function () {
+$(".table-body").on("click", ".btn-delete", function () {
     $.post(
         '/admin/car/delete',
         {

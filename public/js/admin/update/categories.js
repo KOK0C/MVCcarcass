@@ -1,5 +1,5 @@
 
-$(".btn-update").click(function () {
+$(".table-body").on("click", ".btn-update", function () {
     $.post(
         '/admin/categories/update',
         {

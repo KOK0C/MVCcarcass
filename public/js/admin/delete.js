@@ -1,4 +1,4 @@
-$(".btn-delete").click(function () {
+$(".table-body").on("click", ".btn-delete", function () {
     var elem = $(this).parent().parent();
     $.post(
         deleteUri,

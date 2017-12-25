@@ -192,4 +192,51 @@ class Forum extends Controller
         }
         throw new Error404();
     }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionAjaxDeleteComment()
+    {
+        if ($this->isAjax() && isset($_POST['id'])) {
+            $comment = Comment::findById($_POST['id']);
+            if ($comment->delete()) {
+                print 'true';
+            }
+            exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionAjaxShowUpdateComment()
+    {
+        if ($this->isAjax() && isset($_POST['id'])) {
+            View::loadForAjax('update_comment', Comment::findById($_POST['id']));
+            exit();
+        }
+        throw new Error404();
+    }
+
+    /**
+     * @throws Error404
+     * @throws \IhorRadchenko\App\Exceptions\DbException
+     */
+    protected function actionAjaxUpdateComment()
+    {
+        if ($this->isAjax() && isset($_POST['idComment'])) {
+            $data = Comment::findById($_POST['idComment']);
+            if ($data->load($_POST, [])) {
+                $data->save();
+                $data = Comment::findById($_POST['idComment']);
+            }
+            print json_encode($data, JSON_UNESCAPED_UNICODE);
+            exit();
+        }
+        throw new Error404();
+    }
 }

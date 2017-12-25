@@ -568,6 +568,10 @@ label.error {
     border-radius: 5px;
 }
 
+h2.blog-header.forum-header {
+    min-height: min-content;
+}
+
 .forum-theme {
     margin-bottom: 15px;
     padding-bottom: 10px;
@@ -580,8 +584,6 @@ label.error {
     font-weight: bold;
 }
 
-
-
 .countMessage {
     font-size: .85rem;
 }
@@ -593,18 +595,20 @@ label.error {
 }
 
 .comment {
-    min-height: 220px;
     margin-bottom: 10px;
-    position: relative;
     box-sizing: border-box;
     border: 1px solid #172c3e;
+    display: grid;
+    grid-template-columns: 130px 1fr 60px;
+    grid-template-rows: 20px 1fr;
+    grid-template-areas: "author . control"
+                         "author text text"
 }
 
 .authorComment {
-    width: 130px;
+    grid-area: author;
     background-color: #172c3e;
-    padding-top: 20px;
-    min-height: 220px;
+    padding: 20px 0;
 }
 
 .authorAvatar img {
@@ -623,11 +627,24 @@ label.error {
     font-size: .8rem;
 }
 
+.control {
+    grid-area: control;
+}
+
+.control button {
+    background-color: inherit;
+    border: none;
+    padding: 2px;
+    color: #e9ebec;
+}
+
+.control button i {
+    margin: 0;
+}
+
 .commentText {
-    padding-top: 20px;
-    position: absolute;
-    top: 0;
-    left: 135px;
+    grid-area: text;
+    padding: 5px 15px;
 }
 
 #commentId {
