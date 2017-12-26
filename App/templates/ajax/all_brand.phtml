@@ -1,0 +1,37 @@
+
+<?php if (! empty($data)): ?>
+    <div class="modal fade" id="allBrand" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Марки авто</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="modal-brand">
+                        <?php foreach ($data as $brand): ?>
+                            <li class="sidebarItem <?php if (isset(explode('/', $_SERVER['REQUEST_URI'])[2])
+                                && explode('/', $_SERVER['REQUEST_URI'])[2] === str_replace(' ', '-', mb_strtolower($brand->name))):
+                                print 'active-SideBar';
+                            endif;?>">
+                                <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($brand->name))); ?>" class="sidebarLink">
+                                    <div class="sidebarPic">
+                                        <img src="<?= htmlentities($brand->getLogo()); ?>" alt="">
+                                    </div>
+                                    <div class="sidebarText">
+                                        <span><?= htmlentities(mb_strtoupper($brand->name)); ?></span>
+                                    </div>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -13,6 +13,7 @@ use IhorRadchenko\App\Controller;
 use IhorRadchenko\App\Exceptions\DbException;
 use IhorRadchenko\App\Exceptions\Error404;
 use IhorRadchenko\App\Models\Article;
+use IhorRadchenko\App\Models\Brand;
 use IhorRadchenko\App\Models\Category;
 use IhorRadchenko\App\View;
 
@@ -82,5 +83,18 @@ class Main extends Controller
         } else {
             throw new Error404();
         }
+    }
+
+    /**
+     * @throws DbException
+     * @throws Error404
+     */
+    protected function actionAllBrand()
+    {
+        if ($this->isAjax()) {
+            View::loadForAjax('all_brand', Brand::findAll(false, 'name'));
+            exit();
+        }
+        throw new Error404();
     }
 }

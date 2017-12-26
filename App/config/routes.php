@@ -7,6 +7,8 @@
  */
 
 return [
+    '^more/brands$' => ['controller' => 'Main', 'action' => 'allBrand'],
+
     '^(confirm)/(.*)' => ['controller' => 'User', 'action' => 'confirm'],
 
     '^create/article$'  => ['controller' => 'Admin\\CRUD\\Create', 'action' => 'article'],

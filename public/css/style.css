@@ -742,8 +742,26 @@ ol.list-unstyled {
 
 .btn-container {
     height: 42px;
+    margin-left: 15px;
 }
 
-#downButton {
+#upButton {
     display: none;
+}
+
+.sidebar-module aside {
+    display: flex;
+    align-items: center;
+}
+
+.modal-brand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.modal-brand li {
+    box-sizing: border-box;
+    border: none;
+    margin: 0 10px;
 }

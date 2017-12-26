@@ -14,28 +14,35 @@
         <div class="btn-container">
             <button class="slider-btn" id="upButton"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></button>
         </div>
-        <div class="slider">
-            <ol class="list-unstyled">
-                <?php foreach ($brands as $brand): ?>
-                    <li class="sidebarItem <?php if (isset(explode('/', $_SERVER['REQUEST_URI'])[2])
-                        && explode('/', $_SERVER['REQUEST_URI'])[2] === str_replace(' ', '-', mb_strtolower($brand->name))):
-                        print 'active-SideBar';
-                    endif;?>">
-                        <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($brand->name))); ?>" class="sidebarLink">
-                            <div class="sidebarPic">
-                                <img src="<?= htmlentities($brand->getLogo()); ?>" alt="">
-                            </div>
-                            <div class="sidebarText">
-                                <span><?= htmlentities(mb_strtoupper($brand->name)); ?></span>
-                            </div>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ol>
-        </div>
+        <aside>
+            <button class="slider-btn" id="moreBrands"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i></button>
+            <div class="slider">
+                <ol class="list-unstyled">
+                    <?php if (! empty($brands)): ?>
+                        <?php foreach ($brands as $brand): ?>
+                            <li class="sidebarItem <?php if (isset(explode('/', $_SERVER['REQUEST_URI'])[2])
+                                && explode('/', $_SERVER['REQUEST_URI'])[2] === str_replace(' ', '-', mb_strtolower($brand->name))):
+                                print 'active-SideBar';
+                            endif;?>">
+                                <a href="/mark/<?= htmlentities(str_replace(' ', '-', mb_strtolower($brand->name))); ?>" class="sidebarLink">
+                                    <div class="sidebarPic">
+                                        <img src="<?= htmlentities($brand->getLogo()); ?>" alt="">
+                                    </div>
+                                    <div class="sidebarText">
+                                        <span><?= htmlentities(mb_strtoupper($brand->name)); ?></span>
+                                    </div>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ol>
+            </div>
+        </aside>
         <div class="btn-container">
             <button class="slider-btn" id="downButton"><i class="fa fa-caret-square-o-down" aria-hidden="true"></i></button>
         </div>
     </div>
 
 </div><!-- /.blog-sidebar -->
+
+<div id="forModal"></div>
