@@ -27,6 +27,7 @@ $("#moreComments").click(function () {
             $(data).hide().appendTo(".comments").fadeIn(1000);
             if (currentCommentPage === totalComments) {
                 $("#moreComments").remove();
+                $("#addComment").css('display', 'block');
             }
         }
     );
@@ -43,7 +44,6 @@ $("#addComment").click(function () {
             function (data) {
                 comment.css('border-color', 'rgb(169, 169, 169)').prop('placeholder', 'Сообщение').val('');
                 $(data).hide().appendTo(".comments").fadeIn(1000);
-                totalComments++;
             }
         );
     } else {

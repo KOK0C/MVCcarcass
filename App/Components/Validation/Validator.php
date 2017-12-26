@@ -26,21 +26,23 @@ class Validator
      * @var array $messages
      */
     private $messages = [
-        'required'      => 'Поле :field должно быть заполнено',
-        'minLength'     => 'Поле :field должно содержать не менее :value символов',
-        'maxLength'     => 'Поле :field должно содержать не более :value символов',
-        'email'         => 'Не корректный email',
-        'alnum'         => 'В поле :field должны быть только буквы или числа',
-        'match'         => ':field не совпадают',
-        'unique'        => 'Такое значение поля :field уже существует',
-        'phone'         => 'Номер телефона не валиден',
-        'length'        => 'Длина поля :field должна составлять :value символов'
+        'required'  => 'Поле :field должно быть заполнено',
+        'minLength' => 'Поле :field должно содержать не менее :value символов',
+        'maxLength' => 'Поле :field должно содержать не более :value символов',
+        'email'     => 'Не корректный email',
+        'alnum'     => 'В поле :field должны быть только буквы или числа',
+        'match'     => ':field не совпадают',
+        'unique'    => 'Такое значение поля :field уже существует',
+        'phone'     => 'Номер телефона не валиден',
+        'length'    => 'Длина поля :field должна составлять :value символов'
     ];
     private $enFields = [
-        'passwordAgain', 'password', 'email', 'f_name', 'l_name', 'phone_number', 'city', 'text', 'title', 'description'
+        'passwordAgain', 'password', 'email', 'f_name', 'l_name', 'phone_number', 'city', 'text', 'title', 'description',
+        'name', 'description_page', 'model', 'mark'
     ];
     private $ruFields = [
-        'Пароли',  '\'Пароль\'', 'Email', '\'Имя\'', '\'Фамилия\'', '\'Номер телефона\'', '\'Город\'', '\'Текст\'', '\'Заголовок\'', '\'Описание\''
+        'Пароли',  '\'Пароль\'', 'Email', '\'Имя\'', '\'Фамилия\'', '\'Номер телефона\'', '\'Город\'', '\'Текст\'', '\'Заголовок\'', '\'Описание\'',
+        '\'Название\'', '\'Описание страници\'', '\'Модель авто\'', '\'Марка авто\''
     ];
     private $data;
 
