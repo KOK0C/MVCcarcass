@@ -22,13 +22,3 @@ $("#downButton").click(function () {
         $("#downButton").css('display', 'none');
     }
 });
-$("#moreBrands").click(function () {
-    $.post(
-        '/more/brands',
-        {},
-        function (data) {
-            $("#forModal").empty().append(data);
-            $("#allBrand").modal('show');
-        }
-    );
-});

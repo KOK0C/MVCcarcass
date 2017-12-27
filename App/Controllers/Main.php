@@ -84,17 +84,4 @@ class Main extends Controller
             throw new Error404();
         }
     }
-
-    /**
-     * @throws DbException
-     * @throws Error404
-     */
-    protected function actionAllBrand()
-    {
-        if ($this->isAjax()) {
-            View::loadForAjax('all_brand', Brand::findAll(false, 'name'));
-            exit();
-        }
-        throw new Error404();
-    }
 }
