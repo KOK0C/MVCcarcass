@@ -1,4 +1,5 @@
 
 <?php if (! empty($data)): ?>
-    <?= $data[1]->bbCode(nl2br(htmlentities($data[0]->text))); ?>
+<?php $bbCode = new \IhorRadchenko\App\Components\TextFormat(); ?>
+    <?= $bbCode->bbCode(nl2br(htmlentities($data[0]->text))); ?>
 <?php endif; ?>

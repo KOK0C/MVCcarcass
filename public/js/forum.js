@@ -44,6 +44,7 @@ $("#addComment").click(function () {
             function (data) {
                 comment.css('border-color', 'rgb(169, 169, 169)').prop('placeholder', 'Сообщение').val('');
                 $(data).hide().appendTo(".comments").fadeIn(1000);
+                $("#noMessage").remove();
             }
         );
     } else {
@@ -52,6 +53,7 @@ $("#addComment").click(function () {
 });
 
 var comments = $(".comments");
+
 comments.on("click", ".btn-delete", function () {
     var elem = $(this).parent().parent();
     $.post(
@@ -64,6 +66,9 @@ comments.on("click", ".btn-delete", function () {
                 elem.fadeOut(300, function () {
                     elem.remove();
                 });
+                if ($(".comment").length === 1) {
+                    comments.append('<div id="noMessage">В данной теме еще нет сообщений</div>');
+                }
             }
         }
     );

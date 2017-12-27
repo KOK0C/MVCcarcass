@@ -1,5 +1,6 @@
 
 <?php if (! empty($data)): ?>
+<?php $bbCode = new \IhorRadchenko\App\Components\TextFormat(); ?>
     <?php foreach ($data as $comment): ?>
         <div class="comment" data-idComment="<?= $comment->getId(); ?>">
             <div class="authorComment">
@@ -24,7 +25,7 @@
                 </div>
             <?php endif; ?>
             <div class="commentText">
-                <?= nl2br(htmlentities($comment->text)); ?>
+                <?= $bbCode->bbCode(nl2br(htmlentities($comment->text))); ?>
             </div>
         </div>
     <?php endforeach; ?>

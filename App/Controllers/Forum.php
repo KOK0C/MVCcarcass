@@ -253,7 +253,7 @@ class Forum extends Controller
                 ]
             ])) {
                 $data->save();
-                View::loadForAjax('insert_update_comment', [Comment::findById($_POST['idComment']), (new TextFormat())]);
+                View::loadForAjax('insert_update_comment', [Comment::findById($_POST['idComment'])]);
             }
             exit();
         }
