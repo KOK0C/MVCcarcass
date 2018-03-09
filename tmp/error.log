@@ -3045,3 +3045,51 @@ File : C:\OSPanel\domains\MVCcarcass\App\templates\forum\theme.phtml;
 Line : 29;
 
 =======================================================================
+
+[28-12-2017 20:17:51] EMERGENCY
+Подключение к базе данных не удалось: SQLSTATE[HY000] [1045] Access denied for user 'car_blog_user'@'localhost' (using password: YES)
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : D:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 42;
+
+=======================================================================
+
+[28-12-2017 20:17:51] EMERGENCY
+Подключение к базе данных не удалось: SQLSTATE[HY000] [1045] Access denied for user 'car_blog_user'@'localhost' (using password: YES)
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : D:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 42;
+
+=======================================================================
+
+[28-12-2017 20:17:58] EMERGENCY
+Подключение к базе данных не удалось: SQLSTATE[HY000] [1045] Access denied for user 'car_blog_user'@'localhost' (using password: YES)
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : D:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 42;
+
+=======================================================================
+
+[28-12-2017 20:17:59] EMERGENCY
+Подключение к базе данных не удалось: SQLSTATE[HY000] [1045] Access denied for user 'car_blog_user'@'localhost' (using password: YES)
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : D:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 42;
+
+=======================================================================
+
+[28-12-2017 20:19:55] EMERGENCY
+Подключение к базе данных не удалось: SQLSTATE[HY000] [1045] Access denied for user 'car_blog_user'@'localhost' (using password: YES)
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : D:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 42;
+
+=======================================================================
+
+[28-12-2017 20:19:55] EMERGENCY
+Подключение к базе данных не удалось: SQLSTATE[HY000] [1045] Access denied for user 'car_blog_user'@'localhost' (using password: YES)
+Exception : IhorRadchenko\App\Exceptions\DbException;
+File : D:\OSPanel\domains\MVCcarcass\App\DataBase.php;
+Line : 42;
+
+=======================================================================
